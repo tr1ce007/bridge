@@ -138,5 +138,357 @@
     "title": "This page doesn't exist yet.",
     "lead": "We may still be building it — or the address has a typo.",
     "cta": "Back to home"
+  },
+  "explore": {
+    "metaTitle": "Explore",
+    "eyebrow": "Exploring your path",
+    "pageHeading": "THE BRIDGE questionnaire",
+    "loading": "Loading your answers…",
+    "introTitle": "Let's talk about you",
+    "introLead": "This is not a test. There are no right or wrong answers — just a conversation that helps you see what resonates with you.",
+    "introPoint1": "About 15–30 short questions.",
+    "introPoint2": "You can skip personal ones — we explain why we ask.",
+    "introPoint3": "Answers save automatically, so you can come back later.",
+    "start": "Start",
+    "resumed": "Continuing where you left off.",
+    "progressLabel": "Questionnaire progress",
+    "blocks": {
+      "A": "About you",
+      "B": "Interests",
+      "C": "How you like to work",
+      "D": "Your experience",
+      "E": "Doubts and difficulties",
+      "F": "Values and dreams",
+      "G": "Real-life limits"
+    },
+    "back": "Back",
+    "skip": "Skip",
+    "next": "Next",
+    "save": "Save",
+    "edit": "Edit",
+    "myAnswers": "My answers",
+    "restart": "Start over",
+    "optional": "Optional",
+    "sensitive": "Personal question — you can skip it",
+    "whyWeAskLabel": "Why we ask",
+    "other": "Other",
+    "otherPlaceholder": "Write your own",
+    "textPlaceholder": "A couple of sentences is enough",
+    "maxSelect": "Pick up to {n}",
+    "scaleValue": "{n} of 5",
+    "memoryNotice": "Answers will not be saved on this device — your browser blocks storage. Keep this tab open until you finish.",
+    "localNote": "Answers are saved on this device automatically.",
+    "saveFailed": "Could not save your answers. They are still on screen — check your connection and try again.",
+    "followUpTag": "Follow-up question",
+    "followUpLoading": "Picking a follow-up question…",
+    "reviewTitle": "Your answers",
+    "reviewLead": "Press “Edit” to change any answer. Everything else stays as it is.",
+    "reviewEmpty": "No answers yet.",
+    "skipped": "Skipped",
+    "unanswered": "Not answered yet",
+    "answerThis": "Answer",
+    "backToQuestions": "Back to questions",
+    "continue": "Continue",
+    "followUpAnswerLabel": "Follow-up",
+    "restartTitle": "Start over?",
+    "restartText": "Your questionnaire answers will be erased from this device. Reports and other saved data stay.",
+    "restartConfirm": "Yes, erase and start over",
+    "restartCancel": "Cancel",
+    "completeTitle": "Thank you, that is enough",
+    "completeLead": "You have covered the essentials. Now you can build your personal report — not a verdict and not a prediction, but a map of directions worth exploring.",
+    "completeCta": "Build my report",
+    "completeReview": "Review my answers",
+    "missingTitle": "A few more questions to go",
+    "missingLead": "Without these blocks the report would be too vague:",
+    "missingGo": "Go to: {block}"
+  },
+  "q": {
+    "A1": {
+      "title": "How old are you?",
+      "hint": "Pick a range — an exact age is not needed.",
+      "whyWeAsk": "Age changes which questions and examples help most: a school student and someone changing careers face different choices.",
+      "options": {
+        "u15": "Under 15",
+        "a15_17": "15–17",
+        "a18_22": "18–22",
+        "a23_29": "23–29",
+        "a30_39": "30–39",
+        "a40p": "40 or older"
+      }
+    },
+    "A2": {
+      "title": "What are you doing right now?",
+      "hint": "Pick the closest one.",
+      "whyWeAsk": "So we do not ask too much: a school student does not need questions about jobs, and someone working does not need questions about choosing a school.",
+      "options": {
+        "school": "I am in school",
+        "college": "I am in college",
+        "university": "I am at university",
+        "work": "I am working",
+        "other": "Something else (a pause, searching, parental leave…)"
+      }
+    },
+    "A3": {
+      "title": "Which country and city are you from?",
+      "hint": "Optional. You can write only the country, or skip.",
+      "whyWeAsk": "Opportunities and scholarships often depend on the country. This is only used to suggest options that fit."
+    },
+    "A4": {
+      "title": "What are you studying, and how is it going?",
+      "hint": "Write your field and a few words on whether you like it. Optional."
+    },
+    "A5": {
+      "title": "What are you doing at the moment?",
+      "hint": "A job, a side job, a pause — whatever is true. Optional."
+    },
+    "A6": {
+      "title": "How clear is your idea of what to do after school?",
+      "hint": "An honest answer beats a “right” one.",
+      "options": {
+        "clear": "I have a clear plan",
+        "some": "I have a couple of options but I am not sure",
+        "none": "No ideas yet",
+        "pause": "I want to pause first and look around"
+      }
+    },
+    "B1": {
+      "title": "What draws you in?",
+      "hint": "Pick up to five topics or activities. There are no wrong answers.",
+      "whyWeAsk": "This is the basis for ideas and experiments. Choose what resonates, not what you “should” choose.",
+      "options": {
+        "tech": "Technology and programming",
+        "people": "People and communication",
+        "creative": "Creativity and design",
+        "science": "Science and research",
+        "business": "Business and entrepreneurship",
+        "law-politics": "Law, politics, diplomacy",
+        "health": "Health and medicine",
+        "education": "Teaching and education",
+        "sport": "Sport",
+        "nature": "Nature and ecology",
+        "languages-culture": "Languages and culture",
+        "social-impact": "Helping people and society",
+        "unsure": "Not sure yet — a bit of everything"
+      }
+    },
+    "B2": {
+      "title": "What could you talk about for hours, or what do you teach yourself?",
+      "hint": "Topics, channels, books, hobbies — anything that comes to mind."
+    },
+    "B3": {
+      "title": "What absorbs you so much that you lose track of time?",
+      "hint": "Any activity, even if it feels unserious."
+    },
+    "B4": {
+      "title": "What would you do if nothing limited you — money, other people's expectations, fear?",
+      "hint": "Dream a little. You can be bolder here than usual."
+    },
+    "C1": {
+      "title": "Are you more comfortable working alone or in a team?",
+      "hint": "Pick 1 to 5 for what is closer. There are no right answers.",
+      "whyWeAsk": "This is not a grade or a label, just a hint about which working environment might suit you.",
+      "scaleMin": "Better alone",
+      "scaleMax": "Better in a team"
+    },
+    "C2": {
+      "title": "How much do you enjoy talking with lots of people at work?",
+      "scaleMin": "More quiet and focus",
+      "scaleMax": "The more interaction, the better"
+    },
+    "C3": {
+      "title": "What is closer to you: practice or theory?",
+      "whyWeAsk": "It helps us pick experiments in a format that suits you. Not a label, just a guide.",
+      "scaleMin": "Practice: doing, trying",
+      "scaleMax": "Theory: figuring out why"
+    },
+    "C4": {
+      "title": "How do you feel when a task is hard and there are no clear instructions?",
+      "scaleMin": "I need clear rules",
+      "scaleMax": "I enjoy figuring it out myself"
+    },
+    "C5": {
+      "title": "What matters more to you in work: stability or experimenting?",
+      "whyWeAsk": "So we understand which directions and first steps feel comfortable, and which are too risky for you right now.",
+      "scaleMin": "Stability and predictability",
+      "scaleMax": "Experiments and novelty"
+    },
+    "D1": {
+      "title": "Which of these have you already done?",
+      "hint": "You can pick several. If none yet, that is perfectly fine.",
+      "options": {
+        "organized": "Organised something (an event, a group)",
+        "volunteered": "Volunteering",
+        "competition": "Competitions or olympiads",
+        "project": "My own project",
+        "research": "Research or academic work",
+        "job": "A job or side job",
+        "none": "None of these yet"
+      }
+    },
+    "D2": {
+      "title": "Tell us about one such experience: what did you do, and what are you proud of?",
+      "hint": "A couple of sentences is enough."
+    },
+    "D3": {
+      "title": "Was there an experience that changed how you see something, or a difficulty you overcame?",
+      "hint": "Optional, but stories like these say a lot about you."
+    },
+    "E1": {
+      "title": "What is hardest for you about choosing a path?",
+      "hint": "Pick up to four.",
+      "whyWeAsk": "So the advice reflects what actually gets in the way, not just a list of professions.",
+      "options": {
+        "noIdea": "I do not know what I like",
+        "tooMany": "Too many options",
+        "wrongChoice": "I am afraid of choosing wrong",
+        "family": "Family expectations",
+        "money": "Money",
+        "noInfo": "Not enough information about professions",
+        "noTalent": "I feel I have no special talent",
+        "compare": "I compare myself with others",
+        "tooLate": "I feel it is already too late"
+      }
+    },
+    "E2": {
+      "title": "Do you feel pressure from your family about your path?",
+      "hint": "You can skip this.",
+      "whyWeAsk": "This is personal. We ask so we do not give advice that is hard to use at home.",
+      "options": {
+        "yes": "Yes",
+        "little": "A little",
+        "no": "No"
+      }
+    },
+    "E2b": {
+      "title": "How does it show up?",
+      "hint": "Pick the closest one. You can skip this.",
+      "whyWeAsk": "This is also personal. Answer only if you want to — it helps us see which steps are realistic.",
+      "options": {
+        "profession": "They want me to pick a specific profession",
+        "closeToHome": "They want me to stay close to home",
+        "income": "They expect me to start earning soon",
+        "general": "High expectations in general"
+      }
+    },
+    "E3": {
+      "title": "Have you already chosen something that now feels like it is not yours?",
+      "hint": "A major, a university, a job — anything.",
+      "options": {
+        "yes": "Yes",
+        "unsure": "Not sure",
+        "no": "No"
+      }
+    },
+    "E3b": {
+      "title": "What exactly does not fit?",
+      "hint": "What does not resonate, and maybe what you still like about it?"
+    },
+    "E4": {
+      "title": "Do you sometimes feel you have no particular talent?",
+      "hint": "There is no right answer — many people feel this way.",
+      "scaleMin": "Almost never",
+      "scaleMax": "Often"
+    },
+    "F1": {
+      "title": "What matters most to you in your future work and life?",
+      "hint": "Pick up to three.",
+      "whyWeAsk": "Values help find a path that fits you, not “everyone”.",
+      "options": {
+        "freedom": "Freedom",
+        "stability": "Financial stability",
+        "impact": "Making a difference for people",
+        "creativity": "Creativity",
+        "recognition": "Recognition",
+        "growth": "Personal growth"
+      }
+    },
+    "F2": {
+      "title": "What does “success” mean to you?",
+      "hint": "In your own words, no polished phrasing needed."
+    },
+    "F3": {
+      "title": "What problems in the world or around you would you like to solve?",
+      "hint": "Big or small — any."
+    },
+    "F4": {
+      "title": "What would make your life feel meaningful?",
+      "hint": "A couple of sentences."
+    },
+    "G1": {
+      "title": "Are there real-life limits that affect your choice?",
+      "hint": "Optional. Pick up to three that matter most.",
+      "whyWeAsk": "To suggest realistic steps and opportunities, such as scholarships. You can skip this.",
+      "options": {
+        "finance": "Money",
+        "access": "Access to education",
+        "language": "Language skills",
+        "time": "Little free time",
+        "place": "Tied to a place",
+        "family": "Family responsibilities",
+        "none": "No such limits"
+      }
+    },
+    "G2": {
+      "title": "How are you placed for paying for study?",
+      "hint": "You can skip this.",
+      "whyWeAsk": "So we understand whether scholarships and grants matter for you. It only affects the suggestions.",
+      "options": {
+        "selfFunded": "I can pay, or my family can help",
+        "partial": "I can cover part of it",
+        "needScholarship": "I need a scholarship or grant",
+        "unsure": "Not sure yet"
+      }
+    },
+    "G3": {
+      "title": "How easy is access to education where you live?",
+      "hint": "You can skip this.",
+      "whyWeAsk": "It decides whether in-person options fit or starting online makes more sense.",
+      "options": {
+        "good": "Good",
+        "limited": "Limited",
+        "veryLimited": "Almost none"
+      }
+    },
+    "G4": {
+      "title": "Which languages do you speak?",
+      "hint": "You can pick several. You can skip this.",
+      "whyWeAsk": "Language affects study and work opportunities, including abroad.",
+      "options": {
+        "ru": "Russian — fluent",
+        "kk": "Kazakh — fluent",
+        "enBasic": "English — basic",
+        "enGood": "English — good"
+      }
+    },
+    "G5": {
+      "title": "How much time per week can you give to something new?",
+      "hint": "You can skip this.",
+      "whyWeAsk": "So experiments and the plan are doable, not one more source of stress.",
+      "options": {
+        "lots": "A lot (10+ hours)",
+        "some": "Some (3–10 hours)",
+        "little": "Very little (under 3 hours)"
+      }
+    },
+    "G6": {
+      "title": "How willing are you to move?",
+      "hint": "You can skip this.",
+      "whyWeAsk": "Study options and opportunities depend on it.",
+      "options": {
+        "flexible": "I can move anywhere",
+        "country": "Only within my country",
+        "city": "I need to stay in my city"
+      }
+    },
+    "G7": {
+      "title": "What family responsibilities do you have?",
+      "hint": "You can skip this.",
+      "whyWeAsk": "So the steps are realistic and do not need more time than you have.",
+      "options": {
+        "none": "None",
+        "some": "Some, but I still have time",
+        "main": "They take most of my time"
+      }
+    }
   }
 }
