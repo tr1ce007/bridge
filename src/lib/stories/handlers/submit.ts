@@ -2,6 +2,7 @@ import "server-only";
 import { z } from "zod";
 import { rateLimited, readBody } from "@/lib/ai/handlers/common";
 import { SignInRequiredError } from "@/lib/data";
+import { trackEvent } from "@/lib/analytics/track";
 import { getServerContent } from "@/lib/data/server";
 import { localeSchema, storySubmissionSchema, SUBMISSION_LIMITS, STORY_CATEGORIES } from "@/lib/data/types";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
@@ -47,11 +48,16 @@ export async function handleSubmitStory(request: Request): Promise<Response> {
   const { displayName, ...submission } = storySubmissionSchema.parse(parsed.data);
   try {
     const content = await getServerContent();
-    const result = await content.submitStory({
-      ...submission,
-      // Anonymous unless the person switched it off and gave a name.
-      ...(parsed.data.anonymous === false && displayName ? { displayName } : {}),
-    });
+    const result = await content.submitStory(
+      {
+        ...submission,
+        // Anonymous unless the person switched it off and gave a name.
+        ...(parsed.data.anonymous === false && displayName ? { displayName } : {}),
+      },
+      // `consent` is a real `true` here (checked above): record when it was given.
+      { consentAt: new Date().toISOString() },
+    );
+    await trackEvent("story_submitted", parsed.data.locale ?? locale);
     return Response.json(result, { status: 201 });
   } catch (e) {
     // The RLS insert policy is `to authenticated`: anonymous visitors cannot insert.

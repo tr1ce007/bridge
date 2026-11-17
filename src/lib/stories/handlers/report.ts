@@ -44,7 +44,8 @@ export async function handleReportStory(request: Request): Promise<Response> {
       reporter_id: data.session?.user.id ?? null,
       target_kind: "story",
       target_id: storyId,
-      reason: clean ? `${reason}: ${clean}` : reason,
+      // content_reports.reason is capped at 500 characters in the database.
+      reason: (clean ? `${reason}: ${clean}` : reason).slice(0, 500),
     });
     if (error) throw new Error(error.message);
     return Response.json({ ok: true }, { status: 201 });

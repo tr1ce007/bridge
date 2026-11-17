@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { NAV_ITEMS, isActivePath } from "@/lib/nav";
 import { cn } from "@/lib/cn";
+import { AccountMenu } from "./auth/account-menu";
 import { Container } from "./ui/container";
 import { Logo } from "./logo";
 import { LocaleSwitcher } from "./locale-switcher";
@@ -58,6 +59,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-1 sm:gap-2">
           <LocaleSwitcher className="hidden sm:flex" />
           <ThemeToggle />
+          <AccountMenu />
           <button
             type="button"
             className="inline-flex size-10 items-center justify-center rounded-full text-fg hover:bg-subtle xl:hidden"
@@ -98,6 +100,7 @@ export function SiteHeader() {
                 })}
               </ul>
             </nav>
+            <AccountMenu variant="list" onNavigate={() => setOpen(false)} />
             <LocaleSwitcher className="mt-5 w-fit sm:hidden" />
           </Container>
         </div>

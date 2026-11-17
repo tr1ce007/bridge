@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { reportSchema, roadmapItemSchema, type DiscoveryReport } from "@/lib/report/schema";
+import { httpUrl } from "./http-url";
 
 export { reportSchema, roadmapItemSchema };
 export type { DiscoveryReport, RoadmapItem } from "@/lib/report/schema";
@@ -192,7 +193,7 @@ export const storySchema = z.object({
   ageRange: z.enum(AGE_RANGES).optional(),
   /** Original language of the story. */
   lang: localeSchema,
-  sourceUrl: z.string().url().optional(),
+  sourceUrl: httpUrl.optional(),
   sourceName: z.string().optional(),
   attribution: storyTextSchema,
   publishedAt: z.string().optional(),
@@ -271,13 +272,15 @@ export const opportunitySchema = z.object({
   cost: z.enum(OPPORTUNITY_COSTS).default("unknown"),
   description: localizedTextSchema,
   eligibility: localizedTextSchema,
-  /** Official site only. */
-  url: z.string().url(),
+  /** Official site only (http or https). */
+  url: httpUrl,
   /** ISO date, only when checked on the official site; otherwise null. */
   deadline: z.string().nullable(),
   /** ISO date the URL was last opened and checked; null = never verified. */
   verifiedAt: z.string().nullable(),
   status: z.enum(OPPORTUNITY_STATUSES),
+  /** Where the facts were checked (a page address or a short note). Set in the admin panel. */
+  source: z.string().max(500).optional(),
 });
 export type Opportunity = z.infer<typeof opportunitySchema>;
 
@@ -366,6 +369,9 @@ export interface ContentStore {
   getStory(id: string): Promise<Story | null>;
   listExperiments(): Promise<Experiment[]>;
   listOpportunities(filter?: OpportunityFilter): Promise<Opportunity[]>;
-  /** Validates + sanitizes, stores as kind "user", status "pending". */
-  submitStory(input: StorySubmission): Promise<{ id: string; status: "pending" }>;
+  /**
+   * Validates + sanitizes, stores as kind "user", status "pending".
+   * `consentAt` (ISO time) is the moment the author agreed to publication after moderation.
+   */
+  submitStory(input: StorySubmission, options?: { consentAt?: string }): Promise<{ id: string; status: "pending" }>;
 }

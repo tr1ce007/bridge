@@ -1,5 +1,6 @@
 import "server-only";
 import { z } from "zod";
+import { trackEvent } from "@/lib/analytics/track";
 import { getContent } from "@/lib/data";
 import { bundledExperiments, bundledStories } from "@/lib/data/local-content";
 import type { Story } from "@/lib/data/types";
@@ -40,10 +41,16 @@ export async function handleReport(request: Request): Promise<Response> {
   const gate = canGenerateReport(answers);
   if (!gate.ok) return Response.json({ error: aiCopy(locale, "notReady"), missing: gate.missing }, { status: 422 });
 
+  // Anonymous counts for the admin overview (no-op without Supabase): the required blocks are
+  // answered, and a report is built below. Counted per request, so a regenerated report counts again.
+  await trackEvent("questionnaire_completed", locale);
+
   const stories = await loadStories();
   const candidates = matchStories(answers, stories, 5, locale);
-  const fallback = (reason: "not-configured" | "failed") =>
-    Response.json({ report: { ...buildFallbackReport(answers, locale, { stories }), demoReason: reason }, demo: true, fallbackReason: reason });
+  const fallback = async (reason: "not-configured" | "failed") => {
+    await trackEvent("report_generated", locale);
+    return Response.json({ report: { ...buildFallbackReport(answers, locale, { stories }), demoReason: reason }, demo: true, fallbackReason: reason });
+  };
 
   const provider = getProvider();
   if (provider.name === "demo") return fallback("not-configured");
@@ -57,6 +64,7 @@ export async function handleReport(request: Request): Promise<Response> {
       schemaName: "discovery_report",
     });
     const report = assembleReport(out, { locale, candidateIds: candidates.map((c) => c.story.id) });
+    await trackEvent("report_generated", locale);
     return Response.json({ report, demo: false });
   } catch (e) {
     const err = e instanceof z.ZodError ? { kind: "schema" as const, message: "report does not match the schema" } : toAIError(e);

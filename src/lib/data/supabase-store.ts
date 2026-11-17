@@ -423,7 +423,7 @@ export function storyFromRow(r: StoryRow): Story | null {
   return parsed.success ? parsed.data : null;
 }
 
-export function storyToRow(s: Story, authorId: string | null) {
+export function storyToRow(s: Story, authorId: string | null, options: { consentAt?: string } = {}) {
   return {
     id: s.id,
     kind: s.kind,
@@ -448,7 +448,44 @@ export function storyToRow(s: Story, authorId: string | null) {
     },
     tags: s.tags,
     incomplete: s.incomplete ?? [],
+    ...(options.consentAt ? { consent_at: options.consentAt } : {}),
   };
+}
+
+export interface OpportunityRow {
+  id: string;
+  name: string;
+  kind: string;
+  levels: string[];
+  country: string | null;
+  cost: string | null;
+  description: unknown;
+  eligibility: unknown;
+  url: string;
+  deadline: string | null;
+  verified_at: string | null;
+  status: string;
+  source?: string | null;
+}
+
+/** A database row as an `Opportunity`, or null when it does not match the schema. */
+export function opportunityFromRow(r: OpportunityRow): Opportunity | null {
+  const p = opportunitySchema.safeParse({
+    id: r.id,
+    name: r.name,
+    kind: r.kind,
+    levels: r.levels,
+    ...(r.country ? { country: r.country } : {}),
+    ...(r.cost ? { cost: r.cost } : {}),
+    description: r.description,
+    eligibility: r.eligibility,
+    url: r.url,
+    deadline: r.deadline,
+    verifiedAt: r.verified_at,
+    status: r.status,
+    ...(r.source ? { source: r.source } : {}),
+  });
+  return p.success ? p.data : null;
 }
 
 /** Content from Supabase tables (public read for approved stories and opportunities). */
@@ -482,47 +519,19 @@ export function createSupabaseContentStore(getClient: GetClient): ContentStore {
     },
     async listOpportunities(filter) {
       const rows = checkList(await getClient().from("opportunities").select("*"));
-      const list = (
-        rows as {
-          id: string;
-          name: string;
-          kind: string;
-          levels: string[];
-          country: string | null;
-          cost: string | null;
-          description: unknown;
-          eligibility: unknown;
-          url: string;
-          deadline: string | null;
-          verified_at: string | null;
-          status: string;
-        }[]
-      ).flatMap((r): Opportunity[] => {
-        const p = opportunitySchema.safeParse({
-          id: r.id,
-          name: r.name,
-          kind: r.kind,
-          levels: r.levels,
-          ...(r.country ? { country: r.country } : {}),
-          ...(r.cost ? { cost: r.cost } : {}),
-          description: r.description,
-          eligibility: r.eligibility,
-          url: r.url,
-          deadline: r.deadline,
-          verifiedAt: r.verified_at,
-          status: r.status,
-        });
-        return p.success ? [p.data] : [];
+      const list = (rows as OpportunityRow[]).flatMap((r) => {
+        const o = opportunityFromRow(r);
+        return o ? [o] : [];
       });
       return filterOpportunities(list, filter);
     },
-    async submitStory(input) {
+    async submitStory(input, options) {
       const client = getClient();
       const uid = await currentUserId(client);
       if (!uid) throw new SignInRequiredError();
       const id = crypto.randomUUID();
       const story = buildSubmittedStory(input, id);
-      check(await client.from("stories").insert(storyToRow(story, uid)));
+      check(await client.from("stories").insert(storyToRow(story, uid, { consentAt: options?.consentAt })));
       return { id, status: "pending" };
     },
   };

@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { themeInitScript } from "@/lib/theme";
+import { GuestImportBanner } from "@/components/auth/guest-import-banner";
 import { MotionProvider } from "@/components/motion-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -42,6 +43,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         <NextIntlClientProvider>
           <MotionProvider>
             <SiteHeader />
+            <GuestImportBanner />
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </MotionProvider>

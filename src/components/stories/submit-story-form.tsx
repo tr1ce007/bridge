@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { AGE_RANGES, LOCALES, STORY_CATEGORIES, SUBMISSION_LIMITS, isSupabaseConfigured, type Locale } from "@/lib/data";
 import { EMPTY_SUBMISSION, validateSubmission, type FieldProblem, type SubmissionErrors, type SubmissionField, type SubmissionForm } from "@/lib/stories/validate";
@@ -288,7 +289,14 @@ export function SubmitStoryForm() {
           {serverError && (
             <div role="alert" className="rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed">
               <p className="font-semibold">{serverError.message}</p>
-              {serverError.code === "sign_in_required" && <p className="mt-1 text-muted">{t("signInHint")}</p>}
+              {serverError.code === "sign_in_required" && (
+                <p className="mt-1 text-muted">
+                  {t("signInHint")}{" "}
+                  <Link href="/auth" className="font-semibold text-primary underline-offset-4 hover:underline dark:text-[var(--ring)]">
+                    {t("signInLink")}
+                  </Link>
+                </p>
+              )}
               {(serverError.code === "local_mode" || serverError.code === "sign_in_required") && <p className="mt-1 text-muted">{t("copyTitle")}</p>}
             </div>
           )}
