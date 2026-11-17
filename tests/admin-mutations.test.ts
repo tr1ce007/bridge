@@ -80,6 +80,47 @@ describe("moderateStory", () => {
   });
 });
 
+describe("moderateStory: two writes", () => {
+  /** A client whose update of `stories` fails (or matches no row) after the note was written. */
+  function breakStoryUpdate(db: ReturnType<typeof createMemorySupabase>, mode: "error" | "empty") {
+    const real = db.client.from.bind(db.client);
+    return {
+      ...db.client,
+      from: (table: string) => {
+        const builder = real(table) as unknown as Record<string, unknown>;
+        if (table !== "stories") return builder;
+        return {
+          ...builder,
+          update: () => {
+            const chain: Record<string, unknown> = {
+              eq: () => chain,
+              select: () => Promise.resolve(mode === "error" ? { data: null, error: { message: "boom" } } : { data: [], error: null }),
+            };
+            return chain;
+          },
+        };
+      },
+    } as unknown as typeof db.client;
+  }
+
+  it("saves the note first, then updates the story", async () => {
+    const db = seedStories();
+    const input = storyModerationSchema.parse({ id: "s1", decision: "reject", note: "n" });
+    await moderateStory(db.client, MOD, input, NOW);
+    expect(db.writes.indexOf("upsert:story_reviews")).toBeLessThan(db.writes.indexOf("update:stories"));
+  });
+
+  it("reports honestly when the story update fails after the note was saved", async () => {
+    for (const mode of ["error", "empty"] as const) {
+      const db = seedStories();
+      const input = storyModerationSchema.parse({ id: "s1", decision: "approve", kind: "user", note: "ok" });
+      expect(await moderateStory(breakStoryUpdate(db, mode), MOD, input, NOW)).toEqual({ ok: false, code: "partial" });
+      // the story was not published
+      expect(db.rows("stories").find((r) => r.id === "s1")!.status).toBe("pending");
+    }
+  });
+});
+
 describe("resolveReport", () => {
   const ID = "6f1b3c0e-8a52-4a5e-9a7d-0d6f6b0f2a11";
   it("sets status, resolved_by and resolved_at on an open report only", async () => {
@@ -148,6 +189,9 @@ describe("opportunities", () => {
     db.tables.set("opportunities", [{ id: "o1" }, { id: "o2" }]);
     expect(await deleteOpportunity(db.client, "o1")).toEqual({ ok: true });
     expect(db.rows("opportunities")).toEqual([{ id: "o2" }]);
+    // Deleting something that is not there (already deleted, or hidden by RLS) is reported, not "ok".
+    expect(await deleteOpportunity(db.client, "o1")).toEqual({ ok: false, code: "not_found" });
+    expect(db.rows("opportunities")).toEqual([{ id: "o2" }]);
   });
 });
 
@@ -159,5 +203,13 @@ describe("story sources", () => {
     db.rows("story_sources")[0].id = "src1";
     expect(await removeStorySource(db.client, "src1")).toEqual({ ok: true });
     expect(db.rows("story_sources")).toEqual([]);
+    expect(await removeStorySource(db.client, "src1")).toEqual({ ok: false, code: "not_found" });
+  });
+
+  it("does not remove a source that belongs to a story (provenance), and says so", async () => {
+    const db = createMemorySupabase(MOD);
+    db.tables.set("story_sources", [{ id: "p1", story_id: "s1", url: "https://e.com" }]);
+    expect(await removeStorySource(db.client, "p1")).toEqual({ ok: false, code: "not_found" });
+    expect(db.rows("story_sources")).toHaveLength(1);
   });
 });

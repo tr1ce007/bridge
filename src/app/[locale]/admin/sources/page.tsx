@@ -4,6 +4,7 @@ import { Empty, SectionHead } from "@/components/admin/section";
 import { AddSourceForm, RemoveSourceButton } from "@/components/admin/source-forms";
 import { Badge } from "@/components/ui/badge";
 import { listStorySources } from "@/lib/admin/queries";
+import { STORY_SOURCE_KINDS } from "@/lib/admin/schemas";
 import { guardStaffPage } from "@/lib/auth/guard";
 import { isHttpUrl } from "@/lib/data/http-url";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -14,7 +15,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/source
   await guardStaffPage();
   const t = await getTranslations("admin.sources");
   const sources = await listStorySources(await createSupabaseServerClient());
-  const kinds = (k: string) => (["rss", "reddit", "website", "other"].includes(k) ? t(`kinds.${k as "rss"}`) : k);
+  const kinds = (k: string) => ((STORY_SOURCE_KINDS as readonly string[]).includes(k) ? t(`kinds.${k as (typeof STORY_SOURCE_KINDS)[number]}`) : k);
 
   return (
     <>

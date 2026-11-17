@@ -1,4 +1,4 @@
-export type ActionErrorCode = "invalid" | "forbidden" | "unauthenticated" | "unconfigured" | "not_found" | "duplicate" | "failed";
+export type ActionErrorCode = "invalid" | "forbidden" | "unauthenticated" | "unconfigured" | "not_found" | "duplicate" | "partial" | "failed";
 
 /** Result of an admin server action, shown by the form that called it. */
 export type ActionState =

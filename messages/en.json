@@ -1343,7 +1343,8 @@
       "later": "Not now",
       "done": "Done. New reports: {reports}, journal entries: {journal}, saved items: {saved}, experiments: {completions}.",
       "doneNothing": "Nothing new: everything is already in your account.",
-      "failed": "We could not import the data. It is still on this device, so you can try again."
+      "failed": "We could not import the data. It is still on this device, so you can try again.",
+      "dismiss": "Close"
     }
   },
   "admin": {
@@ -1414,7 +1415,8 @@
       "unconfigured": "Supabase is not set up.",
       "not_found": "The record was not found or has already changed. Refresh the page.",
       "duplicate": "A record with this identifier already exists.",
-      "failed": "Could not save. Please try again."
+      "failed": "Could not save. Please try again.",
+      "partial": "The note was saved, but the story status did not change. Refresh the page and repeat the action."
     },
     "stories": {
       "title": "Story moderation",

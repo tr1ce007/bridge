@@ -66,7 +66,7 @@ export function GuestImportCard({ userId, onFinished, className }: { userId: str
       ) : (
         onFinished && (
           <Button variant="ghost" className="mt-4" onClick={onFinished}>
-            OK
+            {t("dismiss")}
           </Button>
         )
       )}

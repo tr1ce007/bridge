@@ -7,7 +7,9 @@
 -- When the author agreed to publication after moderation (set by POST /api/stories).
 alter table public.stories add column if not exists consent_at timestamptz;
 
--- Authors may only insert a plain pending user story: no source, not reviewed.
+-- Authors may only insert a plain pending user story: no source, not reviewed, with the time
+-- they agreed to publication (POST /api/stories sets consent_at). A minute of tolerance keeps a
+-- small clock difference between the web server and the database from refusing a valid insert.
 -- Staff set source_url, reviewed_by and reviewed_at when they moderate (stories_update_staff).
 drop policy if exists stories_insert_own on public.stories;
 create policy stories_insert_own on public.stories for insert to authenticated
@@ -18,6 +20,8 @@ create policy stories_insert_own on public.stories for insert to authenticated
     and source_url is null
     and reviewed_by is null
     and reviewed_at is null
+    and consent_at is not null
+    and consent_at <= now() + interval '1 minute'
   );
 
 -- Defence in depth for the same rules in the admin panel: addresses are http(s) only and
@@ -58,8 +62,12 @@ create policy content_reports_insert on public.content_reports for insert to ano
   );
 
 alter table public.content_reports drop constraint if exists content_reports_reason_length;
+-- NOT VALID: older reports (saved before this limit, or inserted straight through the REST API)
+-- may be longer; they stay as they are. The limit only applies while a report is open (new reports
+-- are always inserted as open, see the policy above), so staff can still resolve or dismiss an old
+-- long report: closing it is an UPDATE, and an UPDATE re-checks the row.
 alter table public.content_reports add constraint content_reports_reason_length
-  check (char_length(reason) <= 500);
+  check (char_length(reason) <= 500 or status <> 'open') not valid;
 
 -- ---------------------------------------------------------------- opportunities
 

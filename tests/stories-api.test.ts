@@ -153,6 +153,21 @@ describe("POST /api/stories", () => {
     const row = state.inserts[0].row;
     expect(row).toMatchObject({ kind: "user", status: "pending", author_id: "user-1", lang: "ru" });
     expect((row.content as { categories: string[] }).categories).toEqual(["from-zero"]);
+    // The insert policy requires consent_at; the route records the moment consent was given.
+    expect(typeof row.consent_at).toBe("string");
+    expect(Math.abs(Date.now() - Date.parse(row.consent_at as string))).toBeLessThan(5000);
+    expect(row.source_url).toBeNull();
+    expect(row).not.toHaveProperty("reviewed_by");
+  });
+
+  it("keeps a report reason within the 500 characters the database allows", async () => {
+    state.supabase = true;
+    state.userId = null;
+    const id = bundledStories[0].id;
+    const res = await report(post("http://x/api/stories/report", { storyId: id, reason: "inaccurate", details: "я".repeat(500) }));
+    expect(res.status).toBe(201);
+    const row = state.inserts.at(-1)!.row;
+    expect((row.reason as string).length).toBeLessThanOrEqual(500);
   });
 
   it("keeps the author anonymous unless a name is given and anonymity is off", async () => {

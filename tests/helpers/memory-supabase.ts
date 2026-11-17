@@ -68,8 +68,9 @@ export function createMemorySupabase(userId: string | null) {
       if (op === "delete") {
         writes.push(`delete:${table}`);
         const keep = t.filter((r) => !filters.every((f) => f(r)));
+        const removed = t.filter((r) => filters.every((f) => f(r)));
         tables.set(table, keep);
-        return { data: null, error: null };
+        return { data: removed.map((r) => ({ ...r })), error: null };
       }
       let out = t.filter((r) => filters.every((f) => f(r)));
       if (orderBy) {

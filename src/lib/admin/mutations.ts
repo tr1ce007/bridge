@@ -14,7 +14,8 @@ import {
  * and validated the input with the schemas in ./schemas.
  */
 
-export type MutationFailure = "not_found" | "duplicate" | "failed";
+/** "partial": the moderator note was saved, but the story row could not be updated afterwards. */
+export type MutationFailure = "not_found" | "duplicate" | "partial" | "failed";
 export type MutationResult<T extends object = object> = ({ ok: true } & T) | { ok: false; code: MutationFailure };
 
 interface DbError {
@@ -62,6 +63,26 @@ export async function moderateStory(
   const approve = input.decision === "approve";
   const kind = input.kind ?? "user";
 
+  // Only pending stories can be moderated (a double click or an out-of-date page changes nothing).
+  const pending = await client.from("stories").select("id").eq("id", input.id).eq("status", "pending").maybeSingle();
+  if (pending.error) return failure(pending.error);
+  if (!pending.data) return { ok: false, code: "not_found" };
+
+  // Step 1: the note (staff-only table). Step 2: the story itself. Two writes cannot be one
+  // transaction through the API, so the note goes first: if step 2 fails, the story stays pending
+  // and nothing is published by accident.
+  const review = await client.from("story_reviews").upsert(
+    {
+      story_id: input.id,
+      decision: approve ? "approved" : "rejected",
+      note: input.note ?? null,
+      reviewed_by: reviewerId,
+      reviewed_at: reviewedAt,
+    },
+    { onConflict: "story_id" },
+  );
+  if (review.error) return failure(review.error);
+
   const patch: Record<string, unknown> = {
     status: approve ? "approved" : "rejected",
     reviewed_by: reviewerId,
@@ -76,21 +97,11 @@ export async function moderateStory(
   }
 
   const { data, error } = await client.from("stories").update(patch).eq("id", input.id).eq("status", "pending").select("id");
-  if (error) return failure(error);
-  if (!data || data.length === 0) return { ok: false, code: "not_found" };
-
-  // The note is staff-only (story_reviews), never part of the public story row.
-  const review = await client.from("story_reviews").upsert(
-    {
-      story_id: input.id,
-      decision: approve ? "approved" : "rejected",
-      note: input.note ?? null,
-      reviewed_by: reviewerId,
-      reviewed_at: reviewedAt,
-    },
-    { onConflict: "story_id" },
-  );
-  if (review.error) return failure(review.error);
+  if (error) {
+    console.error("[admin] story update failed after the note was saved:", error.code ?? "", error.message);
+    return { ok: false, code: "partial" };
+  }
+  if (!data || data.length === 0) return { ok: false, code: "partial" };
   return { ok: true };
 }
 
@@ -156,8 +167,9 @@ export async function markOpportunityVerified(client: SupabaseClient, id: string
 }
 
 export async function deleteOpportunity(client: SupabaseClient, id: string): Promise<MutationResult> {
-  const { error } = await client.from("opportunities").delete().eq("id", id);
-  return error ? failure(error) : { ok: true };
+  const { data, error } = await client.from("opportunities").delete().eq("id", id).select("id");
+  if (error) return failure(error);
+  return data && data.length > 0 ? { ok: true } : { ok: false, code: "not_found" };
 }
 
 /** A place to look for stories (feed, subreddit, website). Read by the discovery script. */
@@ -169,6 +181,7 @@ export async function addStorySource(client: SupabaseClient, input: StorySourceI
 }
 
 export async function removeStorySource(client: SupabaseClient, id: string): Promise<MutationResult> {
-  const { error } = await client.from("story_sources").delete().eq("id", id).is("story_id", null);
-  return error ? failure(error) : { ok: true };
+  const { data, error } = await client.from("story_sources").delete().eq("id", id).is("story_id", null).select("id");
+  if (error) return failure(error);
+  return data && data.length > 0 ? { ok: true } : { ok: false, code: "not_found" };
 }
