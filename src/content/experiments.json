@@ -1,0 +1,1080 @@
+[
+  {
+    "id": "exp-diplomacy-memo",
+    "direction": "diplomacy",
+    "title": {
+      "ru": "Мини-записка по международному вопросу",
+      "kk": "Халықаралық мәселе бойынша шағын жазба",
+      "en": "One-page brief on an international issue"
+    },
+    "steps": {
+      "ru": [
+        "Выбери один текущий международный вопрос, который тебе интересен.",
+        "Прочитай два источника из разных стран или с разными позициями и выпиши аргументы каждой стороны.",
+        "Напиши записку на одну страницу: суть вопроса, позиции сторон, возможные компромиссы.",
+        "Объясни её другу за три минуты и спроси, что осталось непонятным."
+      ],
+      "kk": [
+        "Өзіңе қызықты бір өзекті халықаралық мәселені таңда.",
+        "Әртүрлі елдерден немесе әртүрлі позициядағы екі дереккөзді оқып, әр тараптың дәлелдерін жаз.",
+        "Бір беттік жазба жаз: мәселенің мәні, тараптардың позициялары, мүмкін келісімдер.",
+        "Оны досыңа үш минутта түсіндіріп, не түсініксіз қалғанын сұра."
+      ],
+      "en": [
+        "Pick one current international issue that interests you.",
+        "Read two sources from different countries or with different positions and note each side's arguments.",
+        "Write a one-page brief: the issue, each side's position, possible compromises.",
+        "Explain it to a friend in three minutes and ask what remained unclear."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "3–4 ч",
+      "kk": "3–4 сағ",
+      "en": "3–4 h"
+    },
+    "difficulty": "medium",
+    "resources": {
+      "ru": [
+        "Сайт un.org (раздел новостей)",
+        "Новости двух разных изданий по одной теме"
+      ],
+      "kk": [
+        "un.org сайты (жаңалықтар бөлімі)",
+        "Бір тақырып бойынша екі түрлі басылымның жаңалықтары"
+      ],
+      "en": [
+        "The un.org website (news section)",
+        "News from two different outlets on the same topic"
+      ]
+    },
+    "outcome": {
+      "ru": "Записка на одну страницу и опыт объяснения сложной темы простыми словами.",
+      "kk": "Бір беттік жазба және күрделі тақырыпты қарапайым сөзбен түсіндіру тәжірибесі.",
+      "en": "A one-page brief and practice explaining a complex topic in plain words."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Было ли интересно понимать позицию противоположной стороны?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Қарсы тараптың позициясын түсіну қызықты болды ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Was it interesting to understand the opposite side's position?"
+      ]
+    }
+  },
+  {
+    "id": "exp-entrepreneurship-test",
+    "direction": "entrepreneurship",
+    "title": {
+      "ru": "Проверь идею на пяти людях",
+      "kk": "Идеяңды бес адамда тексер",
+      "en": "Test an idea on five people"
+    },
+    "steps": {
+      "ru": [
+        "Сформулируй одну проблему, которую можно решить небольшим продуктом или услугой.",
+        "Поговори минимум с пятью людьми, у которых эта проблема есть: как они решают её сейчас?",
+        "Предложи одному человеку простейшее решение за небольшую плату или в обмен на отзыв.",
+        "Запиши, что узнал о клиентах и о себе в роли продавца."
+      ],
+      "kk": [
+        "Шағын өніммен немесе қызметпен шешуге болатын бір мәселені тұжырымда.",
+        "Осы мәселесі бар кемінде бес адаммен сөйлес: олар қазір оны қалай шешеді?",
+        "Бір адамға ең қарапайым шешімді аз ақыға немесе пікір үшін ұсын.",
+        "Клиенттер және сатушы ретінде өзің туралы не білгеніңді жаз."
+      ],
+      "en": [
+        "State one problem that a small product or service could solve.",
+        "Talk to at least five people who have this problem: how do they solve it today?",
+        "Offer one person the simplest solution for a small fee or in exchange for feedback.",
+        "Write down what you learned about customers and about yourself as a seller."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "6–8 ч за неделю",
+      "kk": "Апта ішінде 6–8 сағ",
+      "en": "6–8 h over a week"
+    },
+    "difficulty": "hard",
+    "resources": {
+      "ru": [
+        "Google Forms или обычный блокнот для заметок",
+        "Один знакомый, который сам что-то продавал"
+      ],
+      "kk": [
+        "Google Forms немесе қарапайым жазба дәптері",
+        "Өзі бір нәрсе сатып көрген бір таныс"
+      ],
+      "en": [
+        "Google Forms or a plain notebook for notes",
+        "One acquaintance who has sold something"
+      ]
+    },
+    "outcome": {
+      "ru": "Проверенная или опровергнутая гипотеза и первое впечатление от общения с клиентами.",
+      "kk": "Расталған немесе жоққа шығарылған болжам және клиенттермен сөйлесудің алғашқы әсері.",
+      "en": "A confirmed or rejected hypothesis and a first feel for talking to customers."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Было ли комфортно предлагать и слышать «нет»?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Ұсыну және «жоқ» деген жауап есту ыңғайлы болды ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Was it comfortable to offer something and hear no?"
+      ]
+    }
+  },
+  {
+    "id": "exp-psychology-diary",
+    "direction": "psychology",
+    "title": {
+      "ru": "Неделя наблюдений за своими привычками",
+      "kk": "Өз әдеттерің бойынша бір апталық бақылау",
+      "en": "A week of observing your own habits"
+    },
+    "steps": {
+      "ru": [
+        "Выбери одну привычку, например сон, телефон или откладывание дел.",
+        "Семь дней записывай по пять строк: что произошло, что ты почувствовал, что сделал.",
+        "Найди и прочитай одну популярную статью по теме и сравни с тем, что заметил.",
+        "Сделай три вывода и отметь, что в них факт, а что догадка."
+      ],
+      "kk": [
+        "Бір әдетті таңда, мысалы ұйқы, телефон немесе істерді кейінге қалдыру.",
+        "Жеті күн бойы бес жолдан жаз: не болды, не сездің, не істедің.",
+        "Тақырып бойынша бір танымал мақаланы тауып оқы және өз байқағандарыңмен салыстыр.",
+        "Үш қорытынды жаса және олардың қайсысы факт, қайсысы болжам екенін белгіле."
+      ],
+      "en": [
+        "Pick one habit, for example sleep, phone use or procrastination.",
+        "For seven days write five lines: what happened, what you felt, what you did.",
+        "Find and read one popular article on the topic and compare it with what you noticed.",
+        "Write three conclusions and mark which are facts and which are guesses."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "10–15 мин в день, 7 дней",
+      "kk": "Күніне 10–15 мин, 7 күн",
+      "en": "10–15 min a day for 7 days"
+    },
+    "difficulty": "easy",
+    "resources": {
+      "ru": [
+        "Блокнот или заметки в телефоне",
+        "Одна статья с понятным списком источников"
+      ],
+      "kk": [
+        "Дәптер немесе телефондағы жазбалар",
+        "Дереккөздер тізімі нақты бір мақала"
+      ],
+      "en": [
+        "A notebook or phone notes",
+        "One article with a clear list of sources"
+      ]
+    },
+    "outcome": {
+      "ru": "Дневник наблюдений и практика отличать факты от догадок.",
+      "kk": "Бақылау күнделігі және фактіні болжамнан ажырату тәжірибесі.",
+      "en": "An observation log and practice separating facts from guesses."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Было ли интересно разбираться в причинах поведения, а не только замечать его?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Мінез-құлықты тек байқау емес, оның себептерін түсіну қызықты болды ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did you enjoy digging into the causes of behaviour rather than just noticing it?"
+      ]
+    }
+  },
+  {
+    "id": "exp-programming-first",
+    "direction": "programming",
+    "title": {
+      "ru": "Первая маленькая программа",
+      "kk": "Алғашқы шағын бағдарлама",
+      "en": "Your first small program"
+    },
+    "steps": {
+      "ru": [
+        "Пройди первое занятие курса CS50x или любого вводного курса по программированию.",
+        "Придумай крошечную задачу из жизни, например счётчик расходов или шуточный тест.",
+        "Напиши программу, которая её решает, даже если она получится неидеальной.",
+        "Покажи результат другу и запиши, на каких местах застрял."
+      ],
+      "kk": [
+        "CS50x курсының алғашқы сабағын немесе кез келген кіріспе бағдарламалау курсын өт.",
+        "Өмірден өте кішкентай тапсырма ойлап тап, мысалы шығын санағышы немесе әзіл тест.",
+        "Оны шешетін бағдарлама жаз, ол кемелсіз болса да.",
+        "Нәтижені досыңа көрсетіп, қай жерлерде тұрып қалғаныңды жаз."
+      ],
+      "en": [
+        "Complete the first lesson of CS50x or any introductory programming course.",
+        "Come up with a tiny real-life task, such as an expense counter or a fun quiz.",
+        "Write a program that solves it, even if it is imperfect.",
+        "Show the result to a friend and write down where you got stuck."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "2–3 ч",
+      "kk": "2–3 сағ",
+      "en": "2–3 h"
+    },
+    "difficulty": "easy",
+    "resources": {
+      "ru": [
+        "cs50.harvard.edu/x (бесплатный курс)",
+        "Любой бесплатный онлайн-редактор кода"
+      ],
+      "kk": [
+        "cs50.harvard.edu/x (тегін курс)",
+        "Кез келген тегін онлайн код редакторы"
+      ],
+      "en": [
+        "cs50.harvard.edu/x (free course)",
+        "Any free online code editor"
+      ]
+    },
+    "outcome": {
+      "ru": "Работающая маленькая программа и понимание, как ощущается процесс программирования.",
+      "kk": "Жұмыс істейтін шағын бағдарлама және бағдарламалау процесінің қандай екенін түсіну.",
+      "en": "A working small program and a sense of what programming feels like."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Нравилось ли тебе искать ошибки и разбираться, почему не работает?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Қателерді іздеу және неге жұмыс істемейтінін түсіну ұнады ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did you like hunting for errors and figuring out why something does not work?"
+      ]
+    }
+  },
+  {
+    "id": "exp-design-redo",
+    "direction": "design",
+    "title": {
+      "ru": "Переделай один неудобный экран",
+      "kk": "Бір ыңғайсыз экранды қайта жаса",
+      "en": "Redesign one awkward screen"
+    },
+    "steps": {
+      "ru": [
+        "Выбери экран приложения или сайта, которым неудобно пользоваться, и запиши три проблемы.",
+        "Нарисуй на бумаге свой вариант решения.",
+        "Перерисуй его в бесплатном редакторе, например Figma или Canva.",
+        "Покажи двум людям и спроси, что им понятно, а что нет."
+      ],
+      "kk": [
+        "Пайдалануға ыңғайсыз қосымша немесе сайт экранын таңда да, үш мәселесін жаз.",
+        "Шешімнің өз нұсқасын қағазға сыз.",
+        "Оны тегін редакторда қайта сыз, мысалы Figma немесе Canva.",
+        "Екі адамға көрсетіп, нені түсінетінін, нені түсінбейтінін сұра."
+      ],
+      "en": [
+        "Pick an app or website screen that is awkward to use and write down three problems.",
+        "Sketch your own solution on paper.",
+        "Redraw it in a free editor such as Figma or Canva.",
+        "Show it to two people and ask what is clear and what is not."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "2–3 ч",
+      "kk": "2–3 сағ",
+      "en": "2–3 h"
+    },
+    "difficulty": "easy",
+    "resources": {
+      "ru": [
+        "figma.com (бесплатный тариф)",
+        "canva.com"
+      ],
+      "kk": [
+        "figma.com (тегін тариф)",
+        "canva.com"
+      ],
+      "en": [
+        "figma.com (free plan)",
+        "canva.com"
+      ]
+    },
+    "outcome": {
+      "ru": "Эскиз и редизайн экрана с отзывами от двух людей.",
+      "kk": "Эскиз және екі адамның пікірі бар экранның қайта дизайны.",
+      "en": "A sketch and a redesigned screen with feedback from two people."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Нравилось ли тебе принимать критику и менять работу по отзывам?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Сынды қабылдап, жұмысты пікірге қарай өзгерту ұнады ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did you like taking critique and changing the work in response?"
+      ]
+    }
+  },
+  {
+    "id": "exp-education-mini-lesson",
+    "direction": "education",
+    "title": {
+      "ru": "Проведи мини-урок",
+      "kk": "Шағын сабақ өткіз",
+      "en": "Teach a mini lesson"
+    },
+    "steps": {
+      "ru": [
+        "Выбери навык, которым владеешь, и сформулируй цель урока одним предложением.",
+        "Подготовь план на 15–20 минут с одним примером и одним упражнением.",
+        "Проведи урок для друга, младшего брата или сестры.",
+        "Спроси, что было понятно, а что нет, и запиши, что бы изменил."
+      ],
+      "kk": [
+        "Өзің білетін дағдыны таңда және сабақтың мақсатын бір сөйлеммен тұжырымда.",
+        "Бір мысалы және бір жаттығуы бар 15–20 минуттық жоспар дайында.",
+        "Сабақты досыңа, інісіне немесе қарындасыңа өткіз.",
+        "Не түсінікті, не түсініксіз болғанын сұрап, нені өзгертетініңді жаз."
+      ],
+      "en": [
+        "Choose a skill you have and state the goal of the lesson in one sentence.",
+        "Prepare a 15–20 minute plan with one example and one exercise.",
+        "Teach it to a friend or a younger sibling.",
+        "Ask what was clear and what was not, and note what you would change."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "2 ч",
+      "kk": "2 сағ",
+      "en": "2 h"
+    },
+    "difficulty": "easy",
+    "resources": {
+      "ru": [
+        "Лист бумаги или доска",
+        "Один готовый ученик, который согласен быть тестовым"
+      ],
+      "kk": [
+        "Қағаз парағы немесе тақта",
+        "Сынақ оқушысы болуға келісетін бір адам"
+      ],
+      "en": [
+        "A sheet of paper or a whiteboard",
+        "One willing learner to test on"
+      ]
+    },
+    "outcome": {
+      "ru": "План мини-урока и первый опыт объяснения другому человеку.",
+      "kk": "Шағын сабақ жоспары және басқа адамға түсіндірудің алғашқы тәжірибесі.",
+      "en": "A mini-lesson plan and a first experience of explaining to someone."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Радовало ли тебя, когда другой человек наконец понимал?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Басқа адам ақыры түсінгенде қуандың ба?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did it feel good when the other person finally understood?"
+      ]
+    }
+  },
+  {
+    "id": "exp-media-interview",
+    "direction": "media",
+    "title": {
+      "ru": "Короткое интервью и материал",
+      "kk": "Қысқа сұхбат және материал",
+      "en": "A short interview and a piece"
+    },
+    "steps": {
+      "ru": [
+        "Выбери человека, чья работа тебе интересна, и подготовь пять вопросов.",
+        "Проведи интервью на 15 минут, записав его с разрешения собеседника.",
+        "Напиши текст на 300 слов или смонтируй видео на две минуты.",
+        "Покажи результат собеседнику, чтобы проверить факты, и одному читателю."
+      ],
+      "kk": [
+        "Жұмысы саған қызық адамды таңда және бес сұрақ дайында.",
+        "Әңгімелесушінің рұқсатымен жазып, 15 минуттық сұхбат жүргіз.",
+        "300 сөздік мәтін жаз немесе екі минуттық бейне монтажда.",
+        "Фактілерді тексеру үшін нәтижені әңгімелесушіге және бір оқырманға көрсет."
+      ],
+      "en": [
+        "Choose a person whose work interests you and prepare five questions.",
+        "Interview them for 15 minutes, recording with their permission.",
+        "Write a 300-word text or edit a two-minute video.",
+        "Show the result to your interviewee to check facts, and to one reader."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "3–4 ч",
+      "kk": "3–4 сағ",
+      "en": "3–4 h"
+    },
+    "difficulty": "medium",
+    "resources": {
+      "ru": [
+        "Диктофон в телефоне",
+        "Любой бесплатный видеоредактор"
+      ],
+      "kk": [
+        "Телефондағы диктофон",
+        "Кез келген тегін бейне редактор"
+      ],
+      "en": [
+        "The voice recorder on your phone",
+        "Any free video editor"
+      ]
+    },
+    "outcome": {
+      "ru": "Готовый короткий материал и понимание, как устроена работа с источниками.",
+      "kk": "Дайын қысқа материал және дереккөздермен жұмыс қалай ұйымдастырылатынын түсіну.",
+      "en": "A finished short piece and an idea of how working with sources goes."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Нравилось ли тебе слушать людей и превращать услышанное в текст?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Адамдарды тыңдап, естігеніңді мәтінге айналдыру ұнады ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did you like listening to people and turning it into a text?"
+      ]
+    }
+  },
+  {
+    "id": "exp-research-mini-survey",
+    "direction": "research",
+    "title": {
+      "ru": "Мини-исследование на десяти людях",
+      "kk": "Он адамға арналған шағын зерттеу",
+      "en": "A mini study with ten people"
+    },
+    "steps": {
+      "ru": [
+        "Сформулируй один вопрос, на который хочется найти ответ, например про привычки студентов.",
+        "Составь анкету из пяти вопросов в Google Forms.",
+        "Собери минимум десять ответов и посчитай простые итоги.",
+        "Напиши полстраницы выводов и отдельно отметь, чего выборка из десяти человек не доказывает."
+      ],
+      "kk": [
+        "Жауабын табуды қалайтын бір сұрақты тұжырымда, мысалы студенттердің әдеттері туралы.",
+        "Google Forms-та бес сұрақтан тұратын сауалнама жаса.",
+        "Кемінде он жауап жинап, қарапайым қорытындыларды есепте.",
+        "Жарты бет қорытынды жаз да, он адамдық таңдау нені дәлелдемейтінін бөлек белгіле."
+      ],
+      "en": [
+        "State one question you want answered, for example about student habits.",
+        "Make a five-question survey in Google Forms.",
+        "Collect at least ten answers and calculate simple results.",
+        "Write half a page of findings and note separately what a sample of ten does not prove."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "3–5 ч",
+      "kk": "3–5 сағ",
+      "en": "3–5 h"
+    },
+    "difficulty": "medium",
+    "resources": {
+      "ru": [
+        "Google Forms",
+        "Таблица для подсчёта ответов"
+      ],
+      "kk": [
+        "Google Forms",
+        "Жауаптарды есептеуге арналған кесте"
+      ],
+      "en": [
+        "Google Forms",
+        "A spreadsheet for counting answers"
+      ]
+    },
+    "outcome": {
+      "ru": "Мини-отчёт и понимание, насколько осторожно нужно делать выводы.",
+      "kk": "Шағын есеп және қорытындыны қаншалықты сақтықпен жасау керектігін түсіну.",
+      "en": "A mini report and a sense of how careful conclusions must be."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Было ли интересно искать ответ там, где его нет в готовом виде?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Жауабы дайын жоқ жерден оны іздеу қызықты болды ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Was it interesting to look for an answer that does not exist ready-made?"
+      ]
+    }
+  },
+  {
+    "id": "exp-social-impact-shift",
+    "direction": "social-impact",
+    "title": {
+      "ru": "Одна смена волонтёрства",
+      "kk": "Бір ауысым еріктілік",
+      "en": "One volunteering shift"
+    },
+    "steps": {
+      "ru": [
+        "Найди местную организацию или инициативу, которой нужны волонтёры, и напиши ей.",
+        "Приди на одну смену и выполни то, о чём попросят.",
+        "Спроси координатора, какие навыки здесь нужнее всего и как он сам сюда пришёл.",
+        "Запиши, что было неожиданного и какой эффект ты увидел сам."
+      ],
+      "kk": [
+        "Еріктілер қажет жергілікті ұйымды немесе бастаманы тауып, оған жаз.",
+        "Бір ауысымға келіп, сұраған істі орында.",
+        "Үйлестірушіден мұнда қандай дағдылар көбірек қажет екенін және өзі мұнда қалай келгенін сұра.",
+        "Не күтпеген болғанын және өзің қандай әсер көргеніңді жаз."
+      ],
+      "en": [
+        "Find a local organisation or initiative that needs volunteers and write to them.",
+        "Come to one shift and do what they ask.",
+        "Ask the coordinator which skills matter most here and how they got started.",
+        "Write down what was unexpected and what effect you saw yourself."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "3–4 ч, не считая дороги",
+      "kk": "3–4 сағ, жолды қоспағанда",
+      "en": "3–4 h, not counting travel"
+    },
+    "difficulty": "easy",
+    "resources": {
+      "ru": [
+        "Страницы местных организаций в соцсетях",
+        "unv.org и другие платформы для волонтёров"
+      ],
+      "kk": [
+        "Жергілікті ұйымдардың әлеуметтік желідегі беттері",
+        "unv.org және еріктілерге арналған басқа платформалар"
+      ],
+      "en": [
+        "Social media pages of local organisations",
+        "unv.org and other volunteering platforms"
+      ]
+    },
+    "outcome": {
+      "ru": "Первый опыт участия и список навыков, которые пригодились.",
+      "kk": "Қатысудың алғашқы тәжірибесі және пайдасы тиген дағдылар тізімі.",
+      "en": "A first taste of taking part and a list of skills that proved useful."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Было ли приятно именно участие, а не то, как это выглядит со стороны?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Тек сырттан қалай көрінетіні емес, қатысудың өзі ұнады ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did you enjoy the participation itself rather than how it looks from outside?"
+      ]
+    }
+  },
+  {
+    "id": "exp-medicine-conversation",
+    "direction": "medicine",
+    "title": {
+      "ru": "Разговор с медицинским работником и курс первой помощи",
+      "kk": "Медицина қызметкерімен әңгіме және алғашқы көмек курсы",
+      "en": "A conversation with a health worker and a first-aid lesson"
+    },
+    "steps": {
+      "ru": [
+        "Подготовь восемь вопросов о работе: что нравится, что тяжело, как выглядит обычный день.",
+        "Поговори 20 минут с медсестрой, врачом или фельдшером, которого знаешь или которого тебе порекомендуют.",
+        "Пройди короткий видеоурок или курс по основам первой помощи.",
+        "Запиши, что тебя привлекло, а что отпугнуло, и обсуди с кем-то из близких."
+      ],
+      "kk": [
+        "Жұмыс туралы сегіз сұрақ дайында: не ұнайды, не қиын, қарапайым күн қалай өтеді.",
+        "Өзің танитын немесе саған ұсынылған мейірбикемен, дәрігермен немесе фельдшермен 20 минут сөйлес.",
+        "Алғашқы көмек негіздері бойынша қысқа бейнесабақ немесе курс өт.",
+        "Сені не тартқанын, не үркіткенін жазып, жақындарыңның біреуімен талқыла."
+      ],
+      "en": [
+        "Prepare eight questions about the job: what they like, what is hard, what a normal day looks like.",
+        "Talk for 20 minutes with a nurse, doctor or paramedic you know or are introduced to.",
+        "Take a short video lesson or course on first-aid basics.",
+        "Write down what attracted you and what put you off, and discuss it with someone close."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "3–4 ч",
+      "kk": "3–4 сағ",
+      "en": "3–4 h"
+    },
+    "difficulty": "medium",
+    "resources": {
+      "ru": [
+        "Знакомые или родственники, работающие в медицине",
+        "Бесплатные видеоуроки по первой помощи"
+      ],
+      "kk": [
+        "Медицинада жұмыс істейтін таныстар немесе туыстар",
+        "Алғашқы көмек бойынша тегін бейнесабақтар"
+      ],
+      "en": [
+        "Acquaintances or relatives who work in healthcare",
+        "Free first-aid video lessons"
+      ]
+    },
+    "outcome": {
+      "ru": "Более реалистичная картина повседневной работы в медицине.",
+      "kk": "Медицинадағы күнделікті жұмыстың нақтырақ көрінісі.",
+      "en": "A more realistic picture of everyday work in healthcare."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Привлекает ли тебя сама рутина работы с людьми в сложных ситуациях?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Қиын жағдайдағы адамдармен жұмыстың күнделікті жұмысы сені тарта ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Are you drawn to the daily routine of working with people in hard situations?"
+      ]
+    }
+  },
+  {
+    "id": "exp-law-plain-language",
+    "direction": "law",
+    "title": {
+      "ru": "Разбор одного договора простым языком",
+      "kk": "Бір шартты қарапайым тілмен талдау",
+      "en": "Explain one contract in plain language"
+    },
+    "steps": {
+      "ru": [
+        "Возьми обычный документ, например типовой договор аренды или пользовательское соглашение.",
+        "Отметь пункты, которые непонятны или кажутся рискованными.",
+        "Найди в официальных источниках, что говорит закон по двум-трём таким вопросам.",
+        "Перескажи документ простым языком на одной странице и покажи человеку, знающему право, если есть такая возможность."
+      ],
+      "kk": [
+        "Қарапайым құжатты ал, мысалы жалдаудың үлгілік шартын немесе пайдаланушы келісімін.",
+        "Түсініксіз немесе қауіпті көрінетін тармақтарды белгіле.",
+        "Осындай екі-үш мәселе бойынша заң не дейтінін ресми дереккөздерден тап.",
+        "Құжатты қарапайым тілмен бір бетте қайта айтып, мүмкіндік болса, құқықты білетін адамға көрсет."
+      ],
+      "en": [
+        "Take an everyday document, such as a standard rental agreement or terms of service.",
+        "Mark the clauses that are unclear or look risky.",
+        "Look up in official sources what the law says about two or three of these points.",
+        "Retell the document in plain language on one page and, if possible, show it to someone who knows the law."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "2–3 ч",
+      "kk": "2–3 сағ",
+      "en": "2–3 h"
+    },
+    "difficulty": "medium",
+    "resources": {
+      "ru": [
+        "Официальные базы законодательства твоей страны",
+        "Любой типовой договор из открытых источников"
+      ],
+      "kk": [
+        "Еліңдегі заңнаманың ресми базалары",
+        "Ашық дереккөздердегі кез келген үлгілік шарт"
+      ],
+      "en": [
+        "Official legislation databases in your country",
+        "Any template contract from open sources"
+      ]
+    },
+    "outcome": {
+      "ru": "Страница с разбором документа и понимание, как читаются юридические тексты.",
+      "kk": "Құжат талдауы бар бет және заң мәтіндері қалай оқылатынын түсіну.",
+      "en": "A page analysing a document and a feel for how legal texts are read."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Нравилось ли тебе внимательно читать мелкий текст и искать неточности?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Ұсақ мәтінді мұқият оқып, дәлсіздіктерді іздеу ұнады ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did you like reading fine print closely and looking for gaps?"
+      ]
+    }
+  },
+  {
+    "id": "exp-engineering-paper-bridge",
+    "direction": "engineering",
+    "title": {
+      "ru": "Бумажный мост и испытание нагрузкой",
+      "kk": "Қағаз көпір және жүктемемен сынау",
+      "en": "A paper bridge and a load test"
+    },
+    "steps": {
+      "ru": [
+        "Сделай мост пролётом около 20 см только из бумаги и скотча.",
+        "Постепенно клади на него монетки и запиши, сколько он выдержал.",
+        "Измени одну деталь, например форму или складки, и повтори испытание.",
+        "Сравни результаты и объясни, почему вторая версия работает лучше или хуже."
+      ],
+      "kk": [
+        "Тек қағаз бен скотчтан шамамен 20 см аралықты көпір жаса.",
+        "Үстіне біртіндеп тиындар қойып, қанша көтергенін жаз.",
+        "Бір бөлшекті, мысалы пішінді немесе бүктемелерді өзгертіп, сынауды қайтала.",
+        "Нәтижелерді салыстырып, екінші нұсқаның неге жақсы немесе нашар жұмыс істейтінін түсіндір."
+      ],
+      "en": [
+        "Build a bridge about 20 cm long from paper and tape only.",
+        "Gradually place coins on it and note how many it held.",
+        "Change one detail, such as the shape or folds, and test again.",
+        "Compare the results and explain why the second version works better or worse."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "2–3 ч",
+      "kk": "2–3 сағ",
+      "en": "2–3 h"
+    },
+    "difficulty": "easy",
+    "resources": {
+      "ru": [
+        "Бумага, скотч, монеты",
+        "Учебник физики за школьный курс"
+      ],
+      "kk": [
+        "Қағаз, скотч, тиындар",
+        "Мектеп курсының физика оқулығы"
+      ],
+      "en": [
+        "Paper, tape, coins",
+        "A school physics textbook"
+      ]
+    },
+    "outcome": {
+      "ru": "Две версии конструкции, таблица результатов и объяснение разницы.",
+      "kk": "Құрылымның екі нұсқасы, нәтиже кестесі және айырмашылық түсіндірмесі.",
+      "en": "Two versions of a structure, a results table and an explanation of the difference."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Нравилось ли тебе переделывать, измерять и снова проверять?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Қайта жасау, өлшеу және қайта тексеру ұнады ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did you like redoing, measuring and testing again?"
+      ]
+    }
+  },
+  {
+    "id": "exp-data-first-analysis",
+    "direction": "data-ml",
+    "title": {
+      "ru": "Первый анализ данных",
+      "kk": "Деректердің алғашқы талдауы",
+      "en": "Your first data analysis"
+    },
+    "steps": {
+      "ru": [
+        "Возьми небольшой набор данных: свой журнал сна или расходов либо открытый набор с kaggle.com/datasets.",
+        "Посчитай среднее, минимум и максимум и построй один график в таблице или Python.",
+        "Запиши три вывода и отметь, какие из них можно проверить дальше.",
+        "Если хочется больше, пройди первый урок курса «Intro to Machine Learning» на kaggle.com/learn."
+      ],
+      "kk": [
+        "Шағын деректер жиынын ал: өз ұйқы немесе шығын журналыңды не kaggle.com/datasets сайтындағы ашық жиынды.",
+        "Орташа, ең кіші және ең үлкен мәнді есепте және кестеде немесе Python-да бір график сал.",
+        "Үш қорытынды жазып, олардың қайсысын әрі қарай тексеруге болатынын белгіле.",
+        "Көбірек қаласаң, kaggle.com/learn сайтындағы «Intro to Machine Learning» курсының алғашқы сабағын өт."
+      ],
+      "en": [
+        "Take a small dataset: your own sleep or spending log, or an open one from kaggle.com/datasets.",
+        "Calculate the average, minimum and maximum and make one chart in a spreadsheet or Python.",
+        "Write three conclusions and mark which ones can be tested further.",
+        "If you want more, take the first lesson of the Intro to Machine Learning course at kaggle.com/learn."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "3–4 ч",
+      "kk": "3–4 сағ",
+      "en": "3–4 h"
+    },
+    "difficulty": "medium",
+    "resources": {
+      "ru": [
+        "kaggle.com/datasets и kaggle.com/learn",
+        "Google Sheets или любая электронная таблица"
+      ],
+      "kk": [
+        "kaggle.com/datasets және kaggle.com/learn",
+        "Google Sheets немесе кез келген электрондық кесте"
+      ],
+      "en": [
+        "kaggle.com/datasets and kaggle.com/learn",
+        "Google Sheets or any spreadsheet"
+      ]
+    },
+    "outcome": {
+      "ru": "Один график, три вывода и первое ощущение от работы с данными.",
+      "kk": "Бір график, үш қорытынды және деректермен жұмыстың алғашқы сезімі.",
+      "en": "One chart, three conclusions and a first feel for working with data."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Было ли интересно искать закономерности даже тогда, когда ответ получался скучным?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Жауап жалықтырарлық болса да, заңдылықтарды іздеу қызықты болды ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Was it interesting to look for patterns even when the answer was dull?"
+      ]
+    }
+  },
+  {
+    "id": "exp-environment-audit",
+    "direction": "environment",
+    "title": {
+      "ru": "Экоаудит одного места",
+      "kk": "Бір жердің экологиялық аудиті",
+      "en": "An eco-audit of one place"
+    },
+    "steps": {
+      "ru": [
+        "Выбери одно место: свой двор, класс или кухню.",
+        "Неделю записывай, сколько и какого мусора там появляется, и снимай фото.",
+        "Предложи три конкретных изменения и оцени, что из этого реально выполнить.",
+        "Расскажи свой план тем, кто пользуется этим местом, и попробуй одно изменение."
+      ],
+      "kk": [
+        "Бір жерді таңда: өз аулаңды, сыныбыңды немесе асүйіңді.",
+        "Бір апта бойы онда қандай және қанша қоқыс пайда болатынын жазып, фотоға түсір.",
+        "Үш нақты өзгеріс ұсынып, олардың қайсысын нақты орындауға болатынын бағала.",
+        "Жоспарыңды сол жерді пайдаланатындарға айтып, бір өзгерісті байқап көр."
+      ],
+      "en": [
+        "Choose one place: your yard, classroom or kitchen.",
+        "For a week, note how much and what kind of waste appears there and take photos.",
+        "Propose three concrete changes and judge which are realistic.",
+        "Present the plan to the people who use the place and try one change."
+      ]
+    },
+    "timeEstimate": {
+      "ru": "10 мин в день, 7 дней, плюс 1 ч",
+      "kk": "Күніне 10 мин, 7 күн, қосымша 1 сағ",
+      "en": "10 min a day for 7 days, plus 1 h"
+    },
+    "difficulty": "easy",
+    "resources": {
+      "ru": [
+        "Блокнот и камера телефона",
+        "Местные правила раздельного сбора отходов"
+      ],
+      "kk": [
+        "Дәптер және телефон камерасы",
+        "Қалдықтарды бөлек жинаудың жергілікті ережелері"
+      ],
+      "en": [
+        "A notebook and your phone camera",
+        "Local rules on waste sorting"
+      ]
+    },
+    "outcome": {
+      "ru": "Короткий план улучшений и опыт убеждать людей, а не только замечать проблему.",
+      "kk": "Жақсартулардың қысқа жоспары және мәселені тек байқау емес, адамдарды сендіру тәжірибесі.",
+      "en": "A short improvement plan and practice persuading people, not just spotting a problem."
+    },
+    "reflection": {
+      "ru": [
+        "Тебе понравился сам процесс или только идея этим заниматься?",
+        "Что тебя удивило?",
+        "Что было скучным, трудным или неприятным?",
+        "Хочется ли сделать следующий шаг? Какой именно?",
+        "Нравилось ли тебе превращать наблюдения в конкретные действия?"
+      ],
+      "kk": [
+        "Саған процестің өзі ұнады ма, әлде тек осымен айналысу идеясы ма?",
+        "Сені не таңқалдырды?",
+        "Не жалықтырарлық, қиын немесе жағымсыз болды?",
+        "Келесі қадамды жасағың келе ме? Нақты қандайын?",
+        "Бақылауларды нақты әрекетке айналдыру ұнады ма?"
+      ],
+      "en": [
+        "Did you enjoy the process itself, or only the idea of doing it?",
+        "What surprised you?",
+        "What felt boring, hard or unpleasant?",
+        "Do you want to take a next step? Which one exactly?",
+        "Did you like turning observations into concrete actions?"
+      ]
+    }
+  }
+]

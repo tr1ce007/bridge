@@ -1,0 +1,95 @@
+import type { Axis } from "./types";
+
+/**
+ * Closed tag vocabulary for the 8 matching axes. Stories are tagged from these
+ * lists; the questionnaire maps answers onto the same tags, so matching is a
+ * plain (weighted) set intersection.
+ */
+export const AXIS_TAGS: Record<Axis, readonly string[]> = {
+  // starting conditions
+  start: [
+    "small-town",
+    "big-city",
+    "low-income",
+    "family-pressure",
+    "first-generation",
+    "no-support",
+    "late-start",
+    "abroad-or-diaspora",
+  ],
+  interests: [
+    "tech",
+    "people",
+    "creative",
+    "science",
+    "business",
+    "law-politics",
+    "health",
+    "education",
+    "sport",
+    "nature",
+    "languages-culture",
+    "social-impact",
+  ],
+  fears: [
+    "wrong-choice",
+    "disappointing-parents",
+    "money",
+    "failure",
+    "too-late",
+    "not-talented-enough",
+    "unknown-future",
+    "judgement",
+  ],
+  education: [
+    "school",
+    "university",
+    "changed-major",
+    "dropped-out",
+    "self-taught",
+    "abroad-study",
+    "vocational",
+    "no-relevant-education",
+  ],
+  challenges: [
+    "money",
+    "language",
+    "family",
+    "information",
+    "confidence",
+    "burnout",
+    "time",
+    "location",
+  ],
+  motives: [
+    "impact",
+    "money",
+    "freedom",
+    "stability",
+    "curiosity",
+    "recognition",
+    "family",
+    "belonging",
+  ],
+  decisions: [
+    "experiments",
+    "mentor",
+    "volunteering",
+    "switch-major",
+    "take-a-break",
+    "move-abroad",
+    "side-project",
+    "follow-parents",
+    "gradual-change",
+  ],
+  transitions: [
+    "school-to-university",
+    "major-change",
+    "university-to-work",
+    "career-change",
+    "relocation",
+    "gap-year",
+    "late-career-change",
+    "side-to-main",
+  ],
+};

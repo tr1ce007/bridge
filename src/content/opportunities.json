@@ -1,0 +1,275 @@
+[
+  {
+    "id": "bolashak",
+    "name": "Bolashak (Болашак)",
+    "kind": "scholarship",
+    "levels": [
+      "master",
+      "phd"
+    ],
+    "description": {
+      "ru": "Международная стипендия правительства Казахстана для обучения и научных стажировок за рубежом. Программу ведёт Центр международных программ.",
+      "kk": "Қазақстан Үкіметінің шетелде оқуға және ғылыми тағылымдамадан өтуге арналған халықаралық стипендиясы. Бағдарламаны Халықаралық бағдарламалар орталығы жүргізеді.",
+      "en": "An international scholarship of the Government of Kazakhstan for study and research internships abroad, run by the Center for International Programs."
+    },
+    "eligibility": {
+      "ru": "Для граждан Казахстана. Требования к уровню образования, языку и опыту работы уточняйте на официальном сайте.",
+      "kk": "Қазақстан азаматтарына арналған. Білім деңгейі, тіл және жұмыс тәжірибесі талаптарын ресми сайттан нақтылаңыз.",
+      "en": "For citizens of Kazakhstan. Check the education, language and work-experience requirements on the official website."
+    },
+    "url": "https://bolashak.gov.kz",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "erasmus-plus",
+    "name": "Erasmus+",
+    "kind": "exchange",
+    "levels": [
+      "bachelor",
+      "master",
+      "phd"
+    ],
+    "description": {
+      "ru": "Программа Европейского союза в сфере образования, обучения, молодёжи и спорта. Включает обмены студентов, стажировки и совместные магистерские программы.",
+      "kk": "Еуропалық Одақтың білім беру, оқыту, жастар және спорт саласындағы бағдарламасы. Студенттер алмасуын, тағылымдамаларды және бірлескен магистратура бағдарламаларын қамтиды.",
+      "en": "The European Union programme for education, training, youth and sport. It includes student exchanges, traineeships and joint master's programmes."
+    },
+    "eligibility": {
+      "ru": "Возможности для жителей стран-партнёров, включая Казахстан, зависят от конкретного направления. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Әріптес елдердің, соның ішінде Қазақстанның тұрғындарына қолжетімділік нақты бағытқа байланысты. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "Access for residents of partner countries, including Kazakhstan, depends on the specific action. Check conditions and deadlines on the official website."
+    },
+    "url": "https://erasmus-plus.ec.europa.eu",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "daad",
+    "name": "DAAD",
+    "kind": "scholarship",
+    "levels": [
+      "master",
+      "phd"
+    ],
+    "description": {
+      "ru": "Немецкая служба академических обменов: стипендии, а также портал Study Guide Germany для иностранных студентов.",
+      "kk": "Неміс академиялық алмасу қызметі: стипендиялар және шетелдік студенттерге арналған Study Guide Germany порталы.",
+      "en": "The German Academic Exchange Service: scholarships plus the Study Guide Germany platform for international students."
+    },
+    "eligibility": {
+      "ru": "Набор стипендий большой, у каждой свои условия. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Стипендиялар көп, әрқайсысының өз шарттары бар. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "There are many scholarships, each with its own conditions. Check conditions and deadlines on the official website."
+    },
+    "url": "https://www.daad.de/en/",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "chevening",
+    "name": "Chevening",
+    "kind": "scholarship",
+    "levels": [
+      "master"
+    ],
+    "description": {
+      "ru": "Стипендия правительства Великобритании для одногодичной магистратуры в британских университетах.",
+      "kk": "Ұлыбритания Үкіметінің Британ университеттерінде бір жылдық магистратурада оқуға арналған стипендиясы.",
+      "en": "A UK government scholarship for a one-year master's degree at a UK university."
+    },
+    "eligibility": {
+      "ru": "Нужно быть гражданином страны, где действует программа. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Бағдарлама жұмыс істейтін елдің азаматы болу керек. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "You must be a citizen of a country where the programme operates. Check conditions and deadlines on the official website."
+    },
+    "url": "https://www.chevening.org",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "fulbright-foreign-student",
+    "name": "Fulbright Foreign Student Program",
+    "kind": "scholarship",
+    "levels": [
+      "master",
+      "phd"
+    ],
+    "description": {
+      "ru": "Программа правительства США, которая позволяет гражданам других стран учиться в США. Заявка подаётся через Фулбрайтовскую комиссию, фонд или посольство США в своей стране.",
+      "kk": "АҚШ Үкіметінің басқа ел азаматтарына АҚШ-та оқуға мүмкіндік беретін бағдарламасы. Өтінім өз еліңдегі Фулбрайт комиссиясы, қор немесе АҚШ елшілігі арқылы беріледі.",
+      "en": "A US government programme that lets citizens of other countries study in the United States. Applications go through the Fulbright Commission, foundation or US Embassy in your home country."
+    },
+    "eligibility": {
+      "ru": "Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "Check conditions and deadlines on the official website."
+    },
+    "url": "https://foreign.fulbrightonline.org",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "stipendium-hungaricum",
+    "name": "Stipendium Hungaricum",
+    "kind": "scholarship",
+    "levels": [
+      "bachelor",
+      "master",
+      "phd"
+    ],
+    "description": {
+      "ru": "Государственная стипендия Венгрии для иностранных студентов в венгерских университетах.",
+      "kk": "Венгрия Үкіметінің шетелдік студенттерге арналған, Венгрия университеттерінде оқуға берілетін стипендиясы.",
+      "en": "A Hungarian government scholarship for international students at Hungarian universities."
+    },
+    "eligibility": {
+      "ru": "Приём идёт по учебным годам; на сайте указано, открыт ли набор. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Қабылдау оқу жылдары бойынша өтеді; сайтта қабылдау ашық немесе жабық екені көрсетіледі. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "Applications run by academic year; the site shows whether admission is open. Check conditions and deadlines on the official website."
+    },
+    "url": "https://stipendiumhungaricum.hu",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "turkiye-burslari",
+    "name": "Türkiye Bursları",
+    "kind": "scholarship",
+    "levels": [
+      "bachelor",
+      "master",
+      "phd"
+    ],
+    "description": {
+      "ru": "Полностью финансируемая стипендия правительства Турции для иностранных студентов: бакалавриат, магистратура, докторантура и исследовательские программы.",
+      "kk": "Түркия Үкіметінің шетелдік студенттерге арналған толық қаржыландырылатын стипендиясы: бакалавриат, магистратура, докторантура және зерттеу бағдарламалары.",
+      "en": "A fully funded Turkish government scholarship for international students at bachelor's, master's, PhD and research levels."
+    },
+    "eligibility": {
+      "ru": "Для иностранных граждан. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Шетел азаматтарына арналған. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "For international citizens. Check conditions and deadlines on the official website."
+    },
+    "url": "https://turkiyeburslari.gov.tr",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "european-solidarity-corps",
+    "name": "European Solidarity Corps",
+    "kind": "volunteering",
+    "levels": [
+      "any"
+    ],
+    "description": {
+      "ru": "Волонтёрские и общественные проекты в Европе для молодых людей 18–30 лет на портале Европейского союза для молодёжи.",
+      "kk": "Еуропалық Одақтың жастар порталындағы 18–30 жас аралығындағы жастарға арналған Еуропадағы еріктілік және қоғамдық жобалар.",
+      "en": "Volunteering and community projects in Europe for young people aged 18 to 30 on the European Youth Portal."
+    },
+    "eligibility": {
+      "ru": "Участие зависит от проекта и страны проживания. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Қатысу жобаға және тұрғылықты елге байланысты. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "Participation depends on the project and your country of residence. Check conditions and deadlines on the official website."
+    },
+    "url": "https://youth.europa.eu/solidarity_en",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "un-volunteers",
+    "name": "UN Volunteers (UNV)",
+    "kind": "volunteering",
+    "levels": [
+      "any"
+    ],
+    "description": {
+      "ru": "Программа волонтёров Организации Объединённых Наций. Сайт не открылся при автоматической проверке, поэтому ссылку стоит проверить самому.",
+      "kk": "Біріккен Ұлттар Ұйымының еріктілер бағдарламасы. Сайт автоматты тексеру кезінде ашылмады, сондықтан сілтемені өзің тексерген дұрыс.",
+      "en": "The United Nations volunteer programme. The site did not open during our automatic check, so please check the link yourself."
+    },
+    "eligibility": {
+      "ru": "Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "Check conditions and deadlines on the official website."
+    },
+    "url": "https://www.unv.org",
+    "deadline": null,
+    "verifiedAt": null,
+    "status": "unverified"
+  },
+  {
+    "id": "coursera",
+    "name": "Coursera",
+    "kind": "course",
+    "levels": [
+      "any"
+    ],
+    "description": {
+      "ru": "Платформа онлайн-курсов от университетов и компаний. На сайте можно посмотреть первый модуль многих курсов бесплатно, а также подать заявку на финансовую помощь.",
+      "kk": "Университеттер мен компаниялардың онлайн-курстар платформасы. Сайтта көптеген курстардың бірінші модулін тегін көруге және қаржылық көмекке өтінім беруге болады.",
+      "en": "An online learning platform with courses from universities and companies. You can preview the first module of many courses for free and apply for financial aid."
+    },
+    "eligibility": {
+      "ru": "Открыто для всех. Что бесплатно, а что нет, зависит от курса. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Барлығына ашық. Не тегін, не ақылы екені курсқа байланысты. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "Open to everyone. What is free depends on the course. Check conditions and deadlines on the official website."
+    },
+    "url": "https://www.coursera.org",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "edx",
+    "name": "edX",
+    "kind": "course",
+    "levels": [
+      "any"
+    ],
+    "description": {
+      "ru": "Платформа онлайн-курсов от университетов, в том числе с форматом прослушивания курса (audit).",
+      "kk": "Университеттердің онлайн-курстар платформасы, оның ішінде курсты тыңдау (audit) форматы бар.",
+      "en": "An online learning platform with university courses, including an audit option for many of them."
+    },
+    "eligibility": {
+      "ru": "Открыто для всех. Условия аудита зависят от курса. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Барлығына ашық. Аудит шарттары курсқа байланысты. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "Open to everyone. Audit conditions depend on the course. Check conditions and deadlines on the official website."
+    },
+    "url": "https://www.edx.org",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  },
+  {
+    "id": "cs50x",
+    "name": "CS50x (Harvard)",
+    "kind": "course",
+    "levels": [
+      "any"
+    ],
+    "description": {
+      "ru": "Вводный курс Гарварда по информатике и программированию. Его можно проходить бесплатно, платные только сертификаты и кредиты.",
+      "kk": "Гарвардтың информатика және бағдарламалау бойынша кіріспе курсы. Оны тегін өтуге болады, тек сертификаттар мен кредиттер ақылы.",
+      "en": "Harvard's introductory computer science and programming course. It is free to take; only certificates and credit are paid."
+    },
+    "eligibility": {
+      "ru": "Предварительные знания не нужны. Условия и сроки уточняйте на официальном сайте.",
+      "kk": "Алдын ала білім қажет емес. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
+      "en": "No prior knowledge needed. Check conditions and deadlines on the official website."
+    },
+    "url": "https://cs50.harvard.edu/x",
+    "deadline": null,
+    "verifiedAt": "2026-11-17",
+    "status": "verified"
+  }
+]

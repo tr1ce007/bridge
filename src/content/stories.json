@@ -1,0 +1,705 @@
+[
+  {
+    "id": "demo-parents-medicine",
+    "kind": "demo",
+    "lang": "ru",
+    "title": {
+      "ru": "Родители хотели видеть меня врачом",
+      "kk": "Ата-анам мені дәрігер болғанымды қалады",
+      "en": "My parents wanted me to become a doctor"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Она росла в небольшом городе, где профессия врача считалась самой надёжной. Родители с детства говорили, что поступать нужно на лечебное дело.",
+      "kk": "Ол шағын қалада өсті, онда дәрігер мамандығы ең сенімді саналатын. Ата-анасы бала кезінен емдеу ісіне түсу керек деп айтып келді.",
+      "en": "She grew up in a small town where being a doctor was seen as the safest profession. Her parents had told her since childhood that she should apply for medicine."
+    },
+    "challenges": {
+      "ru": "Анатомия давалась тяжело, а на пробных занятиях по биологии ей становилось тревожно. Было страшно разочаровать семью и потерять год.",
+      "kk": "Анатомия қиын болды, биологиядан сынақ сабақтарында ол алаңдайтын. Отбасын ренжітіп, бір жылын жоғалтудан қорықты.",
+      "en": "Anatomy was hard for her, and trial biology classes made her anxious. She was afraid of letting her family down and losing a year."
+    },
+    "turningPoint": {
+      "ru": "Она записалась на бесплатные лекции по психологии и поняла, что её интересует не лечение, а то, как люди думают и принимают решения.",
+      "kk": "Ол психологиядан тегін дәрістерге жазылды және оны емдеу емес, адамдардың қалай ойлайтыны мен шешім қабылдайтыны қызықтыратынын түсінді.",
+      "en": "She signed up for free psychology lectures and realised she was interested not in treating illness but in how people think and make decisions."
+    },
+    "actions": {
+      "ru": "Она поговорила с родителями и показала, чем занимаются психологи. Потом поступила на психологию и в первый год волонтёрила на телефоне доверия для школьников.",
+      "kk": "Ол ата-анасымен сөйлесіп, психологтардың немен айналысатынын көрсетті. Кейін психологияға түсіп, бірінші жылы мектеп оқушыларына арналған сенім телефонында ерікті болды.",
+      "en": "She talked to her parents and showed them what psychologists actually do. Then she enrolled in psychology and, in her first year, volunteered on a helpline for school students."
+    },
+    "now": {
+      "ru": "Сейчас она на третьем курсе, родители постепенно привыкают к её выбору. Она всё ещё сомневается, какую именно специализацию выбрать.",
+      "kk": "Қазір ол үшінші курста, ата-анасы оның таңдауына біртіндеп үйреніп келеді. Қай мамандануды таңдау керектігіне ол әлі күмәнданады.",
+      "en": "She is now in her third year, and her parents are slowly getting used to her choice. She is still unsure which specialisation to pick."
+    },
+    "advice": {
+      "ru": "Покажи близким конкретную профессию и путь к ней, а не только слова «это не моё».",
+      "kk": "Жақындарыңа «бұл маған сай емес» деп қана емес, нақты мамандық пен оған апаратын жолды көрсет.",
+      "en": "Show your family a concrete profession and the path to it, not just \"this isn't for me\"."
+    },
+    "tags": {
+      "start": [
+        "small-town",
+        "family-pressure"
+      ],
+      "interests": [
+        "people",
+        "health"
+      ],
+      "fears": [
+        "disappointing-parents",
+        "wrong-choice"
+      ],
+      "education": [
+        "school",
+        "university"
+      ],
+      "challenges": [
+        "family",
+        "confidence"
+      ],
+      "motives": [
+        "family",
+        "curiosity"
+      ],
+      "decisions": [
+        "experiments",
+        "volunteering"
+      ],
+      "transitions": [
+        "school-to-university"
+      ]
+    }
+  },
+  {
+    "id": "demo-changed-major",
+    "kind": "demo",
+    "lang": "ru",
+    "title": {
+      "ru": "Я перешёл с юриспруденции на дизайн",
+      "kk": "Мен заңгерліктен дизайнға ауыстым",
+      "en": "I switched from law to design"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Он поступил на юридический, потому что это престижно и «с этим всегда будет работа». Первый год он учился хорошо, но без интереса.",
+      "kk": "Ол заң факультетіне «бұл беделді және жұмыс әрдайым табылады» деп түсті. Бірінші жылы жақсы оқыды, бірақ қызығушылықсыз.",
+      "en": "He enrolled in law because it was prestigious and \"there is always work\". He did well in the first year but without real interest."
+    },
+    "challenges": {
+      "ru": "На втором курсе пропала мотивация. Он боялся, что перевод означает потерянное время и деньги.",
+      "kk": "Екінші курста мотивация жоғалды. Ауысу уақыт пен ақшаны жоғалту дегенді білдіреді деп қорықты.",
+      "en": "In the second year his motivation faded. He was afraid a transfer would mean lost time and money."
+    },
+    "turningPoint": {
+      "ru": "В свободное время он сделал сайт для друга и неожиданно просидел над ним всю ночь, не заметив времени.",
+      "kk": "Бос уақытында досына сайт жасап, уақыттың қалай өткенін байқамай, түні бойы отырып қалды.",
+      "en": "In his free time he built a website for a friend and, to his surprise, worked on it all night without noticing the time."
+    },
+    "actions": {
+      "ru": "Две недели он собирал мини-портфолио, поговорил с деканом о переводе и прошёл онлайн-курс по основам дизайна. В итоге перевёлся, потеряв один семестр.",
+      "kk": "Ол екі апта шағын портфолио жинады, деканмен ауысу туралы сөйлесті және дизайн негіздері бойынша онлайн курс өтті. Нәтижесінде бір семестр жоғалтып, ауысты.",
+      "en": "For two weeks he put together a small portfolio, talked to the dean about a transfer and took an online course in design basics. He transferred, losing one semester."
+    },
+    "now": {
+      "ru": "Сейчас он учится на дизайне и берёт небольшие заказы. Он считает, что семестр того стоил, но решение далось непросто.",
+      "kk": "Қазір ол дизайнда оқиды және шағын тапсырыстар алады. Бір семестр құнды болды деп санайды, бірақ шешім оңай болған жоқ.",
+      "en": "He now studies design and takes small freelance jobs. He says the semester was worth it, though the decision was not easy."
+    },
+    "advice": {
+      "ru": "Проверь интерес маленьким проектом до того, как менять факультет.",
+      "kk": "Факультетті ауыстырудан бұрын қызығушылығыңды шағын жобамен тексер.",
+      "en": "Test your interest with a small project before you change faculty."
+    },
+    "tags": {
+      "start": [
+        "big-city"
+      ],
+      "interests": [
+        "creative",
+        "tech"
+      ],
+      "fears": [
+        "money",
+        "too-late"
+      ],
+      "education": [
+        "university",
+        "changed-major"
+      ],
+      "challenges": [
+        "confidence",
+        "time"
+      ],
+      "motives": [
+        "curiosity",
+        "freedom"
+      ],
+      "decisions": [
+        "switch-major",
+        "side-project"
+      ],
+      "transitions": [
+        "major-change"
+      ]
+    }
+  },
+  {
+    "id": "demo-volunteering-development",
+    "kind": "demo",
+    "lang": "ru",
+    "title": {
+      "ru": "Волонтёрство привело меня к международному развитию",
+      "kk": "Еріктілік мені халықаралық дамуға алып келді",
+      "en": "Volunteering led me to international development"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Она училась на экономике без чёткой цели и просто хотела получить диплом.",
+      "kk": "Ол экономикада нақты мақсатсыз оқыды және жай ғана диплом алғысы келді.",
+      "en": "She studied economics without a clear goal and mainly wanted to finish with a diploma."
+    },
+    "challenges": {
+      "ru": "Она не знала, куда применить знания. Английский был на среднем уровне, а о работе в международных организациях она почти ничего не знала.",
+      "kk": "Ол білімін қайда қолдану керектігін білмеді. Ағылшын тілі орташа еді, ал халықаралық ұйымдардағы жұмыс туралы дерлік ештеңе білмеді.",
+      "en": "She did not know where to use her knowledge. Her English was average, and she knew almost nothing about working in international organisations."
+    },
+    "turningPoint": {
+      "ru": "В студенческом клубе она помогала организовать благотворительную акцию и увидела, что её расчёты меняют то, как работает проект.",
+      "kk": "Студенттік клубта ол қайырымдылық акциясын ұйымдастыруға көмектесті және оның есептеулері жобаның жұмысын өзгертетінін көрді.",
+      "en": "In a student club she helped organise a charity event and saw that her calculations changed how the project worked."
+    },
+    "actions": {
+      "ru": "Она стала регулярно волонтёрить, прошла бесплатные онлайн-курсы по управлению проектами, подтянула английский и сделала стажировку в местной некоммерческой организации.",
+      "kk": "Ол үнемі ерікті болды, жобаларды басқару бойынша тегін онлайн курстар өтті, ағылшын тілін жақсартты және жергілікті коммерциялық емес ұйымда тағылымдамадан өтті.",
+      "en": "She started volunteering regularly, took free online project-management courses, improved her English and did an internship at a local non-profit."
+    },
+    "now": {
+      "ru": "Она готовит заявки в магистратуру по международному развитию, пока без гарантий результата.",
+      "kk": "Ол халықаралық даму бойынша магистратураға өтінімдер дайындап жүр, нәтиже әзірге кепілдендірілмеген.",
+      "en": "She is preparing applications for a master's in international development, with no guarantee of the result yet."
+    },
+    "advice": {
+      "ru": "Начни с волонтёрства рядом с домом: оно показывает, нравится ли тебе сама работа.",
+      "kk": "Үйіңнің жанындағы еріктіліктен баста: ол саған жұмыстың өзі ұнайтынын көрсетеді.",
+      "en": "Start with volunteering close to home: it shows whether you like the work itself."
+    },
+    "tags": {
+      "start": [
+        "small-town",
+        "no-support"
+      ],
+      "interests": [
+        "social-impact",
+        "people"
+      ],
+      "fears": [
+        "unknown-future",
+        "not-talented-enough"
+      ],
+      "education": [
+        "university"
+      ],
+      "challenges": [
+        "language",
+        "information"
+      ],
+      "motives": [
+        "impact",
+        "belonging"
+      ],
+      "decisions": [
+        "volunteering",
+        "mentor"
+      ],
+      "transitions": [
+        "university-to-work"
+      ]
+    }
+  },
+  {
+    "id": "demo-no-direction",
+    "kind": "demo",
+    "lang": "en",
+    "title": {
+      "ru": "У меня не было идей, поэтому я проводил маленькие эксперименты",
+      "kk": "Менде идея болмады, сондықтан шағын тәжірибелер жасадым",
+      "en": "I had no idea what I wanted, so I ran small experiments"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Он закончил школу с хорошими оценками, но без любимого предмета. Казалось, что все вокруг знают свой путь.",
+      "kk": "Ол мектепті жақсы бағамен бітірді, бірақ сүйікті пәні болмады. Айналасындағылардың бәрі өз жолын білетіндей көрінді.",
+      "en": "He finished school with good grades and no favourite subject. Everyone around him seemed to know their path."
+    },
+    "challenges": {
+      "ru": "Он чувствовал, что отстаёт, и переживал, что «не знать» означает, что с ним что-то не так.",
+      "kk": "Ол артта қалғандай сезінді және «білмеу» онымен бір нәрсе дұрыс емес дегенді білдіреді деп уайымдады.",
+      "en": "He felt behind and worried that not knowing meant something was wrong with him."
+    },
+    "turningPoint": {
+      "ru": "Учитель предложил относиться к выбору как к лабораторной работе: за пять недель попробовать пять маленьких вещей и записывать, что чувствуешь после каждой.",
+      "kk": "Мұғалім таңдауға зертханалық жұмыс ретінде қарауды ұсынды: бес аптада бес шағын нәрсені байқап көріп, әрқайсысынан кейін не сезінгеніңді жазу.",
+      "en": "A teacher suggested treating the choice like a lab: try five small things in five weeks and write down how he felt after each."
+    },
+    "actions": {
+      "ru": "Он попробовал обучающее занятие по программированию, разговор с медсестрой, смену волонтёром, короткий видеомонтаж и небольшую задачу с данными. Продолжить хотелось только задачу с данными.",
+      "kk": "Ол бағдарламалау бойынша оқу сабағын, медбикемен әңгімені, ерікті ретінде бір ауысымды, қысқа бейнемонтажды және деректермен шағын тапсырманы байқап көрді. Тек деректермен жұмысты жалғастырғысы келді.",
+      "en": "He tried a programming tutorial, a conversation with a nurse, a volunteer shift, a short video edit and a small data task. Only the data task made him want to continue."
+    },
+    "now": {
+      "ru": "Сейчас он изучает анализ данных и по-прежнему проверяет новые идеи каждый семестр.",
+      "kk": "Қазір ол деректерді талдауды оқиды және әр семестр сайын жаңа идеяларды тексеруді жалғастырады.",
+      "en": "He now studies data analysis and still tests new ideas every term."
+    },
+    "advice": {
+      "ru": "Направление легче увидеть после попыток, чем после долгих размышлений.",
+      "kk": "Бағытты ұзақ ойланудан гөрі байқап көргеннен кейін көру оңай.",
+      "en": "A direction is easier to see after trying than after long thinking."
+    },
+    "tags": {
+      "start": [
+        "big-city"
+      ],
+      "interests": [
+        "tech",
+        "science"
+      ],
+      "fears": [
+        "wrong-choice",
+        "unknown-future"
+      ],
+      "education": [
+        "school",
+        "self-taught"
+      ],
+      "challenges": [
+        "information",
+        "confidence"
+      ],
+      "motives": [
+        "curiosity"
+      ],
+      "decisions": [
+        "experiments",
+        "mentor"
+      ],
+      "transitions": [
+        "school-to-university"
+      ]
+    }
+  },
+  {
+    "id": "demo-at-27",
+    "kind": "demo",
+    "lang": "ru",
+    "title": {
+      "ru": "В 27 лет я начал заново с программирования",
+      "kk": "27 жасымда бағдарламалаудан қайта бастадым",
+      "en": "At 27 I started again with programming"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Он четыре года работал бухгалтером в небольшой компании. Работа была стабильной, но каждое утро давалось тяжело.",
+      "kk": "Ол төрт жыл шағын компанияда бухгалтер болып жұмыс істеді. Жұмыс тұрақты болды, бірақ әр таң ауыр өтті.",
+      "en": "He worked for four years as an accountant at a small company. The job was stable, but every morning was hard."
+    },
+    "challenges": {
+      "ru": "Он боялся, что в 27 лет уже поздно, и не хотел снова становиться студентом без дохода.",
+      "kk": "Ол 27 жаста кеш болды деп қорықты және қайтадан табыссыз студент болғысы келмеді.",
+      "en": "He was afraid that 27 was too late and did not want to become a student again with no income."
+    },
+    "turningPoint": {
+      "ru": "Он автоматизировал отчёт простым скриптом и заметил, что весь вечер прошёл за этим занятием незаметно.",
+      "kk": "Ол есепті қарапайым скриптпен автоматтандырды және бүкіл кеш бұл іспен байқалмай өткенін аңғарды.",
+      "en": "He automated a report with a simple script and noticed that the whole evening had passed without him noticing."
+    },
+    "actions": {
+      "ru": "Год он учился по вечерам на открытых курсах и делал маленькие проекты для своей же работы. Потом перешёл в отдел аналитики, а позже сменил компанию.",
+      "kk": "Ол бір жыл кешкілік ашық курстармен оқыды және өз жұмысына арналған шағын жобалар жасады. Кейін аналитика бөліміне ауысып, артынан компанияны ауыстырды.",
+      "en": "For a year he studied in the evenings with open courses and built small projects for his own job. Then he moved to an analytics team and later changed company."
+    },
+    "now": {
+      "ru": "Сейчас он работает младшим разработчиком. По его словам, утро стало легче, хотя доход пока близок к прежнему.",
+      "kk": "Қазір ол кіші әзірлеуші болып жұмыс істейді. Оның айтуынша, таң жеңілдеді, бірақ табысы әзірге бұрынғыға жақын.",
+      "en": "He now works as a junior developer. He says mornings got easier, although his income is still close to what it was."
+    },
+    "advice": {
+      "ru": "Не бросай всё сразу: работу можно менять шагами.",
+      "kk": "Бәрін бірден тастама: жұмысты қадаммен ауыстыруға болады.",
+      "en": "Do not quit everything at once: you can change your work step by step."
+    },
+    "tags": {
+      "start": [
+        "late-start"
+      ],
+      "interests": [
+        "tech",
+        "business"
+      ],
+      "fears": [
+        "too-late",
+        "money"
+      ],
+      "education": [
+        "self-taught",
+        "university"
+      ],
+      "challenges": [
+        "time",
+        "money"
+      ],
+      "motives": [
+        "stability",
+        "curiosity"
+      ],
+      "decisions": [
+        "gradual-change",
+        "side-project"
+      ],
+      "transitions": [
+        "career-change",
+        "side-to-main"
+      ]
+    }
+  },
+  {
+    "id": "demo-at-40",
+    "kind": "demo",
+    "lang": "kk",
+    "title": {
+      "ru": "40 жаста жаңа жолды бастадым",
+      "kk": "В 40 лет я начал новый путь",
+      "en": "At 40 I began a new path"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Ол 15 жыл мектепте география пәнінен сабақ берді. Жұмысын жақсы көрді, бірақ жылдар өткен сайын өсу жоқ сияқты сезілді.",
+      "kk": "Он 15 лет преподавал географию в школе. Он любил работу, но с годами ему казалось, что роста нет.",
+      "en": "He taught geography at a school for 15 years. He loved the work but felt, as the years went by, that there was no room to grow."
+    },
+    "challenges": {
+      "ru": "Отбасы мен жұмыс арасында уақыт аз болды, ал жасына байланысты «кеш емес пе?» деген ой мазалады.",
+      "kk": "Между семьёй и работой оставалось мало времени, а из-за возраста тревожила мысль: «не поздно ли?»",
+      "en": "There was little time between family and work, and his age made him worry: is it too late?"
+    },
+    "turningPoint": {
+      "ru": "Мектепте оқушылармен экологиялық акция өткізді және мұны мамандық ретінде жалғастыруға болатынын түсінді.",
+      "kk": "Он провёл со школьниками экологическую акцию и понял, что это можно продолжить как профессию.",
+      "en": "He ran an environmental campaign with his students and realised it could become a profession."
+    },
+    "actions": {
+      "ru": "Кешкілік онлайн курстар өтті, жергілікті экологиялық ұйымда ерікті болды, жұмысын тастамай жартылай күнге ауысты, кейін ұйымда жоба үйлестірушісі болды.",
+      "kk": "Он проходил вечерние онлайн-курсы, волонтёрил в местной экологической организации, не бросая работу перешёл на неполный день, а потом стал координатором проектов в организации.",
+      "en": "He took evening online courses, volunteered at a local environmental organisation, moved to part-time without quitting, and later became a project coordinator there."
+    },
+    "now": {
+      "ru": "Қазір ол экологиялық білім беру жобаларын үйлестіреді; мұғалімдік тәжірибесі жұмысында көмектеседі.",
+      "kk": "Сейчас он координирует проекты по экологическому образованию, и опыт учителя помогает ему в работе.",
+      "en": "He now coordinates environmental education projects, and his teaching experience helps him in the job."
+    },
+    "advice": {
+      "ru": "Бұрынғы тәжірибең босқа кетпейді, ол жаңа жолдың негізіне айналады.",
+      "kk": "Прежний опыт не пропадает: он становится основой нового пути.",
+      "en": "Your earlier experience is not wasted: it becomes the base of a new path."
+    },
+    "tags": {
+      "start": [
+        "late-start"
+      ],
+      "interests": [
+        "nature",
+        "education"
+      ],
+      "fears": [
+        "too-late",
+        "judgement"
+      ],
+      "education": [
+        "university",
+        "self-taught"
+      ],
+      "challenges": [
+        "time",
+        "confidence"
+      ],
+      "motives": [
+        "impact",
+        "curiosity"
+      ],
+      "decisions": [
+        "volunteering",
+        "gradual-change"
+      ],
+      "transitions": [
+        "late-career-change",
+        "side-to-main"
+      ]
+    }
+  },
+  {
+    "id": "demo-sports-referee",
+    "kind": "demo",
+    "lang": "ru",
+    "title": {
+      "ru": "От спортивного судьи к организатору соревнований",
+      "kk": "Спорт төрешісінен жарыс ұйымдастырушысына дейін",
+      "en": "From sports referee to competition organiser"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Он учился на IT и по выходным судил спортивные соревнования. Для него это было просто подработкой, а не профессией.",
+      "kk": "Ол IT мамандығында оқыды және демалыс күндері спорт жарыстарында төреші болды. Бұл оған кәсіп емес, жай қосымша жұмыс болып көрінді.",
+      "en": "He studied IT and on weekends officiated at sports competitions. To him it was a side job, not a profession."
+    },
+    "challenges": {
+      "ru": "Два мира казались несвязанными, и он боялся, что придётся выбирать между ними.",
+      "kk": "Екі әлем бір-бірімен байланыссыз көрінді және ол екеуінің бірін таңдауға тура келеді деп қорықты.",
+      "en": "The two worlds seemed unrelated, and he feared he would have to choose between them."
+    },
+    "turningPoint": {
+      "ru": "Организаторы турнира попросили помочь с регистрацией и таблицами результатов, и он написал для них простую систему.",
+      "kk": "Турнир ұйымдастырушылары тіркеуге және нәтиже кестелеріне көмектесуді өтінді, ол олар үшін қарапайым жүйе жазды.",
+      "en": "Tournament organisers asked him to help with registration and result tables, and he wrote them a simple system."
+    },
+    "actions": {
+      "ru": "Он предложил автоматизировать протоколы, собрал отзывы судей и игроков и сделал ещё два проекта для других турниров.",
+      "kk": "Ол хаттамаларды автоматтандыруды ұсынды, төрешілер мен ойыншылардың пікірін жинап, басқа турнирлерге тағы екі жоба жасады.",
+      "en": "He proposed automating match records, gathered feedback from officials and players, and built two more projects for other tournaments."
+    },
+    "now": {
+      "ru": "Параллельно с учёбой он делает инструменты для организации соревнований. Он понял, что необычные навыки можно соединять.",
+      "kk": "Оқумен қатар ол жарыстарды ұйымдастыруға арналған құралдар жасайды. Ол ерекше дағдыларды біріктіруге болатынын түсінді.",
+      "en": "Alongside his studies he builds tools for organising competitions. He learned that unusual skills can be combined."
+    },
+    "advice": {
+      "ru": "Присмотрись к своим «побочным» занятиям: твоё место часто находится на стыке двух вещей.",
+      "kk": "«Қосымша» істеріңе мұқият қара: сенің орның жиі екі нәрсенің түйісінде болады.",
+      "en": "Look closely at your side activities: your place is often where two things meet."
+    },
+    "tags": {
+      "start": [
+        "big-city"
+      ],
+      "interests": [
+        "sport",
+        "tech"
+      ],
+      "fears": [
+        "wrong-choice",
+        "judgement"
+      ],
+      "education": [
+        "university",
+        "self-taught"
+      ],
+      "challenges": [
+        "time",
+        "information"
+      ],
+      "motives": [
+        "recognition",
+        "curiosity"
+      ],
+      "decisions": [
+        "side-project",
+        "experiments"
+      ],
+      "transitions": [
+        "side-to-main",
+        "university-to-work"
+      ]
+    }
+  },
+  {
+    "id": "demo-small-town-abroad",
+    "kind": "demo",
+    "lang": "ru",
+    "title": {
+      "ru": "Из маленького города на учёбу за границу",
+      "kk": "Шағын қаладан шетелде оқуға",
+      "en": "From a small town to study abroad"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Он вырос в небольшом городе, где мало кто уезжал учиться за рубеж. Семья жила скромно.",
+      "kk": "Ол шетелге оқуға аз адам кететін шағын қалада өсті. Отбасы қарапайым өмір сүрді.",
+      "en": "He grew up in a small town where few people left to study abroad. His family lived modestly."
+    },
+    "challenges": {
+      "ru": "Не хватало денег, английский был слабым, и не у кого было спросить совета.",
+      "kk": "Ақша жетіспеді, ағылшын тілі әлсіз еді және ақыл сұрайтын адам болмады.",
+      "en": "Money was short, his English was weak, and there was nobody to ask for advice."
+    },
+    "turningPoint": {
+      "ru": "Он нашёл в интернете истории тех, кто поступал на стипендии, и понял, что это набор конкретных шагов, а не просто удача.",
+      "kk": "Ол интернеттен стипендияға түскендердің тарихын тауып, бұл жай сәттілік емес, нақты қадамдар жиынтығы екенін түсінді.",
+      "en": "He found stories online of people who won scholarships and realised it was a set of concrete steps, not just luck."
+    },
+    "actions": {
+      "ru": "За два года он составил план: ежедневная практика английского, список стипендий с официальных сайтов и письма в университеты. Учитель помог ему с мотивационным письмом.",
+      "kk": "Екі жыл ішінде ол жоспар құрды: күн сайын ағылшын тілін жаттықтыру, ресми сайттардан стипендиялар тізімі және университеттерге хаттар. Мұғалім оған мотивациялық хатпен көмектесті.",
+      "en": "Over two years he made a plan: daily English practice, a list of scholarships from official sites and emails to universities. A teacher helped him with the motivation letter."
+    },
+    "now": {
+      "ru": "Он поступил в университет за границей на стипендию и привыкает к новому языку и городу. Первые месяцы было одиноко.",
+      "kk": "Ол шетелдегі университетке стипендиямен түсті және жаңа тіл мен қалаға үйреніп жатыр. Алғашқы айларда жалғыз болды.",
+      "en": "He was admitted to a university abroad with a scholarship and is getting used to a new language and city. The first months were lonely."
+    },
+    "advice": {
+      "ru": "Раздели большую цель на шаги и сделай самый маленький сегодня.",
+      "kk": "Үлкен мақсатты қадамдарға бөл және бүгін ең кішкентайын жаса.",
+      "en": "Break a big goal into steps and take the smallest one today."
+    },
+    "tags": {
+      "start": [
+        "small-town",
+        "low-income",
+        "no-support"
+      ],
+      "interests": [
+        "science",
+        "languages-culture"
+      ],
+      "fears": [
+        "money",
+        "not-talented-enough"
+      ],
+      "education": [
+        "school",
+        "abroad-study"
+      ],
+      "challenges": [
+        "money",
+        "language",
+        "information"
+      ],
+      "motives": [
+        "freedom",
+        "curiosity"
+      ],
+      "decisions": [
+        "mentor",
+        "move-abroad"
+      ],
+      "transitions": [
+        "school-to-university",
+        "relocation"
+      ]
+    }
+  },
+  {
+    "id": "demo-pause-and-return",
+    "kind": "demo",
+    "lang": "ru",
+    "title": {
+      "ru": "Я бросила университет, а потом вернулась",
+      "kk": "Мен университетті тастап, кейін қайтып оралдым",
+      "en": "I left university and then came back"
+    },
+    "attribution": {
+      "ru": "Демонстрационный пример (вымышлен)",
+      "kk": "Демонстрациялық мысал (ойдан шығарылған)",
+      "en": "Demonstration example (fictional)"
+    },
+    "before": {
+      "ru": "Она поступила на экономику по совету родственников и на втором курсе выгорела.",
+      "kk": "Ол туыстарының кеңесімен экономикаға түсіп, екінші курста әбден шаршады.",
+      "en": "She enrolled in economics on her relatives' advice and burned out in the second year."
+    },
+    "challenges": {
+      "ru": "Бессонные ночи, чувство, что она не справляется, и стыд перед семьёй.",
+      "kk": "Ұйқысыз түндер, істей алмай жатырмын деген сезім және отбасының алдындағы ұят.",
+      "en": "Sleepless nights, a feeling that she could not cope, and shame in front of her family."
+    },
+    "turningPoint": {
+      "ru": "Она взяла академический отпуск и сказала себе, что цель этой паузы отдохнуть и разобраться, а не что-то доказать.",
+      "kk": "Ол академиялық демалыс алып, бұл үзілістің мақсаты — демалу және түсіну, ештеңені дәлелдеу емес деп өзіне айтты.",
+      "en": "She took academic leave and told herself the goal of the break was to rest and figure things out, not to prove anything."
+    },
+    "actions": {
+      "ru": "Полгода она подрабатывала, вела блог о своих мыслях, ходила к психологу в студенческий центр и пробовала разные занятия. Потом вернулась и перевелась на журналистику.",
+      "kk": "Жарты жыл ол қосымша жұмыс істеді, ойлары туралы блог жүргізді, студенттік орталықтағы психологқа барды және әртүрлі істерді байқап көрді. Кейін оралып, журналистикаға ауысты.",
+      "en": "For six months she worked part-time, kept a blog about her thoughts, saw a psychologist at the student centre and tried different activities. Then she came back and transferred to journalism."
+    },
+    "now": {
+      "ru": "Сейчас она учится на журналистике и пишет для университетского издания. Она знает, что отдых был нужен.",
+      "kk": "Қазір ол журналистикада оқиды және университет басылымына жазады. Демалыстың қажет болғанын біледі.",
+      "en": "She now studies journalism and writes for a university publication. She knows the rest was necessary."
+    },
+    "advice": {
+      "ru": "Пауза не провал, если у неё есть цель: отдохнуть и подумать.",
+      "kk": "Егер үзілістің мақсаты бар болса, ол сәтсіздік емес: демалу және ойлану.",
+      "en": "A pause is not a failure if it has a purpose: to rest and think."
+    },
+    "tags": {
+      "start": [
+        "family-pressure",
+        "big-city"
+      ],
+      "interests": [
+        "creative",
+        "languages-culture"
+      ],
+      "fears": [
+        "failure",
+        "judgement"
+      ],
+      "education": [
+        "university",
+        "dropped-out",
+        "changed-major"
+      ],
+      "challenges": [
+        "burnout",
+        "family"
+      ],
+      "motives": [
+        "freedom",
+        "recognition"
+      ],
+      "decisions": [
+        "take-a-break",
+        "switch-major"
+      ],
+      "transitions": [
+        "gap-year",
+        "major-change"
+      ]
+    }
+  }
+]
