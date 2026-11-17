@@ -16,5 +16,6 @@ create table if not exists public.saved_directions (
 );
 
 alter table public.saved_directions enable row level security;
+drop policy if exists saved_directions_owner on public.saved_directions;
 create policy saved_directions_owner on public.saved_directions for all to authenticated
   using (user_id = auth.uid()) with check (user_id = auth.uid());

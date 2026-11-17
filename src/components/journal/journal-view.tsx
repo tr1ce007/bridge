@@ -9,11 +9,10 @@ import { useLoad } from "@/hooks/use-user-data";
 import { newId } from "@/lib/chat/ids";
 import { getUserStore, JOURNAL_FIELDS, JOURNAL_FIELD_MAX, storageMode, type JournalEntry, type JournalField } from "@/lib/data";
 import { dataLocation, type DataLocation } from "@/lib/data/mode";
-import { journalFilledFields, journalIsEmpty } from "@/lib/dashboard/journal";
+import { journalDraft, journalFilledFields, journalIsEmpty } from "@/lib/dashboard/journal";
 
 type Draft = Record<JournalField, string>;
 const emptyDraft = (): Draft => ({ tried: "", learned: "", surprised: "", disliked: "", next: "" });
-const draftOf = (e: JournalEntry): Draft => ({ ...emptyDraft(), ...Object.fromEntries(JOURNAL_FIELDS.map((f) => [f, e[f] ?? ""])) });
 
 async function loadJournal(): Promise<{ entries: JournalEntry[]; where: DataLocation }> {
   const [entries, where] = await Promise.all([getUserStore().listJournal(), dataLocation()]);
@@ -131,7 +130,7 @@ function JournalBody({ initial, where }: { initial: JournalEntry[]; where: DataL
         <EntryForm
           key={editing}
           formRef={formRef}
-          initial={editingEntry ? draftOf(editingEntry) : emptyDraft()}
+          initial={editingEntry ? journalDraft(editingEntry).draft : emptyDraft()}
           busy={busy}
           isEdit={Boolean(editingEntry)}
           onCancel={() => setEditing(null)}
@@ -139,7 +138,9 @@ function JournalBody({ initial, where }: { initial: JournalEntry[]; where: DataL
             const now = new Date().toISOString();
             const base: JournalEntry = editingEntry ?? { id: newId(), text: "", createdAt: now };
             const cleaned = Object.fromEntries(JOURNAL_FIELDS.map((f) => [f, draft[f].trim() || undefined]));
-            void save({ ...base, ...cleaned, ...(editingEntry ? { updatedAt: now } : {}) });
+            // an old text-only entry was moved into the first field, so the old text is cleared
+            const text = editingEntry && journalDraft(editingEntry).movedText ? "" : base.text;
+            void save({ ...base, text, ...cleaned, ...(editingEntry ? { updatedAt: now } : {}) });
           }}
         />
       )}

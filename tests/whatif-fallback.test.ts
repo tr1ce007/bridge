@@ -26,6 +26,24 @@ describe("buildFallbackScenario", () => {
     }
   });
 
+  it("every period has all 5 sections and none is empty, for every direction and language", () => {
+    const custom = { name: "Звукорежиссура" }; // not in the catalogue, nothing from the report
+    const cases = [
+      ...DIRECTION_CATALOGUE.flatMap((d) => LOCALES.map((l) => ({ label: `${d.id}/${l}`, scenario: buildFallbackScenario(d.id, l) }))),
+      ...LOCALES.map((l) => ({ label: `custom/${l}`, scenario: buildFallbackScenario("Звукорежиссура", l, custom) })),
+    ];
+    for (const { label, scenario } of cases) {
+      for (const p of WHATIF_PERIODS) {
+        const plan = scenario.periods[p];
+        for (const section of ["actions", "experiments", "people", "obstacles"] as const) {
+          expect(plan[section].length, `${label} ${p}.${section}`).toBeGreaterThan(0);
+          expect(plan[section].every((x) => x.trim().length > 0), `${label} ${p}.${section} text`).toBe(true);
+        }
+        expect(plan.checkpoint.trim().length, `${label} ${p}.checkpoint`).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it("is built from the catalogue's howToTest, skills and experiments", () => {
     const entry = DIRECTION_CATALOGUE.find((d) => d.id === "psychology")!;
     const scenario = buildFallbackScenario("psychology", "en");
@@ -45,6 +63,12 @@ describe("buildFallbackScenario", () => {
     expect(whatIfSchema.safeParse(scenario).success).toBe(true);
     expect(scenario.direction).toBe("Звукорежиссура");
     expect(JSON.stringify(scenario)).toContain("Записать один подкаст");
+  });
+
+  it("does not fail on very long texts from a report", () => {
+    const long = "я".repeat(1500);
+    const scenario = buildFallbackScenario("Звукорежиссура", "ru", { name: "Звукорежиссура", howToTest: Array(8).fill(long), skills: Array(8).fill(long), difficulties: Array(8).fill(long) });
+    expect(whatIfSchema.safeParse(scenario).success).toBe(true);
   });
 
   it("never promises outcomes or states invented facts", () => {

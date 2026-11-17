@@ -18,3 +18,15 @@ export function journalPreview(entry: JournalEntry, max = 140): string {
   const first = journalFilledFields(entry)[0]?.value ?? entry.text.trim();
   return first.length > max ? `${first.slice(0, max).trimEnd()}…` : first;
 }
+
+/**
+ * Form values for editing an entry. An old entry that only has `text` gets that text in the
+ * first field (`movedText` = true, so saving can clear `text` and nothing is shown twice).
+ */
+export function journalDraft(entry: JournalEntry): { draft: Record<JournalField, string>; movedText: boolean } {
+  const draft = Object.fromEntries(JOURNAL_FIELDS.map((f) => [f, entry[f] ?? ""])) as Record<JournalField, string>;
+  const noFields = JOURNAL_FIELDS.every((f) => !draft[f].trim());
+  const movedText = noFields && entry.text.trim() !== "";
+  if (movedText) draft[JOURNAL_FIELDS[0]] = entry.text;
+  return { draft, movedText };
+}

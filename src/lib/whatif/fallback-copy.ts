@@ -133,6 +133,37 @@ export const SCENARIO_COPY = {
     "Қазір маған қай келесі қадам сәйкес: жалғастыру, түзету не басқа бағытты байқап көру?",
     "Which next step suits me now: continue, adjust, or try another direction?",
   ),
+  // extra items so that no section of a period is empty
+  w1Preview: t(
+    "Просто прочитай описание эксперимента «{title}», пока ничего делать не нужно.",
+    "«{title}» тәжірибесінің сипаттамасын оқып шық, әзірге ештеңе істеу керек емес.",
+    "Just read the description of the experiment “{title}”; there is nothing to do yet.",
+  ),
+  w1Person: t(
+    "Подумай, кто из знакомых (родные, преподаватели, друзья) знает человека из этой сферы. Пока достаточно составить список, писать не нужно.",
+    "Таныстарыңның (туыс, оқытушы, дос) ішінен осы саладағы адамды кім білетінін ойла. Әзірге тізім жасау жеткілікті, жазудың қажеті жоқ.",
+    "Think about which of your acquaintances (family, teachers, friends) know someone in this field. A list is enough for now; no need to write to anyone.",
+  ),
+  w2Friend: t(
+    "Друг или одногруппник, который готов попробовать то же самое вместе с тобой.",
+    "Сенімен бірге дәл осыны байқап көруге дайын дос не курстас.",
+    "A friend or classmate who is willing to try the same thing with you.",
+  ),
+  w3Person: t(
+    "Человек, который хорошо владеет навыком «{skill}»: спроси, как он этому учился.",
+    "«{skill}» дағдысын жақсы меңгерген адам: оның мұны қалай үйренгенін сұра.",
+    "Someone who is good at “{skill}”: ask how they learned it.",
+  ),
+  w4Review: t(
+    "Вернись к «{title}» и сравни ощущения с первой неделей: что изменилось?",
+    "«{title}» тапсырмасына қайтып оралып, сезімдеріңді бірінші аптамен салыстыр: не өзгерді?",
+    "Go back to “{title}” and compare how it feels with week one: what has changed?",
+  ),
+  m3NoNeighbour: t(
+    "Один небольшой тест из другого направления твоего отчёта, чтобы сравнить ощущения.",
+    "Есебіңдегі басқа бағыттан бір шағын тест, сезімдерді салыстыру үшін.",
+    "One small test from another direction in your report, to compare how it feels.",
+  ),
   // generic stand-ins when a direction has no own data
   genericActivity: t("почитай описание профессии и вакансий", "мамандық пен вакансиялардың сипаттамасын оқы", "read job descriptions and listings"),
   genericTest: t(

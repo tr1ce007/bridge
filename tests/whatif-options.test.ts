@@ -34,4 +34,33 @@ describe("buildDirectionOptions", () => {
     expect(options.every((o) => o.source === "catalogue")).toBe(true);
     expect(options[0]).toMatchObject({ id: DIRECTION_CATALOGUE[0].id, key: DIRECTION_CATALOGUE[0].id, name: DIRECTION_CATALOGUE[0].label.en });
   });
+
+  it("cuts report texts to the limits of POST /api/ai/what-if so a real direction never gets a 400", async () => {
+    const long = "я".repeat(1200);
+    const big = {
+      ...newest,
+      directions: newest.directions.map((d, i) =>
+        i === 0
+          ? { ...d, name: "н".repeat(300), why: long, howToTest: Array(12).fill(long), skills: Array(12).fill(long), difficulties: Array(12).fill(long) }
+          : d,
+      ),
+    };
+    const [first] = buildDirectionOptions([big], "ru");
+    expect(first.name.length).toBeLessThanOrEqual(160);
+    expect(first.why!.length).toBeLessThanOrEqual(800);
+    for (const list of [first.howToTest!, first.skills!, first.difficulties!]) {
+      expect(list.length).toBeLessThanOrEqual(8);
+      expect(list.every((x) => x.length <= 400)).toBe(true);
+    }
+    // the same checks the route does
+    const { POST } = await import("@/app/api/ai/what-if/route");
+    const res = await POST(
+      new Request("http://localhost/api/ai/what-if", {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-forwarded-for": "10.55.0.1" },
+        body: JSON.stringify({ locale: "ru", direction: { key: first.key, name: first.name, why: first.why, howToTest: first.howToTest, skills: first.skills, difficulties: first.difficulties } }),
+      }),
+    );
+    expect(res.status).toBe(200);
+  });
 });

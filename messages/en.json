@@ -1205,7 +1205,7 @@
     "storageLead": {
       "local": "Answers, reports, journal and saved items are in the browser’s storage. We do not receive them. If you clear the site data, they are gone.",
       "memory": "The browser does not allow storing data, so everything lasts only until you close the tab. Download the data file if you want to keep it.",
-      "account": "Your data is kept in the database under your account, and only you can see the records."
+      "account": "The questionnaire, reports, plan, journal, saved items, finished experiments and settings are kept in the database under your account, and only you can see the records. The mentor request and started experiments stay only in this browser."
     },
     "exportTitle": "Download my data",
     "exportLead": "One JSON file with everything you saved: the questionnaire, reports, plan, journal, saved items, experiments, settings and the chat conversation.",
@@ -1265,8 +1265,8 @@
     "title": "What we do with your data",
     "lead": "Short and in plain words: what is stored, where, what goes to the AI, and how to download or delete it all.",
     "whereTitle": "What is stored where",
-    "where1": "While no database is connected, everything is stored only in your browser: questionnaire answers, reports, plan, journal, saved items, experiments, the mentor request and settings. We do not receive or see any of it.",
-    "where2": "If a database is connected and you are signed in, the same data is kept in the database. By the access rules each such record is visible only to its owner.",
+    "where1": "While no database is connected, everything is stored only in your browser: questionnaire answers, reports, plan, journal, saved items, experiments, the mentor request and settings. We do not keep this data ourselves. The project’s server receives your answers only when you ask for a report or a scenario, processes them and does not store them.",
+    "where2": "If a database is connected and you are signed in, the questionnaire, reports, plan, journal, saved items, experiments and settings are kept in the database. The exception: the mentor request and experiments you have started but not finished stay only in this browser. By the access rules each record in the database is visible only to its owner.",
     "where3": "If the browser does not allow storage (for example in private mode), data lives only until you close the tab. The pages warn you about it.",
     "where4": "A story you send for publication goes to the database. The team reviews it, and it is shown only after the review. You choose whether to give your name.",
     "aiTitle": "What goes to the AI service",

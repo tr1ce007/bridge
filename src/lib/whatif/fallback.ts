@@ -19,7 +19,13 @@ export function lowerFirst(text: string): string {
   return second && second === second.toLowerCase() && second !== second.toUpperCase() ? first.toLowerCase() + text.slice(1) : text;
 }
 
-const clean = (list: string[] | undefined) => (list ?? []).map((s) => s.trim()).filter(Boolean);
+/** Longest piece of report text put into a scenario line (a line is at most 700 characters in `whatIfSchema`). */
+const MAX_PIECE = 300;
+const clean = (list: string[] | undefined) =>
+  (list ?? [])
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((s) => (s.length > MAX_PIECE ? s.slice(0, MAX_PIECE).trimEnd() : s));
 
 function experimentLine(id: string, locale: Locale): string | undefined {
   const e = bundledExperiments.find((x) => x.id === id);
@@ -50,6 +56,10 @@ export function buildFallbackScenario(directionKey: string, locale: Locale, cust
     return first ? experimentLine(first, locale) ?? [] : [];
   })[0];
 
+  /** Name of the i-th own experiment (without the time estimate), else the first test, else a generic one. */
+  const titleOf = (i: number) =>
+    (entry?.experimentIds ?? []).flatMap((x) => bundledExperiments.find((e) => e.id === x)?.title[locale] ?? [])[i] ?? tests[0] ?? C.genericTest[locale];
+
   const test0 = tests[0] ?? C.genericTest[locale];
   const skill0 = lowerFirst(skills[0] ?? C.genericSkill[locale]);
 
@@ -58,34 +68,34 @@ export function buildFallbackScenario(directionKey: string, locale: Locale, cust
     periods: {
       w1: {
         actions: [fill(C.w1Learn[locale], { activity: lowerFirst(activities[0] ?? C.genericActivity[locale]) }), C.w1Read[locale]],
-        experiments: [],
-        people: [],
+        experiments: [fill(C.w1Preview[locale], { title: titleOf(0) })],
+        people: [C.w1Person[locale]],
         obstacles: [difficulties[0] ?? C.genericDifficulty[locale]],
         checkpoint: C.w1Checkpoint[locale],
       },
       w2: {
         actions: [fill(C.w2Test[locale], { test: test0 })],
-        experiments: own.slice(0, 1),
-        people: [],
+        experiments: own.length ? own.slice(0, 1) : [C.genericTest[locale]],
+        people: [C.w2Friend[locale]],
         obstacles: [C.w2Time[locale]],
         checkpoint: C.w2Checkpoint[locale],
       },
       w3: {
         actions: [fill(C.w3Practice[locale], { skill: skill0 }), tests[1] ?? C.w3Repeat[locale]],
-        experiments: own.slice(1, 2),
-        people: [],
+        experiments: own.length > 1 ? own.slice(1, 2) : [C.w3Repeat[locale]],
+        people: [fill(C.w3Person[locale], { skill: skill0 })],
         obstacles: [C.w3Dip[locale]],
         checkpoint: C.w3Checkpoint[locale],
       },
       w4: {
         actions: [C.w4Journal[locale], C.w4Questions[locale]],
-        experiments: [],
+        experiments: [fill(C.w4Review[locale], { title: titleOf(0) })],
         people: [C.w4Person[locale], C.w4Recent[locale]],
         obstacles: [C.w4Awkward[locale]],
         checkpoint: C.w4Checkpoint[locale],
       },
       m2: {
-        actions: [fill(C.m2Task[locale], { skills: skills.slice(0, 3).map(lowerFirst).join(", ") || skill0 })],
+        actions: [fill(C.m2Task[locale], { skills: skills.slice(0, 2).map(lowerFirst).join(", ") || skill0 })],
         experiments: own.length > 1 ? own.slice(1, 2) : [C.m2Repeat[locale]],
         people: [C.m2Mentor[locale]],
         obstacles: [difficulties[1] ?? C.m2Hard[locale]],
@@ -93,7 +103,7 @@ export function buildFallbackScenario(directionKey: string, locale: Locale, cust
       },
       m3: {
         actions: [fill(C.m3Route[locale], { route: lowerFirst(routes[0] ?? C.genericRoute[locale]) }), C.m3Compare[locale]],
-        experiments: neighbour ? [fill(C.m3Neighbour[locale], { title: neighbour })] : [],
+        experiments: [neighbour ? fill(C.m3Neighbour[locale], { title: neighbour }) : C.m3NoNeighbour[locale]],
         people: [C.m3Person[locale]],
         obstacles: [C.m3Fear[locale]],
         checkpoint: C.m3Checkpoint[locale],

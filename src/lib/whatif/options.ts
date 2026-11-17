@@ -3,6 +3,12 @@ import { catalogueIdFor, directionKey } from "@/lib/report/compare";
 import { DIRECTION_CATALOGUE } from "@/lib/report/directions";
 import { directionSavedId } from "@/lib/dashboard/saved-directions";
 
+/** The input limits of POST /api/ai/what-if (src/lib/ai/handlers/whatif.ts). Keep them in step. */
+export const WHATIF_LIMITS = { name: 160, why: 800, listItems: 8, listItemChars: 400 } as const;
+
+const cut = (text: string, max: number) => (text.length > max ? text.slice(0, max).trimEnd() : text);
+const cutList = (list: string[]) => list.slice(0, WHATIF_LIMITS.listItems).map((x) => cut(x, WHATIF_LIMITS.listItemChars));
+
 export interface DirectionOption {
   /** For report directions the same id as a saved direction (`<report id>:<index>`); for the catalogue, the catalogue id. */
   id: string;
@@ -34,13 +40,13 @@ export function buildDirectionOptions(reports: DiscoveryReport[], locale: Locale
       seen.add(identity);
       out.push({
         id: directionSavedId(report.id, index),
-        name: d.name,
+        name: cut(d.name.trim(), WHATIF_LIMITS.name),
         key: catalogueIdFor(d.name),
         source: "report",
-        why: d.why,
-        howToTest: d.howToTest,
-        skills: d.skills,
-        difficulties: d.difficulties,
+        why: cut(d.why, WHATIF_LIMITS.why),
+        howToTest: cutList(d.howToTest),
+        skills: cutList(d.skills),
+        difficulties: cutList(d.difficulties),
       });
     });
   }
