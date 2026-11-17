@@ -17,7 +17,8 @@ function fakeClient(userId: string | null) {
     {},
     {
       get: (_t, prop) => {
-        if (prop === "then") return undefined;
+        // `await builder` resolves like an empty successful query.
+        if (prop === "then") return (resolve: (v: unknown) => void) => resolve({ data: null, error: null });
         return (...args: unknown[]) => {
           calls.push(`${String(prop)}(${args.map((a) => JSON.stringify(a)).join(",")})`);
           return builder;
@@ -45,6 +46,22 @@ describe("supabase adapters (no network)", () => {
     expect(await store.listSaved("story")).toEqual(["x"]);
     expect(calls).toEqual([]); // never touched the database
     await store.clearAll();
+    resetStorageState();
+  });
+
+  it("signed in: journal fields go to the fields column and directions to saved_directions", async () => {
+    const { client, calls } = fakeClient("user-1");
+    const store = createSupabaseUserStore(() => client, createLocalUserStore());
+    await store.saveJournal({ id: "j1", text: "", tried: "Позвонил", learned: " ", createdAt: "2026-11-18T10:00:00.000Z" });
+    const upsert = calls.find((c) => c.startsWith("upsert("))!;
+    expect(upsert).toContain('"fields":{"tried":"Позвонил"}');
+    await store.toggleSaved("direction", "report-1:2");
+    expect(calls).toContain("from(saved_directions)");
+    expect(calls.some((c) => c.includes('"direction_id":"report-1:2"'))).toBe(true);
+    calls.length = 0;
+    await store.clearAll();
+    expect(calls).toContain("from(saved_directions)");
+    expect(calls).toContain("from(journal_entries)");
     resetStorageState();
   });
 

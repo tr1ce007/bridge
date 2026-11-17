@@ -24,6 +24,13 @@ const KEYS = {
   conversation: "conversation",
   savedStory: "saved:story",
   savedOpportunity: "saved:opportunity",
+  savedDirection: "saved:direction",
+} as const;
+
+const SAVED_KEYS = {
+  story: KEYS.savedStory,
+  opportunity: KEYS.savedOpportunity,
+  direction: KEYS.savedDirection,
 } as const;
 
 const emptyRoadmap = (): Roadmap => ({ d7: [], d30: [], d90: [] });
@@ -92,14 +99,14 @@ export function createLocalUserStore(): UserStore {
     },
 
     async toggleSaved(kind, id) {
-      const key = kind === "story" ? KEYS.savedStory : KEYS.savedOpportunity;
+      const key = SAVED_KEYS[kind];
       const ids = readList(key, z.string());
       const saved = ids.includes(id);
       writeJson(key, saved ? ids.filter((x) => x !== id) : [...ids, id]);
       return !saved;
     },
     async listSaved(kind) {
-      return readList(kind === "story" ? KEYS.savedStory : KEYS.savedOpportunity, z.string());
+      return readList(SAVED_KEYS[kind], z.string());
     },
 
     async saveCompletion(completion) {

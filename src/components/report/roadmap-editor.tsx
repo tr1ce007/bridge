@@ -122,7 +122,7 @@ export function RoadmapEditor({ roadmap, onChange }: { roadmap: Roadmap; onChang
   return (
     <div className="grid gap-4 lg:grid-cols-3">
       {HORIZONS.map((h) => (
-        <div key={h} className="rounded-3xl border border-border bg-card p-5 print:break-inside-avoid">
+        <div key={h} className="min-w-0 rounded-3xl border border-border bg-card p-5 print:break-inside-avoid">
           <h3 className="font-display text-lg font-semibold">
             <span className="text-accent-text">{t(h)}</span>
           </h3>

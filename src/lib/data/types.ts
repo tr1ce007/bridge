@@ -73,9 +73,25 @@ export const roadmapSchema = z.object({
 });
 export type Roadmap = z.infer<typeof roadmapSchema>;
 
+/** The five optional prompts of a reflection entry (all optional, an entry needs at least one filled). */
+export const JOURNAL_FIELDS = ["tried", "learned", "surprised", "disliked", "next"] as const;
+export type JournalField = (typeof JOURNAL_FIELDS)[number];
+export const JOURNAL_FIELD_MAX = 2000;
+
 export const journalEntrySchema = z.object({
   id: z.string().min(1),
+  /** Free note. Older entries only have this; new entries leave it empty and use the five fields. */
   text: z.string(),
+  /** What I tried. */
+  tried: z.string().max(JOURNAL_FIELD_MAX).optional(),
+  /** What I learned. */
+  learned: z.string().max(JOURNAL_FIELD_MAX).optional(),
+  /** What surprised me. */
+  surprised: z.string().max(JOURNAL_FIELD_MAX).optional(),
+  /** What I disliked. */
+  disliked: z.string().max(JOURNAL_FIELD_MAX).optional(),
+  /** What I want to explore next. */
+  next: z.string().max(JOURNAL_FIELD_MAX).optional(),
   createdAt: z.string(),
   updatedAt: z.string().optional(),
 });
@@ -103,7 +119,12 @@ export const preferencesSchema = z.object({
 });
 export type Preferences = z.infer<typeof preferencesSchema>;
 
-export type SavedKind = "story" | "opportunity";
+/**
+ * Things a person can save. A `direction` id is `<reportId>:<index>` (the position of the
+ * direction in that report, which never changes after the report is saved).
+ */
+export const SAVED_KINDS = ["story", "opportunity", "direction"] as const;
+export type SavedKind = (typeof SAVED_KINDS)[number];
 
 /** One chat turn as it is stored. `id` is a UUID (it is also the primary key in Supabase). */
 export const storedMessageSchema = z.object({

@@ -4,6 +4,15 @@ import { NAV_ITEMS } from "@/lib/nav";
 import { Container } from "./ui/container";
 import { Logo } from "./logo";
 
+/** Footer "Project" column. `key` is the message key under `footer.*`. */
+const PROJECT_LINKS = [
+  { key: "about", href: "/about" },
+  { key: "privacy", href: "/privacy" },
+  { key: "mentors", href: "/mentors" },
+  { key: "journal", href: "/journal" },
+  { key: "settings", href: "/settings" },
+] as const;
+
 export function SiteFooter() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
@@ -31,16 +40,13 @@ export function SiteFooter() {
         <div>
           <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">{t("project")}</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
-            <li>
-              <Link href="/about" className="text-fg/80 hover:text-fg">
-                {t("about")}
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy" className="text-fg/80 hover:text-fg">
-                {t("privacy")}
-              </Link>
-            </li>
+            {PROJECT_LINKS.map((item) => (
+              <li key={item.key}>
+                <Link href={item.href} className="text-fg/80 hover:text-fg">
+                  {t(item.key)}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </Container>

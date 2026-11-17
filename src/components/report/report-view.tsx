@@ -5,7 +5,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { BridgeLine } from "@/components/bridge-line";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { useSaved } from "@/hooks/use-saved";
 import { Link } from "@/i18n/navigation";
+import { directionSavedId } from "@/lib/dashboard/saved-directions";
 import { getContent, getUserStore, storageMode, type DiscoveryReport, type Roadmap, type Story } from "@/lib/data";
 import { DemoBanner } from "./demo-banner";
 import { DirectionCard } from "./direction-card";
@@ -41,6 +43,7 @@ export function ReportView({ id }: { id: string }) {
   const [saveState, setSaveState] = useState<"idle" | "saved" | "error">("idle");
   const [memory, setMemory] = useState(false);
   const queue = useRef<Promise<unknown>>(Promise.resolve());
+  const savedDirections = useSaved("direction");
 
   useEffect(() => {
     let cancelled = false;
@@ -168,10 +171,21 @@ export function ReportView({ id }: { id: string }) {
           <ul className="grid gap-4 lg:grid-cols-2">
             {report.directions.map((d, i) => (
               <li key={`${d.name}-${i}`}>
-                <DirectionCard direction={d} index={i} />
+                <DirectionCard
+                  direction={d}
+                  index={i}
+                  saved={savedDirections.ids.includes(directionSavedId(report.id, i))}
+                  onToggleSaved={savedDirections.status === "ready" ? () => void savedDirections.toggle(directionSavedId(report.id, i)) : undefined}
+                  whatIfHref={`/what-if?d=${encodeURIComponent(directionSavedId(report.id, i))}`}
+                />
               </li>
             ))}
           </ul>
+          {savedDirections.saveFailed && (
+            <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-400">
+              {t("saveFailed")}
+            </p>
+          )}
         </ReportSection>
 
         <ReportSection id="s5" index={5} title={t("s5")} lead={t("s5Lead")}>

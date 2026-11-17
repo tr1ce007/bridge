@@ -151,6 +151,42 @@ describe("local user store", () => {
     expect((await store.listJournal()).map((e) => e.id)).toEqual(["j1"]);
   });
 
+  it("journal keeps the five reflection fields through save, edit and reload", async () => {
+    const store = createLocalUserStore();
+    const full: JournalEntry = {
+      id: "j9",
+      text: "",
+      tried: "Позвонил знакомому юристу",
+      learned: "Работа — это в основном чтение",
+      surprised: "Было интересно",
+      disliked: "Бумажная рутина",
+      next: "Сходить на открытое занятие",
+      createdAt: "2026-11-18T10:00:00.000Z",
+    };
+    await store.saveJournal(full);
+    expect(await store.listJournal()).toEqual([full]);
+    await store.saveJournal({ ...full, disliked: undefined, updatedAt: "2026-11-18T11:00:00.000Z" });
+    const [edited] = await store.listJournal();
+    expect(edited.disliked).toBeUndefined();
+    expect(edited.updatedAt).toBe("2026-11-18T11:00:00.000Z");
+    expect(edited.tried).toBe(full.tried);
+    // an over-long field is refused instead of silently cut
+    await expect(store.saveJournal({ ...full, tried: "x".repeat(2001) })).rejects.toThrow();
+  });
+
+  it("saves directions by report id and index, separately from stories", async () => {
+    const store = createLocalUserStore();
+    expect(await store.toggleSaved("direction", "report-1:0")).toBe(true);
+    expect(await store.toggleSaved("direction", "report-1:3")).toBe(true);
+    expect(await store.toggleSaved("story", "report-1:0")).toBe(true);
+    expect(await store.listSaved("direction")).toEqual(["report-1:0", "report-1:3"]);
+    expect(await store.toggleSaved("direction", "report-1:0")).toBe(false);
+    expect(await store.listSaved("direction")).toEqual(["report-1:3"]);
+    expect(await store.listSaved("story")).toEqual(["report-1:0"]);
+    await store.clearAll();
+    expect(await store.listSaved("direction")).toEqual([]);
+  });
+
   it("upserts experiment completions and preferences", async () => {
     const store = createLocalUserStore();
     expect(await store.getPreferences()).toEqual({ memoryConsent: false });

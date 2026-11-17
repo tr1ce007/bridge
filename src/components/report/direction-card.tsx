@@ -3,6 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
+import { Link } from "@/i18n/navigation";
+import { SaveButton } from "@/components/ui/save-button";
 import type { DiscoveryReport } from "@/lib/data";
 
 type Direction = DiscoveryReport["directions"][number];
@@ -25,7 +27,20 @@ function List({ title, items }: { title: string; items: string[] }) {
 }
 
 /** One direction: name and why up front; the rest (answers, difficulties, skills, tests, reality check) expands. */
-export function DirectionCard({ direction, index }: { direction: Direction; index: number }) {
+export function DirectionCard({
+  direction,
+  index,
+  saved,
+  onToggleSaved,
+  whatIfHref,
+}: {
+  direction: Direction;
+  index: number;
+  /** Whether this direction is saved. `onToggleSaved` undefined hides the button (e.g. while loading). */
+  saved?: boolean;
+  onToggleSaved?: () => void;
+  whatIfHref?: string;
+}) {
   const t = useTranslations("report");
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -72,7 +87,7 @@ export function DirectionCard({ direction, index }: { direction: Direction; inde
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="mt-auto pt-5 print:hidden">
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-5 print:hidden">
         <button
           type="button"
           aria-expanded={open}
@@ -85,6 +100,22 @@ export function DirectionCard({ direction, index }: { direction: Direction; inde
             ↓
           </span>
         </button>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          {whatIfHref && (
+            <Link href={whatIfHref} className="inline-flex min-h-11 items-center text-sm font-semibold text-primary hover:underline dark:text-[var(--ring)]">
+              {t("whatIfCta")}
+            </Link>
+          )}
+          {onToggleSaved && (
+            <SaveButton
+              saved={Boolean(saved)}
+              onToggle={onToggleSaved}
+              labelSave={t("saveDirection")}
+              labelSaved={t("directionSaved")}
+              ariaLabel={t("saveDirectionAria", { name: direction.name })}
+            />
+          )}
+        </div>
       </div>
     </article>
   );

@@ -1,8 +1,10 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buildSubmittedStory, filterOpportunities, filterStories } from "./content-utils";
 import {
+  JOURNAL_FIELDS,
   conversationSchema,
   experimentSchema,
+  journalEntrySchema,
   opportunitySchema,
   reportSchema,
   roadmapSchema,
@@ -21,6 +23,18 @@ import {
 } from "./types";
 
 type GetClient = () => SupabaseClient;
+
+type JournalFields = Partial<Record<(typeof JOURNAL_FIELDS)[number], string>>;
+
+/** The non-empty reflection fields, as stored in `journal_entries.fields` (jsonb). */
+function pickJournalFields(source: JournalFields | null | undefined): JournalFields {
+  const out: JournalFields = {};
+  for (const f of JOURNAL_FIELDS) {
+    const v = source?.[f];
+    if (typeof v === "string" && v.trim()) out[f] = v;
+  }
+  return out;
+}
 
 export class SignInRequiredError extends Error {
   constructor() {
@@ -46,6 +60,7 @@ async function currentUserId(client: SupabaseClient): Promise<string | null> {
 const SAVED = {
   story: { table: "saved_stories", column: "story_id" },
   opportunity: { table: "saved_opportunities", column: "opportunity_id" },
+  direction: { table: "saved_directions", column: "direction_id" },
 } as const satisfies Record<SavedKind, { table: string; column: string }>;
 
 /** Tables that hold one user's personal rows (cascade covers answers/messages). */
@@ -56,6 +71,7 @@ const USER_TABLES = [
   "journal_entries",
   "saved_stories",
   "saved_opportunities",
+  "saved_directions",
   "experiment_completions",
   "conversations",
   "user_preferences",
@@ -174,27 +190,30 @@ const signedIn: SignedInOps = {
     const rows = checkList(
       await c
         .from("journal_entries")
-        .select("id,text,created_at,updated_at")
+        .select("id,text,fields,created_at,updated_at")
         .eq("user_id", uid)
         .order("created_at", { ascending: false }),
     );
     return rows.map(
-      (r: { id: string; text: string; created_at: string; updated_at: string | null }): JournalEntry => ({
+      (r: { id: string; text: string; fields: JournalFields | null; created_at: string; updated_at: string | null }): JournalEntry => ({
         id: r.id,
         text: r.text,
+        ...pickJournalFields(r.fields),
         createdAt: r.created_at,
         ...(r.updated_at ? { updatedAt: r.updated_at } : {}),
       }),
     );
   },
   async saveJournal(c, uid, e) {
+    const valid = journalEntrySchema.parse(e);
     check(
       await c.from("journal_entries").upsert({
-        id: e.id,
+        id: valid.id,
         user_id: uid,
-        text: e.text,
-        created_at: e.createdAt,
-        updated_at: e.updatedAt ?? null,
+        text: valid.text,
+        fields: pickJournalFields(valid),
+        created_at: valid.createdAt,
+        updated_at: valid.updatedAt ?? null,
       }),
     );
   },
