@@ -41,7 +41,14 @@ export const reportSchema = z.object({
   directions: z.array(directionSchema).min(5).max(8),
   stories: z.array(storyMatchSchema),
   unexpected: z.array(z.object({ name: z.string().min(1), why: z.string() })),
-  experiments: z.array(z.object({ title: z.string().min(1), description: z.string() })),
+  experiments: z.array(
+    z.object({
+      title: z.string().min(1),
+      description: z.string(),
+      /** Id from src/content/experiments.json when the experiment exists on /try. */
+      experimentId: z.string().optional(),
+    }),
+  ),
   roadmap: z.object({
     d7: z.array(roadmapItemSchema),
     d30: z.array(roadmapItemSchema),

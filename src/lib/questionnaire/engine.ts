@@ -17,7 +17,7 @@ export function followUpId(sourceQuestionId: string): string {
 export function isFollowUpId(id: string): boolean {
   return id.startsWith(FU_PREFIX);
 }
-function followUpSource(id: string): string {
+export function followUpSource(id: string): string {
   return id.slice(FU_PREFIX.length);
 }
 

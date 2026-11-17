@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLocale } from "next-intl";
 import { getUserStore, storageMode, type Answer, type QuestionnaireSession } from "@/lib/data";
 import { getQuestion, type Question } from "@/lib/questionnaire/bank";
 import {
@@ -32,6 +33,7 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T | null> {
 
 /** Questionnaire state: restore, autosave after each answer, navigation (next / back / edit / restart). */
 export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
+  const locale = useLocale();
   const [session, setSession] = useState<QuestionnaireSession | null>(null);
   const [view, setView] = useState<View>({ kind: "loading" });
   const [resumed, setResumed] = useState(false);
@@ -121,7 +123,7 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
         setView({ kind: "followUpLoading" });
         let found: FollowUp | null = null;
         try {
-          found = await withTimeout(fetchFollowUp(nextAnswers), FOLLOW_UP_TIMEOUT_MS);
+          found = await withTimeout(fetchFollowUp(nextAnswers, { questionId: q.id, locale }), FOLLOW_UP_TIMEOUT_MS);
         } catch {
           found = null;
         }
@@ -133,7 +135,7 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
       }
       goNext(nextAnswers);
     },
-    [commit, fetchFollowUp, goNext],
+    [commit, fetchFollowUp, goNext, locale],
   );
 
   const answerFollowUp = useCallback(

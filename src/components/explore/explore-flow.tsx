@@ -21,7 +21,7 @@ const notice =
 
 /**
  * The /explore experience: one question per screen, autosave, back / skip / edit, restart.
- * `fetchFollowUp` is the pluggable AI follow-up hook (a no-op for now, see lib/questionnaire/follow-up.ts).
+ * `fetchFollowUp` is the pluggable AI follow-up hook (calls /api/ai/followup, see lib/questionnaire/follow-up.ts).
  */
 export function ExploreFlow({ fetchFollowUp = defaultFetchFollowUp }: { fetchFollowUp?: FetchFollowUp }) {
   const t = useTranslations("explore");
