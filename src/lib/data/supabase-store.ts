@@ -1,12 +1,14 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buildSubmittedStory, filterOpportunities, filterStories } from "./content-utils";
 import {
+  conversationSchema,
   experimentSchema,
   opportunitySchema,
   reportSchema,
   roadmapSchema,
   storySchema,
   type ContentStore,
+  type Conversation,
   type Experiment,
   type ExperimentCompletion,
   type JournalEntry,
@@ -256,6 +258,67 @@ const signedIn: SignedInOps = {
         completedAt: r.completed_at,
       }),
     );
+  },
+
+  async loadConversation(c, uid) {
+    const row = check(
+      await c
+        .from("conversations")
+        .select("id,title,created_at,updated_at")
+        .eq("user_id", uid)
+        .order("updated_at", { ascending: false })
+        .limit(1)
+        .maybeSingle(),
+    );
+    if (!row) return null;
+    const rows = checkList(
+      await c
+        .from("messages")
+        .select("id,role,content,created_at")
+        .eq("conversation_id", row.id)
+        .order("created_at", { ascending: true }),
+    );
+    const parsed = conversationSchema.safeParse({
+      id: row.id,
+      ...(row.title ? { title: row.title } : {}),
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+      messages: rows.map((m: { id: string; role: string; content: string; created_at: string }) => ({
+        id: m.id,
+        role: m.role,
+        content: m.content,
+        createdAt: m.created_at,
+      })),
+    });
+    return parsed.success ? (parsed.data satisfies Conversation) : null;
+  },
+  async saveConversation(c, uid, conversation) {
+    const v = conversationSchema.parse(conversation);
+    check(
+      await c.from("conversations").upsert({
+        id: v.id,
+        user_id: uid,
+        title: v.title ?? null,
+        created_at: v.createdAt,
+        updated_at: v.updatedAt,
+      }),
+    );
+    if (v.messages.length) {
+      check(
+        await c.from("messages").upsert(
+          v.messages.map((m) => ({ id: m.id, conversation_id: v.id, role: m.role, content: m.content, created_at: m.createdAt })),
+        ),
+      );
+    }
+    // Same as the questionnaire: rows that are no longer part of the conversation go away.
+    const existing = checkList(await c.from("messages").select("id").eq("conversation_id", v.id));
+    const keep = new Set(v.messages.map((m) => m.id));
+    const removed = existing.map((r: { id: string }) => r.id).filter((id: string) => !keep.has(id));
+    if (removed.length) check(await c.from("messages").delete().eq("conversation_id", v.id).in("id", removed));
+  },
+  async clearConversations(c, uid) {
+    // messages are removed by the foreign key (on delete cascade)
+    check(await c.from("conversations").delete().eq("user_id", uid));
   },
 
   async getPreferences(c, uid) {

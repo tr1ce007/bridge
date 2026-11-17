@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { clearAllRaw, readJson, writeJson } from "./storage";
+import { clearAllRaw, readJson, removeRaw, writeJson } from "./storage";
 import {
+  conversationSchema,
   experimentCompletionSchema,
   journalEntrySchema,
   preferencesSchema,
@@ -20,6 +21,7 @@ const KEYS = {
   journal: "journal",
   completions: "completions",
   preferences: "preferences",
+  conversation: "conversation",
   savedStory: "saved:story",
   savedOpportunity: "saved:opportunity",
 } as const;
@@ -112,6 +114,17 @@ export function createLocalUserStore(): UserStore {
       return readList(KEYS.completions, experimentCompletionSchema).sort((a, b) =>
         b.completedAt.localeCompare(a.completedAt),
       );
+    },
+
+    async loadConversation() {
+      const parsed = conversationSchema.safeParse(readJson(KEYS.conversation));
+      return parsed.success ? parsed.data : null;
+    },
+    async saveConversation(conversation) {
+      writeJson(KEYS.conversation, conversationSchema.parse(conversation));
+    },
+    async clearConversations() {
+      removeRaw(KEYS.conversation);
     },
 
     async getPreferences() {

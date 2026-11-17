@@ -99,6 +99,26 @@ export type Preferences = z.infer<typeof preferencesSchema>;
 
 export type SavedKind = "story" | "opportunity";
 
+/** One chat turn as it is stored. `id` is a UUID (it is also the primary key in Supabase). */
+export const storedMessageSchema = z.object({
+  id: z.string().min(1),
+  role: z.enum(["user", "assistant"]),
+  content: z.string(),
+  createdAt: z.string(),
+});
+export type StoredMessage = z.infer<typeof storedMessageSchema>;
+
+/** The remembered chat conversation (only saved when the person turned memory on). */
+export const conversationSchema = z.object({
+  /** UUID. */
+  id: z.string().min(1),
+  title: z.string().optional(),
+  messages: z.array(storedMessageSchema),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+export type Conversation = z.infer<typeof conversationSchema>;
+
 // ---------------------------------------------------------------- content
 
 export const STORY_KINDS = ["verified", "documented", "user", "demo"] as const;
@@ -238,6 +258,12 @@ export interface UserStore {
   /** Upsert by `experimentId`. */
   saveCompletion(completion: ExperimentCompletion): Promise<void>;
   listCompletions(): Promise<ExperimentCompletion[]>;
+  /** The most recently updated conversation, or null. Messages are oldest first. */
+  loadConversation(): Promise<Conversation | null>;
+  /** Upsert by `id`: the stored messages become exactly `conversation.messages`. */
+  saveConversation(conversation: Conversation): Promise<void>;
+  /** Deletes every saved conversation of this person. */
+  clearConversations(): Promise<void>;
   getPreferences(): Promise<Preferences>;
   savePreferences(prefs: Preferences): Promise<void>;
   /** Deletes all of the user's personal data (not the auth account). */

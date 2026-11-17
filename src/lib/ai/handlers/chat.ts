@@ -1,5 +1,6 @@
 import "server-only";
 import { z } from "zod";
+import { CHAT_MAX_MESSAGE_CHARS, CHAT_MAX_MESSAGES, CHAT_MAX_SUMMARY_CHARS } from "../chat-limits";
 import { logAIFailure } from "../log";
 import { chatSystemPrompt } from "../prompts";
 import { getProvider } from "../provider";
@@ -8,12 +9,12 @@ import { badRequest, localeInput, looseLocale, rateLimited, readBody } from "./c
 
 const input = z.object({
   messages: z
-    .array(z.object({ role: z.enum(["user", "assistant"]), content: z.string().trim().min(1).max(4000) }))
+    .array(z.object({ role: z.enum(["user", "assistant"]), content: z.string().trim().min(1).max(CHAT_MAX_MESSAGE_CHARS) }))
     .min(1)
-    .max(40),
+    .max(CHAT_MAX_MESSAGES),
   locale: localeInput,
   memoryConsent: z.boolean(),
-  profileSummary: z.string().max(8000).optional(),
+  profileSummary: z.string().max(CHAT_MAX_SUMMARY_CHARS).optional(),
 });
 
 /**
