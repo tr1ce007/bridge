@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "title": "THE BRIDGE — explore your path",
+    "description": "A platform that helps teenagers, students and adults explore possible paths through their own answers, real human stories and small experiments."
+  },
+  "brand": {
+    "name": "THE BRIDGE",
+    "home": "THE BRIDGE — home",
+    "logoAlt": "THE BRIDGE logo"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "explore": "Explore",
+    "chat": "Let's figure it out",
+    "try": "Try",
+    "stories": "Stories",
+    "opportunities": "Opportunities",
+    "dashboard": "Dashboard",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "theme": {
+    "toDark": "Switch to dark theme",
+    "toLight": "Switch to light theme"
+  },
+  "locale": {
+    "label": "Language",
+    "ru": "Русский",
+    "kk": "Қазақша",
+    "en": "English"
+  },
+  "storyKind": {
+    "verified": "Verified source",
+    "documented": "Publicly documented",
+    "user": "User submitted",
+    "demo": "Demo example (fictional)"
+  },
+  "footer": {
+    "tagline": "A bridge between the questions of young people and the experience of those who have already found their path.",
+    "platform": "Platform",
+    "project": "Project",
+    "about": "About",
+    "privacy": "Privacy",
+    "rights": "The Bridge educational project."
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Life-path exploration",
+      "title": "Your future doesn't have to be figured out today.",
+      "lead": "Explore who you could become through your own answers, real human stories and small experiments — without pressure or ready-made answers.",
+      "ctaPrimary": "Start exploring",
+      "ctaSecondary": "Explore human stories",
+      "note": "You can start right away, no sign-up needed."
+    },
+    "problem": {
+      "eyebrow": "Why it matters",
+      "title": "Paths are often chosen at random.",
+      "lead": "At 16 or 17 you are expected to make a decision that feels final. Few people get the chance to understand themselves or try anything in practice first.",
+      "p1Title": "Too early",
+      "p1Text": "A major is picked before you know what you actually enjoy.",
+      "p2Title": "Too few examples",
+      "p2Text": "You only see a handful of familiar jobs, and real human stories are scarce.",
+      "p3Title": "Too much pressure",
+      "p3Text": "Family expectations and fear of mistakes drown out your own interests."
+    },
+    "stats": {
+      "eyebrow": "The numbers",
+      "title": "You are not the only one who doesn't know yet.",
+      "graduatesValue": "≈ one in three",
+      "graduatesText": "More than 30% of graduates in Kazakhstan work outside their field of study.",
+      "graduatesSource": "Statement by Vice Minister of Labour A. Biakhmetov, Tengrinews",
+      "teensValue": "44%",
+      "teensText": "of teenagers don't know what they want to become.",
+      "teensSource": "project team data · source being verified",
+      "sourceLabel": "Source",
+      "unverified": "Not verified"
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "Four steps you can take at your own pace.",
+      "step1Title": "Understand yourself",
+      "step1Text": "Answer questions about your interests, values and what gives you energy.",
+      "step2Title": "Discover similar journeys",
+      "step2Text": "Read the stories of people who started with similar questions.",
+      "step3Title": "Explore possibilities",
+      "step3Text": "Get a breakdown of which directions are worth exploring and why — no verdicts.",
+      "step4Title": "Try something new",
+      "step4Text": "Run a small experiment and test an interest in practice."
+    },
+    "stories": {
+      "eyebrow": "Real stories",
+      "title": "Paths are rarely straight.",
+      "lead": "Stories of people who changed direction, doubted and found their own way. Every story is labelled with where it comes from — we never pass off examples as real lives.",
+      "kindsLabel": "Every story carries one of four labels:",
+      "verifiedDesc": "The source has been checked via a link.",
+      "documentedDesc": "Told publicly — in an interview, book or article.",
+      "userDesc": "Sent by a community member and reviewed by moderators.",
+      "demoDesc": "A fictional example that shows how the platform works.",
+      "cta": "Browse stories"
+    },
+    "try": {
+      "eyebrow": "Try before you choose",
+      "title": "A small experiment beats endless doubt.",
+      "lead": "Short tasks that let you feel a profession from the inside in one evening, not four years of study.",
+      "example1": "Sketch a simple app screen",
+      "example2": "Work through a real case like a lawyer",
+      "example3": "Write your first program",
+      "duration": "≈ 30–60 minutes",
+      "cta": "Pick an experiment"
+    },
+    "opportunities": {
+      "eyebrow": "Opportunities",
+      "title": "Programmes, scholarships and internships in one place.",
+      "lead": "We collect real programmes with official links and the date they were last checked.",
+      "programs": "Bolashak · Erasmus+ · DAAD · Chevening",
+      "note": "Always confirm deadlines and requirements on the programme's official website.",
+      "cta": "See opportunities"
+    },
+    "community": {
+      "eyebrow": "Community",
+      "title": "A project made by people, not algorithms.",
+      "lead": "THE BRIDGE is an educational project run by a team of ambassadors. We build a bridge between the questions of young people and the experience of those who have already found their path.",
+      "partnersLabel": "With us",
+      "ambassadorsName": "Earth Ambassadors",
+      "ambassadorsText": "The team the project grew out of.",
+      "ambassadorsAlt": "Earth Ambassadors emblem",
+      "adalName": "“Adal Azamat – Belsendi Kogam”",
+      "adalText": "Civil Society Development Centre.",
+      "adalAlt": "Logo of the “Adal Azamat – Belsendi Kogam” Civil Society Development Centre"
+    },
+    "final": {
+      "title": "Your journey starts with one question.",
+      "lead": "Answer the first one — we'll work through the rest together.",
+      "cta": "Start exploring"
+    }
+  }
+}

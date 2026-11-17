@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* `dark:` utilities follow the data-theme attribute, not the OS setting. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Design tokens. Components use them through Tailwind colour utilities
+ * (bg-bg, text-fg, text-muted, bg-card, border-border, bg-primary,
+ * text-primary-fg, text-accent, bg-subtle) or directly as var(--token).
+ */
+:root {
+  --bg: #fafaf8;
+  --fg: #0e1726;
+  --muted: #5b6472;
+  --card: #ffffff;
+  --subtle: #f1f0ec;
+  --border: #e4e2dc;
+  --primary: #1f4e9c;
+  --primary-fg: #ffffff;
+  --primary-hover: #183f80;
+  --accent: #b8935a;
+  --ring: #1f4e9c;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0a0d14;
+  --fg: #eceef2;
+  --muted: #9aa3b2;
+  --card: #10141e;
+  --subtle: #151a26;
+  --border: #242a38;
+  --primary: #3d6fc9;
+  --primary-fg: #ffffff;
+  --primary-hover: #4f7fd6;
+  --accent: #c9a56e;
+  --ring: #7fa4e8;
+  color-scheme: dark;
+}
+
+/* No-JS fallback: follow the OS until the inline script sets data-theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0a0d14;
+    --fg: #eceef2;
+    --muted: #9aa3b2;
+    --card: #10141e;
+    --subtle: #151a26;
+    --border: #242a38;
+    --primary: #3d6fc9;
+    --primary-fg: #ffffff;
+    --primary-hover: #4f7fd6;
+    --accent: #c9a56e;
+    --ring: #7fa4e8;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 22%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

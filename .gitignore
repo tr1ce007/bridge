@@ -3,3 +3,13 @@ node_modules/
 .next/
 .env
 .env.local
+.env*.local
+/out/
+/build
+/coverage
+.DS_Store
+*.pem
+npm-debug.log*
+*.tsbuildinfo
+next-env.d.ts
+.vercel
