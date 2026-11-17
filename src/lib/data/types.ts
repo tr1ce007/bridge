@@ -81,11 +81,17 @@ export const journalEntrySchema = z.object({
 });
 export type JournalEntry = z.infer<typeof journalEntrySchema>;
 
+/** Answer to "Did you enjoy the process itself, or only the idea of doing it?" */
+export const PROCESS_ANSWERS = ["process", "idea", "unsure"] as const;
+export type ProcessAnswer = (typeof PROCESS_ANSWERS)[number];
+
 export const experimentCompletionSchema = z.object({
   experimentId: z.string().min(1),
   rating: z.number().int().min(1).max(5),
-  /** "Did you enjoy the process itself, or only the idea of doing it?" */
+  /** True only for the answer "the process". "Only the idea" and "not sure" are both false; see `answer`. */
   enjoyedProcess: z.boolean(),
+  /** The exact 3-way answer. Absent in completions saved before it existed (then read `enjoyedProcess`). */
+  answer: z.enum(PROCESS_ANSWERS).optional(),
   reflection: z.string(),
   completedAt: z.string(),
 });
@@ -126,6 +132,24 @@ export type StoryKind = (typeof STORY_KINDS)[number];
 export const STORY_STATUSES = ["pending", "approved", "rejected"] as const;
 export type StoryStatus = (typeof STORY_STATUSES)[number];
 
+/** Story themes shown on /stories (spec categories). A story may have several. */
+export const STORY_CATEGORIES = [
+  "unsure",
+  "changed-major",
+  "from-zero",
+  "first-job",
+  "failed-restart",
+  "unexpected-passion",
+  "other-than-parents",
+  "first-business",
+  "education-journey",
+  "study-abroad",
+] as const;
+export type StoryCategory = (typeof STORY_CATEGORIES)[number];
+
+export const AGE_RANGES = ["under-18", "18-24", "25-34", "35-plus"] as const;
+export type AgeRange = (typeof AGE_RANGES)[number];
+
 const tagsSchema = z.object(
   Object.fromEntries(AXES.map((a) => [a, z.array(z.string())])) as Record<
     Axis,
@@ -139,6 +163,12 @@ export const storySchema = z.object({
   /** Absent in JSON content (= approved). Set by moderation in Supabase. */
   status: z.enum(STORY_STATUSES).optional(),
   title: storyTextSchema,
+  /** Short lead paragraph. Optional: the bundled demo stories start straight with `before`. */
+  intro: storyTextSchema.optional(),
+  /** Themes (spec categories). Stored inside the `content` jsonb in Supabase. */
+  categories: z.array(z.enum(STORY_CATEGORIES)).optional(),
+  /** Age of the narrator when the story happened or was written (optional). Also inside `content`. */
+  ageRange: z.enum(AGE_RANGES).optional(),
   /** Original language of the story. */
   lang: localeSchema,
   sourceUrl: z.string().url().optional(),
@@ -174,10 +204,39 @@ export const experimentSchema = z.object({
 });
 export type Experiment = z.infer<typeof experimentSchema>;
 
-export const OPPORTUNITY_KINDS = ["scholarship", "exchange", "volunteering", "course"] as const;
+/** `course` = online / free course, `program` = educational programme. */
+export const OPPORTUNITY_KINDS = [
+  "scholarship",
+  "exchange",
+  "course",
+  "internship",
+  "volunteering",
+  "conference",
+  "competition",
+  "fellowship",
+  "program",
+  "mentorship",
+] as const;
 export type OpportunityKind = (typeof OPPORTUNITY_KINDS)[number];
 export const OPPORTUNITY_LEVELS = ["bachelor", "master", "phd", "any"] as const;
 export type OpportunityLevel = (typeof OPPORTUNITY_LEVELS)[number];
+/** Where the programme takes place (filter "country / region"). */
+export const OPPORTUNITY_COUNTRIES = [
+  "kazakhstan",
+  "central-asia",
+  "europe",
+  "germany",
+  "uk",
+  "usa",
+  "hungary",
+  "turkey",
+  "online",
+  "international",
+] as const;
+export type OpportunityCountry = (typeof OPPORTUNITY_COUNTRIES)[number];
+/** Cost for the participant. `unknown` = "check the official site" (we never guess). */
+export const OPPORTUNITY_COSTS = ["free", "mixed", "paid", "unknown"] as const;
+export type OpportunityCost = (typeof OPPORTUNITY_COSTS)[number];
 export const OPPORTUNITY_STATUSES = ["verified", "unverified", "outdated"] as const;
 export type OpportunityStatus = (typeof OPPORTUNITY_STATUSES)[number];
 
@@ -187,6 +246,8 @@ export const opportunitySchema = z.object({
   name: z.string().min(1),
   kind: z.enum(OPPORTUNITY_KINDS),
   levels: z.array(z.enum(OPPORTUNITY_LEVELS)).min(1),
+  country: z.enum(OPPORTUNITY_COUNTRIES).default("international"),
+  cost: z.enum(OPPORTUNITY_COSTS).default("unknown"),
   description: localizedTextSchema,
   eligibility: localizedTextSchema,
   /** Official site only. */
@@ -218,15 +279,22 @@ export interface OpportunityFilter {
   includeOutdated?: boolean;
 }
 
+export const SUBMISSION_LIMITS = { title: 200, intro: 1000, section: 4000, advice: 2000, displayName: 60 } as const;
+
 export const storySubmissionSchema = z.object({
   lang: localeSchema,
-  title: z.string().trim().min(3).max(200),
-  before: z.string().trim().min(1).max(4000),
-  challenges: z.string().trim().min(1).max(4000),
-  turningPoint: z.string().trim().min(1).max(4000),
-  actions: z.string().trim().min(1).max(4000),
-  now: z.string().trim().min(1).max(4000),
-  advice: z.string().trim().max(2000).optional(),
+  title: z.string().trim().min(3).max(SUBMISSION_LIMITS.title),
+  intro: z.string().trim().min(1).max(SUBMISSION_LIMITS.intro).optional(),
+  category: z.enum(STORY_CATEGORIES).optional(),
+  ageRange: z.enum(AGE_RANGES).optional(),
+  /** Public author name; absent = anonymous. */
+  displayName: z.string().trim().min(1).max(SUBMISSION_LIMITS.displayName).optional(),
+  before: z.string().trim().min(1).max(SUBMISSION_LIMITS.section),
+  challenges: z.string().trim().min(1).max(SUBMISSION_LIMITS.section),
+  turningPoint: z.string().trim().min(1).max(SUBMISSION_LIMITS.section),
+  actions: z.string().trim().min(1).max(SUBMISSION_LIMITS.section),
+  now: z.string().trim().min(1).max(SUBMISSION_LIMITS.section),
+  advice: z.string().trim().max(SUBMISSION_LIMITS.advice).optional(),
   tags: z.record(z.string(), z.array(z.string().max(60)).max(20)).optional(),
 });
 export type StorySubmission = z.infer<typeof storySubmissionSchema>;

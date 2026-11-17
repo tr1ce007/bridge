@@ -68,6 +68,11 @@ export function buildSubmittedStory(input: StorySubmission, id: string): Story {
     status: "pending",
     lang: v.lang,
     title: clean(v.title),
+    ...(v.intro ? { intro: clean(v.intro) } : {}),
+    ...(v.category ? { categories: [v.category] } : {}),
+    ...(v.ageRange ? { ageRange: v.ageRange } : {}),
+    // For user stories `sourceName` is the public author name; absent = anonymous.
+    ...(v.displayName && sanitizeText(v.displayName) ? { sourceName: sanitizeText(v.displayName) } : {}),
     attribution: { ...USER_ATTRIBUTION },
     before: clean(v.before),
     challenges: clean(v.challenges),

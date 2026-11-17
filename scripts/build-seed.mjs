@@ -27,12 +27,12 @@ out.push(
 );
 out.push("");
 
-out.push("insert into public.opportunities (id, name, kind, levels, description, eligibility, url, deadline, verified_at, status) values");
+out.push("insert into public.opportunities (id, name, kind, levels, country, cost, description, eligibility, url, deadline, verified_at, status) values");
 out.push(
   read("opportunities.json")
     .map(
       (o) =>
-        `  (${q(o.id)}, ${q(o.name)}, ${q(o.kind)}, ${q(`{${o.levels.join(",")}}`)}::text[], ${j(o.description)}, ${j(o.eligibility)}, ${q(o.url)}, ${q(o.deadline)}::date, ${q(o.verifiedAt)}::date, ${q(o.status)})`,
+        `  (${q(o.id)}, ${q(o.name)}, ${q(o.kind)}, ${q(`{${o.levels.join(",")}}`)}::text[], ${q(o.country ?? "international")}, ${q(o.cost ?? "unknown")}, ${j(o.description)}, ${j(o.eligibility)}, ${q(o.url)}, ${q(o.deadline)}::date, ${q(o.verifiedAt)}::date, ${q(o.status)})`,
     )
     .join(",\n") + "\non conflict (id) do nothing;",
 );

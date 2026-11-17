@@ -8,6 +8,10 @@
       "kk": "Ата-анам мені дәрігер болғанымды қалады",
       "en": "My parents wanted me to become a doctor"
     },
+    "categories": [
+      "other-than-parents"
+    ],
+    "ageRange": "18-24",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",
@@ -86,6 +90,10 @@
       "kk": "Мен заңгерліктен дизайнға ауыстым",
       "en": "I switched from law to design"
     },
+    "categories": [
+      "changed-major"
+    ],
+    "ageRange": "18-24",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",
@@ -163,6 +171,10 @@
       "kk": "Еріктілік мені халықаралық дамуға алып келді",
       "en": "Volunteering led me to international development"
     },
+    "categories": [
+      "unexpected-passion"
+    ],
+    "ageRange": "18-24",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",
@@ -240,6 +252,10 @@
       "kk": "Менде идея болмады, сондықтан шағын тәжірибелер жасадым",
       "en": "I had no idea what I wanted, so I ran small experiments"
     },
+    "categories": [
+      "unsure"
+    ],
+    "ageRange": "18-24",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",
@@ -316,6 +332,10 @@
       "kk": "27 жасымда бағдарламалаудан қайта бастадым",
       "en": "At 27 I started again with programming"
     },
+    "categories": [
+      "from-zero"
+    ],
+    "ageRange": "25-34",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",
@@ -394,6 +414,10 @@
       "kk": "В 40 лет я начал новый путь",
       "en": "At 40 I began a new path"
     },
+    "categories": [
+      "from-zero"
+    ],
+    "ageRange": "35-plus",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",
@@ -472,6 +496,11 @@
       "kk": "Спорт төрешісінен жарыс ұйымдастырушысына дейін",
       "en": "From sports referee to competition organiser"
     },
+    "categories": [
+      "first-job",
+      "unexpected-passion"
+    ],
+    "ageRange": "18-24",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",
@@ -550,6 +579,11 @@
       "kk": "Шағын қаладан шетелде оқуға",
       "en": "From a small town to study abroad"
     },
+    "categories": [
+      "study-abroad",
+      "education-journey"
+    ],
+    "ageRange": "18-24",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",
@@ -631,6 +665,12 @@
       "kk": "Мен университетті тастап, кейін қайтып оралдым",
       "en": "I left university and then came back"
     },
+    "categories": [
+      "failed-restart",
+      "changed-major",
+      "education-journey"
+    ],
+    "ageRange": "18-24",
     "attribution": {
       "ru": "Демонстрационный пример (вымышлен)",
       "kk": "Демонстрациялық мысал (ойдан шығарылған)",

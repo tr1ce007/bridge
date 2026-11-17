@@ -228,6 +228,7 @@ const signedIn: SignedInOps = {
           experiment_id: x.experimentId,
           rating: x.rating,
           enjoyed_process: x.enjoyedProcess,
+          process_answer: x.answer ?? null,
           reflection: x.reflection,
           completed_at: x.completedAt,
         },
@@ -239,7 +240,7 @@ const signedIn: SignedInOps = {
     const rows = checkList(
       await c
         .from("experiment_completions")
-        .select("experiment_id,rating,enjoyed_process,reflection,completed_at")
+        .select("experiment_id,rating,enjoyed_process,process_answer,reflection,completed_at")
         .eq("user_id", uid)
         .order("completed_at", { ascending: false }),
     );
@@ -248,12 +249,14 @@ const signedIn: SignedInOps = {
         experiment_id: string;
         rating: number;
         enjoyed_process: boolean;
+        process_answer: ExperimentCompletion["answer"] | null;
         reflection: string;
         completed_at: string;
       }): ExperimentCompletion => ({
         experimentId: r.experiment_id,
         rating: r.rating,
         enjoyedProcess: r.enjoyed_process,
+        ...(r.process_answer ? { answer: r.process_answer } : {}),
         reflection: r.reflection,
         completedAt: r.completed_at,
       }),
@@ -376,7 +379,10 @@ interface StoryRow {
   source_name: string | null;
   attribution: Story["attribution"];
   published_at: string | null;
-  content: Pick<Story, "title" | "before" | "challenges" | "turningPoint" | "actions" | "now" | "advice">;
+  content: Pick<
+    Story,
+    "title" | "intro" | "categories" | "ageRange" | "before" | "challenges" | "turningPoint" | "actions" | "now" | "advice"
+  >;
   tags: Story["tags"];
   incomplete: string[] | null;
 }
@@ -411,6 +417,9 @@ export function storyToRow(s: Story, authorId: string | null) {
     published_at: s.publishedAt ?? null,
     content: {
       title: s.title,
+      ...(s.intro ? { intro: s.intro } : {}),
+      ...(s.categories?.length ? { categories: s.categories } : {}),
+      ...(s.ageRange ? { ageRange: s.ageRange } : {}),
       before: s.before,
       challenges: s.challenges,
       turningPoint: s.turningPoint,
@@ -460,6 +469,8 @@ export function createSupabaseContentStore(getClient: GetClient): ContentStore {
           name: string;
           kind: string;
           levels: string[];
+          country: string | null;
+          cost: string | null;
           description: unknown;
           eligibility: unknown;
           url: string;
@@ -473,6 +484,8 @@ export function createSupabaseContentStore(getClient: GetClient): ContentStore {
           name: r.name,
           kind: r.kind,
           levels: r.levels,
+          ...(r.country ? { country: r.country } : {}),
+          ...(r.cost ? { cost: r.cost } : {}),
           description: r.description,
           eligibility: r.eligibility,
           url: r.url,
