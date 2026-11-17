@@ -12,11 +12,8 @@ export function TryTeaser() {
       <ul className="grid gap-4 md:grid-cols-3">
         {EXAMPLES.map((ex, i) => (
           <Reveal as="li" key={ex} delay={i * 0.08} className="flex h-full flex-col justify-between gap-10 rounded-2xl border border-border bg-card p-7">
-              <span className="font-display text-sm font-semibold text-accent tabular-nums">0{i + 1}</span>
-              <div>
-                <h3 className="font-display text-xl font-semibold leading-snug tracking-tight">{t(ex)}</h3>
-                <p className="mt-3 text-sm text-muted">{t("duration")}</p>
-              </div>
+              <span className="font-display text-sm font-semibold text-accent-text tabular-nums">0{i + 1}</span>
+              <h3 className="font-display text-xl font-semibold leading-snug tracking-tight">{t(ex)}</h3>
             </Reveal>
         ))}
       </ul>

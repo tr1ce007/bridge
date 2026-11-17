@@ -10,7 +10,7 @@ export function OpportunitiesTeaser() {
       <Container>
         <Reveal>
           <div className="rounded-3xl bg-subtle px-6 py-12 sm:px-12 sm:py-16">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-accent">{t("eyebrow")}</p>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-accent-text">{t("eyebrow")}</p>
             <h2
               id="opportunities-title"
               className="max-w-3xl font-display text-3xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-5xl"

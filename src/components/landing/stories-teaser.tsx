@@ -15,11 +15,11 @@ export function StoriesTeaser() {
   const t = useTranslations("landing.stories");
   const kind = useTranslations("storyKind");
   return (
-    <Section id="stories">
+    <Section id="stories" labelledBy="stories-title">
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal>
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-accent">{t("eyebrow")}</p>
-          <h2 className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-5xl">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-accent-text">{t("eyebrow")}</p>
+          <h2 id="stories-title" className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-5xl">
             {t("title")}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted text-pretty">{t("lead")}</p>

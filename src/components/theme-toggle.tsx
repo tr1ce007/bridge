@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useSyncExternalStore } from "react";
-import { readStoredTheme, storeTheme, type Theme } from "@/lib/theme";
+import { ensureThemeApplied, readStoredTheme, storeTheme, type Theme } from "@/lib/theme";
 import { cn } from "@/lib/cn";
 
 function applyTheme(theme: Theme) {
@@ -22,8 +22,10 @@ export function ThemeToggle({ className }: { className?: string }) {
   const t = useTranslations("theme");
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  // Without an explicit choice, keep following the OS setting live.
   useEffect(() => {
+    ensureThemeApplied();
+
+    // Without an explicit choice, keep following the OS setting live.
     const media = matchMedia("(prefers-color-scheme: dark)");
     const onChange = (event: MediaQueryListEvent) => {
       if (!readStoredTheme()) applyTheme(event.matches ? "dark" : "light");

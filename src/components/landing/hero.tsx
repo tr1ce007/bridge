@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { Reveal } from "@/components/ui/reveal";
 import { HeroBridge } from "./hero-bridge";
 
 export function Hero() {
@@ -9,8 +8,8 @@ export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="pt-16 pb-12 sm:pt-28 sm:pb-16">
       <Container>
-        <Reveal className="max-w-4xl">
-          <p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+        <div className="max-w-4xl">
+          <p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent-text">
             <span className="h-px w-8 bg-accent" aria-hidden="true" />
             {t("eyebrow")}
           </p>
@@ -31,7 +30,7 @@ export function Hero() {
             </Button>
           </div>
           <p className="mt-5 text-sm text-muted">{t("note")}</p>
-        </Reveal>
+        </div>
         <div className="mt-16 sm:mt-20">
           <HeroBridge />
         </div>

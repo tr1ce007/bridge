@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 
 type RevealProps = {
   children: ReactNode;
@@ -12,19 +13,17 @@ type RevealProps = {
 };
 
 /**
- * Fades content up once when it scrolls into view. Reduced-motion users get a
- * plain fade via <MotionProvider> (MotionConfig reducedMotion="user").
+ * Fades content up when it scrolls into view. Server HTML is always visible
+ * (see useRevealOnScroll). Reduced motion is handled by <MotionProvider>.
  */
 export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
+  const { ref, controls } = useRevealOnScroll<HTMLDivElement & HTMLLIElement>(
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] } },
+  );
   const Component = as === "li" ? motion.li : motion.div;
   return (
-    <Component
-      className={className}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <Component ref={ref} className={className} initial={false} animate={controls}>
       {children}
     </Component>
   );

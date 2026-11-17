@@ -11,7 +11,7 @@ export function Problem() {
       <ol className="grid gap-10 sm:grid-cols-3 sm:gap-8">
         {POINTS.map((p, i) => (
           <Reveal as="li" key={p} delay={i * 0.08} className="border-t border-border pt-6">
-              <span className="font-display text-sm font-semibold text-accent tabular-nums">0{i + 1}</span>
+              <span className="font-display text-sm font-semibold text-accent-text tabular-nums">0{i + 1}</span>
               <h3 className="mt-3 font-display text-xl font-semibold tracking-tight">{t(`${p}Title`)}</h3>
               <p className="mt-2 leading-relaxed text-muted">{t(`${p}Text`)}</p>
             </Reveal>

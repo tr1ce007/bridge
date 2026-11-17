@@ -6,7 +6,7 @@ type Tone = "neutral" | "primary" | "accent" | "warning";
 const tones: Record<Tone, string> = {
   neutral: "border-border text-muted",
   primary: "border-primary/30 text-primary dark:text-[var(--ring)]",
-  accent: "border-accent/40 text-accent",
+  accent: "border-accent/40 text-accent-text",
   warning: "border-amber-600/40 text-amber-700 dark:text-amber-400",
 };
 

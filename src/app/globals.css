@@ -6,7 +6,9 @@
 /*
  * Design tokens. Components use them through Tailwind colour utilities
  * (bg-bg, text-fg, text-muted, bg-card, border-border, bg-primary,
- * text-primary-fg, text-accent, bg-subtle) or directly as var(--token).
+ * text-primary-fg, bg-accent / border-accent, text-accent-text, bg-subtle)
+ * --accent is for lines and fills; small accent-coloured text uses
+ * --accent-text, which meets contrast on light backgrounds or directly as var(--token).
  */
 :root {
   --bg: #fafaf8;
@@ -19,6 +21,7 @@
   --primary-fg: #ffffff;
   --primary-hover: #183f80;
   --accent: #b8935a;
+  --accent-text: #8a6a3b;
   --ring: #1f4e9c;
   color-scheme: light;
 }
@@ -34,6 +37,7 @@
   --primary-fg: #ffffff;
   --primary-hover: #4f7fd6;
   --accent: #c9a56e;
+  --accent-text: #c9a56e;
   --ring: #7fa4e8;
   color-scheme: dark;
 }
@@ -67,6 +71,7 @@
   --color-primary-fg: var(--primary-fg);
   --color-primary-hover: var(--primary-hover);
   --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
   --color-ring: var(--ring);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -95,8 +100,39 @@ body {
   outline-offset: 2px;
 }
 
+/*
+ * CSS-only intro animations. Only active under html.js (set by the inline
+ * head script), so without JS the artwork is simply visible.
+ * Use on SVG shapes with pathLength="1"; stagger with style --draw-delay.
+ */
+.js .draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.6s cubic-bezier(0.65, 0, 0.35, 1) var(--draw-delay, 0s) forwards;
+}
+.js .fade-in {
+  opacity: 0;
+  animation: fade-in 0.4s ease var(--draw-delay, 0s) forwards;
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .js .draw,
+  .js .fade-in {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }

@@ -105,7 +105,6 @@
       "example1": "Sketch a simple app screen",
       "example2": "Work through a real case like a lawyer",
       "example3": "Write your first program",
-      "duration": "≈ 30–60 minutes",
       "cta": "Pick an experiment"
     },
     "opportunities": {
@@ -133,5 +132,11 @@
       "lead": "Answer the first one — we'll work through the rest together.",
       "cta": "Start exploring"
     }
+  },
+  "notFound": {
+    "code": "Error 404",
+    "title": "This page doesn't exist yet.",
+    "lead": "We may still be building it — or the address has a typo.",
+    "cta": "Back to home"
   }
 }
