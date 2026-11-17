@@ -5,7 +5,7 @@ import { chosen } from "@/lib/questionnaire/bank";
 import { answerTagEntries, scaleValue, splitTag, type AnswerTag, type TagRef } from "@/lib/matching/answer-tags";
 import { matchStories } from "@/lib/matching/match";
 import { tagLabel } from "@/lib/matching/tag-labels";
-import { describeChoice, optionLabel } from "./answer-labels";
+import { describeChoice, isKnownValue, optionLabel } from "./answer-labels";
 import { DIRECTION_CATALOGUE, getDirection, type DirectionEntry, type ScaleId } from "./directions";
 import { FALLBACK_COPY as C, fill } from "./fallback-copy";
 import type { DiscoveryReport, RoadmapItem } from "./schema";
@@ -185,8 +185,13 @@ function answerOf(answers: Answer[], id: string): Answer {
   return answers.find((a) => a.questionId === id) ?? { questionId: id, value: "", skipped: true };
 }
 
+/** Chosen option keys that the bank defines (client-made-up values are ignored). */
+function known(answers: Answer[], id: string): string[] {
+  return chosen(answers, id).filter((v) => isKnownValue(id, v));
+}
+
 function labels(answers: Answer[], id: string, locale: Locale, max = 5): string[] {
-  return chosen(answers, id)
+  return known(answers, id)
     .slice(0, max)
     .map((v) => lowerFirst(optionLabel(locale, id, v)));
 }
@@ -194,7 +199,7 @@ function labels(answers: Answer[], id: string, locale: Locale, max = 5): string[
 function startingPoint(answers: Answer[], locale: Locale): string {
   const parts: string[] = [];
   const stage = labels(answers, "A2", locale)[0];
-  const age = chosen(answers, "A1").map((v) => optionLabel(locale, "A1", v))[0];
+  const age = known(answers, "A1").map((v) => optionLabel(locale, "A1", v))[0];
   if (stage || age) parts.push(fill(C.startStage[locale], { stage: stage ?? C.nothingYet[locale], age: age ?? C.nothingYet[locale] }));
   const interests = chosen(answers, "B1");
   if (interests.includes("unsure") || interests.length === 0) parts.push(C.startUnsure[locale]);
@@ -242,7 +247,9 @@ function unnoticed(answers: Answer[], locale: Locale, tags: Set<TagRef>): string
   if (tags.has("fears:judgement")) out.push(C.unnoticedCompare[locale]);
   if (tags.has("challenges:language")) out.push(C.unnoticedLanguage[locale]);
   if (chosen(answers, "E1").includes("noIdea") || chosen(answers, "B1").includes("unsure")) out.push(C.unnoticedNoIdea[locale]);
-  const experience = labels(answers, "D1", locale).filter((_, i) => chosen(answers, "D1")[i] !== "none");
+  const experience = known(answers, "D1")
+    .filter((v) => v !== "none")
+    .map((v) => lowerFirst(optionLabel(locale, "D1", v)));
   if (experience.length) out.push(fill(C.unnoticedExperience[locale], { list: join(experience, locale) }));
   if (!out.length) out.push(C.unnoticedDefault[locale]);
   return out.slice(0, 4);

@@ -8,6 +8,8 @@ import { AIError, toAIError, type AIProvider } from "./types";
 export const DEFAULT_ANTHROPIC_MODEL = "claude-sonnet-5-5";
 /** Server-side refusal fallback; `fallbacks: "default"` needs this beta (claude-api docs). */
 const FALLBACK_BETA = "server-side-fallback-2026-07-01";
+const DEFAULT_JSON_TIMEOUT_MS = 45_000;
+const DEFAULT_STREAM_TIMEOUT_MS = 50_000;
 
 /**
  * Anthropic provider. No temperature / top_p / top_k and no `thinking` field (adaptive thinking is
@@ -15,7 +17,8 @@ const FALLBACK_BETA = "server-side-fallback-2026-07-01";
  * checked: a refusal or a `max_tokens` cut is an error, so callers fall back to rule-based output.
  */
 export function createAnthropicProvider(opts: { apiKey: string; model?: string }): AIProvider {
-  const client = new Anthropic({ apiKey: opts.apiKey, timeout: 90_000, maxRetries: 1 });
+  // No automatic retries: a retry could outlive the route's maxDuration and skip the fallback.
+  const client = new Anthropic({ apiKey: opts.apiKey, timeout: DEFAULT_JSON_TIMEOUT_MS, maxRetries: 0 });
   const model = opts.model || DEFAULT_ANTHROPIC_MODEL;
 
   function checkStop(stop: string | null | undefined) {
@@ -37,7 +40,7 @@ export function createAnthropicProvider(opts: { apiKey: string; model?: string }
           system: options.system,
           messages,
           output_config: { effort: options.effort, format: betaZodOutputFormat(schema) },
-        });
+        }, { timeout: options.timeoutMs ?? DEFAULT_JSON_TIMEOUT_MS, maxRetries: 0 });
       } catch (e) {
         throw new AIError("http", e instanceof Anthropic.APIError ? `API error ${e.status}: ${e.message}` : toAIError(e).message);
       }
@@ -49,37 +52,50 @@ export function createAnthropicProvider(opts: { apiKey: string; model?: string }
 
     streamChat(messages, options) {
       let stream: ReturnType<typeof client.beta.messages.stream> | undefined;
+      let cancelled = false;
       return new ReadableStream<Uint8Array>({
         async start(controller) {
-          const fail = (e: unknown) => {
-            const note = options.onFailure?.(toAIError(e));
-            if (note) controller.enqueue(encodeText(note));
+          const push = (text: string) => {
+            if (cancelled) return;
+            try {
+              controller.enqueue(encodeText(text));
+            } catch {
+              // reader already gone
+            }
           };
           try {
-            stream = client.beta.messages.stream({
-              model,
-              max_tokens: options.maxTokens ?? 4000,
-              betas: [FALLBACK_BETA],
-              fallbacks: "default",
-              system: options.system,
-              messages,
-              output_config: { effort: options.effort ?? "low" },
-            });
-            stream.on("text", (delta: string) => {
-              try {
-                controller.enqueue(encodeText(delta));
-              } catch {
-                // the reader went away (cancelled); `cancel()` aborts the request
-              }
-            });
+            stream = client.beta.messages.stream(
+              {
+                model,
+                max_tokens: options.maxTokens ?? 4000,
+                betas: [FALLBACK_BETA],
+                fallbacks: "default",
+                system: options.system,
+                messages,
+                output_config: { effort: options.effort ?? "low" },
+              },
+              { timeout: options.timeoutMs ?? DEFAULT_STREAM_TIMEOUT_MS, maxRetries: 0 },
+            );
+            stream.on("text", (delta: string) => push(delta));
             const final = await stream.finalMessage();
             checkStop(final.stop_reason);
           } catch (e) {
-            fail(e);
+            // A reader that cancelled is not a failure: no log, nothing to append.
+            if (!cancelled) {
+              const note = options.onFailure?.(toAIError(e));
+              if (note) push(note);
+            }
           }
-          controller.close();
+          if (!cancelled) {
+            try {
+              controller.close();
+            } catch {
+              // already closed / errored
+            }
+          }
         },
         cancel() {
+          cancelled = true;
           stream?.abort();
         },
       });

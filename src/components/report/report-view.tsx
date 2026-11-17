@@ -13,7 +13,11 @@ import { ReportSection } from "./report-section";
 import { RoadmapEditor } from "./roadmap-editor";
 import { StoryMatchCard } from "./story-match-card";
 
-type Load = { kind: "loading" } | { kind: "missing" } | { kind: "ready"; report: DiscoveryReport; stories: Map<string, Story> };
+type Load =
+  | { kind: "loading" }
+  | { kind: "missing" }
+  /** `latest`: this is the newest report, whose plan is also the working roadmap (dashboard). */
+  | { kind: "ready"; report: DiscoveryReport; stories: Map<string, Story>; latest: boolean };
 
 const SECTIONS = ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"] as const;
 
@@ -42,8 +46,11 @@ export function ReportView({ id }: { id: string }) {
     let cancelled = false;
     (async () => {
       let report: DiscoveryReport | undefined;
+      let latest = false;
       try {
-        report = (await getUserStore().listReports()).find((r) => r.id === id);
+        const reports = await getUserStore().listReports(); // newest first
+        report = reports.find((r) => r.id === id);
+        latest = reports[0]?.id === id;
       } catch {
         report = undefined;
       }
@@ -56,25 +63,29 @@ export function ReportView({ id }: { id: string }) {
       } catch {
         // story cards are skipped when content cannot be loaded
       }
-      if (!cancelled) setLoad({ kind: "ready", report, stories });
+      if (!cancelled) setLoad({ kind: "ready", report, stories, latest });
     })();
     return () => {
       cancelled = true;
     };
   }, [id]);
 
-  const saveRoadmap = useCallback((roadmap: Roadmap) => {
-    setLoad((prev) => {
-      if (prev.kind !== "ready") return prev;
-      const report = { ...prev.report, roadmap };
+  const saveRoadmap = useCallback(
+    (roadmap: Roadmap) => {
+      if (load.kind !== "ready") return;
+      const report = { ...load.report, roadmap };
+      setLoad({ ...load, report });
+      // Side effects stay outside the state updater. Saves are queued so an older save never
+      // overwrites a newer one. Only the newest report's plan replaces the working roadmap.
       const store = getUserStore();
+      const latest = load.latest;
       queue.current = queue.current
-        .then(() => Promise.all([store.saveReport(report), store.saveRoadmap(roadmap)]))
+        .then(() => Promise.all([store.saveReport(report), latest ? store.saveRoadmap(roadmap) : undefined]))
         .then(() => setSaveState("saved"))
         .catch(() => setSaveState("error"));
-      return { ...prev, report };
-    });
-  }, []);
+    },
+    [load],
+  );
 
   if (load.kind === "loading") {
     return (
@@ -115,7 +126,7 @@ export function ReportView({ id }: { id: string }) {
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl">{t("title")}</h1>
           <p className="mt-4 text-sm text-muted">{t("createdAt", { date: format.dateTime(new Date(report.createdAt), { dateStyle: "long" }) })}</p>
           <div className="mt-8 grid gap-3 lg:max-w-3xl">
-            {report.demo && <DemoBanner />}
+            {report.demo && <DemoBanner reason={report.demoReason} />}
             {memory && (
               <p role="status" className="rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm text-amber-800 dark:text-amber-300">
                 {t("memoryNotice")}

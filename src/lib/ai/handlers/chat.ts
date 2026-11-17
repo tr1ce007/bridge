@@ -22,9 +22,9 @@ const input = z.object({
  * Demo mode streams a short localized note with links to /explore, /stories and /try.
  */
 export async function handleChat(request: Request): Promise<Response> {
-  const body = await readBody(request);
-  const limited = rateLimited(request, "chat", looseLocale(body));
+  const limited = rateLimited(request, "chat");
   if (limited) return limited;
+  const body = await readBody(request);
   const parsed = input.safeParse(body);
   if (!parsed.success) return badRequest(looseLocale(body));
   const { locale, memoryConsent, profileSummary } = parsed.data;
@@ -38,6 +38,7 @@ export async function handleChat(request: Request): Promise<Response> {
     system: chatSystemPrompt(locale, memoryConsent ? profileSummary : undefined),
     effort: "low",
     maxTokens: 4000,
+    timeoutMs: 50_000,
     locale,
     onFailure: (err) => {
       void logAIFailure({ route: "chat", provider: provider.name, kind: err.kind, message: err.message, locale });

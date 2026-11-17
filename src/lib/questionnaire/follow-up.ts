@@ -19,6 +19,8 @@ export interface FollowUpContext {
   /** The bank question that was just answered. */
   questionId: string;
   locale: Locale;
+  /** Aborted when the UI gives up (timeout) or the person moves on. */
+  signal?: AbortSignal;
 }
 
 /**
@@ -54,6 +56,7 @@ export const fetchFollowUp: FetchFollowUp = async (answers, context) => {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ answers, locale: context.locale, questionId: context.questionId }),
+      signal: context.signal,
     });
     if (!res.ok) return null;
     const data = (await res.json()) as { followUp?: { question?: string } | null };

@@ -35,6 +35,8 @@ export const reportSchema = z.object({
   locale: z.enum(["ru", "kk", "en"]),
   /** true when built by the rule-based algorithm (no AI key / AI failed). */
   demo: z.boolean(),
+  /** Why a demo report was built: no AI configured, or the AI call failed. Absent on AI reports. */
+  demoReason: z.enum(["not-configured", "failed"]).optional(),
   startingPoint: z.string(),
   patterns: z.array(z.string()),
   unnoticed: z.array(z.string()),

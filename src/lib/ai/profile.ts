@@ -3,7 +3,7 @@ import { OTHER_PREFIX, getQuestion } from "@/lib/questionnaire/bank";
 import { followUpSource, isFollowUpId } from "@/lib/questionnaire/engine";
 import { answersToTags } from "@/lib/matching/answer-tags";
 import { AXES } from "@/lib/data/types";
-import { optionLabel, questionTitle, scaleEnds } from "@/lib/report/answer-labels";
+import { isKnownValue, optionLabel, questionTitle, scaleEnds } from "@/lib/report/answer-labels";
 import { wrapAsData } from "./sanitize";
 
 /**
@@ -17,8 +17,9 @@ export function buildProfileSummary(answers: Answer[], locale: Locale): string {
     if (a.skipped) continue;
     if (isFollowUpId(a.questionId)) {
       const [question = "", reply = ""] = Array.isArray(a.value) ? a.value : [a.value];
-      if (!reply.trim()) continue;
       const src = followUpSource(a.questionId);
+      // Only `fu:<known bank id>`; the id itself is printed raw, so it must be one of ours.
+      if (!reply.trim() || !getQuestion(src)) continue;
       lines.push(
         `- [${a.questionId}] follow-up to ${src}: ${wrapAsData(`followup-question:${src}`, question)} → ${wrapAsData(`answer:${a.questionId}`, reply)}`,
       );
@@ -32,7 +33,9 @@ export function buildProfileSummary(answers: Answer[], locale: Locale): string {
       if (text) lines.push(`- [${q.id}] ${title}: ${wrapAsData(`answer:${q.id}`, text)}`);
       continue;
     }
-    const values = (Array.isArray(a.value) ? a.value : [a.value]).filter((v) => v !== "");
+    // Unknown option keys / out-of-range scale values are dropped: only bank-defined labels are
+    // printed raw; free text ("other:") is wrapped as data below.
+    const values = (Array.isArray(a.value) ? a.value : [a.value]).filter((v) => v !== "" && isKnownValue(q.id, v));
     if (!values.length) continue;
     const shown = values.map((v) =>
       v.startsWith(OTHER_PREFIX) ? wrapAsData(`answer:${q.id}:other`, v.slice(OTHER_PREFIX.length).trim()) : optionLabel(locale, q.id, v),

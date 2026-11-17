@@ -25,12 +25,30 @@ export function questionTitle(locale: Locale, id: string): string {
   return Q[locale][id]?.title ?? id;
 }
 
-/** Label of an option key, a scale value ("3 / 5") or the free text of an `other:` entry. */
-export function optionLabel(locale: Locale, id: string, value: string): string {
-  if (value.startsWith(OTHER_PREFIX)) return value.slice(OTHER_PREFIX.length).trim();
+const SCALE_VALUES = new Set(["1", "2", "3", "4", "5"]);
+
+/**
+ * True when `value` is something the bank defines for question `id`: an option key, a scale value
+ * 1–5, or an `other:` free-text entry where the question allows one. Anything else is a value the
+ * client made up and must not be shown or put into a prompt.
+ */
+export function isKnownValue(id: string, value: string): boolean {
   const q = getQuestion(id);
-  if (q?.type === "scale") return `${value} / 5`;
-  return copy(locale, id)?.options?.[value] ?? value;
+  if (!q || q.type === "text") return false;
+  if (value.startsWith(OTHER_PREFIX)) return Boolean(q.allowOther);
+  if (q.type === "scale") return SCALE_VALUES.has(value);
+  return Boolean(q.options?.includes(value));
+}
+
+/**
+ * Label of a known option key, a scale value ("3 / 5") or the free text of an `other:` entry.
+ * Unknown values return "" (callers should filter with `isKnownValue` first).
+ */
+export function optionLabel(locale: Locale, id: string, value: string): string {
+  if (!isKnownValue(id, value)) return "";
+  if (value.startsWith(OTHER_PREFIX)) return value.slice(OTHER_PREFIX.length).trim();
+  if (getQuestion(id)?.type === "scale") return `${value} / 5`;
+  return copy(locale, id)?.options?.[value] ?? "";
 }
 
 /** Text of a scale's ends, e.g. "1 = Лучше самому, 5 = Лучше в команде". */
@@ -44,7 +62,7 @@ export function describeChoice(locale: Locale, answer: Answer): string | null {
   if (answer.skipped || isFollowUpId(answer.questionId)) return null;
   const q = getQuestion(answer.questionId);
   if (!q || q.type === "text") return null;
-  const values = (Array.isArray(answer.value) ? answer.value : [answer.value]).filter((v) => v !== "");
+  const values = (Array.isArray(answer.value) ? answer.value : [answer.value]).filter((v) => v !== "" && isKnownValue(q.id, v));
   if (!values.length) return null;
   return `${questionTitle(locale, q.id)} — ${values.map((v) => optionLabel(locale, q.id, v)).join(", ")}`;
 }

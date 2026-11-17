@@ -20,9 +20,9 @@ const none = () => Response.json({ followUp: null });
  * (the client-side engine cap stays authoritative). Demo mode or any error -> null.
  */
 export async function handleFollowUp(request: Request): Promise<Response> {
-  const body = await readBody(request);
-  const limited = rateLimited(request, "followup", looseLocale(body));
+  const limited = rateLimited(request, "followup");
   if (limited) return limited;
+  const body = await readBody(request);
   const parsed = input.safeParse(body);
   if (!parsed.success) return badRequest(looseLocale(body));
   const { answers, locale, questionId } = parsed.data;
@@ -42,6 +42,7 @@ export async function handleFollowUp(request: Request): Promise<Response> {
       system: followUpSystemPrompt(locale),
       effort: "low",
       maxTokens: 2000,
+      timeoutMs: 10_000, // the questionnaire UI gives up after 6 s anyway
       schemaName: "follow_up",
     });
     const parsedOut = followUpSchema.parse(out);

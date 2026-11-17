@@ -33,10 +33,19 @@ export function looseLocale(body: unknown): Locale {
   return LOCALES.includes(l as Locale) ? (l as Locale) : "ru";
 }
 
-/** 429 with a localized message, or null when the request may proceed. */
-export function rateLimited(request: Request, route: string, locale: Locale): Response | null {
+/** First supported language of Accept-Language, else "ru" (the body is not read yet). */
+export function headerLocale(request: Request): Locale {
+  const first = request.headers.get("accept-language")?.split(",")[0]?.trim().slice(0, 2).toLowerCase();
+  return LOCALES.includes(first as Locale) ? (first as Locale) : "ru";
+}
+
+/**
+ * Checked before the body is parsed, so a flood of large bodies is rejected cheaply.
+ * 429 with a message in the Accept-Language locale ("ru" when unknown), or null to proceed.
+ */
+export function rateLimited(request: Request, route: string): Response | null {
   if (aiRateLimit(request, route)) return null;
-  return Response.json({ error: aiCopy(locale, "rateLimited") }, { status: 429, headers: { "retry-after": "60" } });
+  return Response.json({ error: aiCopy(headerLocale(request), "rateLimited") }, { status: 429, headers: { "retry-after": "60" } });
 }
 
 export function badRequest(locale: Locale): Response {

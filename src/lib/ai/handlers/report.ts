@@ -25,11 +25,14 @@ async function loadStories(): Promise<Story[]> {
   }
 }
 
-/** POST /api/ai/report: {answers, locale} -> {report, demo}. Any AI problem -> rule-based report. */
+/**
+ * POST /api/ai/report: {answers, locale} -> {report, demo, fallbackReason?}. Any AI problem ->
+ * rule-based report with fallbackReason "failed"; no AI configured -> "not-configured".
+ */
 export async function handleReport(request: Request): Promise<Response> {
-  const body = await readBody(request);
-  const limited = rateLimited(request, "report", looseLocale(body));
+  const limited = rateLimited(request, "report");
   if (limited) return limited;
+  const body = await readBody(request);
   const parsed = input.safeParse(body);
   if (!parsed.success) return badRequest(looseLocale(body));
   const { answers, locale } = parsed.data;
@@ -39,16 +42,18 @@ export async function handleReport(request: Request): Promise<Response> {
 
   const stories = await loadStories();
   const candidates = matchStories(answers, stories, 5, locale);
-  const fallback = () => Response.json({ report: buildFallbackReport(answers, locale, { stories }), demo: true });
+  const fallback = (reason: "not-configured" | "failed") =>
+    Response.json({ report: { ...buildFallbackReport(answers, locale, { stories }), demoReason: reason }, demo: true, fallbackReason: reason });
 
   const provider = getProvider();
-  if (provider.name === "demo") return fallback();
+  if (provider.name === "demo") return fallback("not-configured");
 
   try {
     const out = await provider.generateJSON(aiReportSchema, buildReportMessages({ answers, locale, candidates, experiments: bundledExperiments }), {
       system: reportSystemPrompt(locale),
       effort: "medium",
       maxTokens: 16000,
+      timeoutMs: 45_000, // route maxDuration is 60 s: leave time for the fallback
       schemaName: "discovery_report",
     });
     const report = assembleReport(out, { locale, candidateIds: candidates.map((c) => c.story.id) });
@@ -56,6 +61,6 @@ export async function handleReport(request: Request): Promise<Response> {
   } catch (e) {
     const err = e instanceof z.ZodError ? { kind: "schema" as const, message: "report does not match the schema" } : toAIError(e);
     await logAIFailure({ route: "report", provider: provider.name, kind: err.kind, message: err.message, locale });
-    return fallback();
+    return fallback("failed");
   }
 }

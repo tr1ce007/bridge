@@ -506,6 +506,8 @@
     "createdAt": "Built {date}",
     "demoBanner": "Demo mode: AI is not connected — this report was built by rules",
     "demoBannerLead": "Directions were picked by an algorithm from your answers. Once AI is connected, the report will be more detailed.",
+    "demoBannerFailed": "AI is unavailable right now — this report was built by rules",
+    "demoBannerFailedLead": "We couldn't reach the AI, so directions were picked by an algorithm from your answers. You can take the questionnaire again later.",
     "explorationNote": "This is exploration, not prediction. There are no verdicts here about who you should be — only hypotheses you can test in practice.",
     "loadingTitle": "Building your report",
     "stage1": "Reading your answers…",

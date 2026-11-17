@@ -51,6 +51,8 @@ describe("POST /api/ai/report", () => {
     expect(body.demo).toBe(true);
     expect(reportSchema.safeParse(body.report).success).toBe(true);
     expect(body.report.demo).toBe(true);
+    expect(body.fallbackReason).toBe("failed");
+    expect(body.report.demoReason).toBe("failed");
     // the failure is logged as a structured line (no Supabase configured in tests)
     const logged = errorSpy.mock.calls.map((c: unknown[]) => String(c[0])).join("\n");
     expect(logged).toContain("ai_failure");
@@ -89,8 +91,15 @@ describe("POST /api/ai/report", () => {
           { storyId: "demo-small-town-abroad", relevance: "high", why: ["w"], differences: ["d"] },
           { storyId: "made-up-story", relevance: "high", why: ["w"], differences: ["d"] },
         ],
-        unexpected: [{ name: "Sports management", why: "w" }],
-        experiments: [{ title: "Try it", description: "d", experimentId: "exp-programming-first" }],
+        unexpected: [
+          { name: "Sports management", why: "w" },
+          { name: "Second", why: "w" },
+          { name: "Third", why: "w" },
+        ],
+        experiments: [
+          { title: "Try it", description: "d", experimentId: "exp-programming-first" },
+          { title: "Made up", description: "d", experimentId: "exp-does-not-exist" },
+        ],
         roadmap: { d7: ["one"], d30: ["two"], d90: ["three"] },
       });
     });
@@ -101,6 +110,8 @@ describe("POST /api/ai/report", () => {
     expect(reportSchema.safeParse(body.report).success).toBe(true);
     expect(body.report.stories.map((s: { storyId: string }) => s.storyId)).toEqual(["demo-small-town-abroad"]);
     expect(body.report.roadmap.d7[0]).toMatchObject({ text: "one", done: false });
+    expect(body.report.unexpected).toHaveLength(2);
+    expect(body.report.experiments.map((e: { experimentId?: string }) => e.experimentId)).toEqual(["exp-programming-first", undefined]);
     expect(seenSystem).toMatch(/never predict/i);
   });
 
@@ -117,6 +128,8 @@ describe("POST /api/ai/report", () => {
     const body = await res.json();
     expect(body.demo).toBe(true);
     expect(body.report.locale).toBe("kk");
+    expect(body.fallbackReason).toBe("not-configured");
+    expect(body.report.demoReason).toBe("not-configured");
     expect(errorSpy).not.toHaveBeenCalled();
   });
 });
@@ -166,7 +179,7 @@ describe("POST /api/ai/followup and /api/ai/chat in demo mode", () => {
     const req = () =>
       new Request("http://localhost/api/ai/followup", {
         method: "POST",
-        headers: { "content-type": "application/json", "x-forwarded-for": "10.9.9.9" },
+        headers: { "content-type": "application/json", "x-forwarded-for": "10.9.9.9", "accept-language": "en-US,en;q=0.9" },
         body: JSON.stringify({ answers: [], locale: "en", questionId: "B2" }),
       });
     const limit = Number(process.env.RATE_LIMIT_PER_MINUTE || 10);

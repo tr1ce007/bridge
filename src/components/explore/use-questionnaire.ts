@@ -27,8 +27,16 @@ export type View =
 
 const FOLLOW_UP_TIMEOUT_MS = 6000;
 
-function withTimeout<T>(p: Promise<T>, ms: number): Promise<T | null> {
-  return Promise.race([p, new Promise<null>((resolve) => setTimeout(() => resolve(null), ms))]);
+/** Resolves null after `ms` and aborts `controller`, so the underlying request stops too. */
+function withTimeout<T>(p: Promise<T>, ms: number, controller: AbortController): Promise<T | null> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<null>((resolve) => {
+    timer = setTimeout(() => {
+      controller.abort();
+      resolve(null);
+    }, ms);
+  });
+  return Promise.race([p, timeout]).finally(() => clearTimeout(timer));
 }
 
 /** Questionnaire state: restore, autosave after each answer, navigation (next / back / edit / restart). */
@@ -45,6 +53,17 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
   const sessionRef = useRef<QuestionnaireSession | null>(null);
   const saveQueue = useRef<Promise<unknown>>(Promise.resolve());
   const viewToken = useRef(0);
+  /** The pending follow-up request, aborted on timeout, navigation or unmount. */
+  const lookup = useRef<AbortController | null>(null);
+
+  /** The person moved on: ignore and abort a pending follow-up lookup. */
+  const cancelLookup = useCallback(() => {
+    viewToken.current++;
+    lookup.current?.abort();
+    lookup.current = null;
+  }, []);
+
+  useEffect(() => () => lookup.current?.abort(), []);
 
   // ---- restore
   useEffect(() => {
@@ -119,11 +138,18 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
       const followUps = nextAnswers.filter((a) => isFollowUpId(a.questionId)).length;
       const wrote = q.type === "text" && !answer.skipped;
       if (fetchFollowUp && wrote && followUps < MAX_FOLLOW_UPS && nextAnswers.length < MAX_QUESTIONS) {
-        const token = ++viewToken.current;
+        cancelLookup();
+        const token = viewToken.current;
+        const controller = new AbortController();
+        lookup.current = controller;
         setView({ kind: "followUpLoading" });
         let found: FollowUp | null = null;
         try {
-          found = await withTimeout(fetchFollowUp(nextAnswers, { questionId: q.id, locale }), FOLLOW_UP_TIMEOUT_MS);
+          found = await withTimeout(
+            fetchFollowUp(nextAnswers, { questionId: q.id, locale, signal: controller.signal }),
+            FOLLOW_UP_TIMEOUT_MS,
+            controller,
+          );
         } catch {
           found = null;
         }
@@ -135,7 +161,7 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
       }
       goNext(nextAnswers);
     },
-    [commit, fetchFollowUp, goNext, locale],
+    [cancelLookup, commit, fetchFollowUp, goNext, locale],
   );
 
   const answerFollowUp = useCallback(
@@ -158,7 +184,7 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
   );
 
   const back = useCallback(() => {
-    viewToken.current++; // cancel a pending follow-up lookup
+    cancelLookup();
     setInteracted(true);
     const current = sessionRef.current?.answers ?? [];
     setView((v) => {
@@ -167,19 +193,19 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
       const prev = previousQuestion(current, v.kind === "question" ? v.id : null);
       return prev ? { kind: "question", id: prev.id } : v;
     });
-  }, []);
+  }, [cancelLookup]);
 
   const editQuestion = useCallback((id: string, fromReview = true) => {
-    viewToken.current++;
+    cancelLookup();
     setInteracted(true);
     setView({ kind: "question", id, fromReview });
-  }, []);
+  }, [cancelLookup]);
 
   const openReview = useCallback(() => {
-    viewToken.current++;
+    cancelLookup();
     setInteracted(true);
     setView({ kind: "review" });
-  }, []);
+  }, [cancelLookup]);
 
   const continueFromReview = useCallback(() => {
     setInteracted(true);
@@ -188,7 +214,7 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
 
   /** Clears the questionnaire session only (reports, roadmap, journal, saved items stay). */
   const restart = useCallback(() => {
-    viewToken.current++;
+    cancelLookup();
     const fresh = createSession();
     sessionRef.current = fresh;
     setSession(fresh);
@@ -196,7 +222,7 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
     setResumed(false);
     setInteracted(false);
     setView({ kind: "intro" });
-  }, [persist]);
+  }, [cancelLookup, persist]);
 
   const currentQuestion = view.kind === "question" ? (getQuestion(view.id) ?? null) : null;
 
