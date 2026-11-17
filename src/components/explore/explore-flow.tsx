@@ -2,11 +2,11 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { getQuestion } from "@/lib/questionnaire/bank";
-import { pendingQuestions, progress } from "@/lib/questionnaire/engine";
+import { pendingQuestions, previousQuestion, progress } from "@/lib/questionnaire/engine";
 import { fetchFollowUp as defaultFetchFollowUp, type FetchFollowUp } from "@/lib/questionnaire/follow-up";
 import { CompleteScreen } from "./complete-screen";
 import { ProgressBar } from "./progress-bar";
@@ -29,6 +29,19 @@ export function ExploreFlow({ fetchFollowUp = defaultFetchFollowUp }: { fetchFol
   const qn = useQuestionnaire(fetchFollowUp);
   const [confirmRestart, setConfirmRestart] = useState(false);
   const topRef = useRef<HTMLDivElement>(null);
+  const restartBtnRef = useRef<HTMLButtonElement>(null);
+  const wasConfirming = useRef(false);
+
+  const cancelRestart = useCallback(() => setConfirmRestart(false), []);
+
+  // When the restart dialog closes, put focus back on the Restart button (it is gone after a
+  // confirmed restart, so fall back to the top of the flow).
+  useEffect(() => {
+    if (wasConfirming.current && !confirmRestart) {
+      (restartBtnRef.current ?? topRef.current)?.focus({ preventScroll: true });
+    }
+    wasConfirming.current = confirmRestart;
+  }, [confirmRestart]);
 
   const { view, answers } = qn;
   const q = qn.currentQuestion;
@@ -48,7 +61,7 @@ export function ExploreFlow({ fetchFollowUp = defaultFetchFollowUp }: { fetchFol
 
   return (
     <Container className="py-8 sm:py-14">
-      <div ref={topRef} className="mx-auto max-w-2xl scroll-mt-20">
+      <div ref={topRef} tabIndex={-1} style={{ outline: "none" }} className="mx-auto max-w-2xl scroll-mt-20">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-text">{t("eyebrow")}</p>
         <h1 className="sr-only">{t("pageHeading")}</h1>
 
@@ -84,7 +97,7 @@ export function ExploreFlow({ fetchFollowUp = defaultFetchFollowUp }: { fetchFol
         <div className="mt-6 rounded-3xl border border-border bg-card p-6 sm:p-10" aria-busy={!qn.ready}>
           {confirmRestart && (
             <RestartConfirm
-              onCancel={() => setConfirmRestart(false)}
+              onCancel={cancelRestart}
               onConfirm={() => {
                 setConfirmRestart(false);
                 qn.restart();
@@ -129,7 +142,7 @@ export function ExploreFlow({ fetchFollowUp = defaultFetchFollowUp }: { fetchFol
                   initial={answers.find((a) => a.questionId === q.id)}
                   editing={view.fromReview}
                   focusTitle={qn.interacted}
-                  onBack={view.fromReview || answers.length > 0 ? qn.back : undefined}
+                  onBack={view.fromReview || previousQuestion(answers, q.id) ? qn.back : undefined}
                   onSubmit={(value) => void qn.answerQuestion(q, { questionId: q.id, value }, view.fromReview)}
                   onSkip={() => qn.skipQuestion(q, view.fromReview)}
                 />
@@ -175,6 +188,7 @@ export function ExploreFlow({ fetchFollowUp = defaultFetchFollowUp }: { fetchFol
             <p>{qn.resumed && !qn.interacted ? t("resumed") : qn.memory ? " " : t("localNote")}</p>
             {answers.length > 0 && !confirmRestart && (
               <button
+                ref={restartBtnRef}
                 type="button"
                 onClick={() => setConfirmRestart(true)}
                 className="min-h-11 rounded-full px-3 underline-offset-4 hover:text-fg hover:underline"

@@ -117,19 +117,36 @@ export function applyAnswer(answers: Answer[], answer: Answer): Answer[] {
   return next.sort((a, b) => orderKey(a.questionId) - orderKey(b.questionId));
 }
 
-/** Drops answers for questions that are not visible (repeats, because a drop can hide others). */
+/**
+ * Drops answers for questions that are not visible, and AI follow-ups whose source question is
+ * hidden or unanswered (repeats, because a drop can hide others).
+ */
 export function pruneHidden(answers: Answer[]): Answer[] {
   let current = answers;
   for (let i = 0; i < QUESTION_BANK.length; i++) {
     const visible = new Set(visibleQuestions(current).map((q) => q.id));
+    const answered = new Set(current.map((a) => a.questionId));
     const kept = current.filter((a) => {
-      if (isFollowUpId(a.questionId)) return visible.has(followUpSource(a.questionId));
+      if (isFollowUpId(a.questionId)) {
+        const source = followUpSource(a.questionId);
+        return visible.has(source) && answered.has(source);
+      }
       return visible.has(a.questionId);
     });
     if (kept.length === current.length) return current;
     current = kept;
   }
   return current;
+}
+
+/**
+ * Cleans answers loaded from storage: duplicates (last one wins), unknown ids, answers of hidden
+ * branches and orphan AI follow-ups are dropped; the rest is put in bank order.
+ */
+export function normalizeAnswers(answers: Answer[]): Answer[] {
+  const byId = new Map<string, Answer>();
+  for (const a of answers) byId.set(a.questionId, a);
+  return pruneHidden([...byId.values()]).sort((a, b) => orderKey(a.questionId) - orderKey(b.questionId));
 }
 
 /** The answered visible question before `currentId` (or the last answered one when currentId is null). */

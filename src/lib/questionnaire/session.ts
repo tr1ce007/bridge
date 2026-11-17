@@ -1,5 +1,5 @@
 import type { Answer, QuestionnaireSession } from "@/lib/data/types";
-import { visibleQuestions, nextQuestion } from "./engine";
+import { visibleQuestions, nextQuestion, normalizeAnswers } from "./engine";
 
 function newId(): string {
   const c = typeof globalThis !== "undefined" ? globalThis.crypto : undefined;
@@ -31,4 +31,10 @@ export function resumeQuestionId(session: QuestionnaireSession): string | null {
     if (!answered) return saved;
   }
   return next.id;
+}
+
+/** A loaded session with its answers cleaned up (see normalizeAnswers) and `currentId` recomputed. */
+export function restoreSession(session: QuestionnaireSession): QuestionnaireSession {
+  const answers = normalizeAnswers(session.answers);
+  return { ...session, answers, currentId: resumeQuestionId({ ...session, answers }) };
 }

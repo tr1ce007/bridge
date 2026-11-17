@@ -13,7 +13,7 @@ import {
   skipAnswer,
 } from "@/lib/questionnaire/engine";
 import { MAX_FOLLOW_UPS, type FetchFollowUp, type FollowUp } from "@/lib/questionnaire/follow-up";
-import { createSession, resumeQuestionId, withAnswers } from "@/lib/questionnaire/session";
+import { createSession, restoreSession, resumeQuestionId, withAnswers } from "@/lib/questionnaire/session";
 
 export type View =
   | { kind: "loading" }
@@ -55,7 +55,7 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
         saved = null;
       }
       if (cancelled) return;
-      const s = saved ?? createSession();
+      const s = saved ? restoreSession(saved) : createSession();
       sessionRef.current = s;
       setSession(s);
       const resumeId = resumeQuestionId(s);

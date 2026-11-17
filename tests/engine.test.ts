@@ -11,12 +11,13 @@ import {
   followUpId,
   isFollowUpId,
   nextQuestion,
+  normalizeAnswers,
   previousQuestion,
   progress,
   skipAnswer,
   visibleQuestions,
 } from "@/lib/questionnaire/engine";
-import { createSession, resumeQuestionId, withAnswers } from "@/lib/questionnaire/session";
+import { createSession, restoreSession, resumeQuestionId, withAnswers } from "@/lib/questionnaire/session";
 import { createLocalUserStore } from "@/lib/data/local-store";
 import { resetStorageState } from "@/lib/data/storage";
 import type { Answer } from "@/lib/data/types";
@@ -366,5 +367,30 @@ describe("session", () => {
     expect(s.answers).toEqual([]);
     expect(resumeQuestionId(s)).toBe("A1");
     expect(s.id.length).toBeGreaterThan(5);
+  });
+
+  it("restore cleans the saved answers: unknown ids, hidden branches, orphan AI follow-ups, duplicates", async () => {
+    const dirty: Answer[] = [
+      { questionId: "A2", value: "school" },
+      { questionId: "A1", value: "a15_17" },
+      { questionId: "ZZ9", value: "who knows" }, // unknown id
+      { questionId: "A4", value: "Physics" }, // hidden: A4 is for college/university
+      { questionId: "fu:B2", value: ["Why?", "Because"] }, // orphan: B2 is not answered
+      { questionId: "fu:A1", value: ["Tell more", "ok"] }, // valid: A1 is answered
+      { questionId: "A1", value: "a18_22" }, // duplicate, last one wins
+    ];
+    expect(normalizeAnswers(dirty)).toEqual([
+      { questionId: "A1", value: "a18_22" },
+      { questionId: "fu:A1", value: ["Tell more", "ok"] },
+      { questionId: "A2", value: "school" },
+    ]);
+
+    // through the real store: saved dirty session comes back clean, resuming at the right question
+    const store = createLocalUserStore();
+    await store.saveSession({ ...createSession(), answers: dirty, currentId: "ZZ9" });
+    const restored = restoreSession((await store.loadSession())!);
+    expect(restored.answers.map((a) => a.questionId)).toEqual(["A1", "fu:A1", "A2"]);
+    expect(restored.currentId).toBe("A3");
+    expect(resumeQuestionId(restored)).toBe("A3");
   });
 });

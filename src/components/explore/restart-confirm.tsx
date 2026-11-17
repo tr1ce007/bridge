@@ -9,12 +9,18 @@ export function RestartConfirm({ onConfirm, onCancel }: { onConfirm: () => void;
   const t = useTranslations("explore");
   const cancelRef = useRef<HTMLButtonElement>(null);
 
+  // Always call the latest onCancel without re-running the mount-only effect below.
+  const cancelRefFn = useRef(onCancel);
+  useEffect(() => {
+    cancelRefFn.current = onCancel;
+  });
+
   useEffect(() => {
     cancelRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onCancel();
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && cancelRefFn.current();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onCancel]);
+  }, []);
 
   return (
     <div role="alertdialog" aria-labelledby="restart-title" aria-describedby="restart-text" className="mb-6 rounded-2xl border border-accent/50 bg-subtle p-5">
