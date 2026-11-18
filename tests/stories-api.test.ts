@@ -122,6 +122,19 @@ describe("POST /api/stories", () => {
     expect(tooLong.status).toBe(400);
   });
 
+  it("a required field that is empty after sanitizing is a 400 with that field named (not a stored empty story)", async () => {
+    state.supabase = true;
+    state.userId = "user-1";
+    for (const field of ["title", "before", "challenges", "turningPoint", "actions", "now", "intro"] as const) {
+      const res = await submit(post("http://x/api/stories", { ...validStory, [field]: "<b></b><script>alert(1)</script>  " }));
+      expect(res.status, field).toBe(400);
+      const json = await res.json();
+      expect(json.fields).toContain(field);
+      expect(json.error).toBe("Проверь поля формы: часть данных не подходит.");
+    }
+    expect(state.inserts).toEqual([]);
+  });
+
   it("sanitizes html", async () => {
     state.supabase = true;
     state.userId = "user-1";

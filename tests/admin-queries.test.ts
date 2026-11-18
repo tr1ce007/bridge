@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getOverviewCounts, splitFailureKind } from "@/lib/admin/queries";
+import { getOverviewCounts, listPendingStories, splitFailureKind } from "@/lib/admin/queries";
 import { createMemorySupabase } from "./helpers/memory-supabase";
 
 describe("getOverviewCounts", () => {
@@ -39,5 +39,19 @@ describe("splitFailureKind", () => {
     expect(splitFailureKind("report:timeout")).toEqual({ route: "report", kind: "timeout" });
     expect(splitFailureKind("whatif:schema:extra")).toEqual({ route: "whatif", kind: "schema:extra" });
     expect(splitFailureKind("timeout")).toEqual({ route: "", kind: "timeout" });
+  });
+});
+
+describe("listPendingStories", () => {
+  it("lists readable rows and returns the ids of the unreadable ones so they can be rejected", async () => {
+    const db = createMemorySupabase("mod");
+    db.tables.set("stories", [
+      { id: "bad1", kind: "user", status: "pending", lang: "ru", content: {}, tags: {}, attribution: {}, created_at: "2026-11-01T00:00:00Z" },
+      { id: "approved1", kind: "user", status: "approved", content: {} },
+    ]);
+    const res = await listPendingStories(db.client);
+    expect(res.items).toEqual([]);
+    expect(res.unreadable).toBe(1);
+    expect(res.unreadableIds).toEqual(["bad1"]);
   });
 });

@@ -42,6 +42,7 @@ import {
   deleteOpportunityAction,
   markOpportunityVerifiedAction,
   moderateStoryAction,
+  rejectUnreadableStoryAction,
   removeStorySourceAction,
   resolveReportAction,
   saveOpportunityAction,
@@ -90,6 +91,7 @@ beforeEach(() => {
 
 const actions = [
   ["moderateStory", () => moderateStoryAction(IDLE, form({ id: "s1", decision: "reject" }))],
+  ["rejectUnreadableStory", () => rejectUnreadableStoryAction(IDLE, form({ id: "s1" }))],
   ["resolveReport", () => resolveReportAction(IDLE, form({ id: REPORT, resolution: "resolved" }))],
   ["saveOpportunity", () => saveOpportunityAction(IDLE, form(opportunityForm))],
   ["markVerified", () => markOpportunityVerifiedAction(IDLE, form({ id: "o1" }))],
@@ -116,6 +118,20 @@ describe("every admin action calls requireRole first", () => {
 
   it("a moderator may moderate", async () => {
     expect(await moderateStoryAction(IDLE, form({ id: "s1", decision: "reject" }))).toEqual({ status: "ok", message: "rejected" });
+  });
+});
+
+describe("rejectUnreadableStoryAction", () => {
+  it("rejects a pending row and writes only to stories", async () => {
+    expect(await rejectUnreadableStoryAction(IDLE, form({ id: "s1" }))).toEqual({ status: "ok", message: "rejected" });
+    const db = state.db as ReturnType<typeof createMemorySupabase>;
+    expect(db.rows("stories")[0].status).toBe("rejected");
+    expect(db.writes).toEqual(["update:stories"]);
+  });
+
+  it("refuses an empty id before anything is written", async () => {
+    expect(await rejectUnreadableStoryAction(IDLE, form({ id: "  " }))).toEqual({ status: "error", code: "invalid" });
+    expect((state.db as ReturnType<typeof createMemorySupabase>).writes).toEqual([]);
   });
 });
 

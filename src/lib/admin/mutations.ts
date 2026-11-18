@@ -105,6 +105,26 @@ export async function moderateStory(
   return { ok: true };
 }
 
+/**
+ * Reject a pending story that cannot be read (its content does not match the story schema), so it does not
+ * stay in the queue forever. The content is never parsed. Only `pending` rows change.
+ */
+export async function rejectUnreadableStory(
+  client: SupabaseClient,
+  reviewerId: string,
+  id: string,
+  now: Date = new Date(),
+): Promise<MutationResult> {
+  const { data, error } = await client
+    .from("stories")
+    .update({ status: "rejected", reviewed_by: reviewerId, reviewed_at: now.toISOString() })
+    .eq("id", id)
+    .eq("status", "pending")
+    .select("id");
+  if (error) return failure(error);
+  return data && data.length > 0 ? { ok: true } : { ok: false, code: "not_found" };
+}
+
 /** Close an open report as resolved or dismissed. */
 export async function resolveReport(
   client: SupabaseClient,

@@ -49,13 +49,30 @@ const USER_ATTRIBUTION = {
   en: "Story shared by a user, awaiting review",
 } as const;
 
+/** Free-text fields of a submission (everything a person types). */
+const SUBMISSION_TEXT_FIELDS = ["title", "intro", "displayName", "before", "challenges", "turningPoint", "actions", "now", "advice"] as const;
+
 /**
- * Validates and sanitizes a submission and turns it into a pending "user" story.
- * Throws a ZodError for invalid input.
+ * Strips markup from the text fields of a raw submission. This runs BEFORE validation, so a field that is
+ * only markup (e.g. "<b></b>") counts as empty and is refused by the schema instead of being stored as "".
+ * Non-string values are left alone for the schema to reject.
+ */
+export function sanitizeSubmissionFields<T>(input: T): T {
+  if (!input || typeof input !== "object" || Array.isArray(input)) return input;
+  const out: Record<string, unknown> = { ...(input as Record<string, unknown>) };
+  for (const key of SUBMISSION_TEXT_FIELDS) {
+    if (typeof out[key] === "string") out[key] = sanitizeText(out[key]);
+  }
+  return out as T;
+}
+
+/**
+ * Sanitizes and then validates a submission and turns it into a pending "user" story.
+ * Throws a ZodError for invalid input, including a required field that is empty after sanitizing.
  */
 export function buildSubmittedStory(input: StorySubmission, id: string): Story {
-  const v = storySubmissionSchema.parse(input);
-  const clean = (s: string): { [K in Locale]?: string } => ({ [v.lang]: sanitizeText(s) });
+  const v = storySubmissionSchema.parse(sanitizeSubmissionFields(input));
+  const clean = (s: string): { [K in Locale]?: string } => ({ [v.lang]: s });
   const tags = Object.fromEntries(
     AXES.map((axis) => {
       const allowed = new Set(AXIS_TAGS[axis]);
@@ -72,7 +89,7 @@ export function buildSubmittedStory(input: StorySubmission, id: string): Story {
     ...(v.category ? { categories: [v.category] } : {}),
     ...(v.ageRange ? { ageRange: v.ageRange } : {}),
     // For user stories `sourceName` is the public author name; absent = anonymous.
-    ...(v.displayName && sanitizeText(v.displayName) ? { sourceName: sanitizeText(v.displayName) } : {}),
+    ...(v.displayName ? { sourceName: v.displayName } : {}),
     attribution: { ...USER_ATTRIBUTION },
     before: clean(v.before),
     challenges: clean(v.challenges),

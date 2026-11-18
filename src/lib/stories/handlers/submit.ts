@@ -2,6 +2,7 @@ import "server-only";
 import { z } from "zod";
 import { rateLimited, readBody } from "@/lib/ai/handlers/common";
 import { SignInRequiredError } from "@/lib/data";
+import { sanitizeSubmissionFields } from "@/lib/data/content-utils";
 import { trackEvent } from "@/lib/analytics/track";
 import { getServerContent } from "@/lib/data/server";
 import { localeSchema, storySubmissionSchema, SUBMISSION_LIMITS, STORY_CATEGORIES } from "@/lib/data/types";
@@ -23,7 +24,7 @@ const input = storySubmissionSchema.extend({
 /**
  * POST /api/stories: send a story for moderation.
  * Order: rate limit (429) -> body is an object (400) -> consent (400) -> fields (400)
- * -> local mode (503, nothing is stored) -> sign-in required (401) -> saved as kind "user",
+ * (text is sanitized first, so a field that is empty after cleaning is refused) -> local mode (503, nothing is stored) -> sign-in required (401) -> saved as kind "user",
  * status "pending" (201). Text is stripped of markup in `submitStory` (`sanitizeText`).
  */
 export async function handleSubmitStory(request: Request): Promise<Response> {
@@ -35,7 +36,8 @@ export async function handleSubmitStory(request: Request): Promise<Response> {
 
   if ((body as { consent?: unknown }).consent !== true) return apiError(400, "consent_required", locale, "consentRequired");
 
-  const parsed = input.safeParse(body);
+  // Markup is stripped before the rules run: a field that is only markup is empty, and refused here.
+  const parsed = input.safeParse(sanitizeSubmissionFields(body));
   if (!parsed.success) {
     const fields = [...new Set(parsed.error.issues.map((i) => String(i.path[0] ?? "")))].filter(Boolean);
     return apiError(400, "invalid", locale, "invalid", { fields });

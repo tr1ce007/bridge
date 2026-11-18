@@ -62,19 +62,21 @@ export interface PendingStory {
   consentAt: string | null;
 }
 
-/** Oldest first. `unreadable` counts rows that do not match the story schema (shown as a warning). */
-export async function listPendingStories(client: SupabaseClient): Promise<{ items: PendingStory[]; unreadable: number }> {
+/** Oldest first. `unreadableIds` are rows that do not match the story schema: they cannot be shown, but staff can reject them. */
+export async function listPendingStories(
+  client: SupabaseClient,
+): Promise<{ items: PendingStory[]; unreadable: number; unreadableIds: string[] }> {
   const rows = must(
     await client.from("stories").select(STORY_COLUMNS).eq("status", "pending").order("created_at", { ascending: true }).limit(100),
   ) as (Parameters<typeof storyFromRow>[0] & { created_at: string; consent_at: string | null })[] | null;
   const items: PendingStory[] = [];
-  let unreadable = 0;
+  const unreadableIds: string[] = [];
   for (const row of rows ?? []) {
     const story = storyFromRow(row);
     if (story) items.push({ story, createdAt: row.created_at, consentAt: row.consent_at });
-    else unreadable += 1;
+    else unreadableIds.push(row.id);
   }
-  return { items, unreadable };
+  return { items, unreadable: unreadableIds.length, unreadableIds };
 }
 
 // ---------------------------------------------------------------- reports

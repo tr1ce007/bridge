@@ -42,6 +42,12 @@ describe("story submission", () => {
     expect(() => buildSubmittedStory({ ...input, title: "x" }, "id")).toThrow();
   });
 
+  it("rejects a required field that is empty after sanitizing", () => {
+    expect(() => buildSubmittedStory({ ...input, title: "<b></b>" }, "id")).toThrow();
+    expect(() => buildSubmittedStory({ ...input, before: "<script>x()</script>" }, "id")).toThrow();
+    expect(() => buildSubmittedStory({ ...input, now: "<!-- nothing -->" }, "id")).toThrow();
+  });
+
   it("local submit stores it as pending and does not publish it", async () => {
     resetStorageState();
     const c = createLocalContentStore();

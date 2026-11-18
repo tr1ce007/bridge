@@ -122,8 +122,16 @@ export function SubmitStoryForm() {
         setPhase("sent");
         return;
       }
-      const json = (await res.json().catch(() => null)) as { error?: string; code?: string } | null;
+      const json = (await res.json().catch(() => null)) as { error?: string; code?: string; fields?: unknown } | null;
       setServerError({ message: json?.error ?? t("errServer"), code: json?.code ?? "unknown" });
+      // The server checks the text after removing markup: a field that was only markup is marked here too.
+      if (res.status === 400 && Array.isArray(json?.fields)) {
+        const bad = ORDER.filter((k) => (json.fields as unknown[]).includes(k));
+        if (bad.length) {
+          setErrors(Object.fromEntries(bad.map((k) => [k, "invalid"])) as SubmissionErrors);
+          requestAnimationFrame(() => document.getElementById(`sf-${bad[0]}`)?.focus());
+        }
+      }
     } catch {
       setServerError({ message: t("errNetwork"), code: "network" });
     }

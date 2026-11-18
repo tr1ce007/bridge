@@ -4,6 +4,7 @@ import {
   deleteOpportunity,
   markOpportunityVerified,
   moderateStory,
+  rejectUnreadableStory,
   removeStorySource,
   resolveReport,
   saveOpportunity,
@@ -23,6 +24,22 @@ function seedStories() {
   ]);
   return db;
 }
+
+describe("rejectUnreadableStory", () => {
+  it("sets status rejected and the reviewer on a pending row without reading its content", async () => {
+    const db = createMemorySupabase(MOD);
+    db.tables.set("stories", [{ id: "bad1", kind: "user", status: "pending", content: { title: null }, reviewed_by: null, reviewed_at: null }]);
+    expect(await rejectUnreadableStory(db.client, MOD, "bad1", NOW)).toEqual({ ok: true });
+    expect(db.rows("stories")[0]).toMatchObject({ status: "rejected", reviewed_by: MOD, reviewed_at: NOW.toISOString() });
+  });
+
+  it("changes nothing when the row is not pending any more", async () => {
+    const db = createMemorySupabase(MOD);
+    db.tables.set("stories", [{ id: "s2", kind: "user", status: "approved" }]);
+    expect(await rejectUnreadableStory(db.client, MOD, "s2", NOW)).toEqual({ ok: false, code: "not_found" });
+    expect(db.rows("stories")[0].status).toBe("approved");
+  });
+});
 
 describe("moderateStory", () => {
   it("approve sets status, kind, source, reviewed_by and reviewed_at, and keeps the note apart", async () => {

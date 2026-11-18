@@ -14,6 +14,7 @@ import {
   deleteOpportunity,
   markOpportunityVerified,
   moderateStory,
+  rejectUnreadableStory,
   removeStorySource,
   resolveReport,
   saveOpportunity,
@@ -94,6 +95,20 @@ export async function moderateStoryAction(_prev: ActionState, formData: FormData
       refreshPublic("stories");
     }
     return fromResult(result, parsed.data.decision === "approve" ? "approved" : "rejected");
+  });
+}
+
+/** Reject a pending story whose content cannot be read. Only the id is read from the form. */
+export async function rejectUnreadableStoryAction(_prev: ActionState, formData: FormData): Promise<ActionState> {
+  return guarded(STAFF, async ({ user, client }) => {
+    const parsed = idSchema.safeParse({ id: str(formData, "id") });
+    if (!parsed.success) return fail("invalid");
+    const result = await rejectUnreadableStory(client, user.id, parsed.data.id);
+    if (result.ok) {
+      refreshAdmin();
+      refreshPublic("stories");
+    }
+    return fromResult(result, "rejected");
   });
 }
 

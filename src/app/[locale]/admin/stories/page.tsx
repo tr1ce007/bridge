@@ -1,6 +1,7 @@
 import type { Locale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ModerationCard } from "@/components/admin/moderation-card";
+import { UnreadableStoryRow } from "@/components/admin/unreadable-story-row";
 import { Empty, SectionHead } from "@/components/admin/section";
 import { listPendingStories } from "@/lib/admin/queries";
 import { guardStaffPage } from "@/lib/auth/guard";
@@ -11,7 +12,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/storie
   setRequestLocale(locale as Locale);
   await guardStaffPage();
   const t = await getTranslations("admin.stories");
-  const { items, unreadable } = await listPendingStories(await createSupabaseServerClient());
+  const { items, unreadable, unreadableIds } = await listPendingStories(await createSupabaseServerClient());
   return (
     <>
       <SectionHead title={t("title")} lead={t("lead")} />
@@ -19,6 +20,13 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/storie
         <p role="note" className="mb-4 rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm">
           {t("unreadable", { count: unreadable })}
         </p>
+      )}
+      {unreadableIds.length > 0 && (
+        <div className="mb-6 grid gap-3">
+          {unreadableIds.map((id) => (
+            <UnreadableStoryRow key={id} id={id} />
+          ))}
+        </div>
       )}
       {items.length === 0 ? (
         <Empty>{t("empty")}</Empty>
