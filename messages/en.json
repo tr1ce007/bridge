@@ -599,7 +599,7 @@
     "s7": "I want to try something new but I'm afraid.",
     "s8": "I have too many interests.",
     "demoBanner": "Demo mode: AI is not connected",
-    "demoBannerLead": "I can't answer messages yet. The questionnaire, stories and small experiments already work without AI.",
+    "demoBannerLead": "I answer from prepared guidance: I recognise common topics and suggest experiments and stories from the site. With real AI connected, answers get more precise.",
     "memoryLabel": "Remember my answers in this browser",
     "memoryHelpOff": "Off for now: the conversation lives only on this page and disappears if you close or refresh it. If you turn it on, the conversation is saved in this browser and I can see your questionnaire answers (if you did it), so I don't ask the same things twice.",
     "memoryHelpOn": "On: the conversation is saved in this browser and your questionnaire answers are taken into account. If you turn it off, the saved conversation is erased. Either way, your messages are sent to the AI service, otherwise it could not reply.",

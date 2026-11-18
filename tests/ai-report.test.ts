@@ -160,17 +160,18 @@ describe("POST /api/ai/followup and /api/ai/chat in demo mode", () => {
     state.provider = null;
   });
 
-  it("chat streams a localized 'AI not connected' note with links in demo mode", async () => {
+  it("chat streams the rule-based demo guide's localized answer with links in demo mode", async () => {
     const { POST } = await import("@/app/api/ai/chat/route");
     const res = await POST(
-      post("http://localhost/api/ai/chat", { messages: [{ role: "user", content: "Привет" }], locale: "ru", memoryConsent: false }),
+      post("http://localhost/api/ai/chat", { messages: [{ role: "user", content: "Я не знаю, чего хочу" }], locale: "ru", memoryConsent: false }),
     );
     expect(res.status).toBe(200);
     expect(res.headers.get("content-type")).toMatch(/text\/plain/);
+    expect(res.headers.get("x-ai-demo")).toBe("true");
     const text = await res.text();
-    expect(text).toMatch(/ИИ не подключ/);
+    expect(text).toMatch(/Демо‑режим/);
     expect(text).toContain("/ru/explore");
-    expect(text).toContain("/ru/stories");
+    expect(text).toContain("/ru/stories/");
     expect(text).toContain("/ru/try");
   });
 

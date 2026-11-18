@@ -11,8 +11,8 @@ export interface Inline {
 }
 export type Block = { type: "p"; lines: Inline[][] } | { type: "ul" | "ol"; items: Inline[][] };
 
-/** `/ru/explore` style paths of existing sections (the demo answer contains them). Not part of a longer word or URL. */
-const INTERNAL_LINK = /(?<![\w/.:@-])\/(?:ru|kk|en)\/(?:explore|stories|try|opportunities)(?![\w/-])/g;
+/** `/ru/explore` style paths of existing sections, and `/ru/stories/<id>` (the demo answer contains them). Not part of a longer word or URL. */
+const INTERNAL_LINK = /(?<![\w/.:@-])\/(?:ru|kk|en)\/(?:explore|stories(?:\/[a-z0-9][a-z0-9-]{0,80})?|try|opportunities)(?![\w/-])/g;
 const BULLET = /^\s*(?:[-*•])\s+(.*)$/;
 const NUMBERED = /^\s*\d{1,3}[.)]\s+(.*)$/;
 const HEADING = /^\s{0,3}#{1,6}\s+(.*)$/;
