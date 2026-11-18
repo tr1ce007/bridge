@@ -1268,7 +1268,9 @@
     "partnersTitle": "With us",
     "ctaExplore": "Start with the questionnaire",
     "ctaPrivacy": "About privacy",
-    "certificateOpen": "Open the certificate larger"
+    "certificateOpen": "Open the certificate larger",
+    "contactTitle": "Contact the team",
+    "contactPhone": "Phone"
   },
   "privacy": {
     "metaTitle": "Privacy",
@@ -1590,9 +1592,9 @@
     }
   },
   "contact": {
-    "deleteWith": "To delete the rest and the account itself, write to the project team: <mail>{email}</mail>.",
-    "deleteSoon": "To delete the rest and the account itself, you need to write to the project team. The team's contact will appear on this page soon.",
-    "generalWith": "Contact the team: <mail>{email}</mail>",
-    "generalSoon": "The team's contact will appear on this page soon."
+    "deleteWith": "To delete the rest and the account itself, write to the project team: <mail>{email}</mail>, <tel>{phone}</tel> or <ig>Instagram {instagram}</ig>.",
+    "deleteTeam": "To delete the rest and the account itself, write to the project team: <tel>{phone}</tel> or <ig>Instagram {instagram}</ig>.",
+    "generalWith": "Contact the team: <mail>{email}</mail> · <tel>{phone}</tel> · <ig>Instagram {instagram}</ig>",
+    "generalTeam": "Contact the team: <tel>{phone}</tel> · <ig>Instagram {instagram}</ig>"
   }
 }

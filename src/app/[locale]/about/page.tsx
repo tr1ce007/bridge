@@ -6,6 +6,7 @@ import { BridgeLine } from "@/components/bridge-line";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
+import { TEAM_CONTACT } from "@/lib/contact";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -94,6 +95,31 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
                 <h3 className="font-display text-xl font-semibold tracking-tight">{c("adalName")}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{c("adalText")}</p>
               </div>
+            </li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="about-contact" className="mt-14">
+          <h2 id="about-contact" className="font-display text-2xl font-semibold tracking-tight">
+            {t("contactTitle")}
+          </h2>
+          <ul className="mt-5 grid gap-4 sm:grid-cols-2">
+            <li>
+              <a
+                href={TEAM_CONTACT.instagramHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-hover group flex h-full flex-col gap-1 rounded-2xl border border-border bg-card p-6 shadow-card"
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-text">Instagram</span>
+                <span className="font-display text-xl font-semibold tracking-tight">{TEAM_CONTACT.instagram}</span>
+              </a>
+            </li>
+            <li>
+              <a href={TEAM_CONTACT.phoneHref} className="card-hover group flex h-full flex-col gap-1 rounded-2xl border border-border bg-card p-6 shadow-card">
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-text">{t("contactPhone")}</span>
+                <span className="font-display text-xl font-semibold tracking-tight whitespace-nowrap">{TEAM_CONTACT.phone}</span>
+              </a>
             </li>
           </ul>
         </section>

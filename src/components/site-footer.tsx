@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { NAV_ITEMS } from "@/lib/nav";
+import { TEAM_CONTACT } from "@/lib/contact";
 import { ContactNote } from "./contact-note";
 import { Container } from "./ui/container";
 import { Logo } from "./logo";
@@ -31,6 +32,19 @@ export function SiteFooter() {
           <Logo />
           <p className="mt-6 max-w-sm font-display text-lg leading-snug tracking-tight text-white/90">{t("tagline")}</p>
           <ContactNote variant="general" className="mt-4 max-w-sm text-sm leading-relaxed text-white/60" />
+          <a
+            href={TEAM_CONTACT.instagramHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram @the.bridge.astana"
+            className="mt-5 inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-white/40 hover:text-white"
+          >
+            <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
         </div>
         <div>
           <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">{t("platform")}</h2>

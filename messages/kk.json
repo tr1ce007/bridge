@@ -1268,7 +1268,9 @@
     "partnersTitle": "Бізбен бірге",
     "ctaExplore": "Сауалнамадан бастау",
     "ctaPrivacy": "Құпиялылық туралы",
-    "certificateOpen": "Сертификатты үлкенірек ашу"
+    "certificateOpen": "Сертификатты үлкенірек ашу",
+    "contactTitle": "Командамен байланыс",
+    "contactPhone": "Телефон"
   },
   "privacy": {
     "metaTitle": "Құпиялылық",
@@ -1590,9 +1592,9 @@
     }
   },
   "contact": {
-    "deleteWith": "Қалғанын және аккаунттың өзін жою үшін жоба командасына жаз: <mail>{email}</mail>.",
-    "deleteSoon": "Қалғанын және аккаунттың өзін жою үшін жоба командасына жазу керек. Команданың байланысы жақында осы бетте пайда болады.",
-    "generalWith": "Командамен байланыс: <mail>{email}</mail>",
-    "generalSoon": "Команданың байланысы жақында осы бетте пайда болады."
+    "deleteWith": "Қалғанын және аккаунттың өзін жою үшін жоба командасына жаз: <mail>{email}</mail>, <tel>{phone}</tel> немесе <ig>Instagram {instagram}</ig>.",
+    "deleteTeam": "Қалғанын және аккаунттың өзін жою үшін жоба командасына жаз: <tel>{phone}</tel> немесе <ig>Instagram {instagram}</ig>.",
+    "generalWith": "Командамен байланыс: <mail>{email}</mail> · <tel>{phone}</tel> · <ig>Instagram {instagram}</ig>",
+    "generalTeam": "Командамен байланыс: <tel>{phone}</tel> · <ig>Instagram {instagram}</ig>"
   }
 }

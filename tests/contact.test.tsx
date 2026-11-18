@@ -29,18 +29,20 @@ const render = (props: Parameters<typeof ContactNote>[0], locale: "ru" | "en" = 
   );
 
 describe("ContactNote", () => {
-  it("unset: says honestly that the contact will appear, and has no link", () => {
+  it("no email: shows the team's phone and Instagram, and no mailto", () => {
     const html = render({ variant: "general", email: null });
-    expect(html).toContain("Контакт команды скоро появится на этой странице.");
+    expect(html).toContain('href="tel:+77769140720"');
+    expect(html).toContain("+7 (776) 914 07 20");
+    expect(html).toContain('href="https://www.instagram.com/the.bridge.astana/"');
     expect(html).not.toContain("mailto:");
-    expect(render({ variant: "delete", email: null })).toContain("Контакт команды скоро появится на этой странице.");
+    expect(render({ variant: "delete", email: null })).toContain("Instagram @the.bridge.astana");
   });
 
   it("set: shows the address as a mailto link", () => {
     const html = render({ variant: "delete", email: "team@example.kz" });
     expect(html).toContain('href="mailto:team@example.kz"');
     expect(html).toContain(">team@example.kz</a>");
-    expect(html).not.toContain("скоро появится");
+    expect(html).toContain("tel:+77769140720");
     expect(render({ variant: "general", email: "team@example.kz" }, "en")).toContain("Contact the team");
   });
 });

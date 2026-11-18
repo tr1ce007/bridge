@@ -1268,7 +1268,9 @@
     "partnersTitle": "С нами",
     "ctaExplore": "Начать с анкеты",
     "ctaPrivacy": "О конфиденциальности",
-    "certificateOpen": "Открыть сертификат крупнее"
+    "certificateOpen": "Открыть сертификат крупнее",
+    "contactTitle": "Связаться с командой",
+    "contactPhone": "Телефон"
   },
   "privacy": {
     "metaTitle": "Конфиденциальность",
@@ -1590,9 +1592,9 @@
     }
   },
   "contact": {
-    "deleteWith": "Чтобы удалить остальное и сам аккаунт, напиши команде проекта: <mail>{email}</mail>.",
-    "deleteSoon": "Чтобы удалить остальное и сам аккаунт, нужно написать команде проекта. Контакт команды скоро появится на этой странице.",
-    "generalWith": "Связь с командой: <mail>{email}</mail>",
-    "generalSoon": "Контакт команды скоро появится на этой странице."
+    "deleteWith": "Чтобы удалить остальное и сам аккаунт, напиши команде проекта: <mail>{email}</mail>, <tel>{phone}</tel> или <ig>Instagram {instagram}</ig>.",
+    "deleteTeam": "Чтобы удалить остальное и сам аккаунт, напиши команде проекта: <tel>{phone}</tel> или <ig>Instagram {instagram}</ig>.",
+    "generalWith": "Связь с командой: <mail>{email}</mail> · <tel>{phone}</tel> · <ig>Instagram {instagram}</ig>",
+    "generalTeam": "Связь с командой: <tel>{phone}</tel> · <ig>Instagram {instagram}</ig>"
   }
 }

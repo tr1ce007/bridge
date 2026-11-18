@@ -8,6 +8,14 @@ export interface ContactInfo {
   href: string;
 }
 
+/** The team's public phone and Instagram, given by the team (always shown). */
+export const TEAM_CONTACT = {
+  phone: "+7 (776) 914 07 20",
+  phoneHref: "tel:+77769140720",
+  instagram: "@the.bridge.astana",
+  instagramHref: "https://www.instagram.com/the.bridge.astana/",
+} as const;
+
 // Deliberately simple: one "@", no spaces or angle brackets, a dot in the domain.
 const EMAIL = /^[^\s@<>"']+@[^\s@<>"']+\.[^\s@<>"']+$/;
 
