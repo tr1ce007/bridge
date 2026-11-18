@@ -15,7 +15,7 @@ export interface GenerateOptions {
   effort: Effort;
   maxTokens?: number;
   /**
-   * Hard limit for this request, no retries. Keep it well under the route's `maxDuration`
+   * Hard limit for this request, retries of busy answers included. Keep it well under the route's `maxDuration`
    * (60 s) so the caller always has time to fall back. Default 45 s.
    */
   timeoutMs?: number;

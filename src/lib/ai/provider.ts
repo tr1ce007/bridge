@@ -29,13 +29,18 @@ let cached: { key: string; provider: AIProvider } | undefined;
 /** The provider for this server. Keys are read here only (server code). */
 export function getProvider(env: Env = process.env): AIProvider {
   const name = resolveProviderName(env);
-  const key = [name, env.ANTHROPIC_MODEL, env.OPENAI_MODEL, env.OPENAI_BASE_URL].join("|");
+  const key = [name, env.ANTHROPIC_MODEL, env.OPENAI_MODEL, env.OPENAI_FALLBACK_MODEL, env.OPENAI_BASE_URL].join("|");
   if (cached?.key === key) return cached.provider;
   const provider =
     name === "anthropic"
       ? createAnthropicProvider({ apiKey: env.ANTHROPIC_API_KEY!.trim(), model: env.ANTHROPIC_MODEL?.trim() })
       : name === "openai"
-        ? createOpenAIProvider({ apiKey: env.OPENAI_API_KEY!.trim(), baseUrl: env.OPENAI_BASE_URL?.trim(), model: env.OPENAI_MODEL?.trim() })
+        ? createOpenAIProvider({
+            apiKey: env.OPENAI_API_KEY!.trim(),
+            baseUrl: env.OPENAI_BASE_URL?.trim(),
+            model: env.OPENAI_MODEL?.trim(),
+            fallbackModel: env.OPENAI_FALLBACK_MODEL?.trim() || undefined,
+          })
         : createDemoProvider();
   cached = { key, provider };
   return provider;

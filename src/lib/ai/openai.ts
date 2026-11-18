@@ -10,28 +10,76 @@ const DEFAULT_JSON_TIMEOUT_MS = 45_000;
 const DEFAULT_STREAM_TIMEOUT_MS = 50_000;
 
 /**
+ * Busy or rate-limited answers worth another try (free tiers often answer 503 "overloaded" for a
+ * moment). Each delay is one more attempt; the overall time limit still applies.
+ */
+const RETRY_STATUSES = new Set([429, 500, 502, 503, 504]);
+export const RETRY_DELAYS_MS = [700, 2000];
+
+/** Waits `ms`, or rejects at once when `signal` aborts (time limit or a cancelled stream). */
+function pause(ms: number, signal: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (signal.aborted) return reject(signal.reason);
+    const timer = setTimeout(() => {
+      signal.removeEventListener("abort", onAbort);
+      resolve();
+    }, ms);
+    const onAbort = () => {
+      clearTimeout(timer);
+      reject(signal.reason);
+    };
+    signal.addEventListener("abort", onAbort, { once: true });
+  });
+}
+
+/**
  * OpenAI-compatible provider over plain fetch (`/chat/completions`), no extra SDK:
  * `response_format: json_schema` for JSON, SSE for streaming. Works with any compatible base URL.
  */
-export function createOpenAIProvider(opts: { apiKey: string; baseUrl?: string; model?: string }): AIProvider {
+export function createOpenAIProvider(opts: {
+  apiKey: string;
+  baseUrl?: string;
+  model?: string;
+  /** Optional second model for the last retry (another model has its own capacity and limits). */
+  fallbackModel?: string;
+}): AIProvider {
   const base = (opts.baseUrl || "https://api.openai.com/v1").replace(/\/+$/, "");
   const model = opts.model || DEFAULT_OPENAI_MODEL;
+  const fallbackModel = opts.fallbackModel && opts.fallbackModel !== model ? opts.fallbackModel : undefined;
 
-  /** `signal` covers both the time limit and, for streams, the reader cancelling. No retries. */
+  /**
+   * `signal` covers both the time limit and, for streams, the reader cancelling. Busy answers
+   * (429/5xx) and network errors are retried after RETRY_DELAYS_MS; the last retry uses the
+   * fallback model when there is one. Nothing has been sent to the reader before this resolves,
+   * so retrying never duplicates text.
+   */
   async function post(body: Record<string, unknown>, signal: AbortSignal): Promise<Response> {
-    let res: Response;
-    try {
-      res = await fetch(`${base}/chat/completions`, {
-        method: "POST",
-        headers: { "content-type": "application/json", authorization: `Bearer ${opts.apiKey}` },
-        body: JSON.stringify({ model, ...body }),
-        signal,
+    for (let attempt = 0; ; attempt++) {
+      const last = attempt >= RETRY_DELAYS_MS.length;
+      const useModel = last && fallbackModel ? fallbackModel : model;
+      let res: Response;
+      try {
+        res = await fetch(`${base}/chat/completions`, {
+          method: "POST",
+          headers: { "content-type": "application/json", authorization: `Bearer ${opts.apiKey}` },
+          body: JSON.stringify({ model: useModel, ...body }),
+          signal,
+        });
+      } catch (e) {
+        if (last || signal.aborted) throw new AIError("network", toAIError(e).message);
+        await pause(RETRY_DELAYS_MS[attempt], signal).catch(() => {
+          throw new AIError("network", toAIError(e).message);
+        });
+        continue;
+      }
+      if (res.ok) return res;
+      if (last || !RETRY_STATUSES.has(res.status)) throw new AIError("http", `HTTP ${res.status}`);
+      void res.body?.cancel().catch(() => {});
+      const status = res.status;
+      await pause(RETRY_DELAYS_MS[attempt], signal).catch(() => {
+        throw new AIError("http", `HTTP ${status}`);
       });
-    } catch (e) {
-      throw new AIError("network", toAIError(e).message);
     }
-    if (!res.ok) throw new AIError("http", `HTTP ${res.status}`);
-    return res;
   }
 
   const withSystem = (system: string, messages: ChatMessage[]) => [{ role: "system", content: system }, ...messages];
