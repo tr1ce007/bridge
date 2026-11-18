@@ -2,6 +2,7 @@ import "server-only";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import type { Locale } from "@/lib/data/types";
 import type { AIErrorKind, ProviderName } from "./types";
+import { redactSecrets } from "./redact";
 
 export interface AIFailure {
   route: "report" | "followup" | "chat" | "whatif";
@@ -16,7 +17,8 @@ export interface AIFailure {
  * without Supabase, as one structured console.error line. Never throws.
  */
 export async function logAIFailure(f: AIFailure): Promise<void> {
-  const message = f.message.slice(0, 500);
+  // A misconfigured env (a key pasted into a URL field) once put the key into this message.
+  const message = redactSecrets(f.message).slice(0, 500);
   if (isSupabaseConfigured() && process.env.SUPABASE_SERVICE_ROLE_KEY) {
     try {
       const { createSupabaseServiceClient } = await import("@/lib/supabase/server");
