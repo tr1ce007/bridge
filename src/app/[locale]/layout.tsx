@@ -9,6 +9,7 @@ import { GuestImportBanner } from "@/components/auth/guest-import-banner";
 import { MotionProvider } from "@/components/motion-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { VisitCounter } from "@/components/visit-counter";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin", "cyrillic", "cyrillic-ext"], variable: "--font-inter", display: "swap" });
@@ -46,6 +47,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             <GuestImportBanner />
             <main className="flex-1">{children}</main>
             <SiteFooter />
+            <VisitCounter />
           </MotionProvider>
         </NextIntlClientProvider>
       </body>

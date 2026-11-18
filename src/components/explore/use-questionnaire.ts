@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
+import { countOncePerDay } from "@/lib/analytics/client";
 import { getUserStore, storageMode, type Answer, type QuestionnaireSession } from "@/lib/data";
 import { getQuestion, type Question } from "@/lib/questionnaire/bank";
 import {
@@ -119,8 +120,9 @@ export function useQuestionnaire(fetchFollowUp?: FetchFollowUp) {
   // ---- actions
   const start = useCallback(() => {
     setInteracted(true);
+    countOncePerDay("questionnaire_started", locale);
     goNext(sessionRef.current?.answers ?? []);
-  }, [goNext]);
+  }, [goNext, locale]);
 
   const answerQuestion = useCallback(
     async (q: Question, answer: Answer, fromReview?: boolean) => {

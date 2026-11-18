@@ -1563,15 +1563,17 @@
     },
     "analytics": {
       "title": "Analytics",
-      "lead": "Anonymous counters for 30 days: how many times an action happened. No users and no texts.",
+      "lead": "Anonymous counters for 30 days. “Visitors”: each browser is counted once a day. No names, no texts.",
       "empty": "No data yet. Counters are written when Supabase and the service role key are connected.",
       "day": "Day",
       "total": "Total",
       "truncated": "Showing the first 10,000 events.",
       "events": {
-        "questionnaire_completed": "Questionnaire completed",
-        "report_generated": "Report created",
-        "story_submitted": "Story submitted"
+        "site_visit": "Visitors",
+        "questionnaire_started": "Started the questionnaire",
+        "questionnaire_completed": "Finished the questionnaire",
+        "report_generated": "Got a report",
+        "story_submitted": "Sent a story"
       }
     },
     "translations": {
