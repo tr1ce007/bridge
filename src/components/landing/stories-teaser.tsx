@@ -8,7 +8,6 @@ const KINDS = [
   { kind: "verified", tone: "primary" },
   { kind: "documented", tone: "accent" },
   { kind: "user", tone: "neutral" },
-  { kind: "demo", tone: "warning" },
 ] as const;
 
 export function StoriesTeaser() {

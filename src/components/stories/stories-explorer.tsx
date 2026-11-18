@@ -88,7 +88,7 @@ export function StoriesExplorer({ stories }: { stories: Story[] }) {
           value={f.kind}
           onChange={set("kind")}
           anyLabel={t("any")}
-          options={STORY_KINDS.map((k) => ({ value: k, label: tk(k) }))}
+          options={STORY_KINDS.filter((k) => k !== "demo").map((k) => ({ value: k, label: tk(k) }))}
         />
         <div className="col-span-2 flex flex-wrap items-end gap-x-6 gap-y-2 lg:col-span-1">
           <label className="inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-medium">

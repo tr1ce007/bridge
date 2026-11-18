@@ -26,7 +26,8 @@ describe("Task 6 pages: server HTML", () => {
   it("/stories lists every story with its kind badge and the filters", () => {
     const html = render("ru", ru, <StoriesExplorer stories={bundledStories} />);
     for (const s of bundledStories) expect(html).toContain(`/stories/${s.id}`);
-    expect(html).toContain(ru.storyKind.demo);
+    expect(html).toContain(ru.storyKind.documented);
+    expect(html).not.toContain(ru.storyKind.demo); // no fictional stories, and no "demo" filter option
     for (const key of ["filterCategory", "filterInterest", "filterChallenge", "filterAge", "filterKind"] as const) {
       expect(html).toContain(ru.stories[key]);
     }
@@ -34,13 +35,13 @@ describe("Task 6 pages: server HTML", () => {
     expect(html).not.toMatch(hiddenStyle);
   });
 
-  // The bundled entries are all unverified (their facts have not been checked by a human yet). These
-  // tests use a copy marked verified on 2026-11-17 to check how the page shows a verified / old date.
+  // The bundled entries were checked on their official sites on 2026-11-18. The tests below also use
+  // a copy marked verified on 2026-11-17 to check how the page shows a verified / old date.
   const verifiedCopy = bundledOpportunities.map((o) => ({ ...o, status: "verified" as const, verifiedAt: "2026-11-17" }));
 
-  it("/opportunities shows every bundled entry as unverified (no verified badge)", () => {
+  it("/opportunities shows the check date of every bundled entry", () => {
     const html = render("ru", ru, <OpportunitiesExplorer opportunities={bundledOpportunities} serverDay="2026-11-18" />);
-    expect(html).toContain(ru.opportunities.statusUnverified);
+    expect(html).toContain("Проверено 18 ноября 2026");
     expect(html).not.toContain("Проверено 17 ноября 2026");
     expect(html).toContain(ru.opportunities.deadlineUnknown);
   });
