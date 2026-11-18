@@ -9,11 +9,14 @@ export function MemoryToggle({
   onChange,
   disabled,
   issue,
+  offFailed,
 }: {
   checked: boolean;
   onChange: (on: boolean) => void;
   disabled?: boolean;
   issue: "blocked" | "failed" | null;
+  /** Turning memory off did not fully work. Shown whatever the switch says. */
+  offFailed?: boolean;
 }) {
   const t = useTranslations("chat");
   return (
@@ -47,6 +50,11 @@ export function MemoryToggle({
       <p id="memory-help" className="mt-2 text-[13px] leading-relaxed text-muted sm:text-sm">
         {checked ? t("memoryHelpOn") : t("memoryHelpOff")}
       </p>
+      {offFailed && (
+        <p role="alert" className="mt-2 text-sm leading-relaxed text-red-700 dark:text-red-400">
+          {t("memoryOffFailed")}
+        </p>
+      )}
       {checked && issue && (
         <p role="status" className="mt-2 text-sm leading-relaxed text-amber-800 dark:text-amber-300">
           {issue === "blocked" ? t("memoryBlocked") : t("memorySaveFailed")}

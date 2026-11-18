@@ -2,15 +2,17 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
+import { ContactNote } from "@/components/contact-note";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Container } from "@/components/ui/container";
 import { useLoad } from "@/hooks/use-user-data";
+import { turnMemoryOff } from "@/lib/chat/consent";
 import { cn } from "@/lib/cn";
 import { getUserStore } from "@/lib/data";
-import { buildExportPayload, collectExportData, exportFileName } from "@/lib/data/export";
+import { buildExportPayload, collectExport, exportFileName } from "@/lib/data/export";
 import { dataLocation, type DataLocation } from "@/lib/data/mode";
 
 function Card({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
@@ -62,8 +64,10 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
   const t = useTranslations("settings");
   const locale = useLocale();
   const [consent, setConsent] = useState(initialConsent);
-  const [consentError, setConsentError] = useState(false);
+  const [consentError, setConsentError] = useState<"on" | "off" | null>(null);
   const [exportState, setExportState] = useState<"idle" | "busy" | "done" | "error">("idle");
+  /** How many parts could not be read for the last export (the file may be incomplete). */
+  const [exportFailed, setExportFailed] = useState(0);
   const [step, setStep] = useState<"closed" | "first" | "second">("closed");
   const [typed, setTyped] = useState("");
   const [deleteState, setDeleteState] = useState<"idle" | "busy" | "done" | "error">("idle");
@@ -73,24 +77,32 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
 
   const toggleConsent = useCallback(async () => {
     const next = !consent;
-    setConsent(next);
-    setConsentError(false);
-    try {
-      const store = getUserStore();
-      await store.savePreferences({ memoryConsent: next });
-      // Same rule as in the chat: turning memory off erases what was kept.
-      if (!next) await store.clearConversations();
-    } catch {
-      setConsent(!next);
-      setConsentError(true);
+    setConsentError(null);
+    const store = getUserStore();
+    if (next) {
+      setConsent(true);
+      try {
+        await store.savePreferences({ memoryConsent: true });
+      } catch {
+        setConsent(false);
+        setConsentError("on");
+      }
+      return;
     }
+    // Turning memory off: erase first, then save the preference, and show what is really stored.
+    setConsent(false);
+    const result = await turnMemoryOff(store);
+    setConsent(result.consent ?? !result.prefSaved);
+    if (!result.ok) setConsentError("off");
   }, [consent]);
 
   async function exportData() {
     setExportState("busy");
+    setExportFailed(0);
     try {
       const now = new Date();
-      const data = await collectExportData(getUserStore());
+      const { data, failed } = await collectExport(getUserStore());
+      setExportFailed(failed);
       const payload = buildExportPayload(data, { exportedAt: now, storage: where });
       const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
@@ -169,7 +181,7 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
           </p>
           {consentError && (
             <p role="alert" className="mt-2 text-sm text-red-700 dark:text-red-400">
-              {t("memoryFailed")}
+              {consentError === "off" ? t("memoryOffFailed") : t("memoryFailed")}
             </p>
           )}
         </Card>
@@ -188,13 +200,19 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
             {exportState === "done" && t("exportDone")}
             {exportState === "error" && <span className="text-red-700 dark:text-red-400">{t("exportFailed")}</span>}
           </p>
+          {exportFailed > 0 && (
+            <p role="alert" className="text-sm text-amber-800 dark:text-amber-300">
+              {t("exportPartial")}
+            </p>
+          )}
         </Card>
 
         <Card id="delete" title={t("deleteTitle")}>
           {deleteState === "done" ? (
             <div role="status" className="rounded-2xl bg-subtle p-4">
               <p className="font-semibold">{t("deletedTitle")}</p>
-              <p className="mt-1 text-sm leading-relaxed text-muted">{t("deletedLead")}</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted">{where === "account" ? t("deletedLeadAccount") : t("deletedLead")}</p>
+              {where === "account" && <ContactNote variant="delete" className="mt-2 text-sm leading-relaxed text-muted" />}
               <Button href="/" variant="ghost" className="mt-4">
                 {t("deletedHome")}
               </Button>
@@ -203,7 +221,10 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
             <>
               <p className="text-sm leading-relaxed text-muted">{t("deleteLead")}</p>
               {where === "account" && (
-                <p className="mt-3 rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed">{t("accountNote")}</p>
+                <div className="mt-3 rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed">
+                  <p>{t("accountNote")}</p>
+                  <ContactNote variant="delete" className="mt-2" />
+                </div>
               )}
               <button
                 type="button"
@@ -216,9 +237,10 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
                 {t("deleteButton")}
               </button>
               {deleteState === "error" && (
-                <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-400">
-                  {t("deleteFailed")}
-                </p>
+                <div role="alert" className="mt-3 text-sm text-red-700 dark:text-red-400">
+                  <p>{t("deleteFailed")}</p>
+                  {where === "account" && <ContactNote variant="delete" className="mt-1" />}
+                </div>
               )}
             </>
           )}
@@ -228,7 +250,7 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
       <ConfirmDialog
         open={step === "first"}
         title={t("firstTitle")}
-        description={t("firstLead")}
+        description={where === "account" ? t("firstLeadAccount") : t("firstLead")}
         confirmLabel={t("firstConfirm")}
         cancelLabel={t("cancel")}
         onConfirm={() => setStep("second")}

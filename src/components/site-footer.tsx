@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { NAV_ITEMS } from "@/lib/nav";
+import { ContactNote } from "./contact-note";
 import { Container } from "./ui/container";
 import { Logo } from "./logo";
 
@@ -24,6 +25,7 @@ export function SiteFooter() {
         <div className="lg:col-span-2">
           <Logo />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">{t("tagline")}</p>
+          <ContactNote variant="general" className="mt-3 max-w-sm text-sm leading-relaxed text-muted" />
         </div>
         <div>
           <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">{t("platform")}</h2>

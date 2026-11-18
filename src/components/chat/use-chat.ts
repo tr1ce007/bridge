@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { buildProfileSummary } from "@/lib/ai/profile";
 import { ChatRequestError, streamChatReply, type ChatErrorKind } from "@/lib/chat/client";
+import { turnMemoryOff } from "@/lib/chat/consent";
 import { newId } from "@/lib/chat/ids";
 import { toRequestMessages, trimSummary } from "@/lib/chat/request";
 import { getUserStore, storageMode, type Conversation, type Locale, type StoredMessage } from "@/lib/data";
@@ -52,9 +53,12 @@ export function useChat() {
   const [memoryConsent, setMemoryConsentState] = useState(false);
   const [ready, setReady] = useState(false);
   const [storageIssue, setStorageIssue] = useState<"blocked" | "failed" | null>(null);
+  /** Turning memory off did not fully work (shown whatever the toggle says). */
+  const [memoryOffFailed, setMemoryOffFailed] = useState(false);
 
   const messagesRef = useRef<ChatMessage[]>([]);
   const consentRef = useRef(false);
+  const readyRef = useRef(false);
   const streamingRef = useRef(false);
   const abortRef = useRef<AbortController | null>(null);
   const meta = useRef<{ id: string; createdAt: string }>({ id: newId(), createdAt: new Date().toISOString() });
@@ -97,7 +101,10 @@ export function useChat() {
       } catch {
         // the chat works without storage
       }
-      if (!cancelled) setReady(true);
+      if (!cancelled) {
+        readyRef.current = true;
+        setReady(true);
+      }
     })();
     return () => {
       cancelled = true;
@@ -165,7 +172,8 @@ export function useChat() {
   const send = useCallback(
     (text: string) => {
       const content = text.trim();
-      if (!content || streamingRef.current) return false;
+      // Not before the first load has finished: the saved preference and conversation are not known yet.
+      if (!content || streamingRef.current || !readyRef.current) return false;
       const history = [...messagesRef.current, makeMessage("user", content, messagesRef.current.at(-1))];
       void run(history);
       return true;
@@ -199,16 +207,25 @@ export function useChat() {
       consentRef.current = on;
       setMemoryConsentState(on);
       setStorageIssue(null);
+      setMemoryOffFailed(false);
       enqueue(async () => {
         const store = getUserStore();
-        await store.savePreferences({ memoryConsent: on });
-        // Turning memory off erases what was kept. Turning it on saves via the effect above.
-        if (!on) await store.clearConversations();
-        if (on) setStorageIssue(storageMode() === "memory" ? "blocked" : null);
+        if (on) {
+          // Turning memory on saves the conversation via the effect above.
+          await store.savePreferences({ memoryConsent: true });
+          setStorageIssue(storageMode() === "memory" ? "blocked" : null);
+          return;
+        }
+        // Turning memory off: erase first, then save the preference; the toggle shows what is really stored.
+        const result = await turnMemoryOff(store);
+        const actual = result.consent ?? !result.prefSaved;
+        consentRef.current = actual;
+        setMemoryConsentState(actual);
+        setMemoryOffFailed(!result.ok);
       });
     },
     [enqueue],
   );
 
-  return { messages, streaming, error, demo, memoryConsent, ready, storageIssue, send, retry, stop, clear, setMemoryConsent };
+  return { messages, streaming, error, demo, memoryConsent, ready, storageIssue, memoryOffFailed, send, retry, stop, clear, setMemoryConsent };
 }

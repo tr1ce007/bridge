@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { buildExportPayload, collectExportData, exportFileName, EXPORT_VERSION } from "@/lib/data/export";
+import { buildExportPayload, collectExport, collectExportData, exportFileName, EXPORT_VERSION } from "@/lib/data/export";
 import { createLocalUserStore } from "@/lib/data/local-store";
 import { resetStorageState } from "@/lib/data/storage";
 import { buildFallbackReport } from "@/lib/report/fallback";
@@ -90,5 +90,26 @@ describe("export payload", () => {
   it("names the file with the date", () => {
     expect(exportFileName(new Date(2026, 10, 18, 23, 30))).toBe("the-bridge-data-2026-11-18.json"); // local date, whatever the time zone
     expect(exportFileName(new Date(2026, 0, 5, 0, 5))).toBe("the-bridge-data-2026-01-05.json");
+  });
+
+  it("counts the parts that could not be read, so the screen can warn that the file may be incomplete", async () => {
+    const store = createLocalUserStore();
+    const broken = {
+      ...store,
+      listReports: async () => {
+        throw new Error("boom");
+      },
+      listJournal: async () => {
+        throw new Error("boom");
+      },
+    };
+    const healthy = await collectExport(store);
+    expect(healthy.failed).toBe(0);
+    const result = await collectExport(broken);
+    expect(result.failed).toBe(2);
+    expect(result.data.reports).toEqual([]);
+    expect(result.data.journal).toEqual([]);
+    // the old name still returns just the data
+    expect((await collectExportData(broken)).reports).toEqual([]);
   });
 });

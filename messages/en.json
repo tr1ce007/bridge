@@ -627,7 +627,8 @@
     "errorInvalid": "Could not read the message. Refresh the page and try again.",
     "errorRateLimited": "Too many requests in a minute. Wait a little and try again.",
     "errorInterrupted": "The answer was cut off. You can try again.",
-    "disclaimer": "I am an AI companion, not a psychologist. If things feel very heavy, reach out to people close to you or to a professional."
+    "disclaimer": "I am an AI companion, not a psychologist. If things feel very heavy, reach out to people close to you or to a professional.",
+    "memoryOffFailed": "Could not turn memory off: the saved conversation may still be there. The switch shows what is stored right now. Please try again."
   },
   "states": {
     "loading": "Loading…",
@@ -1216,11 +1217,11 @@
     "exportFailed": "We could not prepare the file. Please try again.",
     "deleteTitle": "Delete all my data",
     "deleteLead": "This erases the questionnaire, reports, plan, journal, saved items, experiments, settings and the chat conversation. It cannot be undone, so you may want to download the file above first.",
-    "accountNote": "You are signed in. The button below erases the data in your account and in this browser, but it does not delete the account itself. To delete that too, contact the project team: this cannot be done on your own yet.",
+    "accountNote": "You are signed in. The button below erases your data in the account and in this browser, your stories that are still waiting for review, and the name on your profile. These stay: stories the team has already reviewed (published or rejected), reports you sent about stories, and the account itself. The project team deletes them.",
     "deleteButton": "Delete all my data",
-    "deleteFailed": "We could not delete the data. Please try again. If it still does not work, contact the project team.",
-    "deletedTitle": "All your data has been deleted",
-    "deletedLead": "We erased the questionnaire, reports, journal, saved items and conversations. You can start from a clean slate whenever you like.",
+    "deleteFailed": "We could not delete the data: some of it may remain (in the account or in this browser). Please try again.",
+    "deletedTitle": "Your data has been deleted",
+    "deletedLead": "We erased the questionnaire, reports, plan, journal, saved items, experiments, settings and conversations. You can start from a clean slate whenever you like.",
     "deletedHome": "To the home page",
     "confirmWord": "DELETE",
     "cancel": "Cancel",
@@ -1230,7 +1231,11 @@
     "secondTitle": "Final confirmation",
     "secondLead": "So that we know this is not an accident, type the word {word}.",
     "secondConfirm": "Delete for good",
-    "typeLabel": "Type {word}"
+    "typeLabel": "Type {word}",
+    "memoryOffFailed": "Could not turn memory off: the saved conversation may still be there. The switch shows what is stored right now. Please try again.",
+    "deletedLeadAccount": "We erased in the account and in this browser: the questionnaire, reports, plan, journal, saved items, experiments, settings, conversations, your stories that were waiting for review, and the name on your profile. Left: stories the team has already reviewed (published or rejected), reports you sent, and the account itself.",
+    "firstLeadAccount": "The questionnaire, reports, plan, journal, saved items, conversations, your stories that are still waiting for review, and the name on your profile will be erased. Reviewed stories, reports and the account itself stay: the project team deletes them. This cannot be undone. Next we will ask you to confirm once more.",
+    "exportPartial": "Some of the data could not be read, so the file may be incomplete."
   },
   "about": {
     "metaTitle": "About",
@@ -1269,7 +1274,7 @@
     "where1": "While no database is connected, everything is stored only in your browser: questionnaire answers, reports, plan, journal, saved items, experiments, the mentor request and settings. We do not keep this data ourselves. The project’s server receives your answers only when you ask for a report or a scenario, processes them and does not store them.",
     "where2": "If a database is connected and you are signed in, the questionnaire, reports, plan, journal, saved items, experiments and settings are kept in the database. The exception: the mentor request and experiments you have started but not finished stay only in this browser. By the access rules each record in the database is visible only to its owner.",
     "where3": "If the browser does not allow storage (for example in private mode), data lives only until you close the tab. The pages warn you about it.",
-    "where4": "A story you send for publication goes to the database. The team reviews it, and it is shown only after the review. You choose whether to give your name.",
+    "where4": "A story you send for publication goes to the database. The team reviews it, and it is shown only after the review. You choose whether to give your name. If you delete your data in Settings, a story that is still waiting for review is deleted. Only the team can remove a story that is already published.",
     "aiTitle": "What goes to the AI service",
     "ai1": "Data goes to the AI service only when AI is connected on the project’s server. For the report that is your questionnaire answers, for the chat your messages, and for the “What if I try?” scenario the chosen direction, your note and the questionnaire answers, if you have them.",
     "ai2": "Whatever you write in your own words is passed to the model as data, not as commands, and markup is removed from the text.",
@@ -1281,14 +1286,15 @@
     "memory3": "Even with memory off, your message goes to the AI service the moment you send it: otherwise there would be no answer. It just is not kept anywhere once you close the page.",
     "yoursTitle": "Download and delete",
     "yours1": "In the settings you can download all your data as one file (JSON).",
-    "yours2": "You can also delete all your data there. It takes two confirmations so you do not erase everything by accident. The data cannot be restored afterwards. The account itself is for now deleted through the project team.",
+    "yours2": "You can also delete your data there. It takes two confirmations so you do not erase everything by accident. The data cannot be restored afterwards.",
     "adsTitle": "Ads and selling data",
     "ads1": "We do not show ads and we do not take money for recommendations.",
     "ads2": "We do not sell your data and do not use it for advertising. It is received only by the project’s database and, when it is connected, by the AI service in the cases described above.",
     "limitsTitle": "Good to know",
     "limits1": "This is a plain-language description, not a legal document. We make no claims in it about compliance with specific laws.",
     "limits2": "If anything changes in what we send and where, this page will change with it.",
-    "ctaSettings": "Open settings"
+    "ctaSettings": "Open settings",
+    "yours3": "If you are signed in, the data in the account and in the browser, your stories that are still waiting for review, and the name on your profile are deleted. These stay: stories the team has already reviewed (published or rejected), reports you sent about stories, and the account itself. The project team deletes them."
   },
   "auth": {
     "metaTitle": "Sign in",
@@ -1369,7 +1375,7 @@
       "step1Title": "Create a Supabase project",
       "step1Text": "Sign up at supabase.com and create a new project.",
       "step2Title": "Run the migrations",
-      "step2Text": "Run the files in the supabase/migrations folder in order (0001, 0002, 0003, 0004): with the Supabase CLI command supabase db push, or by pasting them into the SQL editor.",
+      "step2Text": "Run the files in the supabase/migrations folder in order (0001, 0002, 0003, 0004, 0005): with the Supabase CLI command supabase db push, or by pasting them into the SQL editor.",
       "step3Title": "Set the environment variables",
       "step3Text": "Add the project URL and keys to .env.local, then restart the site. The service role key is used only on the server and never reaches the browser.",
       "step4Title": "Make yourself an admin",
@@ -1422,7 +1428,7 @@
       "title": "Story moderation",
       "lead": "Stories sent in by people. Read each one in full, choose a type, then publish or reject it. The types \"documented\" and \"verified\" need a source link.",
       "empty": "No stories are waiting for review.",
-      "unreadable": "{count} entries could not be shown: they do not match the story format.",
+      "unreadable": "Entries that could not be shown: {count}. They do not match the story format. Any of them can be rejected without reading the text, so it does not stay in the queue.",
       "by": "Author: {name}",
       "anonymous": "Author: anonymous",
       "submittedAt": "Sent: {date}",
@@ -1441,7 +1447,8 @@
       "approve": "Publish",
       "reject": "Reject",
       "approved": "Story published.",
-      "rejected": "Story rejected."
+      "rejected": "Story rejected.",
+      "unreadableItem": "Entry {id}"
     },
     "reports": {
       "title": "Reports",
@@ -1576,5 +1583,11 @@
       "showing": "Showing {shown} of {count}",
       "adminOnly": "This section is for administrators only."
     }
+  },
+  "contact": {
+    "deleteWith": "To delete the rest and the account itself, write to the project team: <mail>{email}</mail>.",
+    "deleteSoon": "To delete the rest and the account itself, you need to write to the project team. The team's contact will appear on this page soon.",
+    "generalWith": "Contact the team: <mail>{email}</mail>",
+    "generalSoon": "The team's contact will appear on this page soon."
   }
 }

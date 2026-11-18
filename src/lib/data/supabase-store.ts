@@ -361,6 +361,11 @@ const signedIn: SignedInOps = {
     for (const table of USER_TABLES) {
       check(await c.from(table).delete().eq("user_id", uid));
     }
+    // Stories the person submitted that no one has published yet. Published (approved) stories stay:
+    // only the team can remove those. The status filter is also enforced by the delete policy (0005).
+    check(await c.from("stories").delete().eq("author_id", uid).eq("status", "pending"));
+    // The name on the profile. The profile row itself belongs to the account, which is deleted via the team.
+    check(await c.from("profiles").update({ display_name: null }).eq("id", uid));
   },
 };
 

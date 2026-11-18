@@ -30,12 +30,17 @@ export interface ExportPayload {
   data: ExportData;
 }
 
-/** Reads everything the person has stored. A part that cannot be read becomes empty instead of failing the whole export. */
-export async function collectExportData(store: UserStore): Promise<ExportData> {
+/**
+ * Reads everything the person has stored. A part that cannot be read becomes empty instead of failing the
+ * whole export, and is counted in `failed` so the screen can warn that the file may be incomplete.
+ */
+export async function collectExport(store: UserStore): Promise<{ data: ExportData; failed: number }> {
+  let failed = 0;
   const safe = async <T>(read: () => Promise<T>, empty: T): Promise<T> => {
     try {
       return await read();
     } catch {
+      failed += 1;
       return empty;
     }
   };
@@ -51,7 +56,7 @@ export async function collectExportData(store: UserStore): Promise<ExportData> {
     safe(() => store.loadConversation(), null),
     safe(() => store.getPreferences(), { memoryConsent: false }),
   ]);
-  return {
+  const data: ExportData = {
     session,
     reports,
     roadmap,
@@ -63,6 +68,11 @@ export async function collectExportData(store: UserStore): Promise<ExportData> {
     startedExperiments: listStarted(),
     mentorInterest: loadMentorInterest(),
   };
+  return { data, failed };
+}
+
+export async function collectExportData(store: UserStore): Promise<ExportData> {
+  return (await collectExport(store)).data;
 }
 
 export function buildExportPayload(data: ExportData, meta: { exportedAt: Date; storage: ExportPayload["storage"] }): ExportPayload {

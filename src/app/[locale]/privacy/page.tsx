@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { ContactNote } from "@/components/contact-note";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
@@ -15,7 +16,7 @@ const SECTIONS = [
   { id: "where", title: "whereTitle", items: ["where1", "where2", "where3", "where4"] },
   { id: "ai", title: "aiTitle", items: ["ai1", "ai2", "ai3", "ai4"] },
   { id: "memory", title: "memoryTitle", items: ["memory1", "memory2", "memory3"] },
-  { id: "yours", title: "yoursTitle", items: ["yours1", "yours2"] },
+  { id: "yours", title: "yoursTitle", items: ["yours1", "yours2", "yours3"] },
   { id: "ads", title: "adsTitle", items: ["ads1", "ads2"] },
   { id: "limits", title: "limitsTitle", items: ["limits1", "limits2"] },
 ] as const;
@@ -42,6 +43,7 @@ export default async function PrivacyPage({ params }: PageProps<"/[locale]/priva
                   </li>
                 ))}
               </ul>
+              {s.id === "yours" && <ContactNote variant="delete" className="mt-4 text-[0.95rem] leading-relaxed" />}
             </section>
           ))}
           <div className="flex flex-wrap gap-3 pt-2">

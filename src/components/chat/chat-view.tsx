@@ -61,11 +61,11 @@ export function ChatView() {
         )}
 
         <div className="mt-6">
-          <MemoryToggle checked={chat.memoryConsent} onChange={chat.setMemoryConsent} disabled={!chat.ready} issue={chat.storageIssue} />
+          <MemoryToggle checked={chat.memoryConsent} onChange={chat.setMemoryConsent} disabled={!chat.ready} issue={chat.storageIssue} offFailed={chat.memoryOffFailed} />
         </div>
 
         {messages.length === 0 ? (
-          <StarterPrompts onPick={handleSend} />
+          <StarterPrompts onPick={handleSend} disabled={!chat.ready} />
         ) : (
           <section aria-label={t("transcriptLabel")} className="mt-8">
             <div className="mb-4 flex min-h-9 flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-border pb-3">
@@ -132,7 +132,7 @@ export function ChatView() {
               </button>
             </div>
           )}
-          <ChatInput streaming={streaming} onSend={handleSend} onStop={chat.stop} />
+          <ChatInput streaming={streaming} disabled={!chat.ready} onSend={handleSend} onStop={chat.stop} />
           <p className="mt-2 px-3 text-xs leading-relaxed text-muted">{t("disclaimer")}</p>
         </div>
       </div>

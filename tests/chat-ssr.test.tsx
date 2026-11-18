@@ -5,6 +5,7 @@ import ru from "../messages/ru.json";
 import kk from "../messages/kk.json";
 import en from "../messages/en.json";
 import { ChatView } from "@/components/chat/chat-view";
+import { MemoryToggle } from "@/components/chat/memory-toggle";
 
 const render = (locale: "ru" | "kk" | "en", messages: typeof ru) =>
   renderToString(
@@ -27,6 +28,23 @@ describe("/chat server HTML", () => {
     expect(html).not.toMatch(/opacity:\s*0(?![.\d])/);
     // The demo banner appears only after /api/ai/status said so.
     expect(html).not.toContain(ru.chat.demoBanner);
+  });
+
+  it("keeps the composer and the starters disabled until the first load is ready", () => {
+    const html = render("ru", ru);
+    expect(html).toMatch(/<textarea[^>]*id="chat-input"[^>]*disabled|<textarea[^>]*disabled[^>]*id="chat-input"/);
+    expect(html).toMatch(/<button[^>]*disabled[^>]*>/);
+    expect(html).toMatch(/type="submit"[^>]*disabled|disabled[^>]*type="submit"/);
+  });
+
+  it("shows a visible error when turning memory off failed, whatever the switch says", () => {
+    const html = renderToString(
+      <NextIntlClientProvider locale="ru" messages={ru} timeZone="Asia/Almaty">
+        <MemoryToggle checked={true} onChange={() => {}} issue={null} offFailed />
+      </NextIntlClientProvider>,
+    );
+    expect(html).toContain(ru.chat.memoryOffFailed);
+    expect(html).toContain('role="alert"');
   });
 
   it("uses the exact required Russian copy", () => {

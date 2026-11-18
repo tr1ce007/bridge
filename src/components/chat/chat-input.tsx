@@ -7,10 +7,13 @@ import { CHAT_MAX_MESSAGE_CHARS } from "@/lib/ai/chat-limits";
 /** Textarea composer. Enter sends, Shift+Enter adds a line; while an answer streams the button becomes Stop. */
 export function ChatInput({
   streaming,
+  disabled,
   onSend,
   onStop,
 }: {
   streaming: boolean;
+  /** True until the chat has loaded what was saved. */
+  disabled?: boolean;
   onSend: (text: string) => boolean;
   onStop: () => void;
 }) {
@@ -27,7 +30,7 @@ export function ChatInput({
   }, [value]);
 
   const submit = () => {
-    if (streaming || !value.trim()) return;
+    if (streaming || disabled || !value.trim()) return;
     if (onSend(value)) setValue("");
   };
 
@@ -55,6 +58,7 @@ export function ChatInput({
           ref={ref}
           rows={1}
           maxLength={CHAT_MAX_MESSAGE_CHARS}
+          disabled={disabled}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={onKeyDown}
@@ -72,7 +76,7 @@ export function ChatInput({
         ) : (
           <button
             type="submit"
-            disabled={!value.trim()}
+            disabled={disabled || !value.trim()}
             className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-fg transition-colors hover:bg-primary-hover disabled:pointer-events-none disabled:opacity-50"
           >
             {t("send")}

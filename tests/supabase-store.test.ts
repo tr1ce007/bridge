@@ -65,6 +65,21 @@ describe("supabase adapters (no network)", () => {
     resetStorageState();
   });
 
+  it("signed in: clearAll also deletes the user's own pending stories and clears the profile name", async () => {
+    const { client, calls } = fakeClient("user-1");
+    const store = createSupabaseUserStore(() => client, createLocalUserStore());
+    await store.clearAll();
+    // delete from stories ... author_id = uid AND status = 'pending' (never approved ones)
+    const at = calls.indexOf("from(stories)");
+    expect(at).toBeGreaterThanOrEqual(0);
+    const chain = calls.slice(at, at + 4);
+    expect(chain).toEqual(["from(stories)", "delete()", 'eq("author_id","user-1")', 'eq("status","pending")']);
+    const p = calls.indexOf("from(profiles)");
+    expect(p).toBeGreaterThanOrEqual(0);
+    expect(calls.slice(p, p + 3)).toEqual(["from(profiles)", 'update({"display_name":null})', 'eq("id","user-1")']);
+    resetStorageState();
+  });
+
   it("refuses story submissions from signed-out visitors", async () => {
     const { client } = fakeClient(null);
     const content = createSupabaseContentStore(() => client);
