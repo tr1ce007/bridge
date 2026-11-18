@@ -1145,7 +1145,7 @@
     "lead": "THE BRIDGE plans to connect people who are looking for their path with volunteers and experienced professionals who are ready to share their experience.",
     "loading": "Loading…",
     "statusTitle": "For now these are only plans.",
-    "statusLead": "There are no mentors on the platform yet, and we do not show made-up profiles. You can register your interest, and it will help us understand what people need.",
+    "statusLead": "There are no mentors on the platform yet, and we don't show made-up profiles. Leave your interest and message us, and we'll find someone to talk to.",
     "planTitle": "How we imagine it",
     "plan1": "A mentor does not decide for you: they share their path and answer questions.",
     "plan2": "Taking part is voluntary, with no obligations for you or for the mentor.",
@@ -1153,7 +1153,7 @@
     "formTitle": "Register your interest",
     "formLead": "Choose who you would like to be. It takes a couple of minutes.",
     "thanks": "Thank you, your interest is noted.",
-    "localOnly": "We saved this only in your browser; when we connect the database, we will be able to get in touch.",
+    "localOnly": "Your request is saved in your browser. So the team sees it, message us on Instagram or call.",
     "summaryRole": "You would like to",
     "roleLegend": "Who would you like to be?",
     "roleMentee": "Find a mentor",
@@ -1181,9 +1181,11 @@
     "errorField": "Write your field.",
     "errorExperience": "Write a few words about your experience.",
     "contactLabel": "How to reach you (optional)",
-    "contactHint": "For now this stays only in your browser, and we cannot see it.",
+    "contactHint": "Your request is stored in your browser. So we get it, message us on Instagram after sending.",
     "saveFailed": "We could not save it. Please try again.",
-    "submit": "Register interest"
+    "submit": "Register interest",
+    "sendInstagram": "Message on Instagram",
+    "callTeam": "Call: {phone}"
   },
   "settings": {
     "metaTitle": "Settings",

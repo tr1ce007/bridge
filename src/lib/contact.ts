@@ -14,6 +14,8 @@ export const TEAM_CONTACT = {
   phoneHref: "tel:+77769140720",
   instagram: "@the.bridge.astana",
   instagramHref: "https://www.instagram.com/the.bridge.astana/",
+  /** Opens a direct message to the team's Instagram. */
+  instagramDmHref: "https://ig.me/m/the.bridge.astana",
 } as const;
 
 // Deliberately simple: one "@", no spaces or angle brackets, a dot in the domain.

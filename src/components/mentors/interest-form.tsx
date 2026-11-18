@@ -2,10 +2,11 @@
 
 import { useFormatter, useTranslations } from "next-intl";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonClasses } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { useLoad } from "@/hooks/use-user-data";
 import { cn } from "@/lib/cn";
+import { TEAM_CONTACT } from "@/lib/contact";
 import { storageMode } from "@/lib/data";
 import {
   MENTEE_TOPICS,
@@ -82,6 +83,14 @@ function InterestBody({ initial, memory }: { initial: MentorInterest | null; mem
         <div role="status" className="rounded-2xl bg-subtle p-4">
           <p className="font-semibold">{t("thanks")}</p>
           <p className="mt-1 text-sm leading-relaxed text-muted">{t("localOnly")}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <a href={TEAM_CONTACT.instagramDmHref} target="_blank" rel="noopener noreferrer" className={buttonClasses("primary", "min-h-10 px-5")}>
+              {t("sendInstagram")}
+            </a>
+            <a href={TEAM_CONTACT.phoneHref} className={buttonClasses("ghost", "min-h-10 px-5 whitespace-nowrap")}>
+              {t("callTeam", { phone: TEAM_CONTACT.phone })}
+            </a>
+          </div>
         </div>
         {memory && <p className="mt-3 text-sm text-accent-text">{tStates("memoryNotice")}</p>}
         <dl className="mt-5 space-y-3 text-sm">
