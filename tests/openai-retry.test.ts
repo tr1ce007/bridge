@@ -52,14 +52,17 @@ describe("OpenAI-compatible provider retries", () => {
   });
 
   it("uses the fallback model only for the last retry", async () => {
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValueOnce(new Response("busy", { status: 503 }))
-      .mockResolvedValueOnce(new Response("limit", { status: 429 }))
-      .mockResolvedValueOnce(okJson());
+    const fetchMock = vi.fn();
+    RETRY_DELAYS_MS.forEach((_, i) => fetchMock.mockResolvedValueOnce(new Response("busy", { status: i % 2 ? 429 : 503 })));
+    fetchMock.mockResolvedValueOnce(okJson());
     const out = await runJSON(fetchMock, "spare");
     expect(out).toEqual({ value: { ok: true } });
-    expect(fetchMock.mock.calls.map(modelOf)).toEqual(["main", "main", "spare"]);
+    expect(fetchMock.mock.calls.map(modelOf)).toEqual([...RETRY_DELAYS_MS.map(() => "main"), "spare"]);
+  });
+
+  it("keeps all retries inside the time limit", async () => {
+    // Worst case: every attempt is refused at once, so only the pauses add up.
+    expect(RETRY_DELAYS_MS.reduce((a, b) => a + b, 0)).toBeLessThan(10_000);
   });
 
   it("retries a network error", async () => {

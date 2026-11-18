@@ -14,7 +14,7 @@ const DEFAULT_STREAM_TIMEOUT_MS = 50_000;
  * moment). Each delay is one more attempt; the overall time limit still applies.
  */
 const RETRY_STATUSES = new Set([429, 500, 502, 503, 504]);
-export const RETRY_DELAYS_MS = [700, 2000];
+export const RETRY_DELAYS_MS = [700, 2000, 4000];
 
 /** Waits `ms`, or rejects at once when `signal` aborts (time limit or a cancelled stream). */
 function pause(ms: number, signal: AbortSignal): Promise<void> {
