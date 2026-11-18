@@ -34,7 +34,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} ${manrope.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/* Sets data-theme before first paint (no flash of the wrong theme). */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

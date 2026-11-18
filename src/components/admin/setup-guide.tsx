@@ -18,7 +18,7 @@ export function SetupGuide() {
     <>
       <PageHeader title={t("title")} lead={t("lead")} />
       <Container className="pb-20">
-        <ol className="grid max-w-3xl gap-4">
+        <ol className="grid max-w-3xl grid-cols-1 gap-4">
           {steps.map((s, i) => (
             <li key={s.title} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
               <h2 className="font-display text-lg font-semibold tracking-tight">
