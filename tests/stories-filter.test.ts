@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { bundledStories } from "@/lib/data/local-content";
+import { z } from "zod";
+import demoStories from "./fixtures/demo-stories.json";
+import { storySchema } from "@/lib/data/types";
+
+/** Stable fixture: the former demo stories (the bundled content is now real, documented stories). */
+const bundledStories = z.array(storySchema).parse(demoStories);
 import { filterStories, hasActiveStoryFilter } from "@/lib/stories/filter";
 import { relatedStories } from "@/lib/stories/related";
 import { validateSubmission, EMPTY_SUBMISSION } from "@/lib/stories/validate";

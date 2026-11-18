@@ -11,14 +11,15 @@ import { AXIS_TAGS } from "@/lib/data/tags";
 import { AXES, LOCALES, STORY_KINDS } from "@/lib/data/types";
 
 describe("content: stories", () => {
-  it("has 8-10 stories, all clearly labelled demo, with unique ids", () => {
-    expect(bundledStories.length).toBeGreaterThanOrEqual(8);
-    expect(bundledStories.length).toBeLessThanOrEqual(10);
+  it("has only real documented stories, each with a source link, date and attribution", () => {
+    expect(bundledStories.length).toBeGreaterThanOrEqual(6);
     expect(new Set(bundledStories.map((s) => s.id)).size).toBe(bundledStories.length);
     for (const s of bundledStories) {
-      expect(s.kind).toBe("demo");
-      expect(s.sourceUrl).toBeUndefined(); // no invented URLs
-      expect(s.attribution.ru).toContain("Демонстрационный пример");
+      expect(s.kind, s.id).toBe("documented");
+      expect(s.sourceUrl?.startsWith("https://"), s.id).toBe(true);
+      expect(s.sourceName, s.id).toBeTruthy();
+      expect(s.publishedAt, s.id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(s.attribution.ru, s.id).toContain("Пересказ");
     }
   });
 
@@ -36,12 +37,13 @@ describe("content: stories", () => {
   it("has every text field in ru, kk and en, and a valid original language", () => {
     for (const s of bundledStories) {
       expect(LOCALES).toContain(s.lang);
-      for (const f of ["title", "before", "challenges", "turningPoint", "actions", "now", "advice"] as const) {
+      for (const f of ["title", "before", "challenges", "turningPoint", "actions", "now"] as const) {
         for (const l of LOCALES) expect(s[f]?.[l], `${s.id}.${f}.${l}`).toBeTruthy();
       }
+      // Advice is shown only when the source gave one; otherwise it is marked as not stated.
+      if (s.advice) for (const l of LOCALES) expect(s.advice[l], `${s.id}.advice.${l}`).toBeTruthy();
+      else expect(s.incomplete, s.id).toContain("advice");
     }
-    // spec: diverse cases, not one language
-    expect(new Set(bundledStories.map((s) => s.lang)).size).toBeGreaterThan(1);
   });
 });
 

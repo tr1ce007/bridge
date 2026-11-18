@@ -74,13 +74,14 @@ describe("demoChatReply", () => {
     }
   });
 
-  it("links only to real stories and experiments, marking demo stories as fictional", () => {
+  it("links only to existing stories and experiments, marking them as real retold stories", () => {
     const storyIds = new Set(stories.map((s) => s.id));
     const reply = demoChatReply([user("Родители хотят, чтобы я стал врачом")], "ru");
     const ids = [...reply.matchAll(/\/ru\/stories\/([a-z0-9-]+)/g)].map((m) => m[1]);
     expect(ids.length).toBeGreaterThan(0);
     for (const id of ids) expect(storyIds.has(id)).toBe(true);
-    expect(reply).toMatch(/вымышлен/);
+    expect(reply).toMatch(/реальная история/);
+    expect(reply).not.toMatch(/вымышлен/);
     const medicine = experiments.find((e) => e.direction === "medicine")!;
     expect(reply).toContain(medicine.title.ru);
   });

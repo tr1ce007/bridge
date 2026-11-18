@@ -180,7 +180,7 @@ const SHARED: Record<Locale, Shared> = {
       "Пожалуйста, прямо сейчас поговори с человеком, которому доверяешь, или позвони на бесплатный телефон доверия для детей и молодёжи **150** (Казахстан). Если есть опасность для жизни, звони **112**.\n\n" +
       "Разговор об учёбе и профессии подождёт. Сейчас важнее всего ты.",
     ideasLead: "Что можно сделать:",
-    story: (title, href) => `Почитай историю **«${title}»** (это демонстрационный пример, история вымышлена, но ситуация похожая): [открыть историю →](${href})`,
+    story: (title, href) => `Почитай историю **«${title}»** (реальная история по материалам СМИ, со ссылкой на источник): [открыть историю →](${href})`,
     experiment: (title, href) => `Маленькая проба на сайте: **«${title}»**. [Все пробы →](${href})`,
     direction: (label) => `Ты упомянул(а) направление **«${label}»**. Лучший способ понять, твоё ли это, — попробовать на маленьком задании.`,
     explore: (href) => `Если хочешь посмотреть на себя целиком, пройди анкету: она соберёт отчёт с направлениями и планом. [Пройти анкету →](${href})`,
@@ -193,7 +193,7 @@ const SHARED: Record<Locale, Shared> = {
       "Өтінемін, дәл қазір өзің сенетін адаммен сөйлес немесе балалар мен жастарға арналған тегін сенім телефонына **150** (Қазақстан) қоңырау шал. Өмірге қауіп болса, **112** нөміріне хабарлас.\n\n" +
       "Оқу мен мамандық туралы әңгіме күте тұрады. Қазір ең маңыздысы — сен.",
     ideasLead: "Не істеуге болады:",
-    story: (title, href) => `Мына әңгімені оқып көр: **«${title}»** (бұл демонстрациялық мысал, ойдан шығарылған, бірақ жағдай ұқсас): [әңгімені ашу →](${href})`,
+    story: (title, href) => `Мына әңгімені оқып көр: **«${title}»** (БАҚ материалдары бойынша нақты оқиға, дереккөзі көрсетілген): [әңгімені ашу →](${href})`,
     experiment: (title, href) => `Сайттағы шағын тәжірибе: **«${title}»**. [Барлық тәжірибелер →](${href})`,
     direction: (label) => `Сен **«${label}»** бағытын атадың. Бұл саған сай ма, соны түсінудің ең жақсы жолы — шағын тапсырмада байқап көру.`,
     explore: (href) => `Өзіңді толық көргің келсе, сауалнамадан өт: ол бағыттар мен жоспары бар есеп жасайды. [Сауалнамадан өту →](${href})`,
@@ -206,7 +206,7 @@ const SHARED: Record<Locale, Shared> = {
       "Please talk to someone you trust right now, or call the free helpline for children and young people **150** (Kazakhstan). If your life is in danger, call **112**.\n\n" +
       "Study and career questions can wait. Right now, you matter most.",
     ideasLead: "What could help:",
-    story: (title, href) => `Read the story **“${title}”** (it's a demo example, the story is fictional, but the situation is similar): [open the story →](${href})`,
+    story: (title, href) => `Read the story **“${title}”** (a real story retold from the media, with a link to the source): [open the story →](${href})`,
     experiment: (title, href) => `A small experiment on the site: **“${title}”**. [All experiments →](${href})`,
     direction: (label) => `You mentioned **“${label}”**. The best way to see whether it fits you is to try it on a small task.`,
     explore: (href) => `If you want to look at the whole picture, take the questionnaire: it builds a report with directions and a plan. [Take the questionnaire →](${href})`,
@@ -844,17 +844,17 @@ const COPY: Record<Locale, Copy> = {
 
 /** Which platform story and experiment fit a topic (ids from src/content; missing ids are skipped). */
 const TOPIC_CONTENT: Partial<Record<DemoTopic, { story?: string; experiment?: string; explore?: boolean; opportunities?: boolean }>> = {
-  parents: { story: "demo-parents-medicine" },
-  abroad: { story: "demo-small-town-abroad", opportunities: true },
-  money: { story: "demo-small-town-abroad", opportunities: true },
-  hateMajor: { story: "demo-changed-major", explore: true },
-  late: { story: "demo-at-27" },
-  comparison: { story: "demo-pause-and-return" },
+  parents: { story: "real-narushev-orientalist-to-music" },
+  abroad: { story: "real-iskendir-bolashak-village-teacher", opportunities: true },
+  money: { story: "real-iskendir-bolashak-village-teacher", opportunities: true },
+  hateMajor: { story: "real-erkenes-it-to-farming", explore: true },
+  late: { story: "real-kozhakhmetova-teacher-to-it" },
+  comparison: { story: "real-eseikyzy-finance-to-it" },
   noTalent: { experiment: "exp-psychology-diary", explore: true },
-  tooMany: { story: "demo-no-direction", explore: true },
-  fear: { story: "demo-at-27", experiment: "exp-entrepreneurship-test" },
-  tired: { story: "demo-pause-and-return" },
-  unknown: { story: "demo-no-direction", experiment: "exp-psychology-diary", explore: true },
+  tooMany: { story: "real-tleukulov-boxing-to-ai", explore: true },
+  fear: { story: "real-kozhakhmetova-teacher-to-it", experiment: "exp-entrepreneurship-test" },
+  tired: { story: "real-tleukulov-boxing-to-ai" },
+  unknown: { story: "real-erkenes-it-to-farming", experiment: "exp-psychology-diary", explore: true },
   general: { explore: true },
 };
 
@@ -883,7 +883,7 @@ export function demoChatReply(messages: ChatMessage[], locale: Locale): string {
 
   const links: string[] = [];
   const story = content.story ? STORIES.find((s) => s.id === content.story) : undefined;
-  if (story && story.kind === "demo") links.push(shared.story(pickText(story.title, locale, story.lang), `/${locale}/stories/${story.id}`));
+  if (story && story.kind !== "user") links.push(shared.story(pickText(story.title, locale, story.lang), `/${locale}/stories/${story.id}`));
   const experiment =
     (direction && EXPERIMENTS.find((e) => e.direction === direction)) ||
     (content.experiment ? EXPERIMENTS.find((e) => e.id === content.experiment) : undefined);

@@ -88,7 +88,7 @@ describe("POST /api/ai/report", () => {
         unnoticed: ["u"],
         directions: [1, 2, 3, 4, 5, 6].map(direction),
         stories: [
-          { storyId: "demo-small-town-abroad", relevance: "high", why: ["w"], differences: ["d"] },
+          { storyId: "real-iskendir-bolashak-village-teacher", relevance: "high", why: ["w"], differences: ["d"] },
           { storyId: "made-up-story", relevance: "high", why: ["w"], differences: ["d"] },
         ],
         unexpected: [
@@ -108,7 +108,7 @@ describe("POST /api/ai/report", () => {
     const body = await res.json();
     expect(body.demo).toBe(false);
     expect(reportSchema.safeParse(body.report).success).toBe(true);
-    expect(body.report.stories.map((s: { storyId: string }) => s.storyId)).toEqual(["demo-small-town-abroad"]);
+    expect(body.report.stories.map((s: { storyId: string }) => s.storyId)).toEqual(["real-iskendir-bolashak-village-teacher"]);
     expect(body.report.roadmap.d7[0]).toMatchObject({ text: "one", done: false });
     expect(body.report.unexpected).toHaveLength(2);
     expect(body.report.experiments.map((e: { experimentId?: string }) => e.experimentId)).toEqual(["exp-programming-first", undefined]);

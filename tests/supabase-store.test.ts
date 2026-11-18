@@ -99,7 +99,7 @@ describe("supabase adapters (no network)", () => {
   it("maps a story to a database row and back without losing data", () => {
     const story = { ...bundledStories[0], status: "approved" as const };
     const row = storyToRow(story, null);
-    expect(row.kind).toBe("demo");
+    expect(row.kind).toBe(story.kind);
     expect(row.content.title).toEqual(story.title);
     const back = storyFromRow({
       id: row.id,

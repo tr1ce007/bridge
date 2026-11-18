@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { matchStories } from "@/lib/matching/match";
 import { answersToTags } from "@/lib/matching/answer-tags";
-import { bundledStories } from "@/lib/data/local-content";
+import { z } from "zod";
+import demoStories from "./fixtures/demo-stories.json";
+import { storySchema } from "@/lib/data/types";
+
+/** Stable fixture: the former demo stories (the bundled content is now real, documented stories). */
+const bundledStories = z.array(storySchema).parse(demoStories);
 import { AXES, type Answer, type Axis, type Story } from "@/lib/data/types";
 
 function story(id: string, tags: Partial<Record<Axis, string[]>>): Story {
