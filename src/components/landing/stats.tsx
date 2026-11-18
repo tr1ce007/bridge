@@ -1,11 +1,12 @@
 import { useTranslations } from "next-intl";
-import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 
-// Verified source for the graduates figure (Ruling: use exactly this link).
+// Both figures checked against the published articles (Nov 2026).
 const GRADUATES_SOURCE_URL =
-  "https://tengrinews.kz/article/kazaxstancy-rabotaiut-ne-specialnosti-biznes-ne-zakryt-3400/";
+  "https://finance.kz/news/trudovoy-disbalans-tret-vypusknikov-v-kazahstane-ne-rabotayut-po-spetsialnosti";
+const PUPILS_SOURCE_URL =
+  "https://tengrinews.kz/kazakhstan_news/kazahstanskie-shkolniki-podelilis-karernyimi-ojidaniyami-529757/";
 
 /** The one deep-navy band of the landing: two figures, set like an editorial spread. */
 export function Stats() {
@@ -38,14 +39,19 @@ export function Stats() {
         </Reveal>
         <Reveal className="h-full" delay={0.08}>
           <figure className="flex h-full flex-col bg-[#102a56] p-8 sm:p-12">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <p className="font-display text-6xl font-bold tracking-[-0.04em] text-white sm:text-7xl">{t("teensValue")}</p>
-              <Badge tone="warning">{t("unverified")}</Badge>
-            </div>
-            <span aria-hidden="true" className="mt-6 block h-0.5 w-12 rounded-full bg-white/25" />
+            <p className="font-display text-6xl font-bold tracking-[-0.04em] text-white sm:text-7xl">{t("teensValue")}</p>
+            <span aria-hidden="true" className="mt-6 block h-0.5 w-12 rounded-full bg-[#3b7bf6]" />
             <blockquote className="mt-6 text-lg leading-relaxed text-pretty text-white/90">{t("teensText")}</blockquote>
             <figcaption className="mt-auto pt-10 text-sm text-white/60">
-              {t("sourceLabel")}: {t("teensSource")}
+              {t("sourceLabel")}:{" "}
+              <a
+                href={PUPILS_SOURCE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+              >
+                {t("teensSource")}
+              </a>
             </figcaption>
           </figure>
         </Reveal>

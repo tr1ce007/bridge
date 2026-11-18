@@ -47,9 +47,10 @@ describe("filterOpportunities", () => {
     );
     expect(filterOpportunities(bundledOpportunities, { level: "bachelor" }, now).every((o) => o.levels.includes("bachelor") || o.levels.includes("any"))).toBe(true);
     expect(filterOpportunities(bundledOpportunities, { cost: "free" }, now).every((o) => o.cost === "free")).toBe(true);
-    // Every bundled entry awaits a human check, so all of them are unverified.
-    expect(filterOpportunities(bundledOpportunities, { status: "unverified" }, now)).toHaveLength(bundledOpportunities.length);
-    expect(filterOpportunities(bundledOpportunities, { status: "verified" }, now)).toEqual([]);
+    // Every bundled entry was checked on its official site on 2026-11-18.
+    const checked = day("2026-11-20");
+    expect(filterOpportunities(bundledOpportunities, { status: "verified" }, checked)).toHaveLength(bundledOpportunities.length);
+    expect(filterOpportunities(bundledOpportunities, { status: "unverified" }, checked)).toEqual([]);
   });
   it("status filter uses the computed status", () => {
     const later = day("2027-12-01");

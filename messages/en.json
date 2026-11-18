@@ -76,12 +76,11 @@
       "title": "You are not the only one who doesn't know yet.",
       "graduatesValue": "≈ one in three",
       "graduatesText": "More than 30% of graduates in Kazakhstan work outside their field of study.",
-      "graduatesSource": "Statement by Vice Minister of Labour A. Biakhmetov, Tengrinews",
-      "teensValue": "44%",
-      "teensText": "of teenagers don't know what they want to become.",
-      "teensSource": "project team data · source being verified",
-      "sourceLabel": "Source",
-      "unverified": "Not verified"
+      "graduatesSource": "Vice Minister of Labour A. Biakhmetov, Finance.kz, 29 Jul 2025",
+      "teensValue": "≈ 40%",
+      "teensText": "of schoolchildren say school gives them too few chances for career guidance and choosing a path.",
+      "teensSource": "Survey by the Ministry of Education of Kazakhstan and Samruk‑Kazyna Construction, 40,000+ pupils, Tengrinews, 20 Mar 2024",
+      "sourceLabel": "Source"
     },
     "how": {
       "eyebrow": "How it works",

@@ -80,10 +80,10 @@ describe("content: experiments", () => {
 });
 
 describe("content: opportunities", () => {
-  it("every bundled entry is unverified until a human checks it (facts were written from memory)", () => {
+  it("every bundled entry was checked against its official site and carries the check date", () => {
     for (const o of bundledOpportunities) {
-      expect(o.status, o.id).toBe("unverified");
-      expect(o.verifiedAt, o.id).toBeNull();
+      expect(o.status, o.id).toBe("verified");
+      expect(o.verifiedAt, o.id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
     expect(bundledOpportunities.find((o) => o.id === "bolashak")?.country).toBe("international");
   });
@@ -100,7 +100,7 @@ describe("content: opportunities", () => {
       } else {
         expect(o.verifiedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       }
-      expect(o.eligibility.ru).toMatch(/уточняйте на официальном сайте|Условия и сроки/);
+      expect(o.eligibility.ru).toMatch(/официальн/);
     }
   });
 });

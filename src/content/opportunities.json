@@ -15,14 +15,14 @@
       "en": "An international scholarship of the Government of Kazakhstan for study and research internships abroad, run by the Center for International Programs."
     },
     "eligibility": {
-      "ru": "Для граждан Казахстана. Требования к уровню образования, языку и опыту работы уточняйте на официальном сайте.",
-      "kk": "Қазақстан азаматтарына арналған. Білім деңгейі, тіл және жұмыс тәжірибесі талаптарын ресми сайттан нақтылаңыз.",
-      "en": "For citizens of Kazakhstan. Check the education, language and work-experience requirements on the official website."
+      "ru": "Только для граждан Казахстана. Для магистратуры нужно безусловное приглашение из вуза рекомендуемого списка и сертификат по казахскому языку не ниже B1. Точные правила — на официальном сайте.",
+      "kk": "Тек Қазақстан азаматтарына. Магистратура үшін ұсынылған тізімдегі университеттен шартсыз шақыру және қазақ тілінен кемінде B1 сертификаты қажет. Нақты ережелер — ресми сайтта.",
+      "en": "Kazakhstan citizens only. For a master’s you need an unconditional offer from a university on the recommended list and a Kazakh language certificate of at least B1. Exact rules are on the official site."
     },
     "url": "https://bolashak.gov.kz",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "erasmus-plus",
@@ -47,8 +47,8 @@
     },
     "url": "https://erasmus-plus.ec.europa.eu",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "daad",
@@ -72,8 +72,8 @@
     },
     "url": "https://www.daad.de/en/",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "chevening",
@@ -90,14 +90,14 @@
       "en": "A UK government scholarship for a one-year master's degree at a UK university."
     },
     "eligibility": {
-      "ru": "Нужно быть гражданином страны, где действует программа. Условия и сроки уточняйте на официальном сайте.",
-      "kk": "Бағдарлама жұмыс істейтін елдің азаматы болу керек. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
-      "en": "You must be a citizen of a country where the programme operates. Check conditions and deadlines on the official website."
+      "ru": "Казахстан участвует в программе. Набор на 2027–2028 уже закрыт, следите за открытием следующего на официальном сайте.",
+      "kk": "Қазақстан бағдарламаға қатысады. 2027–2028 жылдарға қабылдау жабылды, келесісінің ашылуын ресми сайттан бақылаңыз.",
+      "en": "Kazakhstan takes part. Applications for 2027–2028 are closed; watch the official site for the next round."
     },
     "url": "https://www.chevening.org",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "fulbright-foreign-student",
@@ -121,8 +121,8 @@
     },
     "url": "https://foreign.fulbrightonline.org",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "stipendium-hungaricum",
@@ -141,14 +141,14 @@
       "en": "A Hungarian government scholarship for international students at Hungarian universities."
     },
     "eligibility": {
-      "ru": "Приём идёт по учебным годам; на сайте указано, открыт ли набор. Условия и сроки уточняйте на официальном сайте.",
-      "kk": "Қабылдау оқу жылдары бойынша өтеді; сайтта қабылдау ашық немесе жабық екені көрсетіледі. Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
-      "en": "Applications run by academic year; the site shows whether admission is open. Check conditions and deadlines on the official website."
+      "ru": "Приём на 2026/27 учебный год закрыт. Сроки следующего набора смотрите на официальном сайте.",
+      "kk": "2026/27 оқу жылына қабылдау жабық. Келесі қабылдау мерзімін ресми сайттан қараңыз.",
+      "en": "Applications for 2026/27 are closed. Check the official site for the next round."
     },
     "url": "https://stipendiumhungaricum.hu",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "turkiye-burslari",
@@ -160,11 +160,11 @@
       "phd"
     ],
     "country": "turkey",
-    "cost": "free",
+    "cost": "unknown",
     "description": {
-      "ru": "Полностью финансируемая стипендия правительства Турции для иностранных студентов: бакалавриат, магистратура, докторантура и исследовательские программы.",
-      "kk": "Түркия Үкіметінің шетелдік студенттерге арналған толық қаржыландырылатын стипендиясы: бакалавриат, магистратура, докторантура және зерттеу бағдарламалары.",
-      "en": "A fully funded Turkish government scholarship for international students at bachelor's, master's, PhD and research levels."
+      "ru": "Стипендия Турции для иностранных студентов: бакалавриат, магистратура, докторантура и исследовательские программы. Кроме финансовой поддержки, программа помогает с местом в университете.",
+      "kk": "Шетелдік студенттерге арналған Түркия стипендиясы: бакалавриат, магистратура, докторантура және зерттеу бағдарламалары. Қаржылай қолдаудан бөлек, бағдарлама университеттен орын алуға көмектеседі.",
+      "en": "Türkiye’s scholarship for international students: bachelor’s, master’s, PhD and research programmes. Besides financial support, it also arranges the university placement."
     },
     "eligibility": {
       "ru": "Для иностранных граждан. Условия и сроки уточняйте на официальном сайте.",
@@ -173,8 +173,8 @@
     },
     "url": "https://turkiyeburslari.gov.tr",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "european-solidarity-corps",
@@ -197,8 +197,8 @@
     },
     "url": "https://youth.europa.eu/solidarity_en",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "un-volunteers",
@@ -210,19 +210,19 @@
     "country": "international",
     "cost": "unknown",
     "description": {
-      "ru": "Программа волонтёров Организации Объединённых Наций. Сайт не открылся при автоматической проверке, поэтому ссылку стоит проверить самому.",
-      "kk": "Біріккен Ұлттар Ұйымының еріктілер бағдарламасы. Сайт автоматты тексеру кезінде ашылмады, сондықтан сілтемені өзің тексерген дұрыс.",
-      "en": "The United Nations volunteer programme. The site did not open during our automatic check, so please check the link yourself."
+      "ru": "Онлайн-волонтёрство Программы добровольцев ООН: задания от организаций со всего мира, которые можно выполнять из дома. Без оплаты, до 20 часов в неделю и до 12 недель.",
+      "kk": "БҰҰ еріктілер бағдарламасының онлайн еріктілігі: әлемнің түкпір-түкпіріндегі ұйымдардың үйден орындауға болатын тапсырмалары. Ақысыз, аптасына 20 сағатқа дейін және 12 аптаға дейін.",
+      "en": "Online volunteering with the UN Volunteers programme: tasks from organisations around the world that you can do from home. Unpaid, up to 20 hours a week for up to 12 weeks."
     },
     "eligibility": {
-      "ru": "Условия и сроки уточняйте на официальном сайте.",
-      "kk": "Шарттар мен мерзімдерін ресми сайттан нақтылаңыз.",
-      "en": "Check conditions and deadlines on the official website."
+      "ru": "С 18 лет, особый опыт не нужен; требования к каждому заданию ставит организация. Регистрация на платформе UVP. Подробности — на официальном сайте.",
+      "kk": "18 жастан бастап, арнайы тәжірибе қажет емес; әр тапсырмаға талапты ұйым қояды. UVP платформасында тіркелу. Толығырақ — ресми сайтта.",
+      "en": "From 18, no special background needed; each assignment has its own requirements set by the host. Sign up on the UVP platform. Details are on the official site."
     },
-    "url": "https://www.unv.org",
+    "url": "https://www.unv.org/become-online-volunteer",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "coursera",
@@ -245,8 +245,8 @@
     },
     "url": "https://www.coursera.org",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "edx",
@@ -269,8 +269,8 @@
     },
     "url": "https://www.edx.org",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   },
   {
     "id": "cs50x",
@@ -293,7 +293,7 @@
     },
     "url": "https://cs50.harvard.edu/x",
     "deadline": null,
-    "verifiedAt": null,
-    "status": "unverified"
+    "verifiedAt": "2026-11-18",
+    "status": "verified"
   }
 ]
