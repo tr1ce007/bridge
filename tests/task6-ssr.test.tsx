@@ -34,10 +34,20 @@ describe("Task 6 pages: server HTML", () => {
     expect(html).not.toMatch(hiddenStyle);
   });
 
-  it("/opportunities renders cards with the verified badge, an honest deadline and safe external links", () => {
+  // The bundled entries are all unverified (their facts have not been checked by a human yet). These
+  // tests use a copy marked verified on 2026-11-17 to check how the page shows a verified / old date.
+  const verifiedCopy = bundledOpportunities.map((o) => ({ ...o, status: "verified" as const, verifiedAt: "2026-11-17" }));
+
+  it("/opportunities shows every bundled entry as unverified (no verified badge)", () => {
     const html = render("ru", ru, <OpportunitiesExplorer opportunities={bundledOpportunities} serverDay="2026-11-18" />);
+    expect(html).toContain(ru.opportunities.statusUnverified);
+    expect(html).not.toContain("Проверено 17 ноября 2026");
+    expect(html).toContain(ru.opportunities.deadlineUnknown);
+  });
+
+  it("/opportunities renders cards with the verified badge, an honest deadline and safe external links", () => {
+    const html = render("ru", ru, <OpportunitiesExplorer opportunities={verifiedCopy} serverDay="2026-11-18" />);
     expect(html).toContain("Проверено 17 ноября 2026");
-    expect(html).toContain(ru.opportunities.statusUnverified); // UN Volunteers
     expect(html).toContain(ru.opportunities.deadlineUnknown);
     expect(html).toContain('rel="noopener noreferrer"');
     expect(html).toContain('target="_blank"');
@@ -45,7 +55,7 @@ describe("Task 6 pages: server HTML", () => {
   });
 
   it("/opportunities marks old verifications as outdated (computed from the date)", () => {
-    const html = render("ru", ru, <OpportunitiesExplorer opportunities={bundledOpportunities} serverDay="2027-06-01" />);
+    const html = render("ru", ru, <OpportunitiesExplorer opportunities={verifiedCopy} serverDay="2027-06-01" />);
     expect(html).toContain("Устарело");
     expect(html).not.toContain("Проверено 17 ноября 2026");
   });

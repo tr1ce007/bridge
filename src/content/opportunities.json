@@ -7,7 +7,7 @@
       "master",
       "phd"
     ],
-    "country": "kazakhstan",
+    "country": "international",
     "cost": "unknown",
     "description": {
       "ru": "Международная стипендия правительства Казахстана для обучения и научных стажировок за рубежом. Программу ведёт Центр международных программ.",
@@ -21,8 +21,8 @@
     },
     "url": "https://bolashak.gov.kz",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "erasmus-plus",
@@ -47,8 +47,8 @@
     },
     "url": "https://erasmus-plus.ec.europa.eu",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "daad",
@@ -72,8 +72,8 @@
     },
     "url": "https://www.daad.de/en/",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "chevening",
@@ -96,8 +96,8 @@
     },
     "url": "https://www.chevening.org",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "fulbright-foreign-student",
@@ -121,8 +121,8 @@
     },
     "url": "https://foreign.fulbrightonline.org",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "stipendium-hungaricum",
@@ -147,8 +147,8 @@
     },
     "url": "https://stipendiumhungaricum.hu",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "turkiye-burslari",
@@ -173,8 +173,8 @@
     },
     "url": "https://turkiyeburslari.gov.tr",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "european-solidarity-corps",
@@ -197,8 +197,8 @@
     },
     "url": "https://youth.europa.eu/solidarity_en",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "un-volunteers",
@@ -245,8 +245,8 @@
     },
     "url": "https://www.coursera.org",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "edx",
@@ -269,8 +269,8 @@
     },
     "url": "https://www.edx.org",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   },
   {
     "id": "cs50x",
@@ -293,7 +293,7 @@
     },
     "url": "https://cs50.harvard.edu/x",
     "deadline": null,
-    "verifiedAt": "2026-11-17",
-    "status": "verified"
+    "verifiedAt": null,
+    "status": "unverified"
   }
 ]

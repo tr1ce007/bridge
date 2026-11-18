@@ -80,6 +80,14 @@ describe("content: experiments", () => {
 });
 
 describe("content: opportunities", () => {
+  it("every bundled entry is unverified until a human checks it (facts were written from memory)", () => {
+    for (const o of bundledOpportunities) {
+      expect(o.status, o.id).toBe("unverified");
+      expect(o.verifiedAt, o.id).toBeNull();
+    }
+    expect(bundledOpportunities.find((o) => o.id === "bolashak")?.country).toBe("international");
+  });
+
   it("uses official https links only and never an unverified deadline", () => {
     expect(bundledOpportunities.length).toBeGreaterThanOrEqual(8);
     const urls = bundledOpportunities.map((o) => o.url);

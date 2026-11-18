@@ -40,15 +40,22 @@ describe("filterOpportunities", () => {
     const sch = filterOpportunities(bundledOpportunities, { kind: "scholarship" }, now);
     expect(sch.length).toBeGreaterThan(0);
     expect(sch.every((o) => o.kind === "scholarship")).toBe(true);
-    expect(filterOpportunities(bundledOpportunities, { country: "kazakhstan" }, now).map((o) => o.id)).toEqual(["bolashak"]);
+    // Bolashak is a state scholarship for study abroad: its country is "international", not Kazakhstan.
+    expect(filterOpportunities(bundledOpportunities, { country: "kazakhstan" }, now)).toEqual([]);
+    expect(filterOpportunities(bundledOpportunities, { country: "international" }, now).map((o) => o.id)).toEqual(
+      expect.arrayContaining(["bolashak", "un-volunteers"]),
+    );
     expect(filterOpportunities(bundledOpportunities, { level: "bachelor" }, now).every((o) => o.levels.includes("bachelor") || o.levels.includes("any"))).toBe(true);
     expect(filterOpportunities(bundledOpportunities, { cost: "free" }, now).every((o) => o.cost === "free")).toBe(true);
-    expect(filterOpportunities(bundledOpportunities, { status: "unverified" }, now).map((o) => o.id)).toEqual(["un-volunteers"]);
+    // Every bundled entry awaits a human check, so all of them are unverified.
+    expect(filterOpportunities(bundledOpportunities, { status: "unverified" }, now)).toHaveLength(bundledOpportunities.length);
+    expect(filterOpportunities(bundledOpportunities, { status: "verified" }, now)).toEqual([]);
   });
   it("status filter uses the computed status", () => {
     const later = day("2027-12-01");
-    expect(filterOpportunities(bundledOpportunities, { status: "outdated" }, later).length).toBeGreaterThan(5);
-    expect(filterOpportunities(bundledOpportunities, { status: "verified" }, later)).toEqual([]);
+    const verified = bundledOpportunities.map((o) => ({ ...o, status: "verified" as const, verifiedAt: "2026-11-17" }));
+    expect(filterOpportunities(verified, { status: "outdated" }, later).length).toBeGreaterThan(5);
+    expect(filterOpportunities(verified, { status: "verified" }, later)).toEqual([]);
   });
   it("searches name and description", () => {
     expect(filterOpportunities(bundledOpportunities, { q: "harvard" }, now).map((o) => o.id)).toEqual(["cs50x"]);

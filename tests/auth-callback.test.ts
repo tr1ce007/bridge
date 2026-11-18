@@ -11,7 +11,7 @@ vi.mock("@/lib/supabase/server", () => ({
 }));
 
 import { GET } from "@/app/auth/callback/route";
-import { callbackLocale, isAuthErrorParam } from "@/lib/auth/callback";
+import { callbackLocale, callbackOrigin, isAuthErrorParam } from "@/lib/auth/callback";
 
 const call = (qs: string) => GET(new NextRequest(`http://localhost:3000/auth/callback${qs}`));
 const where = (res: Response) => {
@@ -67,6 +67,30 @@ describe("GET /auth/callback", () => {
     vi.stubEnv("NEXT_PUBLIC_SUPABASE_URL", "");
     expect(where(await call("?code=abc&locale=ru"))).toBe("/ru/auth?error=unconfigured");
     expect(state.exchange).not.toHaveBeenCalled();
+  });
+});
+
+describe("redirect origin behind a proxy (NEXT_PUBLIC_SITE_URL)", () => {
+  it("uses the site url instead of the request origin when it is set", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://thebridge.example/");
+    const ok = await call("?code=abc&locale=kk");
+    expect(ok.headers.get("location")).toBe("https://thebridge.example/kk/dashboard");
+    const bad = await call("?locale=en");
+    expect(bad.headers.get("location")).toBe("https://thebridge.example/en/auth?error=link_invalid");
+  });
+
+  it("still adds no `next` parameter and keeps the locale check", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://thebridge.example");
+    const res = await call("?code=abc&locale=xx&next=https://evil.example/");
+    expect(res.headers.get("location")).toBe("https://thebridge.example/ru/dashboard");
+  });
+
+  it("falls back to the request origin when it is unset or not a web address", () => {
+    expect(callbackOrigin("http://localhost:3000/auth/callback?code=a", undefined)).toBe("http://localhost:3000");
+    expect(callbackOrigin("http://localhost:3000/auth/callback", "")).toBe("http://localhost:3000");
+    expect(callbackOrigin("http://localhost:3000/auth/callback", "javascript:alert(1)")).toBe("http://localhost:3000");
+    expect(callbackOrigin("http://localhost:3000/auth/callback", "not a url")).toBe("http://localhost:3000");
+    expect(callbackOrigin("http://localhost:3000/x", "https://thebridge.example/some/path")).toBe("https://thebridge.example");
   });
 });
 
