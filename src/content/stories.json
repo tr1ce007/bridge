@@ -758,5 +758,305 @@
     "incomplete": [
       "advice"
     ]
+  },
+  {
+    "id": "real-aimagambetov-gap-year-grant",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Не прошёл на грант после школы — взял год и выиграл его",
+      "kk": "Мектептен кейін грантқа өтпеді — бір жыл дайындалып, оны жеңіп алды",
+      "en": "Missed a grant after school, took a year and won one"
+    },
+    "categories": [
+      "failed-restart",
+      "education-journey"
+    ],
+    "sourceUrl": "https://tengrinews.kz/profitably/delat-ne-postupil-grant-oplachivat-vuz-deneg-506865/",
+    "sourceName": "Tengrinews",
+    "publishedAt": "2023-08-07",
+    "attribution": {
+      "ru": "Асхат Аймагамбетов. Пересказ его слов по материалу Tengrinews (07.08.2023); Informburo (03.08.2024) называет его экс-министром образования и депутатом парламента. Правила пересдачи ЕНТ с тех пор могли измениться — уточняйте у приёмной комиссии.",
+      "kk": "Асхат Аймағамбетов. Tengrinews материалы бойынша оның сөздерінің қысқаша мазмұны (07.08.2023); Informburo (03.08.2024) оны білім беру ісінің бұрынғы министрі және парламент депутаты деп атайды. ҰБТ-ны қайта тапсыру ережелері содан бері өзгеруі мүмкін — қабылдау комиссиясынан нақтылаңыз.",
+      "en": "Askhat Aimagambetov. A retelling of his words from a Tengrinews article (7 Aug 2023); Informburo (3 Aug 2024) calls him a former education minister and member of parliament. The rules for retaking the UNT may have changed since — check with the admissions office."
+    },
+    "before": {
+      "ru": "После окончания школы он не смог сразу поступить в университет на грант.",
+      "kk": "Мектепті бітірген соң ол бірден университетке грантпен түсе алмады.",
+      "en": "After finishing school he could not get a university grant straight away."
+    },
+    "challenges": {
+      "ru": "Пришлось выбирать: идти на платное отделение или взять паузу на год, чтобы лучше подготовиться.",
+      "kk": "Таңдау керек болды: ақылы бөлімге бару немесе жақсы дайындалу үшін бір жыл үзіліс алу.",
+      "en": "He had to choose: study on a paid place or take a year off to prepare better."
+    },
+    "turningPoint": {
+      "ru": "Он взял ответственность на себя и решил поступать через год.",
+      "kk": "Ол жауапкершілікті өзіне алып, бір жылдан кейін түсуді шешті.",
+      "en": "He took responsibility and decided to apply again a year later."
+    },
+    "actions": {
+      "ru": "Этот год он посвятил упорной подготовке и работе.",
+      "kk": "Сол жылды ол табанды дайындық пен жұмысқа арнады.",
+      "en": "He spent that year preparing hard and working."
+    },
+    "now": {
+      "ru": "На следующий год он выиграл грант. Позже стал министром образования Казахстана и в 2020 году рассказал эту историю выпускникам, чтобы они не боялись такой паузы.",
+      "kk": "Келесі жылы ол грант жеңіп алды. Кейін Қазақстанның білім министрі болды және 2020 жылы түлектер мұндай үзілістен қорықпасын деп осы оқиғаны айтып берді.",
+      "en": "The next year he won a grant. He later became Kazakhstan's education minister and in 2020 told this story to school leavers so they would not fear such a break."
+    },
+    "advice": {
+      "ru": "Если не получил грант, можно взять год, подготовиться, снова сдать ЕНТ и попробовать ещё раз — он сам так сделал.",
+      "kk": "Грант алмасаң, бір жыл алып, дайындалып, ҰБТ-ны қайта тапсырып, тағы байқап көруге болады — ол өзі солай істеген.",
+      "en": "If you miss a grant, you can take a year, prepare, retake the UNT and try again — he did exactly that."
+    },
+    "tags": {
+      "start": [],
+      "interests": [],
+      "fears": [],
+      "education": [
+        "school",
+        "university"
+      ],
+      "challenges": [
+        "money"
+      ],
+      "motives": [],
+      "decisions": [
+        "take-a-break"
+      ],
+      "transitions": [
+        "gap-year",
+        "school-to-university"
+      ]
+    }
+  },
+  {
+    "id": "real-mukhamedzhan-army-to-it-grant",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "После армии получил грант без ЕНТ и учится на айтишника",
+      "kk": "Әскерден кейін ҰБТ-сыз грант алып, IT мамандығына оқып жүр",
+      "en": "Won a grant without the UNT after the army and studies IT"
+    },
+    "categories": [
+      "education-journey"
+    ],
+    "sourceUrl": "https://tengrinews.kz/kazakhstan_news/ushl-armiyu-vernulsya-grantom-kazahstanets-postupil-vuz-ent-611519/",
+    "sourceName": "Tengrinews",
+    "publishedAt": "2026-10-23",
+    "attribution": {
+      "ru": "Али Мухамеджан. Пересказ материала Tengrinews (23.10.2026). Условия военных грантов уточняйте в официальных источниках.",
+      "kk": "Әли Мұхамеджан. Tengrinews материалының қысқаша мазмұны (23.10.2026). Әскери гранттардың шарттарын ресми дереккөздерден нақтылаңыз.",
+      "en": "Ali Mukhamedzhan. A retelling of a Tengrinews article (23 Oct 2026). Check the terms of military grants in official sources."
+    },
+    "before": {
+      "ru": "В 2022 году он проходил срочную службу в части ПВО недалеко от Астаны и не думал, что служба приведёт его в университет.",
+      "kk": "2022 жылы ол Астана маңындағы әуе шабуылына қарсы қорғаныс бөлімінде мерзімді қызмет өтеді және бұл қызмет оны университетке алып келеді деп ойламаған.",
+      "en": "In 2022 he was doing military service in an air-defence unit near Astana and never expected it to lead him to university."
+    },
+    "challenges": {
+      "ru": "Грант не дают просто за отслуженный год: при отборе смотрят на дисциплину, результаты подготовки, отношение к службе и рекомендацию командира.",
+      "kk": "Грант жай ғана өтелген бір жыл үшін берілмейді: іріктеуде тәртіпке, дайындық нәтижелеріне, қызметке көзқарасқа және командирдің ұсынымына қарайды.",
+      "en": "The grant isn't given just for a year served: selection looks at discipline, training results, attitude to service and the commander's recommendation."
+    },
+    "turningPoint": {
+      "ru": "Незадолго до увольнения в запас он узнал, что солдаты с хорошими результатами службы могут получить государственный грант на учёбу — без баллов ЕНТ.",
+      "kk": "Запасқа шығар алдында ол қызмет нәтижесі жақсы сарбаздар ҰБТ балынсыз мемлекеттік білім грантын ала алатынын білді.",
+      "en": "Shortly before discharge he learned that soldiers with good service records can get a state study grant without UNT scores."
+    },
+    "actions": {
+      "ru": "Он прошёл отбор и поступил на факультет информационных технологий ЕНУ имени Гумилёва. Грант покрывает обучение, есть стипендия и приоритет на место в общежитии.",
+      "kk": "Ол іріктеуден өтіп, Гумилев атындағы ЕҰУ-дың ақпараттық технологиялар факультетіне түсті. Грант оқу ақысын жабады, стипендия және жатақханадан орын алуға басымдық бар.",
+      "en": "He passed the selection and entered the IT faculty of L.N. Gumilyov Eurasian National University. The grant covers tuition, with a stipend and priority for a dorm place."
+    },
+    "now": {
+      "ru": "На момент публикации он учился на четвёртом курсе: программирование, базы данных и разработка информационных систем. Диплом планирует получить в 2027 году.",
+      "kk": "Жарияланым кезінде ол төртінші курста оқыған: бағдарламалау, деректер базасы және ақпараттық жүйелерді әзірлеу. Дипломды 2027 жылы алуды жоспарлап отыр.",
+      "en": "At the time of publication he was in his fourth year, studying programming, databases and information systems development. He plans to graduate in 2027."
+    },
+    "advice": {
+      "ru": "Тем, кто сейчас служит, — проявлять себя с первых дней: грант дают по итогам отбора, а не за отслуженный год.",
+      "kk": "Қазір қызмет етіп жүргендерге — алғашқы күннен өзін көрсету: грант өтелген жыл үшін емес, іріктеу нәтижесі бойынша беріледі.",
+      "en": "For those serving now: show yourself from day one — the grant goes by selection results, not for the year served."
+    },
+    "tags": {
+      "start": [
+        "late-start"
+      ],
+      "interests": [
+        "tech"
+      ],
+      "fears": [],
+      "education": [
+        "university"
+      ],
+      "challenges": [],
+      "motives": [],
+      "decisions": [
+        "take-a-break"
+      ],
+      "transitions": [
+        "gap-year",
+        "school-to-university"
+      ]
+    }
+  },
+  {
+    "id": "real-sadvokasova-pilot-cadet",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Легкоатлетка из Павлодара учится на пилота",
+      "kk": "Павлодарлық жеңіл атлет қыз ұшқыштыққа оқып жүр",
+      "en": "A track athlete from Pavlodar is training to be a pilot"
+    },
+    "categories": [
+      "education-journey",
+      "study-abroad"
+    ],
+    "sourceUrl": "https://manshuq.com/articles/career-vzyat-svoyu-vysotu-kak-kazakhstanka-voploshaet-mechtu-stat-pilotessoi-08-2025",
+    "sourceName": "Manshuq",
+    "publishedAt": "2025-08-28",
+    "attribution": {
+      "ru": "Алима Садвокасова. Пересказ материала Manshuq (28.08.2025). Условия программы Air Astana Ab-initio уточняйте на официальном сайте.",
+      "kk": "Әлима Садуақасова. Manshuq материалының қысқаша мазмұны (28.08.2025). Air Astana Ab-initio бағдарламасының шарттарын ресми сайттан нақтылаңыз.",
+      "en": "Alima Sadvokasova. A retelling of a Manshuq article (28 Aug 2025). Check the Air Astana Ab-initio programme terms on the official site."
+    },
+    "before": {
+      "ru": "Она выросла в Павлодаре, окончила школу с отличием и занималась лёгкой атлетикой: бег на 400 метров, второй взрослый разряд. О профессии пилота знала только то, что она существует.",
+      "kk": "Ол Павлодарда өсті, мектепті үздік бітіріп, жеңіл атлетикамен айналысты: 400 метрге жүгіру, екінші ересек разряд. Ұшқыш мамандығы туралы тек оның бар екенін білетін.",
+      "en": "She grew up in Pavlodar, finished school with honours and ran track: the 400 metres, at an adult second-class level. About being a pilot she knew only that the job existed."
+    },
+    "challenges": {
+      "ru": "Отбор шёл в несколько этапов: тесты на анализ информации, тест по физике, математике, логике и памяти, тренажёр Boeing 737, групповые задания и интервью. Она волновалась, а сама учёба оказалась непростой.",
+      "kk": "Іріктеу бірнеше кезеңнен тұрды: ақпаратты талдау тесттері, физика, математика, логика және есте сақтау тесті, Boeing 737 тренажері, топтық тапсырмалар және сұхбат. Ол толқыды, ал оқудың өзі оңай болмады.",
+      "en": "Selection had several stages: information-analysis tests, a physics, maths, logic and memory test, a Boeing 737 simulator, group tasks and an interview. She was nervous, and the training itself is hard."
+    },
+    "turningPoint": {
+      "ru": "К девятому классу интерес к авиации стал таким сильным, что она решила связать с ней жизнь.",
+      "kk": "Тоғызыншы сыныпқа қарай авиацияға қызығушылығы соншалық күшейіп, өмірін онымен байланыстыруды шешті.",
+      "en": "By ninth grade her interest in aviation had grown so strong that she decided to build her life around it."
+    },
+    "actions": {
+      "ru": "Она подала заявку в программу подготовки пилотов Air Astana Ab-initio, где не нужно высшее образование, и прошла отбор. По данным материала, обучение оплачивает авиакомпания, но 75% стоимости нужно вернуть за 15 лет работы в ней.",
+      "kk": "Ол жоғары білім талап етілмейтін Air Astana Ab-initio ұшқыштар даярлау бағдарламасына өтінім беріп, іріктеуден өтті. Материал бойынша оқуды авиакомпания төлейді, бірақ құнының 75%-ын онда 15 жыл жұмыс істеп өтеу керек.",
+      "en": "She applied to Air Astana's Ab-initio pilot programme, which needs no university degree, and passed the selection. According to the article, the airline pays for training, but 75% of the cost must be repaid over 15 years of work there."
+    },
+    "now": {
+      "ru": "Она учится в лётной школе FTE Jerez в Испании: 13 предметов, включая аэродинамику, метеорологию и навигацию. После обучения кадеты работают в Air Astana.",
+      "kk": "Ол Испаниядағы FTE Jerez ұшқыштар мектебінде оқиды: аэродинамика, метеорология және навигацияны қоса алғанда 13 пән. Оқудан кейін кадеттер Air Astana-да жұмыс істейді.",
+      "en": "She studies at the FTE Jerez flight school in Spain: 13 subjects, including aerodynamics, meteorology and navigation. After training, cadets work at Air Astana."
+    },
+    "advice": {
+      "ru": "Не бояться и не сомневаться в себе: пробовать и верить в свои силы.",
+      "kk": "Қорықпау және өзіңе күмәнданбау: байқап көріп, өз күшіңе сену.",
+      "en": "Don't be afraid or doubt yourself: try, and believe in your own strength."
+    },
+    "tags": {
+      "start": [],
+      "interests": [
+        "science",
+        "sport"
+      ],
+      "fears": [],
+      "education": [
+        "school",
+        "abroad-study"
+      ],
+      "challenges": [
+        "confidence"
+      ],
+      "motives": [
+        "curiosity"
+      ],
+      "decisions": [
+        "move-abroad"
+      ],
+      "transitions": [
+        "school-to-university",
+        "relocation"
+      ]
+    }
+  },
+  {
+    "id": "real-nechaev-eco-fairy-tales",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "11-летний школьник превратил свои сказки в экопроект",
+      "kk": "11 жасар оқушы өз ертегілерін экожобаға айналдырды",
+      "en": "An 11-year-old turned his fairy tales into an eco project"
+    },
+    "categories": [
+      "first-business",
+      "unexpected-passion"
+    ],
+    "ageRange": "under-18",
+    "sourceUrl": "https://digitalbusiness.kz/2025-08-26/kazahstanets-v-11-let-osnoval-startap-dlya-spaseniya-prirodi-istoriya-shkolnika-iz-karagandi/",
+    "sourceName": "Digital Business",
+    "publishedAt": "2025-08-26",
+    "attribution": {
+      "ru": "Платон Нечаев. Пересказ интервью Digital Business (26.08.2025).",
+      "kk": "Платон Нечаев. Digital Business сұхбатының қысқаша мазмұны (26.08.2025).",
+      "en": "Platon Nechaev. A retelling of a Digital Business interview (26 Aug 2025)."
+    },
+    "before": {
+      "ru": "Он школьник из Караганды. Первую книжку-сказку с иллюстрациями придумал после конкурса рисунков — про Аппака Байжанова, который нашёл уголь в Караганде.",
+      "kk": "Ол Қарағандыдағы оқушы. Алғашқы суретті ертегі кітабын сурет байқауынан кейін ойлап тапты — Қарағандыдан көмір тапқан Аппақ Байжанов туралы.",
+      "en": "He is a schoolboy from Karaganda. He came up with his first illustrated fairy-tale book after a drawing contest — about Appak Baizhanov, who found coal in Karaganda."
+    },
+    "challenges": {
+      "ru": "Ему часто говорили, что он делает «не то». Он побеждал не на всех конкурсах, получал отказы, а на встречах с чиновниками слышал «ақша жоқ» — денег нет.",
+      "kk": "Оған жиі «дұрыс емес нәрсе істеп жүрсің» деді. Ол барлық байқауда жеңген жоқ, бас тартулар естіді, ал шенеуніктермен кездесулерде «ақша жоқ» дегенді естіді.",
+      "en": "People often told him he was doing “the wrong thing”. He didn't win every contest, got rejections, and at meetings with officials heard “aqsha zhoq” — there's no money."
+    },
+    "turningPoint": {
+      "ru": "Он понял, что легенды можно связать с экологией, а бумажные книги ограничены тиражом — так появилась идея сделать бота.",
+      "kk": "Ол аңыздарды экологиямен байланыстыруға болатынын, ал қағаз кітаптардың таралымы шектеулі екенін түсінді — осылай бот жасау идеясы пайда болды.",
+      "en": "He realised legends could be linked to ecology, and that paper books are limited by print runs — that's how the idea of a bot came about."
+    },
+    "actions": {
+      "ru": "Вместе с родителями напечатал 60–70 книг и продал их на ярмарках; часть выручки ушла на посадку 50 деревьев в Караганде. С командой — мама, эколог и разработчики — запустил телеграм-бот EcoPlaton со сказками, квестами и калькулятором углеродного следа.",
+      "kk": "Ата-анасымен бірге 60–70 кітап басып, оларды жәрмеңкелерде сатты; түскен ақшаның бір бөлігі Қарағандыда 50 ағаш отырғызуға жұмсалды. Командасымен — анасы, эколог және әзірлеушілер — ертегілері, квестері және көміртек ізінің калькуляторы бар EcoPlaton телеграм-ботын іске қосты.",
+      "en": "With his parents he printed 60–70 books and sold them at fairs; part of the money went to planting 50 trees in Karaganda. With a team — his mum, an ecologist and developers — he launched the EcoPlaton Telegram bot with tales, quests and a carbon-footprint calculator."
+    },
+    "now": {
+      "ru": "На момент интервью он прошёл инкубацию в ИТ-хабе «Терриконовая долина», получил грант 500 тысяч тенге и готовил запуск экотропы с ботом в Боровом.",
+      "kk": "Сұхбат кезінде ол «Терриконовая долина» IT-хабында инкубациядан өтіп, 500 мың теңге грант алған және Бурабайда ботпен жұмыс істейтін экосоқпақты іске қосуға дайындалып жүрген.",
+      "en": "At the time of the interview he had completed incubation at the Terrikonovaya Dolina IT hub, won a 500,000-tenge grant and was preparing an eco-trail with the bot in Borovoe."
+    },
+    "advice": {
+      "ru": "Главное — верить в себя и не сдаваться после отказов: доказывать не другим, а самому себе.",
+      "kk": "Ең бастысы — өзіңе сену және бас тартулардан кейін берілмеу: өзгелерге емес, өзіңе дәлелдеу.",
+      "en": "The main thing is to believe in yourself and not give up after rejections — prove it to yourself, not to others."
+    },
+    "tags": {
+      "start": [],
+      "interests": [
+        "nature",
+        "creative",
+        "tech",
+        "business"
+      ],
+      "fears": [
+        "judgement"
+      ],
+      "education": [
+        "school"
+      ],
+      "challenges": [
+        "money"
+      ],
+      "motives": [
+        "impact",
+        "curiosity"
+      ],
+      "decisions": [
+        "side-project"
+      ],
+      "transitions": []
+    }
   }
 ]

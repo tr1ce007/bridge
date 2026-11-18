@@ -23,10 +23,13 @@ describe("content: stories", () => {
     }
   });
 
-  it("tags every story on all 8 axes using only the closed vocabulary", () => {
+  it("tags stories only with the closed vocabulary, on at least four axes", () => {
+    // Real stories are tagged only where the source says something: an axis the interview is silent
+    // about (e.g. what the person feared) stays empty instead of getting an invented tag.
     for (const s of bundledStories) {
+      const tagged = AXES.filter((axis) => s.tags[axis].length > 0);
+      expect(tagged.length, s.id).toBeGreaterThanOrEqual(4);
       for (const axis of AXES) {
-        expect(s.tags[axis].length, `${s.id}.${axis}`).toBeGreaterThan(0);
         for (const t of s.tags[axis]) {
           expect(AXIS_TAGS[axis], `${s.id}.${axis}=${t}`).toContain(t);
         }
