@@ -37,7 +37,7 @@ export function rateLimitSize(): number {
 
 /**
  * Client address for the rate-limit key.
- * - `x-real-ip` first: set by the reverse proxy / platform (e.g. Vercel, nginx), not by the client.
+ * - `x-real-ip` first: set by the reverse proxy / platform, not by the client (Vercel does; nginx only with `proxy_set_header X-Real-IP $remote_addr;`).
  * - else the LAST `x-forwarded-for` hop: that one is appended by the nearest proxy; earlier hops
  *   are whatever the client sent and can be spoofed freely.
  * - else "unknown" (all such requests share one bucket).

@@ -88,5 +88,6 @@ export async function extractFields(provider: AIProvider, item: DiscoveredItem, 
     tags,
     incomplete: FIELD_KEYS.filter((k) => !fields[k]),
     notes: result.isPersonalStory ? draft.notes : [...draft.notes, "AI: probably not a personal story of a changed path; check before using"],
+    ...(result.isPersonalStory ? {} : { notPersonalStory: true as const }),
   };
 }

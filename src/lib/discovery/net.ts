@@ -21,11 +21,59 @@ export interface PoliteFetcherOptions {
   sleep?: (ms: number) => Promise<void>;
 }
 
-export interface PoliteFetcher {
-  fetchText(url: string, init?: { method?: string; headers?: Record<string, string>; body?: string }): Promise<FetchResult>;
+export interface FetchInit {
+  method?: string;
+  headers?: Record<string, string>;
+  body?: string;
+  /**
+   * Asked before following EVERY redirect (the robots check for the new address). Without it,
+   * redirects to another host are refused and redirects inside the same host are followed
+   * (at most MAX_REDIRECTS hops in total).
+   */
+  allowRedirect?: (url: string) => Promise<boolean>;
 }
 
-/** HTTP client for the script: 1 request per second per host, a timeout, a size limit, our user agent. */
+export interface PoliteFetcher {
+  fetchText(url: string, init?: FetchInit): Promise<FetchResult>;
+}
+
+export const MAX_REDIRECTS = 3;
+const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308]);
+
+/** Reads a response body as text, never holding more than `maxBytes` bytes. */
+async function readCapped(res: Response, maxBytes: number): Promise<{ text: string; truncated: boolean }> {
+  if (!res.body) return { text: "", truncated: false };
+  const reader = res.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  let truncated = false;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    if (total + value.byteLength > maxBytes) {
+      chunks.push(value.subarray(0, maxBytes - total));
+      total = maxBytes;
+      truncated = true;
+      await reader.cancel().catch(() => undefined);
+      break;
+    }
+    chunks.push(value);
+    total += value.byteLength;
+  }
+  const bytes = new Uint8Array(total);
+  let offset = 0;
+  for (const c of chunks) {
+    bytes.set(c, offset);
+    offset += c.byteLength;
+  }
+  return { text: new TextDecoder("utf-8").decode(bytes), truncated };
+}
+
+/**
+ * HTTP client for the script: 1 request per second per host (every hop of a redirect counts), a
+ * timeout, a size limit, our user agent. Redirects are followed by hand, at most MAX_REDIRECTS,
+ * http(s) only; every hop is re-checked with `allowRedirect` (the robots check) when given; without it another host is refused.
+ */
 export function createPoliteFetcher(options: PoliteFetcherOptions): PoliteFetcher {
   const {
     userAgent,
@@ -38,42 +86,69 @@ export function createPoliteFetcher(options: PoliteFetcherOptions): PoliteFetche
   } = options;
   const nextFree = new Map<string, number>();
 
+  const fail = (error: string): FetchResult => ({ ok: false, status: 0, text: "", error });
+
   return {
     async fetchText(url, init = {}) {
-      let parsed: URL;
+      let current: URL;
       try {
-        parsed = new URL(url);
+        current = new URL(url);
       } catch {
-        return { ok: false, status: 0, text: "", error: "not a valid address" };
+        return fail("not a valid address");
       }
-      if (parsed.protocol !== "https:" && parsed.protocol !== "http:") {
-        return { ok: false, status: 0, text: "", error: "only http and https addresses are allowed" };
-      }
-      // Reserve our slot first, so two parallel calls to one host still keep the gap.
-      const host = parsed.host;
-      const slot = Math.max(now(), nextFree.get(host) ?? 0);
-      nextFree.set(host, slot + minIntervalMs);
-      const wait = slot - now();
-      if (wait > 0) await sleep(wait);
+      const startHost = current.host;
+      let method = init.method ?? "GET";
+      let body = init.body;
+      const headers = { "User-Agent": userAgent, ...init.headers };
+      const deadline = AbortSignal.timeout(timeoutMs);
 
-      try {
-        const res = await fetchImpl(url, {
-          method: init.method ?? "GET",
-          headers: { "User-Agent": userAgent, ...init.headers },
-          ...(init.body !== undefined ? { body: init.body } : {}),
-          signal: AbortSignal.timeout(timeoutMs),
-          redirect: "follow",
-        });
-        let text = await res.text();
-        let truncated = false;
-        if (text.length > maxBytes) {
-          text = text.slice(0, maxBytes);
-          truncated = true;
+      for (let hop = 0; hop <= MAX_REDIRECTS; hop += 1) {
+        if (current.protocol !== "https:" && current.protocol !== "http:") return fail("only http and https addresses are allowed");
+        if (hop > 0) {
+          if (init.allowRedirect) {
+            if (!(await init.allowRedirect(current.href))) return fail(`redirect refused (robots.txt or policy): ${current.host}`);
+          } else if (current.host !== startHost) {
+            return fail(`redirect to another host refused (${current.host})`);
+          }
         }
-        return { ok: res.ok, status: res.status, text, ...(truncated ? { truncated } : {}) };
-      } catch (e) {
-        return { ok: false, status: 0, text: "", error: e instanceof Error ? e.message : String(e) };
+        // Reserve our slot first, so two parallel calls to one host still keep the gap.
+        const host = current.host;
+        const slot = Math.max(now(), nextFree.get(host) ?? 0);
+        nextFree.set(host, slot + minIntervalMs);
+        const wait = slot - now();
+        if (wait > 0) await sleep(wait);
+
+        try {
+          const res = await fetchImpl(current.href, {
+            method,
+            headers: hop > 0 && current.host !== startHost ? { "User-Agent": userAgent } : headers,
+            ...(body !== undefined ? { body } : {}),
+            signal: deadline,
+            redirect: "manual",
+          });
+          if (REDIRECT_STATUSES.has(res.status)) {
+            const location = res.headers.get("location");
+            await res.body?.cancel().catch(() => undefined);
+            if (!location) return { ok: false, status: res.status, text: "", error: "redirect without a location" };
+            if (hop === MAX_REDIRECTS) return fail(`more than ${MAX_REDIRECTS} redirects`);
+            try {
+              current = new URL(location, current);
+            } catch {
+              return fail("redirect to an invalid address");
+            }
+            if (res.status === 303 || ((res.status === 301 || res.status === 302) && method !== "GET" && method !== "HEAD")) {
+              method = "GET";
+              body = undefined;
+            }
+            continue;
+          }
+          const { text, truncated } = await readCapped(res, maxBytes);
+          return { ok: res.ok, status: res.status, text, ...(truncated ? { truncated } : {}) };
+        } catch (e) {
+          return fail(e instanceof Error ? e.message : String(e));
+        }
       }
+      return fail(`more than ${MAX_REDIRECTS} redirects`);
     },
   };
 }

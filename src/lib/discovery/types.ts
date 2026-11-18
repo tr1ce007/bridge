@@ -40,4 +40,6 @@ export interface StoryDraft {
   incomplete: FieldKey[];
   /** Short remarks for the moderator. */
   notes: string[];
+  /** The AI judged that the text is not a first-person story. Such drafts stay in the JSON file but are not inserted. */
+  notPersonalStory?: boolean;
 }

@@ -70,6 +70,9 @@ describe("extractFields", () => {
     const { provider } = fakeProvider({ ...base, isPersonalStory: false });
     const d = await extractFields(provider, item, toDraft(item));
     expect(d.notes.join(" ")).toMatch(/not a personal story/i);
+    expect(d.notPersonalStory).toBe(true);
+    const ok = await extractFields(fakeProvider(base).provider, item, toDraft(item));
+    expect(ok.notPersonalStory).toBeUndefined();
   });
 
   it("keeps the draft and notes the failure when the model fails or returns bad data", async () => {

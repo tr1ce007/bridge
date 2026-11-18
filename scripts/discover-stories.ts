@@ -227,6 +227,7 @@ async function main(): Promise<void> {
     }
     const res = await fetcher.fetchText(feed.url, {
       headers: { Accept: "application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8" },
+      allowRedirect: robotsAllows, // a redirect is checked against the robots.txt of its new address
     });
     if (!res.ok) {
       skipped.push({ source: feed.url, reason: `HTTP ${res.status || "no answer"}${res.error ? `: ${res.error}` : ""}` });
@@ -284,17 +285,21 @@ async function main(): Promise<void> {
   for (const s of skipped) console.log(`Skipped: ${s.source}: ${s.reason}`);
 
   if (args.insert && supabase) {
-    if (drafts.length === 0) {
+    // Drafts the AI judged "not a personal story" stay in the JSON file (with a note) but are not inserted.
+    const toInsert = drafts.filter((d) => !d.notPersonalStory);
+    const heldBack = drafts.length - toInsert.length;
+    if (heldBack > 0) console.log(`Not inserted: ${heldBack} draft(s) the AI flagged as not a personal story (see "notes" in ${file}).`);
+    if (toInsert.length === 0) {
       console.log("Nothing to insert.");
     } else {
       // ignoreDuplicates: a story that is already in the table (maybe already moderated) is left untouched.
       const { data, error } = await supabase
         .from("stories")
-        .upsert(drafts.map(toStoryRow), { onConflict: "id", ignoreDuplicates: true })
+        .upsert(toInsert.map(toStoryRow), { onConflict: "id", ignoreDuplicates: true })
         .select("id");
       if (error) fail([`Insert failed: ${error.message}`, `The JSON file above is still there: ${file}`]);
       const added = data?.length ?? 0;
-      console.log(`Inserted ${added} new pending stor${added === 1 ? "y" : "ies"} (${drafts.length - added} already existed). Moderators approve them in /admin.`);
+      console.log(`Inserted ${added} new pending stor${added === 1 ? "y" : "ies"} (${toInsert.length - added} already existed). Moderators approve them in /admin.`);
     }
   }
 }

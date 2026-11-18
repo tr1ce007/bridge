@@ -15,6 +15,7 @@ function clock() {
 }
 
 const reply = (status: number, body = "") => new Response(body, { status });
+const redirect = (to: string, status = 302) => new Response(null, { status, headers: { location: to } });
 
 describe("createPoliteFetcher", () => {
   it("waits so that one host gets at most one request per second", async () => {
@@ -98,6 +99,154 @@ describe("createPoliteFetcher", () => {
     const f = createPoliteFetcher({ userAgent: "ua/1", now: c.now, sleep: c.sleep, fetchImpl: async () => reply(200, "ok") });
     expect(await f.fetchText("file:///etc/passwd")).toMatchObject({ ok: false, status: 0 });
     expect(await f.fetchText("not a url")).toMatchObject({ ok: false, status: 0 });
+  });
+});
+
+describe("redirects", () => {
+  function make(routes: Record<string, () => Response>, fetched: string[] = []) {
+    const c = clock();
+    const times: Record<string, number[]> = {};
+    const f = createPoliteFetcher({
+      userAgent: "ua/1",
+      now: c.now,
+      sleep: c.sleep,
+      fetchImpl: async (url, init) => {
+        const u = String(url);
+        fetched.push(`${init?.redirect}:${u}`);
+        (times[new URL(u).host] ??= []).push(c.now());
+        const route = routes[u];
+        return route ? route() : reply(404, "no");
+      },
+    });
+    return { f, times, fetched };
+  }
+
+  it("never lets fetch follow redirects by itself", async () => {
+    const { f, fetched } = make({ "https://a.example/x": () => reply(200, "ok") });
+    await f.fetchText("https://a.example/x");
+    expect(fetched).toEqual(["manual:https://a.example/x"]);
+  });
+
+  it("follows a redirect inside the same host and keeps the 1 request per second gap", async () => {
+    const { f, times } = make({ "https://a.example/old": () => redirect("/new"), "https://a.example/new": () => reply(200, "moved") });
+    const r = await f.fetchText("https://a.example/old");
+    expect(r).toMatchObject({ ok: true, text: "moved" });
+    expect(times["a.example"][1] - times["a.example"][0]).toBeGreaterThanOrEqual(1000);
+  });
+
+  it("refuses a redirect to another host unless the gate says yes", async () => {
+    const fetched: string[] = [];
+    const { f } = make({ "https://a.example/x": () => redirect("https://b.example/y"), "https://b.example/y": () => reply(200, "secret") }, fetched);
+    const r = await f.fetchText("https://a.example/x");
+    expect(r).toMatchObject({ ok: false, status: 0 });
+    expect(r.error).toMatch(/another host/);
+    expect(fetched).toEqual(["manual:https://a.example/x"]); // b.example was never contacted
+  });
+
+  it("asks the gate (robots check) for every hop and stops when it says no", async () => {
+    const fetched: string[] = [];
+    const { f } = make({ "https://a.example/x": () => redirect("https://b.example/y"), "https://b.example/y": () => reply(200, "ok") }, fetched);
+    const asked: string[] = [];
+    const denied = await f.fetchText("https://a.example/x", { allowRedirect: async (u) => (asked.push(u), false) });
+    expect(denied.ok).toBe(false);
+    expect(asked).toEqual(["https://b.example/y"]);
+    expect(fetched).toHaveLength(1);
+    const allowed = await f.fetchText("https://a.example/x", { allowRedirect: async () => true });
+    expect(allowed).toMatchObject({ ok: true, text: "ok" });
+  });
+
+  it("gives another host its own slot (rate limit per host, per hop)", async () => {
+    const { f, times } = make({ "https://a.example/x": () => redirect("https://b.example/y"), "https://b.example/y": () => reply(200, "ok") });
+    await f.fetchText("https://a.example/x", { allowRedirect: async () => true });
+    await f.fetchText("https://b.example/y");
+    expect(times["b.example"][1] - times["b.example"][0]).toBeGreaterThanOrEqual(1000);
+  });
+
+  it("stops after 3 redirects", async () => {
+    const routes: Record<string, () => Response> = {};
+    for (let i = 0; i < 6; i += 1) routes[`https://a.example/${i}`] = () => redirect(`/${i + 1}`);
+    const { f, fetched } = make(routes);
+    const r = await f.fetchText("https://a.example/0");
+    expect(r.ok).toBe(false);
+    expect(r.error).toMatch(/redirects/);
+    expect(fetched).toHaveLength(4); // the first request + 3 hops
+  });
+
+  it("refuses a redirect to a non-http address and does not send credentials to another host", async () => {
+    const { f } = make({ "https://a.example/x": () => redirect("file:///etc/passwd") });
+    expect((await f.fetchText("https://a.example/x", { allowRedirect: async () => true })).ok).toBe(false);
+    const seen: Record<string, string>[] = [];
+    const c = clock();
+    const f2 = createPoliteFetcher({
+      userAgent: "ua/1",
+      now: c.now,
+      sleep: c.sleep,
+      fetchImpl: async (url, init) => {
+        seen.push(init?.headers as Record<string, string>);
+        return String(url).startsWith("https://a.example") ? redirect("https://b.example/y") : reply(200, "ok");
+      },
+    });
+    await f2.fetchText("https://a.example/x", { headers: { Authorization: "Bearer secret" }, allowRedirect: async () => true });
+    expect(seen[0].Authorization).toBe("Bearer secret");
+    expect(seen[1].Authorization).toBeUndefined();
+  });
+
+  it("turns a redirected POST into a GET without a body", async () => {
+    const calls: { method?: string; body?: unknown }[] = [];
+    const c = clock();
+    const f = createPoliteFetcher({
+      userAgent: "ua/1",
+      now: c.now,
+      sleep: c.sleep,
+      fetchImpl: async (url, init) => {
+        calls.push({ method: init?.method, body: init?.body });
+        return String(url).endsWith("/a") ? redirect("/b", 302) : reply(200, "ok");
+      },
+    });
+    await f.fetchText("https://a.example/a", { method: "POST", body: "x=1" });
+    expect(calls).toEqual([{ method: "POST", body: "x=1" }, { method: "GET", body: undefined }]);
+  });
+});
+
+describe("redirect + robots together", () => {
+  it("does not fetch a redirect target that its own robots.txt forbids", async () => {
+    const c = clock();
+    const fetched: string[] = [];
+    const fetcher = createPoliteFetcher({
+      userAgent: "the-bridge-story-discovery/0.1",
+      now: c.now,
+      sleep: c.sleep,
+      fetchImpl: async (url) => {
+        const u = String(url);
+        fetched.push(u);
+        if (u === "https://b.example/robots.txt") return reply(200, "User-agent: *\nDisallow: /feed");
+        if (u === "https://a.example/feed.xml") return redirect("https://b.example/feed.xml");
+        return reply(200, "<rss/>");
+      },
+    });
+    const allowed = createRobotsChecker(fetcher, "the-bridge-story-discovery/0.1");
+    const r = await fetcher.fetchText("https://a.example/feed.xml", { allowRedirect: allowed });
+    expect(r.ok).toBe(false);
+    expect(fetched).toEqual(["https://a.example/feed.xml", "https://b.example/robots.txt"]);
+  });
+});
+
+describe("body size cap", () => {
+  it("stops reading a stream at the limit instead of loading it all", async () => {
+    const c = clock();
+    let pulled = 0;
+    const stream = new ReadableStream<Uint8Array>({
+      pull(controller) {
+        pulled += 1;
+        controller.enqueue(new Uint8Array(40).fill(97));
+        if (pulled > 1000) controller.close();
+      },
+    });
+    const f = createPoliteFetcher({ userAgent: "ua/1", now: c.now, sleep: c.sleep, maxBytes: 100, fetchImpl: async () => new Response(stream, { status: 200 }) });
+    const r = await f.fetchText("https://a.example/big");
+    expect(r.text).toBe("a".repeat(100));
+    expect(r.truncated).toBe(true);
+    expect(pulled).toBeLessThan(10);
   });
 });
 
