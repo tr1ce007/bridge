@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Atom Stories</title>
+  <entry>
+    <title type="html">Сменил профессию в 30 лет</title>
+    <link rel="self" href="https://atom.example.org/api/1"/>
+    <link rel="alternate" type="text/html" href="https://atom.example.org/posts/1"/>
+    <published>2025-10-01T12:00:00Z</published>
+    <updated>2025-10-02T12:00:00Z</updated>
+    <author><name>Марат</name></author>
+    <content type="html">&lt;p&gt;Раньше я работал бухгалтером. Потом начал учить программирование.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Only updated date</title>
+    <link href="https://atom.example.org/posts/2"/>
+    <updated>2025-09-15T08:00:00+06:00</updated>
+    <summary>A summary only.</summary>
+  </entry>
+</feed>

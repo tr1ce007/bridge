@@ -1,0 +1,79 @@
+{
+  "kind": "Listing",
+  "data": {
+    "after": "t3_zzz",
+    "children": [
+      {
+        "kind": "t3",
+        "data": {
+          "id": "abc123",
+          "subreddit": "careerguidance",
+          "title": "I changed my major in year 3 and it was the best decision",
+          "selftext": "I started in law because my parents wanted it. After two years I realised I was bored.\n\nI talked to a mentor, took a free online course in data analysis and switched in year 3. It was scary, but now I work as an analyst &amp; I like it.",
+          "author": "some_student",
+          "permalink": "/r/careerguidance/comments/abc123/i_changed_my_major_in_year_3/",
+          "url": "https://www.reddit.com/r/careerguidance/comments/abc123/i_changed_my_major_in_year_3/",
+          "created_utc": 1731801600,
+          "over_18": false,
+          "is_self": true
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "id": "del001",
+          "subreddit": "careerguidance",
+          "title": "Career change at 35",
+          "selftext": "Left banking for teaching. Hard first year, fine now.",
+          "author": "[deleted]",
+          "permalink": "/r/careerguidance/comments/del001/career_change_at_35/",
+          "created_utc": 1731715200,
+          "over_18": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "id": "nsfw01",
+          "subreddit": "somewhere",
+          "title": "Adult post",
+          "selftext": "Some text that should never be collected.",
+          "author": "someone",
+          "permalink": "/r/somewhere/comments/nsfw01/adult_post/",
+          "created_utc": 1731715200,
+          "over_18": true
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "id": "rem001",
+          "subreddit": "careerguidance",
+          "title": "Removed post",
+          "selftext": "[removed]",
+          "author": "gone",
+          "permalink": "/r/careerguidance/comments/rem001/removed_post/",
+          "created_utc": 1731715200,
+          "over_18": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "id": "link01",
+          "subreddit": "careerguidance",
+          "title": "A link post without text",
+          "selftext": "",
+          "author": "linker",
+          "permalink": "/r/careerguidance/comments/link01/a_link_post/",
+          "url": "https://example.com/article",
+          "created_utc": 1731715200,
+          "over_18": false
+        }
+      },
+      { "kind": "t1", "data": { "id": "cmt", "body": "a comment, not a post" } },
+      "garbage",
+      null
+    ]
+  }
+}

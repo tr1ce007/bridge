@@ -14,3 +14,7 @@ npm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# story discovery: results for manual review and the team's own source list
+scripts/out/
+scripts/sources.json

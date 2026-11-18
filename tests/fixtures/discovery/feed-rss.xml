@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Example Stories Blog</title>
+    <link>https://blog.example.org/</link>
+    <item>
+      <title>From medicine to design: my path</title>
+      <link>https://blog.example.org/from-medicine-to-design</link>
+      <pubDate>Mon, 10 Nov 2025 09:30:00 GMT</pubDate>
+      <dc:creator>Aigerim S.</dc:creator>
+      <description><![CDATA[<p>I studied medicine for <b>three</b> years &amp; then left.</p><p>Design felt like home.</p>]]></description>
+    </item>
+    <item>
+      <title>Anonymous story</title>
+      <link>https://blog.example.org/anon</link>
+      <author>editor@example.org</author>
+      <description>Short text without a date.</description>
+    </item>
+    <item>
+      <title>No link here</title>
+      <description>Item without a link must be skipped.</description>
+    </item>
+    <item>
+      <title>Unsafe link</title>
+      <link>javascript:alert(1)</link>
+      <description>Item with a non-http link must be skipped.</description>
+    </item>
+  </channel>
+</rss>

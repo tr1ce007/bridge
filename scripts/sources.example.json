@@ -1,0 +1,15 @@
+{
+  "_comment": "Copy to scripts/sources.json (that file is not committed). Replace the example feed with feeds the team has checked. Queries are optional: without them the built-in English and Russian ones are used.",
+  "queries": [
+    "career change",
+    "changed my major",
+    "didn't know what I wanted to do",
+    "chose a different path than my parents",
+    "сменил профессию",
+    "сменила специальность"
+  ],
+  "reddit": { "subreddits": [] },
+  "feeds": [
+    { "name": "Example blog (replace me)", "url": "https://example.com/feed.xml" }
+  ]
+}
