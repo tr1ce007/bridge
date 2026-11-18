@@ -502,5 +502,261 @@
         "career-change"
       ]
     }
+  },
+  {
+    "id": "real-duisekhan-full-grant-nyu-abu-dhabi",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Школьница без денег на учёбу получила полный грант в NYU Abu Dhabi",
+      "kk": "Оқуға ақшасы жоқ оқушы қыз NYU Abu Dhabi-ге толық грант алды",
+      "en": "A schoolgirl who couldn't pay for study won a full grant to NYU Abu Dhabi"
+    },
+    "categories": [
+      "study-abroad",
+      "education-journey"
+    ],
+    "ageRange": "under-18",
+    "sourceUrl": "https://the-steppe.com/steppe-youth/polnyj-grant-v-nyu-abu-dhabi-istorija-postuplenija-shkolnicy-iz-kazahstana",
+    "sourceName": "The Steppe",
+    "publishedAt": "2026-05-30",
+    "attribution": {
+      "ru": "Дүйсехан Талшын. Пересказ материала The Steppe (30.05.2026).",
+      "kk": "Дүйсехан Талшын. The Steppe материалының қысқаша мазмұны (30.05.2026).",
+      "en": "Duisekhan Talshyn. A retelling of a The Steppe article (30 May 2026)."
+    },
+    "before": {
+      "ru": "Она школьница из Казахстана и хотела учиться за рубежом. В отличие от многих одноклассников, платить за обучение её семья не могла, поэтому шансом был только полный грант.",
+      "kk": "Ол Қазақстандағы оқушы және шетелде оқығысы келді. Көптеген сыныптастарынан айырмашылығы, отбасы оқу ақысын төлей алмайтын, сондықтан жалғыз мүмкіндік — толық грант еді.",
+      "en": "She is a school student from Kazakhstan who wanted to study abroad. Unlike many classmates, her family could not pay tuition, so a full grant was her only chance."
+    },
+    "challenges": {
+      "ru": "Давление изнутри, постоянное сравнение с другими, страх быть недостаточно хорошей и неясное будущее. Бывали моменты, когда хотелось всё бросить, а страх перед экзаменами доводил до слёз.",
+      "kk": "Іштей қысым, өзгелермен үнемі салыстыру, жеткілікті жақсы болмаудан қорқу және белгісіз болашақ. Бәрін тастағысы келген сәттер болды, ал емтихан қорқынышы көз жасына дейін жеткізді.",
+      "en": "Inner pressure, constant comparison with others, fear of not being good enough and an uncertain future. At times she wanted to quit, and exam stress brought her to tears."
+    },
+    "turningPoint": {
+      "ru": "Она стала финалисткой менторской программы Luminary Education и получила поддержку менторов, мамы и друзей, которые проходили тот же путь.",
+      "kk": "Ол Luminary Education тәлімгерлік бағдарламасының финалисі болып, тәлімгерлердің, анасының және сол жолдан өткен достарының қолдауын алды.",
+      "en": "She became a finalist of the Luminary Education mentoring programme and got support from mentors, her mother and friends going through the same process."
+    },
+    "actions": {
+      "ru": "Готовилась к SAT, писала эссе, занималась английским и своими проектами. Летом попросила родителей купить доску и расписывала на ней задачи по часам, каждый день занимаясь хотя бы одной частью поступления.",
+      "kk": "SAT-қа дайындалып, эссе жазды, ағылшын тілімен және өз жобаларымен айналысты. Жазда ата-анасынан тақта сатып алуды сұрап, тапсырмаларды сағатпен жоспарлады, күн сайын түсудің кем дегенде бір бөлігімен айналысты.",
+      "en": "She prepared for the SAT, wrote essays, worked on her English and her own projects. Over the summer she asked her parents for a whiteboard and planned tasks hour by hour, working on at least one part of the application every day."
+    },
+    "now": {
+      "ru": "Она получила полный грант в NYU Abu Dhabi и готовится к учёбе.",
+      "kk": "Ол NYU Abu Dhabi-ге толық грант алып, оқуға дайындалып жатыр.",
+      "en": "She won a full grant to NYU Abu Dhabi and is getting ready to start."
+    },
+    "advice": {
+      "ru": "Работай над тайм-менеджментом и систематичностью. Эссе показывает, как ты понимаешь свою жизнь и ценности, а активности — чем ты живёшь.",
+      "kk": "Уақытты басқару мен жүйелілікке жұмыс істе. Эссе өз өміріңді және құндылықтарыңды қалай түсінетініңді, ал белсенділіктер немен өмір сүретініңді көрсетеді.",
+      "en": "Work on time management and consistency. The essay shows how you understand your life and values; your activities show what you live for."
+    },
+    "tags": {
+      "start": [
+        "low-income"
+      ],
+      "interests": [
+        "education",
+        "languages-culture"
+      ],
+      "fears": [
+        "not-talented-enough",
+        "failure",
+        "money"
+      ],
+      "education": [
+        "school",
+        "abroad-study"
+      ],
+      "challenges": [
+        "money",
+        "confidence"
+      ],
+      "motives": [
+        "curiosity",
+        "freedom"
+      ],
+      "decisions": [
+        "mentor",
+        "move-abroad"
+      ],
+      "transitions": [
+        "school-to-university",
+        "relocation"
+      ]
+    }
+  },
+  {
+    "id": "real-sembay-energy-to-teacher",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Энергетик с горнорудного предприятия стал учителем математики",
+      "kk": "Кен өндіру кәсіпорнының энергетигі математика мұғалімі болды",
+      "en": "An energy engineer from a mining company became a maths teacher"
+    },
+    "categories": [
+      "from-zero",
+      "unexpected-passion"
+    ],
+    "sourceUrl": "https://www.inform.kz/ru/pochemu-energetik-reshil-stat-uchitelem-istoriya-uchastnika-teach-for-qazaqstan-341f0970",
+    "sourceName": "Казинформ",
+    "publishedAt": "2026-09-29",
+    "attribution": {
+      "ru": "Серик Сембай. Пересказ интервью Казинформа (29.09.2026) об участнике программы Teach for Qazaqstan.",
+      "kk": "Серік Сембай. Қазинформның Teach for Qazaqstan бағдарламасы қатысушысы туралы сұхбатының қысқаша мазмұны (29.09.2026).",
+      "en": "Serik Sembay. A retelling of a Kazinform interview (29 Sep 2026) with a Teach for Qazaqstan participant."
+    },
+    "before": {
+      "ru": "Он работал энергетиком на горнорудном предприятии. О программе Teach for Qazaqstan узнал из подкаста, и с тех пор его время от времени тянуло попробовать себя в образовании.",
+      "kk": "Ол кен өндіру кәсіпорнында энергетик болып жұмыс істеді. Teach for Qazaqstan бағдарламасы туралы подкасттан білді, содан бері білім саласында өзін сынап көргісі келе берді.",
+      "en": "He worked as an energy engineer at a mining company. He heard about Teach for Qazaqstan on a podcast, and from then on he kept thinking about trying education."
+    },
+    "challenges": {
+      "ru": "Решиться он не мог два года: мысли о смене профессии то появлялись, то уходили. В школе сложнее всего оказались переезд, большая ответственность и много бумажной работы.",
+      "kk": "Ол екі жыл бойы шешім қабылдай алмады: мамандықты ауыстыру ойы келіп-кетіп жүрді. Мектепте ең қиыны көшу, үлкен жауапкершілік және қағаз жұмысының көптігі болды.",
+      "en": "He could not decide for two years: the thought of changing careers kept coming and going. At school the hardest parts were moving, the big responsibility and lots of paperwork."
+    },
+    "turningPoint": {
+      "ru": "Его зацепило, что даже маленькие изменения в школе влияют на детей и людей вокруг них. Изучив ценности программы, он подал заявку.",
+      "kk": "Мектептегі кішкентай өзгерістердің өзі балаларға және олардың айналасындағы адамдарға әсер ететіні оны қызықтырды. Бағдарлама құндылықтарымен танысып, өтінім берді.",
+      "en": "What hooked him was that even small changes at school affect children and the people around them. After studying the programme's values, he applied."
+    },
+    "actions": {
+      "ru": "Прошёл все этапы отбора, переподготовку и летнюю практику в лагере для школьников. Теперь преподаёт математику в региональной школе по двухлетней программе с обучением и наставничеством.",
+      "kk": "Іріктеудің барлық кезеңінен, қайта даярлаудан және оқушыларға арналған жазғы лагерьдегі тәжірибеден өтті. Енді оқыту мен тәлімгерлігі бар екі жылдық бағдарлама бойынша өңірлік мектепте математикадан сабақ береді.",
+      "en": "He passed every selection stage, retraining and a summer practice at a camp for pupils. Now he teaches maths at a regional school in a two-year programme with training and mentoring."
+    },
+    "now": {
+      "ru": "Он говорит, что ни о чём не жалеет, а работа с детьми даёт ему веру в будущее.",
+      "kk": "Ол ештеңеге өкінбейтінін, ал балалармен жұмыс оған болашаққа сенім беретінін айтады.",
+      "en": "He says he has no regrets, and working with children gives him faith in the future."
+    },
+    "advice": {
+      "ru": "Если путь действительно отзывается и ты хочешь попробовать — не сомневайся.",
+      "kk": "Егер бұл жол шынымен жүрегіңе жақын болса және байқап көргің келсе — күмәнданба.",
+      "en": "If the path truly speaks to you and you want to try it, don't hold back."
+    },
+    "tags": {
+      "start": [
+        "late-start"
+      ],
+      "interests": [
+        "education",
+        "people",
+        "science"
+      ],
+      "fears": [
+        "wrong-choice",
+        "unknown-future"
+      ],
+      "education": [
+        "university"
+      ],
+      "challenges": [
+        "time",
+        "confidence"
+      ],
+      "motives": [
+        "impact",
+        "belonging"
+      ],
+      "decisions": [
+        "gradual-change"
+      ],
+      "transitions": [
+        "career-change",
+        "relocation"
+      ]
+    }
+  },
+  {
+    "id": "real-sultankulov-prosecutor-to-developer",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Был прокурором и аудитором, а в 38 стал разработчиком",
+      "kk": "Прокурор және аудитор болды, ал 38 жасында әзірлеуші атанды",
+      "en": "A former prosecutor and auditor became a developer at 38"
+    },
+    "categories": [
+      "other-than-parents",
+      "from-zero"
+    ],
+    "ageRange": "35-plus",
+    "sourceUrl": "https://digitalbusiness.kz/2025-06-17/istoriya-kazahstantsa-kotoriy-ne-poboyalsya-v-38-let-kardinalno-izmenit-zhizn/",
+    "sourceName": "Digital Business",
+    "publishedAt": "2025-06-17",
+    "attribution": {
+      "ru": "Бауыржан Султанкулов. Пересказ материала Digital Business (17.06.2025).",
+      "kk": "Бауыржан Сұлтанқұлов. Digital Business материалының қысқаша мазмұны (17.06.2025).",
+      "en": "Baurzhan Sultankulov. A retelling of a Digital Business article (17 Jun 2025)."
+    },
+    "before": {
+      "ru": "Он из Тараза. Специальность за него выбрали родители — иностранные языки. Преподавать не получилось из-за очень низкой зарплаты, продажи тоже оказались не его. Потом были семь лет в прокуратуре, MBA и работа в аудите.",
+      "kk": "Ол Тараздан. Мамандықты оның орнына ата-анасы таңдады — шет тілдері. Жалақы өте төмен болғандықтан сабақ беру мүмкін болмады, сауда да оныкі емес болып шықты. Кейін прокуратурада жеті жыл, MBA және аудиторлық жұмыс болды.",
+      "en": "He is from Taraz. His parents chose his major for him: foreign languages. Teaching didn't work out because the pay was very low, and sales wasn't for him either. Then came seven years at the prosecutor's office, an MBA and work in audit."
+    },
+    "challenges": {
+      "ru": "Чтобы учиться программированию, он ушёл с работы и жил с семьёй на накопления. Родные и друзья не понимали, зачем начинать с нуля. На одном собеседовании он услышал, как его назвали «30-летним джуном».",
+      "kk": "Бағдарламалауды үйрену үшін жұмыстан кетіп, отбасымен жинаған ақшаға өмір сүрді. Туыстары мен достары нөлден бастаудың не керегі барын түсінбеді. Бір сұхбатта өзін «30 жастағы джун» деп атағанын естіді.",
+      "en": "To study programming he quit his job and lived with his family on savings. Relatives and friends didn't understand why he was starting from zero. At one interview he overheard himself called a “30-year-old junior”."
+    },
+    "turningPoint": {
+      "ru": "Ему стало интересно, как создаются цифровые продукты. Он прочитал пару книг, посмотрел видео и в 2018 году записался на курсы программирования.",
+      "kk": "Цифрлық өнімдердің қалай жасалатыны оған қызық болды. Бірнеше кітап оқып, бейне көріп, 2018 жылы бағдарламалау курстарына жазылды.",
+      "en": "He became curious about how digital products are made. He read a couple of books, watched videos and in 2018 signed up for programming courses."
+    },
+    "actions": {
+      "ru": "Через два года учёбы прошёл 5–6 собеседований и в 38 лет попал на стажировку, где полгода работал бесплатно ради реального опыта. Потом работал в международной команде.",
+      "kk": "Екі жыл оқығаннан кейін 5–6 сұхбаттан өтіп, 38 жасында тағылымдамаға түсті, онда нақты тәжірибе үшін жарты жыл тегін жұмыс істеді. Кейін халықаралық командада жұмыс істеді.",
+      "en": "After two years of study he went through 5–6 interviews and at 38 got an internship, where he worked unpaid for six months to gain real experience. Later he worked in an international team."
+    },
+    "now": {
+      "ru": "За четыре года он сменил пять компаний и сейчас работает разработчиком в банке. В команде в основном молодые ребята, и общий язык он нашёл со всеми.",
+      "kk": "Төрт жылда бес компания ауыстырып, қазір банкте әзірлеуші болып жұмыс істейді. Командада негізінен жастар, ол бәрімен тіл табысты.",
+      "en": "In four years he changed five companies and now works as a developer at a bank. His team is mostly young, and he gets along with everyone."
+    },
+    "tags": {
+      "start": [
+        "family-pressure",
+        "late-start"
+      ],
+      "interests": [
+        "tech",
+        "business"
+      ],
+      "fears": [
+        "too-late",
+        "judgement",
+        "money"
+      ],
+      "education": [
+        "university",
+        "self-taught"
+      ],
+      "challenges": [
+        "money",
+        "family"
+      ],
+      "motives": [
+        "curiosity",
+        "freedom"
+      ],
+      "decisions": [
+        "gradual-change"
+      ],
+      "transitions": [
+        "late-career-change",
+        "career-change"
+      ]
+    },
+    "incomplete": [
+      "advice"
+    ]
   }
 ]

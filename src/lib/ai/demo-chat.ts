@@ -844,8 +844,8 @@ const COPY: Record<Locale, Copy> = {
 
 /** Which platform story and experiment fit a topic (ids from src/content; missing ids are skipped). */
 const TOPIC_CONTENT: Partial<Record<DemoTopic, { story?: string; experiment?: string; explore?: boolean; opportunities?: boolean }>> = {
-  parents: { story: "real-narushev-orientalist-to-music" },
-  abroad: { story: "real-iskendir-bolashak-village-teacher", opportunities: true },
+  parents: { story: "real-sultankulov-prosecutor-to-developer" },
+  abroad: { story: "real-duisekhan-full-grant-nyu-abu-dhabi", opportunities: true },
   money: { story: "real-iskendir-bolashak-village-teacher", opportunities: true },
   hateMajor: { story: "real-erkenes-it-to-farming", explore: true },
   late: { story: "real-kozhakhmetova-teacher-to-it" },
@@ -853,7 +853,7 @@ const TOPIC_CONTENT: Partial<Record<DemoTopic, { story?: string; experiment?: st
   noTalent: { experiment: "exp-psychology-diary", explore: true },
   tooMany: { story: "real-tleukulov-boxing-to-ai", explore: true },
   fear: { story: "real-kozhakhmetova-teacher-to-it", experiment: "exp-entrepreneurship-test" },
-  tired: { story: "real-tleukulov-boxing-to-ai" },
+  tired: { story: "real-sembay-energy-to-teacher" },
   unknown: { story: "real-erkenes-it-to-farming", experiment: "exp-psychology-diary", explore: true },
   general: { explore: true },
 };
