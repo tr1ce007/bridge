@@ -7,9 +7,9 @@ export function Community() {
   const t = useTranslations("landing.community");
   return (
     <Section id="community" eyebrow={t("eyebrow")} title={t("title")} lead={t("lead")}>
-      <p className="mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-muted">{t("partnersLabel")}</p>
+      <p className="mb-6 flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.16em] text-muted">{t("partnersLabel")}<span aria-hidden="true" className="h-px flex-1 bg-border" /></p>
       <ul className="grid gap-4 md:grid-cols-2">
-        <Reveal as="li" className="flex h-full flex-col gap-6 rounded-2xl border border-border bg-card p-6 sm:p-8">
+        <Reveal as="li" className="flex h-full flex-col gap-6 card-hover rounded-2xl border border-border bg-card shadow-card p-6 sm:p-8">
             {/* The source image is a white disc on a dark photo; crop to the disc. */}
             <span className="relative size-28 shrink-0 overflow-hidden rounded-full bg-white">
               <Image
@@ -26,7 +26,7 @@ export function Community() {
               <p className="mt-2 leading-relaxed text-muted">{t("ambassadorsText")}</p>
             </div>
           </Reveal>
-        <Reveal as="li" delay={0.08} className="flex h-full flex-col gap-6 rounded-2xl border border-border bg-card p-6 sm:p-8">
+        <Reveal as="li" delay={0.08} className="flex h-full flex-col gap-6 card-hover rounded-2xl border border-border bg-card shadow-card p-6 sm:p-8">
             {/* Logo artwork is designed for a dark background, so it keeps one in both themes. */}
             <span className="relative block aspect-[678/368] h-28 shrink-0 overflow-hidden rounded-xl bg-black">
               <Image src="/brand/adal-azamat.png" alt={t("adalAlt")} fill sizes="210px" className="object-contain" />

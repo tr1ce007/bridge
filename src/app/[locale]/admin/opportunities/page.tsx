@@ -27,7 +27,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/opport
         </Button>
       </SectionHead>
       {unreadable > 0 && (
-        <p role="note" className="mb-4 rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm">
+        <p role="note" className="mb-4 rounded-2xl border border-primary/20 bg-primary-soft p-4 text-sm">
           {t("unreadable", { count: unreadable })}
         </p>
       )}
@@ -38,7 +38,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/opport
           {items.map((op) => {
             const status = opportunityStatus(op, now);
             return (
-              <li key={op.id} className="rounded-3xl border border-border bg-card p-5">
+              <li key={op.id} className="rounded-3xl border border-border bg-card shadow-card p-5">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0">
                     <h3 className="font-display text-lg font-semibold tracking-tight">{op.name}</h3>

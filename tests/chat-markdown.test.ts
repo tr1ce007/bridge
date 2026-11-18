@@ -46,4 +46,11 @@ describe("parseChatText", () => {
     expect(parseChatText("")).toEqual([]);
     expect(parseChatText("\n\n  \n")).toEqual([]);
   });
+
+  it("reads [label](internal page) links and leaves other labelled links as text", () => {
+    const [p] = parseChatText("Почитай [Открыть историю](/ru/stories/demo-at-27) и [тут](https://evil.example) или [x](/ru/secret)");
+    const segs = (p as { lines: { text: string; href?: string }[][] }).lines[0];
+    expect(segs.filter((s) => s.href)).toEqual([{ text: "Открыть историю", href: "/ru/stories/demo-at-27" }]);
+    expect(segs.map((s) => s.text).join("")).toContain("[тут](https://evil.example)");
+  });
 });

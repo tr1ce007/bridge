@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Section } from "@/components/ui/section";
+import { Eyebrow, Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 
 const KINDS = [
@@ -18,8 +18,8 @@ export function StoriesTeaser() {
     <Section id="stories" labelledBy="stories-title">
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal>
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-accent-text">{t("eyebrow")}</p>
-          <h2 id="stories-title" className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-5xl">
+          <Eyebrow>{t("eyebrow")}</Eyebrow>
+          <h2 id="stories-title" className="font-display text-[2rem] leading-[1.1] font-bold tracking-[-0.03em] text-balance sm:text-5xl">
             {t("title")}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted text-pretty">{t("lead")}</p>
@@ -29,13 +29,16 @@ export function StoriesTeaser() {
           </Button>
         </Reveal>
         <Reveal delay={0.1} className="self-end">
-          <div className="rounded-2xl border border-border bg-card p-8">
-            <p className="text-sm text-muted">{t("kindsLabel")}</p>
-            <ul className="mt-6 flex flex-col gap-4">
-              {KINDS.map(({ kind: k, tone }) => (
-                <li key={k} className="border-b border-border pb-4 last:border-0 last:pb-0">
-                  <Badge tone={tone}>{kind(k)}</Badge>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{t(`${k}Desc`)}</p>
+          <div className="rounded-2xl border border-border bg-card shadow-lift">
+            <p className="border-b border-border px-6 py-4 text-sm font-medium text-muted sm:px-8">{t("kindsLabel")}</p>
+            <ul className="divide-y divide-border">
+              {KINDS.map(({ kind: k, tone }, i) => (
+                <li key={k} className="grid grid-cols-[1.75rem_1fr] gap-x-3 px-6 py-5 sm:px-8">
+                  <span className="pt-0.5 font-display text-xs font-semibold tabular-nums text-muted">0{i + 1}</span>
+                  <div>
+                    <Badge tone={tone}>{kind(k)}</Badge>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{t(`${k}Desc`)}</p>
+                  </div>
                 </li>
               ))}
             </ul>

@@ -8,7 +8,7 @@ export interface FilterOption {
 }
 
 const control =
-  "mt-1.5 block min-h-11 w-full rounded-xl border border-border bg-card px-3 text-[15px] text-fg focus-visible:border-primary";
+  "mt-1.5 block min-h-11 w-full rounded-xl border border-border bg-card shadow-card px-3 text-[15px] text-fg focus-visible:border-primary";
 
 /** Labelled native <select>; the first option (value "") is the "all" choice. */
 export function FilterSelect({

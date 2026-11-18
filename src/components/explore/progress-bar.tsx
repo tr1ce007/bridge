@@ -13,7 +13,7 @@ export function ProgressBar({ value }: { value: number }) {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={pct}
-      className="h-1 w-full overflow-hidden rounded-full bg-subtle"
+      className="h-1.5 w-full overflow-hidden rounded-full bg-primary-soft"
     >
       <div
         className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out motion-reduce:transition-none"

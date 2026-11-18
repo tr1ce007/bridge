@@ -11,7 +11,7 @@ export function UnreadableStoryRow({ id }: { id: string }) {
   const t = useTranslations("admin.stories");
   const [state, action, pending] = useActionState(rejectUnreadableStoryAction, IDLE);
   return (
-    <form action={action} className="flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-card p-4">
+    <form action={action} className="flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-card shadow-card p-4">
       <input type="hidden" name="id" value={id} />
       <p className="min-w-0 flex-1 break-all text-sm">{t("unreadableItem", { id })}</p>
       <button

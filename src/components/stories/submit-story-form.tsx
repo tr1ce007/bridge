@@ -200,8 +200,8 @@ export function SubmitStoryForm() {
     <Container className="pb-24">
       <div className="max-w-2xl">
         {localMode && (
-          <div role="note" className="mb-8 rounded-2xl border border-amber-600/40 bg-subtle p-4 sm:p-5">
-            <p className="font-semibold text-amber-800 dark:text-amber-300">{t("submitLocalTitle")}</p>
+          <div role="note" className="mb-8 rounded-2xl border border-primary/20 bg-primary-soft p-4 sm:p-5">
+            <p className="font-semibold text-accent-text">{t("submitLocalTitle")}</p>
             <p className="mt-1 text-sm leading-relaxed text-muted">{t("submitLocalLead")}</p>
           </div>
         )}
@@ -253,7 +253,7 @@ export function SubmitStoryForm() {
             </select>
           </Field>
 
-          <div className="rounded-2xl border border-border bg-card p-4">
+          <div className="rounded-2xl border border-border bg-card shadow-card p-4">
             <label className="flex min-h-11 cursor-pointer items-center gap-3 text-[15px] font-semibold">
               <input type="checkbox" checked={values.anonymous} onChange={(e) => set("anonymous", e.target.checked)} className="size-5 shrink-0 accent-[var(--primary)]" />
               {t("formAnonymous")}

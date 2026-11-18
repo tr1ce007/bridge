@@ -17,7 +17,8 @@
     "opportunities": "Opportunities",
     "dashboard": "Dashboard",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "cta": "Start your path"
   },
   "theme": {
     "toDark": "Switch to dark theme",
@@ -53,7 +54,11 @@
       "lead": "Explore who you could become through your own answers, real human stories and small experiments — without pressure or ready-made answers.",
       "ctaPrimary": "Start exploring",
       "ctaSecondary": "Explore human stories",
-      "note": "You can start right away, no sign-up needed."
+      "note": "You can start right away, no sign-up needed.",
+      "today": "Today",
+      "todayText": "who you are: interests, questions, doubts",
+      "tomorrow": "Tomorrow",
+      "tomorrowText": "the profession you build yourself"
     },
     "problem": {
       "eyebrow": "Why it matters",

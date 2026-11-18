@@ -73,7 +73,7 @@ export function OpportunitiesExplorer({ opportunities, serverDay }: { opportunit
         </p>
       )}
 
-      <form role="search" onSubmit={(e) => e.preventDefault()} className="grid grid-cols-2 items-end gap-3 rounded-3xl border border-border bg-card p-4 sm:gap-4 sm:p-6 lg:grid-cols-3">
+      <form role="search" onSubmit={(e) => e.preventDefault()} className="grid grid-cols-2 items-end gap-3 rounded-3xl border border-border bg-card shadow-card p-4 sm:gap-4 sm:p-6 lg:grid-cols-3">
         <div className="col-span-2 lg:col-span-3">
           <SearchField label={t("searchLabel")} value={f.q} onChange={set("q")} placeholder={t("searchPlaceholder")} />
         </div>

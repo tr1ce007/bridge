@@ -21,7 +21,7 @@ import {
 const emptyForm = (): MentorInterestForm => ({ role: "mentee", topics: [], field: "", experience: "", note: "", contact: "" });
 
 const inputClass =
-  "mt-2 w-full rounded-2xl border border-border bg-bg p-3 text-[0.95rem] leading-relaxed focus:outline-2 focus:outline-[var(--ring)]";
+  "mt-2 w-full rounded-2xl border border-border bg-bg p-3 text-[0.95rem] leading-relaxed";
 
 /**
  * "Register interest" form. Until the database is connected the answer stays in this browser,
@@ -78,12 +78,12 @@ function InterestBody({ initial, memory }: { initial: MentorInterest | null; mem
 
   if (saved && !editing) {
     return (
-      <div className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+      <div className="rounded-3xl border border-border bg-card shadow-card p-6 sm:p-7">
         <div role="status" className="rounded-2xl bg-subtle p-4">
           <p className="font-semibold">{t("thanks")}</p>
           <p className="mt-1 text-sm leading-relaxed text-muted">{t("localOnly")}</p>
         </div>
-        {memory && <p className="mt-3 text-sm text-amber-800 dark:text-amber-300">{tStates("memoryNotice")}</p>}
+        {memory && <p className="mt-3 text-sm text-accent-text">{tStates("memoryNotice")}</p>}
         <dl className="mt-5 space-y-3 text-sm">
           <div>
             <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">{t("summaryRole")}</dt>
@@ -144,7 +144,7 @@ function InterestBody({ initial, memory }: { initial: MentorInterest | null; mem
   const errors: MentorInterestErrors = submitted ? validateMentorInterest(form) : {};
   const mentee = form.role === "mentee";
   return (
-    <form onSubmit={submit} noValidate className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+    <form onSubmit={submit} noValidate className="rounded-3xl border border-border bg-card shadow-card p-6 sm:p-7">
       <fieldset>
         <legend className="font-display text-lg font-semibold">{t("roleLegend")}</legend>
         <div role="radiogroup" className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -153,7 +153,7 @@ function InterestBody({ initial, memory }: { initial: MentorInterest | null; mem
               key={role}
               className={cn(
                 "flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--ring)]",
-                form.role === role ? "border-primary bg-primary/10 font-semibold" : "border-border hover:border-fg/40",
+                form.role === role ? "border-primary bg-primary/10 font-semibold" : "border-border transition-colors hover:border-primary/40 hover:bg-primary-soft/50",
               )}
             >
               <input type="radio" name="role" value={role} checked={form.role === role} onChange={() => setForm((f) => ({ ...f, role }))} className="size-4 accent-[var(--primary)]" />
@@ -168,7 +168,7 @@ function InterestBody({ initial, memory }: { initial: MentorInterest | null; mem
           <legend className="text-sm font-semibold">{t("topicsLabel")}</legend>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             {MENTEE_TOPICS.map((topic) => (
-              <label key={topic} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-2xl border border-border px-4 py-2.5 text-sm hover:border-fg/40">
+              <label key={topic} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-2xl border border-border px-4 py-2.5 text-sm transition-colors hover:border-primary/40 hover:bg-primary-soft/50">
                 <input
                   type="checkbox"
                   checked={form.topics.includes(topic)}

@@ -22,13 +22,11 @@ export default function HomePage({ params }: PageProps<"/[locale]">) {
       <Hero />
       <Problem />
       <Stats />
-      <BridgeLine />
       <HowItWorks />
       <StoriesTeaser />
       <BridgeLine />
       <TryTeaser />
       <OpportunitiesTeaser />
-      <BridgeLine />
       <Community />
       <FinalCta />
     </>

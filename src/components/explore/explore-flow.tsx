@@ -17,6 +17,8 @@ import { useQuestionCopy } from "./use-question-copy";
 import { useQuestionnaire } from "./use-questionnaire";
 
 const notice =
+  "rounded-2xl border border-primary/20 bg-primary-soft p-4 text-sm leading-relaxed text-accent-text";
+const alertNotice =
   "rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed text-amber-800 dark:text-amber-300";
 
 /**
@@ -71,7 +73,7 @@ export function ExploreFlow({ fetchFollowUp = defaultFetchFollowUp }: { fetchFol
           </p>
         )}
         {qn.saveError && (
-          <p role="alert" className={`mt-4 ${notice}`}>
+          <p role="alert" className={`mt-4 ${alertNotice}`}>
             {t("saveFailed")}
           </p>
         )}
@@ -94,7 +96,7 @@ export function ExploreFlow({ fetchFollowUp = defaultFetchFollowUp }: { fetchFol
           </div>
         )}
 
-        <div className="mt-6 rounded-3xl border border-border bg-card p-6 sm:p-10" aria-busy={!qn.ready}>
+        <div className="mt-6 rounded-3xl border border-border bg-card shadow-card p-6 sm:p-10" aria-busy={!qn.ready}>
           {confirmRestart && (
             <RestartConfirm
               onCancel={cancelRestart}

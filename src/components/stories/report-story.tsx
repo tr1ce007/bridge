@@ -66,13 +66,13 @@ export function ReportStory({ storyId }: { storyId: string }) {
     );
   }
   return (
-    <form onSubmit={send} className="rounded-2xl border border-border bg-card p-4 sm:p-5">
+    <form onSubmit={send} className="rounded-2xl border border-border bg-card shadow-card p-4 sm:p-5">
       <h3 className="font-display text-lg font-semibold">{t("reportTitle")}</h3>
       <p className="mt-1 text-sm text-muted">{t("reportLead")}</p>
       <label htmlFor={`${uid}-reason`} className="mt-4 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">
         {t("reportReason")}
       </label>
-      <select id={`${uid}-reason`} value={reason} onChange={(e) => setReason(e.target.value)} className="mt-1.5 block min-h-11 w-full rounded-xl border border-border bg-card px-3 text-[15px]">
+      <select id={`${uid}-reason`} value={reason} onChange={(e) => setReason(e.target.value)} className="mt-1.5 block min-h-11 w-full rounded-xl border border-border bg-card shadow-card px-3 text-[15px]">
         {REPORT_REASONS.map((r) => (
           <option key={r} value={r}>
             {t(`reportReasons.${r}`)}
@@ -82,7 +82,7 @@ export function ReportStory({ storyId }: { storyId: string }) {
       <label htmlFor={`${uid}-details`} className="mt-4 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">
         {t("reportDetails")}
       </label>
-      <textarea id={`${uid}-details`} rows={3} maxLength={500} value={details} onChange={(e) => setDetails(e.target.value)} className="mt-1.5 block w-full rounded-xl border border-border bg-card px-3 py-2.5 text-[15px]" />
+      <textarea id={`${uid}-details`} rows={3} maxLength={500} value={details} onChange={(e) => setDetails(e.target.value)} className="mt-1.5 block w-full rounded-xl border border-border bg-card shadow-card px-3 py-2.5 text-[15px]" />
       {phase === "error" && (
         <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-400">
           {message}

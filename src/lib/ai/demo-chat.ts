@@ -180,11 +180,11 @@ const SHARED: Record<Locale, Shared> = {
       "Пожалуйста, прямо сейчас поговори с человеком, которому доверяешь, или позвони на бесплатный телефон доверия для детей и молодёжи **150** (Казахстан). Если есть опасность для жизни, звони **112**.\n\n" +
       "Разговор об учёбе и профессии подождёт. Сейчас важнее всего ты.",
     ideasLead: "Что можно сделать:",
-    story: (title, href) => `Почитай историю **«${title}»**: ${href} (это демонстрационный пример, история вымышлена, но ситуация похожая).`,
-    experiment: (title, href) => `Маленькая проба на сайте: **«${title}»**, ${href}`,
+    story: (title, href) => `Почитай историю **«${title}»** (это демонстрационный пример, история вымышлена, но ситуация похожая): [открыть историю →](${href})`,
+    experiment: (title, href) => `Маленькая проба на сайте: **«${title}»**. [Все пробы →](${href})`,
     direction: (label) => `Ты упомянул(а) направление **«${label}»**. Лучший способ понять, твоё ли это, — попробовать на маленьком задании.`,
-    explore: (href) => `Если хочешь посмотреть на себя целиком, пройди анкету: ${href}. Она соберёт отчёт с направлениями и планом.`,
-    opportunities: (href) => `Стипендии и программы собраны тут: ${href} (условия всегда сверяй на официальном сайте).`,
+    explore: (href) => `Если хочешь посмотреть на себя целиком, пройди анкету: она соберёт отчёт с направлениями и планом. [Пройти анкету →](${href})`,
+    opportunities: (href) => `Стипендии и программы собраны на сайте (условия всегда сверяй на официальном сайте): [смотреть возможности →](${href})`,
     note: "Демо‑режим: я отвечаю по готовым подсказкам, без настоящего ИИ. Когда ИИ подключат, ответы станут точнее.",
   },
   kk: {
@@ -193,11 +193,11 @@ const SHARED: Record<Locale, Shared> = {
       "Өтінемін, дәл қазір өзің сенетін адаммен сөйлес немесе балалар мен жастарға арналған тегін сенім телефонына **150** (Қазақстан) қоңырау шал. Өмірге қауіп болса, **112** нөміріне хабарлас.\n\n" +
       "Оқу мен мамандық туралы әңгіме күте тұрады. Қазір ең маңыздысы — сен.",
     ideasLead: "Не істеуге болады:",
-    story: (title, href) => `Мына әңгімені оқып көр: **«${title}»**, ${href} (бұл демонстрациялық мысал, ойдан шығарылған, бірақ жағдай ұқсас).`,
-    experiment: (title, href) => `Сайттағы шағын тәжірибе: **«${title}»**, ${href}`,
+    story: (title, href) => `Мына әңгімені оқып көр: **«${title}»** (бұл демонстрациялық мысал, ойдан шығарылған, бірақ жағдай ұқсас): [әңгімені ашу →](${href})`,
+    experiment: (title, href) => `Сайттағы шағын тәжірибе: **«${title}»**. [Барлық тәжірибелер →](${href})`,
     direction: (label) => `Сен **«${label}»** бағытын атадың. Бұл саған сай ма, соны түсінудің ең жақсы жолы — шағын тапсырмада байқап көру.`,
-    explore: (href) => `Өзіңді толық көргің келсе, сауалнамадан өт: ${href}. Ол бағыттар мен жоспары бар есеп жасайды.`,
-    opportunities: (href) => `Стипендиялар мен бағдарламалар мұнда: ${href} (шарттарын әрқашан ресми сайттан тексер).`,
+    explore: (href) => `Өзіңді толық көргің келсе, сауалнамадан өт: ол бағыттар мен жоспары бар есеп жасайды. [Сауалнамадан өту →](${href})`,
+    opportunities: (href) => `Стипендиялар мен бағдарламалар сайтта жиналған (шарттарын әрқашан ресми сайттан тексер): [мүмкіндіктерді көру →](${href})`,
     note: "Демо режим: мен нағыз ЖИ-сіз, дайын кеңестер бойынша жауап беремін. ЖИ қосылғанда жауаптар дәлірек болады.",
   },
   en: {
@@ -206,11 +206,11 @@ const SHARED: Record<Locale, Shared> = {
       "Please talk to someone you trust right now, or call the free helpline for children and young people **150** (Kazakhstan). If your life is in danger, call **112**.\n\n" +
       "Study and career questions can wait. Right now, you matter most.",
     ideasLead: "What could help:",
-    story: (title, href) => `Read the story **“${title}”**: ${href} (it's a demo example, the story is fictional, but the situation is similar).`,
-    experiment: (title, href) => `A small experiment on the site: **“${title}”**, ${href}`,
+    story: (title, href) => `Read the story **“${title}”** (it's a demo example, the story is fictional, but the situation is similar): [open the story →](${href})`,
+    experiment: (title, href) => `A small experiment on the site: **“${title}”**. [All experiments →](${href})`,
     direction: (label) => `You mentioned **“${label}”**. The best way to see whether it fits you is to try it on a small task.`,
-    explore: (href) => `If you want to look at the whole picture, take the questionnaire: ${href}. It builds a report with directions and a plan.`,
-    opportunities: (href) => `Scholarships and programmes are collected here: ${href} (always check the conditions on the official site).`,
+    explore: (href) => `If you want to look at the whole picture, take the questionnaire: it builds a report with directions and a plan. [Take the questionnaire →](${href})`,
+    opportunities: (href) => `Scholarships and programmes are collected on the site (always check the conditions on the official site): [see opportunities →](${href})`,
     note: "Demo mode: I'm answering from prepared guidance, without real AI. Once AI is connected, answers will be more precise.",
   },
 };

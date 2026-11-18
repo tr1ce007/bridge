@@ -27,7 +27,7 @@ export function StoryCard({
   const category = story.categories?.[0];
   const inOriginal = !story.title[locale];
   return (
-    <li className="flex flex-col rounded-3xl border border-border bg-card p-5 sm:p-6">
+    <li className="card-hover flex flex-col rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
       <div className="flex flex-wrap items-center gap-2">
         <Badge tone={story.kind === "demo" ? "warning" : "primary"}>{tk(story.kind)}</Badge>
         {category && <Badge>{t(`categories.${category}`)}</Badge>}

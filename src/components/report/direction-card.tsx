@@ -45,7 +45,7 @@ export function DirectionCard({
   const [open, setOpen] = useState(false);
   const panelId = useId();
   return (
-    <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-6 shadow-[0_1px_0_rgba(0,0,0,0.02)] sm:p-7 print:break-inside-avoid">
+    <article className="flex h-full flex-col rounded-3xl border border-border bg-card shadow-card p-6 sm:p-7 print:break-inside-avoid">
       <div className="flex items-baseline gap-3">
         <span aria-hidden="true" className="font-display text-sm font-semibold text-accent-text">
           {String(index + 1).padStart(2, "0")}

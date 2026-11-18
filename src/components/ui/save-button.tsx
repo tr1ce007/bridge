@@ -29,7 +29,7 @@ export function SaveButton({
       onClick={onToggle}
       className={cn(
         "inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition-colors disabled:opacity-50",
-        saved ? "border-primary/40 bg-primary/10 text-primary dark:text-[var(--ring)]" : "border-border text-fg hover:border-fg/40 hover:bg-subtle",
+        saved ? "border-primary/40 bg-primary/10 text-primary dark:text-[var(--ring)]" : "border-border text-fg transition-colors hover:border-primary/40 hover:bg-primary-soft/50 hover:bg-subtle",
         className,
       )}
     >

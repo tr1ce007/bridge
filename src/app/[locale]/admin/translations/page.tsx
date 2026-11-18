@@ -50,7 +50,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/transl
   function localeBlock(lang: "kk" | "en", c: LocaleCoverage) {
     const clean = c.missing.length + c.identical.length + c.extra.length === 0;
     return (
-      <section key={lang} aria-labelledby={`tr-${lang}`} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+      <section key={lang} aria-labelledby={`tr-${lang}`} className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
         <h3 id={`tr-${lang}`} className="font-display text-lg font-semibold tracking-tight">{t(lang)}</h3>
         <p className="mt-2 text-sm text-muted">
           {t("missing", { count: c.missing.length })} · {t("identical", { count: c.identical.length })} · {t("extra", { count: c.extra.length })}

@@ -16,7 +16,7 @@ export function StoryMatchCard({ match, story }: { match: Match; story: Story })
   const tk = useTranslations("storyKind");
   const locale = useLocale();
   return (
-    <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-6 print:break-inside-avoid">
+    <article className="flex h-full flex-col rounded-3xl border border-border bg-card shadow-card p-6 print:break-inside-avoid">
       <div className="flex flex-wrap items-center gap-2">
         <Badge tone={story.kind === "demo" ? "warning" : "primary"}>{tk(story.kind)}</Badge>
         <Badge tone={RELEVANCE_TONE[match.relevance]}>

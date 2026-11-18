@@ -12,7 +12,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label={t("label")} className={cn("flex items-center rounded-full border border-border p-0.5", className)}>
+    <nav aria-label={t("label")} className={cn("flex items-center rounded-full border border-border bg-card p-0.5", className)}>
       {routing.locales.map((l) => {
         const active = l === locale;
         return (
@@ -25,8 +25,8 @@ export function LocaleSwitcher({ className }: { className?: string }) {
             title={t(l)}
             aria-current={active ? "true" : undefined}
             className={cn(
-              "rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wide transition-colors",
-              active ? "bg-fg text-bg" : "text-muted hover:text-fg",
+              "rounded-full px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-wider transition-colors duration-200",
+              active ? "bg-primary-soft text-primary dark:text-[var(--ring)]" : "text-muted hover:text-fg",
             )}
           >
             {l}

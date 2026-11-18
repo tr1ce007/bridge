@@ -17,7 +17,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/storie
     <>
       <SectionHead title={t("title")} lead={t("lead")} />
       {unreadable > 0 && (
-        <p role="note" className="mb-4 rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm">
+        <p role="note" className="mb-4 rounded-2xl border border-primary/20 bg-primary-soft p-4 text-sm">
           {t("unreadable", { count: unreadable })}
         </p>
       )}

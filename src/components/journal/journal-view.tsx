@@ -102,7 +102,7 @@ function JournalBody({ initial, where }: { initial: JournalEntry[]; where: DataL
   return (
     <Container className="pb-20">
       <div className="grid gap-3 lg:max-w-3xl">
-        <p className="rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed">
+        <p className="rounded-2xl border border-border bg-card shadow-card p-4 text-sm leading-relaxed">
           <span aria-hidden="true" className="mr-2 text-accent">
             ◆
           </span>
@@ -158,7 +158,7 @@ function JournalBody({ initial, where }: { initial: JournalEntry[]; where: DataL
             {entries.map((entry) => {
               const filled = journalFilledFields(entry);
               return (
-                <li key={entry.id} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+                <li key={entry.id} className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h2 className="font-display text-lg font-semibold">
                       <time dateTime={entry.createdAt}>{date(entry.createdAt)}</time>
@@ -247,7 +247,7 @@ function EntryForm({
   return (
     <form
       ref={formRef}
-      className="mt-6 rounded-3xl border border-border bg-card p-5 sm:p-6"
+      className="mt-6 rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6"
       onSubmit={(e) => {
         e.preventDefault();
         setTouched(true);
@@ -269,7 +269,7 @@ function EntryForm({
               onChange={(e) => setDraft((d) => ({ ...d, [field]: e.target.value }))}
               maxLength={JOURNAL_FIELD_MAX}
               rows={3}
-              className="mt-2 w-full resize-y rounded-2xl border border-border bg-bg p-3 text-[0.95rem] leading-relaxed focus:outline-2 focus:outline-[var(--ring)]"
+              className="mt-2 w-full resize-y rounded-2xl border border-border bg-bg p-3 text-[0.95rem] leading-relaxed"
             />
           </div>
         ))}

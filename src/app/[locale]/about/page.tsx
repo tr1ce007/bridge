@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           </h2>
           <ul className="mt-5 grid gap-4 md:grid-cols-2">
             {(["what1", "what2", "what3", "what4"] as const).map((k) => (
-              <li key={k} className="rounded-3xl border border-border bg-card p-5 text-[0.95rem] leading-relaxed sm:p-6">
+              <li key={k} className="rounded-3xl border border-border bg-card shadow-card p-5 text-[0.95rem] leading-relaxed sm:p-6">
                 {t(k)}
               </li>
             ))}
@@ -46,7 +46,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
           </h2>
           <ul className="mt-5 grid gap-4 md:grid-cols-3">
             {(["free", "noAds", "noPaid"] as const).map((k) => (
-              <li key={k} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+              <li key={k} className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
                 <h3 className="font-display text-lg font-semibold">{t(`${k}Title`)}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{t(`${k}Text`)}</p>
               </li>
@@ -75,7 +75,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
             {t("partnersTitle")}
           </h2>
           <ul className="mt-5 grid gap-4 md:grid-cols-2">
-            <li className="flex h-full flex-col gap-6 rounded-2xl border border-border bg-card p-6 sm:p-8">
+            <li className="flex h-full flex-col gap-6 rounded-2xl border border-border bg-card shadow-card p-6 sm:p-8">
               {/* The source image is a white disc on a dark photo; crop to the disc (same as the landing). */}
               <span className="relative size-28 shrink-0 overflow-hidden rounded-full bg-white">
                 <Image src="/brand/ambassadors.webp" alt={c("ambassadorsAlt")} fill sizes="112px" className="scale-[1.18] object-cover" style={{ objectPosition: "51% 53%" }} />
@@ -85,7 +85,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
                 <p className="mt-2 leading-relaxed text-muted">{c("ambassadorsText")}</p>
               </div>
             </li>
-            <li className="flex h-full flex-col gap-6 rounded-2xl border border-border bg-card p-6 sm:p-8">
+            <li className="flex h-full flex-col gap-6 rounded-2xl border border-border bg-card shadow-card p-6 sm:p-8">
               {/* Logo artwork is designed for a dark background, so it keeps one in both themes. */}
               <span className="relative block aspect-[678/368] h-28 shrink-0 overflow-hidden rounded-xl bg-black">
                 <Image src="/brand/adal-azamat.png" alt={c("adalAlt")} fill sizes="210px" className="object-contain" />

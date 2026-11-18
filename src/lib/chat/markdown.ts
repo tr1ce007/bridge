@@ -17,7 +17,23 @@ const BULLET = /^\s*(?:[-*•])\s+(.*)$/;
 const NUMBERED = /^\s*\d{1,3}[.)]\s+(.*)$/;
 const HEADING = /^\s{0,3}#{1,6}\s+(.*)$/;
 
+/** `[label](/ru/stories)`: a labelled link, only to the same internal pages as INTERNAL_LINK. */
+const LABELLED_LINK = /\[([^\[\]\n]{1,80})\]\((\/(?:ru|kk|en)\/(?:explore|stories(?:\/[a-z0-9][a-z0-9-]{0,80})?|try|opportunities))\)/g;
+
 function linkify(text: string, bold?: boolean): Inline[] {
+  const out: Inline[] = [];
+  let last = 0;
+  for (const match of text.matchAll(LABELLED_LINK)) {
+    const at = match.index ?? 0;
+    if (at > last) out.push(...linkifyBare(text.slice(last, at), bold));
+    out.push({ text: match[1], href: match[2], ...(bold ? { bold } : {}) });
+    last = at + match[0].length;
+  }
+  if (last < text.length) out.push(...linkifyBare(text.slice(last), bold));
+  return out;
+}
+
+function linkifyBare(text: string, bold?: boolean): Inline[] {
   const out: Inline[] = [];
   let last = 0;
   for (const match of text.matchAll(INTERNAL_LINK)) {

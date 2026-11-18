@@ -11,7 +11,8 @@ import { StarterPrompts } from "./starter-prompts";
 import { useAutoScroll } from "./use-auto-scroll";
 import { useChat, type ChatError } from "./use-chat";
 
-const noticeBox = "rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed";
+const noticeBox = "rounded-2xl border border-primary/20 bg-primary-soft p-4 text-sm leading-relaxed";
+const alertBox = "rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed";
 
 function errorText(error: ChatError, t: ReturnType<typeof useTranslations<"chat">>): string {
   // The route's own localized text wins for 429 / 400; otherwise our copy.
@@ -48,14 +49,21 @@ export function ChatView() {
     <Container className="py-8 sm:py-12">
       <div className="mx-auto flex min-h-[calc(100dvh-10rem)] max-w-2xl flex-col">
         <header>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-text">{t("eyebrow")}</p>
-          <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{t("title")}</h1>
+          <div className="flex items-center gap-3">
+            <span aria-hidden="true" className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-fg shadow-button">
+              <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+                <path d="M2 17h20M5 17V8M19 17V8M5 9q7 9 14 0" />
+              </svg>
+            </span>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent-text">{t("eyebrow")}</p>
+          </div>
+          <h1 className="mt-5 font-display text-[2rem] leading-[1.1] font-bold tracking-[-0.03em] text-balance sm:text-5xl">{t("title")}</h1>
           {messages.length === 0 && <p className="mt-4 text-base leading-relaxed text-muted text-pretty sm:text-lg">{t("intro")}</p>}
         </header>
 
         {chat.demo && (
           <div role="note" className={`mt-6 ${noticeBox}`}>
-            <p className="font-semibold text-amber-800 dark:text-amber-300">{t("demoBanner")}</p>
+            <p className="font-semibold text-accent-text">{t("demoBanner")}</p>
             <p className="mt-1 text-muted">{t("demoBannerLead")}</p>
           </div>
         )}
@@ -115,18 +123,18 @@ export function ChatView() {
             <button
               type="button"
               onClick={scrollToEnd}
-              className="absolute -top-11 left-1/2 -translate-x-1/2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium shadow-sm hover:border-fg/40"
+              className="absolute -top-11 left-1/2 -translate-x-1/2 rounded-full border border-border bg-card shadow-card px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:border-primary/40 hover:bg-primary-soft/50"
             >
               {t("jumpDown")} ↓
             </button>
           )}
           {error && !streaming && (
-            <div role="alert" className={`mb-3 flex flex-wrap items-center justify-between gap-3 ${noticeBox}`}>
+            <div role="alert" className={`mb-3 flex flex-wrap items-center justify-between gap-3 ${alertBox}`}>
               <p className="min-w-0 flex-1 text-amber-800 dark:text-amber-300">{errorText(error, t)}</p>
               <button
                 type="button"
                 onClick={chat.retry}
-                className="inline-flex min-h-10 items-center rounded-full border border-border px-4 text-sm font-semibold hover:border-fg/40 hover:bg-card"
+                className="inline-flex min-h-10 items-center rounded-full border border-border px-4 text-sm font-semibold transition-colors hover:border-primary/40 hover:bg-primary-soft/50 hover:bg-card"
               >
                 {t("retry")}
               </button>

@@ -20,7 +20,7 @@ export function MemoryToggle({
 }) {
   const t = useTranslations("chat");
   return (
-    <div className="rounded-2xl border border-border bg-card p-4">
+    <div className="rounded-2xl border border-border bg-card shadow-card p-4">
       <div className="flex items-start justify-between gap-4">
         <span id="memory-label" className="text-[15px] font-semibold leading-snug">
           {t("memoryLabel")}

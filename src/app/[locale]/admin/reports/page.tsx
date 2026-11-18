@@ -24,7 +24,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/report
       ) : (
         <ul className="grid gap-4">
           {reports.map((r) => (
-            <li key={r.id} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+            <li key={r.id} className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
                 {kinds[r.targetKind] ?? r.targetKind} · {r.targetId}
               </p>

@@ -27,7 +27,7 @@ function Bullets({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-3 sm:grid-cols-2">
       {items.map((item, i) => (
-        <li key={i} className="rounded-2xl border border-border bg-card p-5 text-[0.95rem] leading-relaxed text-pretty">
+        <li key={i} className="rounded-2xl border border-border bg-card shadow-card p-5 text-[0.95rem] leading-relaxed text-pretty">
           {item}
         </li>
       ))}
@@ -123,10 +123,11 @@ export function ReportView({ id }: { id: string }) {
   return (
     <article className="pb-20 print:pb-0">
       {/* Hero */}
-      <header className="border-b border-border bg-subtle/60 print:bg-transparent">
+      <header className="relative isolate overflow-hidden border-b border-border bg-gradient-to-b from-bg to-primary-soft/50 print:bg-transparent">
+        <div aria-hidden="true" className="blueprint absolute inset-0 -z-10 print:hidden" />
         <Container className="pt-12 pb-10 sm:pt-20 sm:pb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-text">{t("eyebrow")}</p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl">{t("title")}</h1>
+          <h1 className="mt-4 max-w-3xl font-display text-[2.25rem] leading-[1.05] font-bold tracking-[-0.035em] text-balance sm:text-6xl">{t("title")}</h1>
           <p className="mt-4 text-sm text-muted">{t("createdAt", { date: format.dateTime(new Date(report.createdAt), { dateStyle: "long" }) })}</p>
           <div className="mt-8 grid gap-3 lg:max-w-3xl">
             {report.demo && <DemoBanner reason={report.demoReason} />}
@@ -135,7 +136,7 @@ export function ReportView({ id }: { id: string }) {
                 {t("memoryNotice")}
               </p>
             )}
-            <p className="rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed">
+            <p className="rounded-2xl border border-border bg-card shadow-card p-4 text-sm leading-relaxed">
               <span aria-hidden="true" className="mr-2 text-accent">◆</span>
               {t("explorationNote")}
             </p>
@@ -144,7 +145,7 @@ export function ReportView({ id }: { id: string }) {
             <ol className="flex gap-2 overflow-x-auto pb-2 text-sm [scrollbar-width:none]">
               {SECTIONS.map((s, i) => (
                 <li key={s} className="shrink-0">
-                  <a href={`#${s}`} className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-border bg-card px-3 hover:border-fg/40">
+                  <a href={`#${s}`} className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-border bg-card shadow-card px-3 transition-colors hover:border-primary/40 hover:bg-primary-soft/50">
                     <span className="font-semibold text-accent-text">{i + 1}</span> {t(s)}
                   </a>
                 </li>
@@ -216,7 +217,7 @@ export function ReportView({ id }: { id: string }) {
         <ReportSection id="s7" index={7} title={t("s7")} lead={t("s7Lead")}>
           <ul className="grid gap-4 md:grid-cols-2">
             {report.experiments.map((e, i) => (
-              <li key={i} className="flex flex-col rounded-3xl border border-border bg-card p-6">
+              <li key={i} className="flex flex-col rounded-3xl border border-border bg-card shadow-card p-6">
                 <h3 className="font-display text-lg font-semibold">{e.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{e.description}</p>
                 <div className="mt-auto pt-4 print:hidden">

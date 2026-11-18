@@ -23,7 +23,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin">) {
     <div className="grid gap-8">
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((c) => (
-          <li key={c.href} className="flex flex-col rounded-3xl border border-border bg-card p-5">
+          <li key={c.href} className="flex flex-col rounded-3xl border border-border bg-card shadow-card p-5">
             <p className="font-display text-4xl font-semibold tabular-nums">{c.value}</p>
             <p className="mt-2 text-sm font-medium">{c.label}</p>
             {"hint" in c && <p className="mt-1 text-xs text-muted">{c.hint}</p>}
@@ -35,13 +35,13 @@ export default async function Page({ params }: PageProps<"/[locale]/admin">) {
       </ul>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <section aria-labelledby="content-title" className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+        <section aria-labelledby="content-title" className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
           <h2 id="content-title" className="font-display text-lg font-semibold tracking-tight">
             {t("contentTitle")}
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">{t("contentText")}</p>
         </section>
-        <section aria-labelledby="privacy-title" className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+        <section aria-labelledby="privacy-title" className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
           <h2 id="privacy-title" className="font-display text-lg font-semibold tracking-tight">
             {t("privacyTitle")}
           </h2>

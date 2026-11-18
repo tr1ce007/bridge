@@ -30,13 +30,13 @@ export default async function Page({ params, searchParams }: PageProps<"/[locale
       <Container className="pb-20">
         <div className="grid max-w-3xl gap-4">
           <div className="grid gap-4 sm:grid-cols-2">
-            <section aria-labelledby="guest-title" className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+            <section aria-labelledby="guest-title" className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
               <h2 id="guest-title" className="font-display text-lg font-semibold tracking-tight">
                 {t("guestTitle")}
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-muted">{t("guestText")}</p>
             </section>
-            <section aria-labelledby="sync-title" className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+            <section aria-labelledby="sync-title" className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
               <h2 id="sync-title" className="font-display text-lg font-semibold tracking-tight">
                 {t("syncTitle")}
               </h2>
@@ -47,7 +47,7 @@ export default async function Page({ params, searchParams }: PageProps<"/[locale
           {configured ? (
             <AuthPanel googleEnabled={googleEnabled} errorKey={errorKey} />
           ) : (
-            <section aria-labelledby="setup-title" role="note" className="rounded-3xl border border-amber-600/40 bg-subtle p-5 sm:p-6">
+            <section aria-labelledby="setup-title" role="note" className="rounded-3xl border border-primary/20 bg-primary-soft p-5 sm:p-6">
               <h2 id="setup-title" className="font-display text-lg font-semibold tracking-tight">
                 {t("setupTitle")}
               </h2>

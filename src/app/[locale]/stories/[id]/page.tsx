@@ -88,7 +88,7 @@ export default async function StoryPage({ params }: PageProps<"/[locale]/stories
         </div>
 
         {missing.length > 0 && (
-          <div role="note" className="mt-8 max-w-3xl rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed">
+          <div role="note" className="mt-8 max-w-3xl rounded-2xl border border-primary/20 bg-primary-soft p-4 text-sm leading-relaxed">
             <p className="font-semibold">{t("incompleteTitle")}</p>
             <p className="mt-1 text-muted">{t("incompleteLead", { fields: missing.map((m) => t(SECTION_LABELS[m]).toLowerCase()).join(", ") })}</p>
           </div>
@@ -112,7 +112,7 @@ export default async function StoryPage({ params }: PageProps<"/[locale]/stories
           })}
         </div>
 
-        <aside aria-labelledby="source-title" className="mt-12 max-w-3xl rounded-2xl border border-border bg-card p-5">
+        <aside aria-labelledby="source-title" className="mt-12 max-w-3xl rounded-2xl border border-border bg-card shadow-card p-5">
           <h2 id="source-title" className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
             {t("sourceTitle")}
           </h2>
@@ -152,7 +152,7 @@ export default async function StoryPage({ params }: PageProps<"/[locale]/stories
                   .map((x) => tagLabel(x.axis, x.tag, locale))
                   .join(", ");
                 return (
-                  <li key={r.id} className="rounded-3xl border border-border bg-card p-5">
+                  <li key={r.id} className="rounded-3xl border border-border bg-card shadow-card p-5">
                     <Badge tone={r.kind === "demo" ? "warning" : "primary"}>{tk(r.kind)}</Badge>
                     <h3 className="mt-3 font-display text-lg font-semibold leading-snug text-balance">
                       <Link href={`/stories/${r.id}`} className="hover:underline">

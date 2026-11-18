@@ -38,7 +38,7 @@ function ItemRow({ item, onChange, onRemove }: { item: RoadmapItem; onChange: (i
             maxLength={300}
             autoFocus
             onFocus={(e) => e.currentTarget.select()}
-            className="w-full resize-y rounded-xl border border-border bg-bg p-2 text-sm focus:outline-2 focus:outline-[var(--ring)]"
+            className="w-full resize-y rounded-xl border border-border bg-bg p-2 text-sm"
           />
           <div className="mt-2 flex gap-2">
             <button type="submit" className="min-h-11 rounded-full bg-primary px-4 text-sm font-semibold text-primary-fg">
@@ -106,7 +106,7 @@ function AddItem({ horizon, onAdd }: { horizon: Horizon; onAdd: (text: string) =
         onChange={(e) => setText(e.target.value)}
         maxLength={300}
         placeholder={t("addPlaceholder")}
-        className="min-h-11 min-w-0 flex-1 rounded-full border border-border bg-bg px-4 text-sm focus:outline-2 focus:outline-[var(--ring)]"
+        className="min-h-11 min-w-0 flex-1 rounded-full border border-border bg-bg px-4 text-sm"
       />
       <button type="submit" disabled={!text.trim()} className="min-h-11 rounded-full border border-border px-4 text-sm font-semibold disabled:opacity-50">
         {t("add")}
@@ -122,7 +122,7 @@ export function RoadmapEditor({ roadmap, onChange }: { roadmap: Roadmap; onChang
   return (
     <div className="grid gap-4 lg:grid-cols-3">
       {HORIZONS.map((h) => (
-        <div key={h} className="min-w-0 rounded-3xl border border-border bg-card p-5 print:break-inside-avoid">
+        <div key={h} className="min-w-0 rounded-3xl border border-border bg-card shadow-card p-5 print:break-inside-avoid">
           <h3 className="font-display text-lg font-semibold">
             <span className="text-accent-text">{t(h)}</span>
           </h3>

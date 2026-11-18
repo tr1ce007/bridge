@@ -19,7 +19,7 @@ export function StarterPrompts({ onPick, disabled }: { onPick: (text: string) =>
               type="button"
               disabled={disabled}
               onClick={() => onPick(t(key))}
-              className="min-h-12 w-full rounded-2xl border border-border bg-card px-4 py-3 text-left text-[15px] leading-snug transition-colors hover:border-primary hover:bg-primary/5 disabled:opacity-50"
+              className="min-h-12 w-full rounded-2xl border border-border bg-card shadow-card px-4 py-3 text-left text-[15px] leading-snug transition-colors hover:border-primary hover:bg-primary/5 disabled:opacity-50"
             >
               {t(key)}
             </button>

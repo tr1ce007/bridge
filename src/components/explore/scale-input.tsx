@@ -20,7 +20,7 @@ export function ScaleInput({ name, value, onChange, min, max, labelledBy }: Prop
         {[1, 2, 3, 4, 5].map((n) => (
           <label
             key={n}
-            className="flex min-h-14 cursor-pointer items-center justify-center rounded-2xl border border-border bg-card font-display text-lg font-semibold transition-colors hover:border-fg/40 has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-primary-fg has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring"
+            className="flex min-h-14 cursor-pointer items-center justify-center rounded-2xl border border-border bg-card shadow-card font-display text-lg font-semibold transition-colors hover:border-primary/40 hover:bg-primary-soft/50 has-[:checked]:border-primary has-[:checked]:bg-primary has-[:checked]:text-primary-fg has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring"
           >
             <input
               type="radio"

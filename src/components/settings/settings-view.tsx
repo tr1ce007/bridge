@@ -17,7 +17,7 @@ import { dataLocation, type DataLocation } from "@/lib/data/mode";
 
 function Card({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section aria-labelledby={`${id}-title`} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+    <section aria-labelledby={`${id}-title`} className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
       <h2 id={`${id}-title`} className="font-display text-lg font-semibold tracking-tight sm:text-xl">
         {title}
       </h2>
@@ -221,7 +221,7 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
             <>
               <p className="text-sm leading-relaxed text-muted">{t("deleteLead")}</p>
               {where === "account" && (
-                <div className="mt-3 rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed">
+                <div className="mt-3 rounded-2xl border border-primary/20 bg-primary-soft p-4 text-sm leading-relaxed">
                   <p>{t("accountNote")}</p>
                   <ContactNote variant="delete" className="mt-2" />
                 </div>
@@ -277,7 +277,7 @@ function SettingsBody({ initialConsent, where }: { initialConsent: boolean; wher
           autoComplete="off"
           autoCapitalize="off"
           spellCheck={false}
-          className="mt-2 min-h-11 w-full rounded-2xl border border-border bg-bg px-4 text-sm focus:outline-2 focus:outline-[var(--ring)]"
+          className="mt-2 min-h-11 w-full rounded-2xl border border-border bg-bg px-4 text-sm"
         />
       </ConfirmDialog>
     </Container>

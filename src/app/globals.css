@@ -11,51 +11,69 @@
  * --accent-text, which meets contrast on light backgrounds or directly as var(--token).
  */
 :root {
-  --bg: #fafaf8;
-  --fg: #0e1726;
-  --muted: #5b6472;
+  /* THE BRIDGE palette: blue and white. */
+  --bg: #ffffff;
+  --fg: #152238;
+  --muted: #64748b;
   --card: #ffffff;
-  --subtle: #f1f0ec;
-  --border: #e4e2dc;
-  --primary: #1f4e9c;
+  --subtle: #f7f9fc;
+  --border: #e3e8f0;
+  --border-strong: #cbd5e1;
+  --primary: #155eef;
   --primary-fg: #ffffff;
-  --primary-hover: #183f80;
-  --accent: #b8935a;
-  --accent-text: #85663a;
-  --ring: #1f4e9c;
+  --primary-hover: #0f4bd1;
+  --primary-soft: #eaf2ff;
+  --navy: #102a56;
+  --navy-fg: #ffffff;
+  /* Lines, markers and small labels (the bridge's cable). */
+  --accent: #155eef;
+  --accent-text: #1849a9;
+  --ring: #155eef;
+  --shadow-color: 16 42 86;
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --bg: #0a0d14;
-  --fg: #eceef2;
-  --muted: #9aa3b2;
-  --card: #10141e;
-  --subtle: #151a26;
-  --border: #242a38;
-  --primary: #3d6fc9;
+  --bg: #0a1324;
+  --fg: #e8eef8;
+  --muted: #94a3b8;
+  --card: #0f1b32;
+  --subtle: #0d182d;
+  --border: #1d2b47;
+  --border-strong: #2c3e60;
+  --primary: #3b7bf6;
   --primary-fg: #ffffff;
-  --primary-hover: #4f7fd6;
-  --accent: #c9a56e;
-  --accent-text: #c9a56e;
-  --ring: #7fa4e8;
+  --primary-hover: #5b91f8;
+  --primary-soft: #132849;
+  --navy: #081022;
+  --navy-fg: #ffffff;
+  --accent: #5b91f8;
+  --accent-text: #8fb4fb;
+  --ring: #7fa8fa;
+  --shadow-color: 0 0 0;
   color-scheme: dark;
 }
 
 /* No-JS fallback: follow the OS until the inline script sets data-theme. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --bg: #0a0d14;
-    --fg: #eceef2;
-    --muted: #9aa3b2;
-    --card: #10141e;
-    --subtle: #151a26;
-    --border: #242a38;
-    --primary: #3d6fc9;
+    --bg: #0a1324;
+    --fg: #e8eef8;
+    --muted: #94a3b8;
+    --card: #0f1b32;
+    --subtle: #0d182d;
+    --border: #1d2b47;
+    --border-strong: #2c3e60;
+    --primary: #3b7bf6;
     --primary-fg: #ffffff;
-    --primary-hover: #4f7fd6;
-    --accent: #c9a56e;
-    --ring: #7fa4e8;
+    --primary-hover: #5b91f8;
+    --primary-soft: #132849;
+    --navy: #081022;
+    --navy-fg: #ffffff;
+    --accent: #5b91f8;
+    --accent-text: #8fb4fb;
+    --ring: #7fa8fa;
+    --shadow-color: 0 0 0;
     color-scheme: dark;
   }
 }
@@ -73,8 +91,25 @@
   --color-accent: var(--accent);
   --color-accent-text: var(--accent-text);
   --color-ring: var(--ring);
+  --color-border-strong: var(--border-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-navy: var(--navy);
+  --color-navy-fg: var(--navy-fg);
+  /* Architectural, not bubbly: tighter corners everywhere (overrides Tailwind's scale). */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.625rem;
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 1rem;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Not inline: these are also read as var(--…) by the custom CSS below. */
+@theme {
+  --shadow-card: 0 1px 2px rgb(var(--shadow-color) / 0.04), 0 1px 3px rgb(var(--shadow-color) / 0.04);
+  --shadow-lift: 0 2px 4px rgb(var(--shadow-color) / 0.04), 0 12px 32px -8px rgb(var(--shadow-color) / 0.14);
+  --shadow-button: 0 1px 2px rgb(var(--shadow-color) / 0.12), inset 0 1px 0 rgb(255 255 255 / 0.12);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
@@ -100,6 +135,76 @@ body {
   outline-offset: 2px;
 }
 
+h1,
+h2,
+h3 {
+  font-feature-settings: "ss01", "cv11";
+}
+
+@layer base {
+/* Form fields: one calm, consistent look and a soft blue focus halo across the whole site. */
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"]),
+textarea,
+select {
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"]):hover,
+textarea:hover,
+select:hover {
+  border-color: var(--border-strong);
+}
+input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"]):focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 14%, transparent);
+  outline: none;
+}
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+  accent-color: var(--primary);
+}
+}
+
+/* Architectural blueprint grid: a quiet background for headers. Fades out at the edges. */
+.blueprint {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--primary) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--primary) 7%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, #000 30%, transparent 75%);
+}
+
+/* Cards that are links: lift slightly on hover. */
+.card-hover {
+  transition:
+    transform 0.3s var(--ease-out-soft),
+    box-shadow 0.3s var(--ease-out-soft),
+    border-color 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+}
+
+/* Arrow that moves forward on hover of its parent link or button. */
+.arrow,
+.group > span[aria-hidden="true"]:last-child {
+  display: inline-block;
+  transition: transform 0.25s var(--ease-out-soft);
+}
+.group:hover .arrow,
+.group:focus-visible .arrow,
+.group:hover > span[aria-hidden="true"]:last-child,
+.group:focus-visible > span[aria-hidden="true"]:last-child {
+  transform: translateX(3px);
+}
+
 /*
  * CSS-only intro animations. Only active under html.js (set by the inline
  * head script), so without JS the artwork is simply visible.
@@ -119,6 +224,63 @@ body {
     stroke-dashoffset: 0;
   }
 }
+.hero-bridge {
+  --sw: 2.6;
+}
+@media (min-width: 640px) {
+  .hero-bridge {
+    --sw: 1.5;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-bridge {
+    --sw: 1;
+  }
+}
+.traveler {
+  opacity: 0;
+}
+@supports (offset-path: path("M0 0")) {
+  .js .traveler {
+    animation: travel 3.4s cubic-bezier(0.45, 0, 0.25, 1) 2s forwards;
+  }
+}
+.js .pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-ring 3.2s ease-out 3s infinite;
+}
+@keyframes travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  8%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.9;
+  }
+  70%,
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
 @keyframes fade-in {
   to {
     opacity: 1;
@@ -128,6 +290,15 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .card-hover:hover,
+  .group:hover .arrow,
+  .group:hover > span[aria-hidden="true"]:last-child {
+    transform: none;
+  }
+  .js .traveler,
+  .js .pulse-ring {
+    animation: none;
   }
   .js .draw,
   .js .fade-in {

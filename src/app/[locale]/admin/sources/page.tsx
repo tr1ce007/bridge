@@ -20,7 +20,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/source
   return (
     <>
       <SectionHead title={t("title")} lead={t("lead")} />
-      <section aria-labelledby="add-source" className="mb-8 max-w-3xl rounded-3xl border border-border bg-card p-5 sm:p-6">
+      <section aria-labelledby="add-source" className="mb-8 max-w-3xl rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
         <h3 id="add-source" className="mb-4 font-display text-lg font-semibold tracking-tight">
           {t("add")}
         </h3>
@@ -31,7 +31,7 @@ export default async function Page({ params }: PageProps<"/[locale]/admin/source
       ) : (
         <ul className="grid gap-3">
           {sources.map((s) => (
-            <li key={s.id} className="flex flex-wrap items-start justify-between gap-3 rounded-3xl border border-border bg-card p-5">
+            <li key={s.id} className="flex flex-wrap items-start justify-between gap-3 rounded-3xl border border-border bg-card shadow-card p-5">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <h3 className="font-display text-base font-semibold">{s.name ?? s.url}</h3>

@@ -61,7 +61,7 @@ export function QuestionCard({ question: q, initial, editing, onSubmit, onSkip, 
 
   const whyWeAsk = q.whyWeAsk ? (
     q.sensitive ? (
-      <p className="mt-5 rounded-2xl bg-subtle p-4 text-sm leading-relaxed text-muted">
+      <p className="mt-5 rounded-r-xl border-l-2 border-primary bg-primary-soft/60 p-4 text-sm leading-relaxed text-muted">
         <span className="font-semibold text-fg">{t("whyWeAskLabel")}. </span>
         {q.whyWeAsk}
       </p>
@@ -70,7 +70,7 @@ export function QuestionCard({ question: q, initial, editing, onSubmit, onSkip, 
         <summary className="inline-flex min-h-11 cursor-pointer items-center underline-offset-4 hover:text-fg hover:underline">
           {t("whyWeAskLabel")}
         </summary>
-        <p className="rounded-2xl bg-subtle p-4 leading-relaxed">{q.whyWeAsk}</p>
+        <p className="rounded-r-xl border-l-2 border-primary bg-primary-soft/60 p-4 leading-relaxed">{q.whyWeAsk}</p>
       </details>
     )
   ) : null;
@@ -140,7 +140,7 @@ export function QuestionCard({ question: q, initial, editing, onSubmit, onSkip, 
             onKeyDown={onTextKeyDown}
             placeholder={t("textPlaceholder")}
             aria-labelledby={titleId}
-            className="w-full resize-y rounded-2xl border border-border bg-card p-4 text-base leading-relaxed placeholder:text-muted/80 focus:border-primary"
+            className="w-full resize-y rounded-2xl border border-border bg-card shadow-card p-4 text-base leading-relaxed placeholder:text-muted/80 focus:border-primary"
           />
         )}
       </div>

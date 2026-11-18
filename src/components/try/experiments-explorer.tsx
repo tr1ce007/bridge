@@ -144,7 +144,7 @@ export function ExperimentsExplorer({ experiments, relations }: { experiments: E
             onClick={() => setDirection(d.slug)}
             className={cn(
               "min-h-11 rounded-full border px-4 text-sm font-medium transition-colors",
-              direction === d.slug ? "border-primary bg-primary text-primary-fg" : "border-border hover:border-fg/40 hover:bg-subtle",
+              direction === d.slug ? "border-primary bg-primary text-primary-fg" : "border-border transition-colors hover:border-primary/40 hover:bg-primary-soft/50 hover:bg-subtle",
             )}
           >
             {d.name}

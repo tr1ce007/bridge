@@ -64,7 +64,7 @@ function EmptyState({ count }: { count: number }) {
 function GentleNote() {
   const t = useTranslations("compare");
   return (
-    <p className="mt-6 max-w-2xl rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed">
+    <p className="mt-6 max-w-2xl rounded-2xl border border-border bg-card shadow-card p-4 text-sm leading-relaxed">
       <span aria-hidden="true" className="mr-2 text-accent">
         ◆
       </span>
@@ -115,7 +115,7 @@ function Comparison({ reports }: { reports: DiscoveryReport[] }) {
               id={`compare-${id}`}
               value={value}
               onChange={(e) => set(e.target.value)}
-              className="mt-2 min-h-11 w-full rounded-full border border-border bg-bg px-4 text-sm focus:outline-2 focus:outline-[var(--ring)]"
+              className="mt-2 min-h-11 w-full rounded-full border border-border bg-bg px-4 text-sm"
             >
               {reports.map((r) => (
                 <option key={r.id} value={r.id}>
@@ -135,7 +135,7 @@ function Comparison({ reports }: { reports: DiscoveryReport[] }) {
         <>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {[earlier, later].map((r, i) => (
-              <section key={r.id} aria-labelledby={`col-${i}`} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+              <section key={r.id} aria-labelledby={`col-${i}`} className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-text">{i === 0 ? t("earlier") : t("later")}</p>
                 <h2 id={`col-${i}`} className="mt-1 font-display text-lg font-semibold">
                   {date(r.createdAt)}
@@ -195,7 +195,7 @@ function Comparison({ reports }: { reports: DiscoveryReport[] }) {
 
 function DiffList({ title, items, empty }: { title: string; items: string[]; empty: string }) {
   return (
-    <div className="rounded-3xl border border-border bg-card p-5">
+    <div className="rounded-3xl border border-border bg-card shadow-card p-5">
       <h3 className="font-display text-base font-semibold">{title}</h3>
       {items.length ? (
         <ul className="mt-3 space-y-2 text-sm leading-relaxed">

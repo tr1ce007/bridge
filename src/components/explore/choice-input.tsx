@@ -20,7 +20,7 @@ type Props = {
 };
 
 const chip =
-  "group flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left text-[15px] leading-snug transition-colors hover:border-fg/40 has-[:checked]:border-primary has-[:checked]:bg-primary/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-45";
+  "group flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border border-border bg-card shadow-card px-4 py-3 text-left text-[15px] leading-snug transition-colors hover:border-primary/40 hover:bg-primary-soft/50 has-[:checked]:border-primary has-[:checked]:bg-primary-soft has-[:checked]:font-medium has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:disabled]:cursor-not-allowed has-[:disabled]:opacity-45";
 
 function Indicator({ shape }: { shape: "round" | "square" }) {
   return (
@@ -154,7 +154,7 @@ export function ChoiceInput({
                 setText(e.target.value);
                 emit(keys, true, e.target.value);
               }}
-              className="mt-2.5 min-h-12 w-full rounded-2xl border border-border bg-card px-4 text-[15px] placeholder:text-muted/80 focus:border-primary"
+              className="mt-2.5 min-h-12 w-full rounded-2xl border border-border bg-card shadow-card px-4 text-[15px] placeholder:text-muted/80 focus:border-primary"
             />
           )}
         </div>

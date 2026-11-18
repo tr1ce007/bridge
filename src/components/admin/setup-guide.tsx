@@ -20,7 +20,7 @@ export function SetupGuide() {
       <Container className="pb-20">
         <ol className="grid max-w-3xl grid-cols-1 gap-4">
           {steps.map((s, i) => (
-            <li key={s.title} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+            <li key={s.title} className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
               <h2 className="font-display text-lg font-semibold tracking-tight">
                 <span className="mr-2 text-accent-text">{i + 1}.</span>
                 {s.title}

@@ -14,7 +14,7 @@ export interface ReflectionResult {
 }
 
 const textarea =
-  "mt-1.5 block w-full rounded-xl border border-border bg-card px-3 py-2.5 text-[15px] leading-relaxed focus-visible:border-primary";
+  "mt-1.5 block w-full rounded-xl border border-border bg-card shadow-card px-3 py-2.5 text-[15px] leading-relaxed focus-visible:border-primary";
 
 /** A group of big radio "pills" (native radios, so keyboard and screen readers work). */
 function PillGroup({
@@ -39,7 +39,7 @@ function PillGroup({
           key={o.value}
           className={cn(
             "inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border px-4 text-sm font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--ring)]",
-            value === o.value ? "border-primary bg-primary text-primary-fg" : "border-border hover:border-fg/40 hover:bg-subtle",
+            value === o.value ? "border-primary bg-primary text-primary-fg" : "border-border transition-colors hover:border-primary/40 hover:bg-primary-soft/50 hover:bg-subtle",
             invalid && value === "" && "border-red-600/60",
           )}
         >

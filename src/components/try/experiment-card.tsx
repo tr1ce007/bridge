@@ -69,7 +69,7 @@ export function ExperimentCard({
   const answer: ProcessAnswer | null = completion ? (completion.answer ?? (completion.enjoyedProcess ? "process" : null)) : null;
 
   return (
-    <li id={e.id} className="scroll-mt-24 rounded-3xl border border-border bg-card p-5 sm:p-7">
+    <li id={e.id} className="scroll-mt-24 rounded-3xl border border-border bg-card shadow-card p-5 transition-colors duration-300 hover:border-primary/30 sm:p-7">
       <div className="flex flex-wrap items-center gap-2">
         <Badge tone="primary">{directionLabel}</Badge>
         {completion ? <Badge tone="accent">{t("statusDone")}</Badge> : started ? <Badge tone="warning">{t("statusInProgress")}</Badge> : null}

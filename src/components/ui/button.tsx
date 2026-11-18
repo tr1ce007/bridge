@@ -5,11 +5,11 @@ import { cn } from "@/lib/cn";
 type Variant = "primary" | "ghost";
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-50";
+  "group inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold tracking-[-0.005em] transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease-out active:translate-y-px disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-primary text-primary-fg hover:bg-primary-hover",
-  ghost: "border border-border text-fg hover:border-fg/40 hover:bg-subtle",
+  primary: "bg-primary text-primary-fg shadow-button hover:bg-primary-hover hover:shadow-lift",
+  ghost: "border border-border-strong/70 bg-card text-fg hover:border-primary/50 hover:bg-primary-soft hover:text-primary dark:hover:text-fg",
 };
 
 export function buttonClasses(variant: Variant = "primary", className?: string) {

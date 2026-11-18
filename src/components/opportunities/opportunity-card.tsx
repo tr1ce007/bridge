@@ -46,7 +46,7 @@ export function OpportunityCard({
         : t("statusUnverified");
 
   return (
-    <li className="flex flex-col rounded-3xl border border-border bg-card p-5 sm:p-6">
+    <li className="card-hover flex flex-col rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
       <div className="flex flex-wrap items-center gap-2">
         <Badge tone="primary">{t(`kinds.${o.kind}`)}</Badge>
         <Badge tone={STATUS_TONE[status]}>{statusText}</Badge>

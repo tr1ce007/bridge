@@ -14,7 +14,7 @@ const emailSchema = z.email().max(254);
 
 function Card({ children, labelledBy }: { children: React.ReactNode; labelledBy?: string }) {
   return (
-    <section aria-labelledby={labelledBy} className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+    <section aria-labelledby={labelledBy} className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
       {children}
     </section>
   );

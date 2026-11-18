@@ -64,7 +64,7 @@ export function ReviewList({ answers, pending, onEdit, onContinue }: Props) {
             <h3 id={`review-${block}`} className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-text">
               {t(`blocks.${block}`)}
             </h3>
-            <ul className="mt-3 divide-y divide-border rounded-2xl border border-border bg-card">
+            <ul className="mt-3 divide-y divide-border rounded-2xl border border-border bg-card shadow-card">
               {items.map((it) => (
                 <li key={it.key} className="flex items-start justify-between gap-4 p-4">
                   <div className="min-w-0">

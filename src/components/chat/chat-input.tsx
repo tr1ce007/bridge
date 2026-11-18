@@ -49,7 +49,7 @@ export function ChatInput({
         submit();
       }}
     >
-      <div className="flex items-end gap-2 rounded-3xl border border-border bg-card p-2 focus-within:border-primary">
+      <div className="flex items-end gap-2 rounded-3xl border border-border bg-card shadow-card p-2 focus-within:border-primary">
         <label htmlFor="chat-input" className="sr-only">
           {t("inputLabel")}
         </label>
@@ -69,7 +69,7 @@ export function ChatInput({
           <button
             type="button"
             onClick={onStop}
-            className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-border px-5 text-sm font-semibold transition-colors hover:border-fg/40 hover:bg-subtle"
+            className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-border px-5 text-sm font-semibold transition-colors hover:border-primary/40 hover:bg-primary-soft/50 hover:bg-subtle"
           >
             {t("stop")}
           </button>

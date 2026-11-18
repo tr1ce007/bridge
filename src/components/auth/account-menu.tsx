@@ -64,7 +64,7 @@ export function AccountMenu({ variant = "dropdown", onNavigate }: { variant?: "d
         className={
           variant === "dropdown"
             ? buttonClasses("ghost", "min-h-10 px-4")
-            : "block border-b border-border py-3.5 font-display text-lg text-fg/80"
+            : "block border-b border-border py-4 pl-10 font-display text-xl tracking-tight text-fg/80 transition-colors hover:text-primary"
         }
       >
         {t("signIn")}
@@ -107,7 +107,7 @@ export function AccountMenu({ variant = "dropdown", onNavigate }: { variant?: "d
         aria-label={t("openAria")}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "inline-flex size-10 items-center justify-center rounded-full border border-border bg-subtle text-sm font-semibold hover:border-fg/40",
+          "inline-flex size-10 items-center justify-center rounded-full border border-border bg-subtle text-sm font-semibold transition-colors hover:border-primary/40 hover:bg-primary-soft/50",
         )}
       >
         {initial}

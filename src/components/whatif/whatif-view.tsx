@@ -123,7 +123,7 @@ function WhatIfBody({ reports, answers, preselect }: Loaded) {
 
   return (
     <Container className="pb-20">
-      <p className="max-w-3xl rounded-2xl border border-border bg-card p-4 text-sm leading-relaxed">
+      <p className="max-w-3xl rounded-2xl border border-border bg-card shadow-card p-4 text-sm leading-relaxed">
         <span aria-hidden="true" className="mr-2 text-accent">
           ◆
         </span>
@@ -157,7 +157,7 @@ function WhatIfBody({ reports, answers, preselect }: Loaded) {
                   key={o.id}
                   className={cn(
                     "flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-sm transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--ring)]",
-                    active ? "border-primary bg-primary/10 font-semibold" : "border-border hover:border-fg/40",
+                    active ? "border-primary bg-primary/10 font-semibold" : "border-border transition-colors hover:border-primary/40 hover:bg-primary-soft/50",
                   )}
                 >
                   <input
@@ -189,7 +189,7 @@ function WhatIfBody({ reports, answers, preselect }: Loaded) {
             maxLength={NOTE_MAX}
             rows={3}
             placeholder={t("notePlaceholder")}
-            className="mt-2 w-full resize-y rounded-2xl border border-border bg-bg p-3 text-[0.95rem] leading-relaxed focus:outline-2 focus:outline-[var(--ring)]"
+            className="mt-2 w-full resize-y rounded-2xl border border-border bg-bg p-3 text-[0.95rem] leading-relaxed"
           />
           <p className="mt-1 text-xs text-muted">{t("aiNote")}</p>
         </div>
@@ -225,8 +225,8 @@ function WhatIfBody({ reports, answers, preselect }: Loaded) {
             </h2>
             <p className="mt-2 text-sm font-semibold text-accent-text">{t("notForecast")}</p>
             {phase.result.demo && (
-              <div role="note" className="mt-4 max-w-3xl rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed">
-                <p className="font-semibold text-amber-800 dark:text-amber-300">{phase.result.reason === "failed" ? t("demoBannerFailed") : t("demoBanner")}</p>
+              <div role="note" className="mt-4 max-w-3xl rounded-2xl border border-primary/20 bg-primary-soft p-4 text-sm leading-relaxed">
+                <p className="font-semibold text-accent-text">{phase.result.reason === "failed" ? t("demoBannerFailed") : t("demoBanner")}</p>
                 <p className="mt-1 text-muted">{phase.result.reason === "failed" ? t("demoBannerFailedLead") : t("demoBannerLead")}</p>
               </div>
             )}

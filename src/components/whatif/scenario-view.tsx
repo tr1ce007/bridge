@@ -8,7 +8,7 @@ const SECTIONS = ["actions", "experiments", "people", "obstacles"] as const;
 function PeriodCard({ period, plan }: { period: WhatIfPeriod; plan: WhatIfPeriodPlan }) {
   const t = useTranslations("whatIf");
   return (
-    <li className="rounded-3xl border border-border bg-card p-5 sm:p-6 print:break-inside-avoid">
+    <li className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6 print:break-inside-avoid">
       <h3 className="font-display text-lg font-semibold">
         <span className="text-accent-text">{t(`period.${period}`)}</span>
       </h3>

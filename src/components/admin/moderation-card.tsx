@@ -32,7 +32,7 @@ export function ModerationCard({ story, createdAt, consentAt }: { story: Story; 
   const title = pickText(story.title, locale as "ru", story.lang);
 
   return (
-    <article className="rounded-3xl border border-border bg-card p-5 sm:p-6">
+    <article className="rounded-3xl border border-border bg-card shadow-card p-5 sm:p-6">
       <header>
         <div className="flex flex-wrap items-center gap-2">
           <Badge>{t("language", { lang: story.lang.toUpperCase() })}</Badge>

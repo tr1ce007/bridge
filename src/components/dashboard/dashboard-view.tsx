@@ -255,7 +255,7 @@ function DashboardBody({ data }: { data: DashboardData }) {
             <ul className="space-y-2">
               {savedStories.map((s) => (
                 <li key={s.id}>
-                  <Link href={`/stories/${s.id}`} className="block rounded-2xl border border-border px-4 py-3 text-sm font-semibold hover:border-fg/40">
+                  <Link href={`/stories/${s.id}`} className="block rounded-2xl border border-border px-4 py-3 text-sm font-semibold transition-colors hover:border-primary/40 hover:bg-primary-soft/50">
                     {pickText(s.title, locale, s.lang)}
                   </Link>
                 </li>
@@ -271,7 +271,7 @@ function DashboardBody({ data }: { data: DashboardData }) {
             <ul className="space-y-2">
               {savedDirections.map((d) => (
                 <li key={d.id}>
-                  <Link href={`/report/${encodeURIComponent(d.reportId)}`} className="block rounded-2xl border border-border px-4 py-3 hover:border-fg/40">
+                  <Link href={`/report/${encodeURIComponent(d.reportId)}`} className="block rounded-2xl border border-border px-4 py-3 transition-colors hover:border-primary/40 hover:bg-primary-soft/50">
                     <span className="block text-sm font-semibold">{d.name}</span>
                     <span className="mt-0.5 block text-xs text-muted">{t("fromReport", { date: date(d.reportDate) })}</span>
                   </Link>
@@ -290,7 +290,7 @@ function DashboardBody({ data }: { data: DashboardData }) {
                 const answer = c.answer ?? (c.enjoyedProcess ? "process" : null);
                 return (
                   <li key={c.experimentId}>
-                    <Link href={`/try#${c.experimentId}`} className="block rounded-2xl border border-border px-4 py-3 hover:border-fg/40">
+                    <Link href={`/try#${c.experimentId}`} className="block rounded-2xl border border-border px-4 py-3 transition-colors hover:border-primary/40 hover:bg-primary-soft/50">
                       <span className="block text-sm font-semibold">{experimentTitle.get(c.experimentId) ?? c.experimentId}</span>
                       <span className="mt-0.5 block text-xs text-muted">
                         {date(c.completedAt)}
@@ -317,7 +317,7 @@ function DashboardBody({ data }: { data: DashboardData }) {
             <ul className="space-y-2">
               {opps.items.map((o) => (
                 <li key={o.id}>
-                  <Link href="/opportunities" className="block rounded-2xl border border-border px-4 py-3 hover:border-fg/40">
+                  <Link href="/opportunities" className="block rounded-2xl border border-border px-4 py-3 transition-colors hover:border-primary/40 hover:bg-primary-soft/50">
                     <span className="block text-sm font-semibold">{o.name}</span>
                     <span className="mt-0.5 line-clamp-2 block text-xs leading-relaxed text-muted">{localized(o.description, locale)}</span>
                   </Link>
@@ -337,7 +337,7 @@ function DashboardBody({ data }: { data: DashboardData }) {
               <ul className="space-y-2">
                 {data.reports.map((r, i) => (
                   <li key={r.id}>
-                    <Link href={`/report/${encodeURIComponent(r.id)}`} className="block rounded-2xl border border-border px-4 py-3 hover:border-fg/40">
+                    <Link href={`/report/${encodeURIComponent(r.id)}`} className="block rounded-2xl border border-border px-4 py-3 transition-colors hover:border-primary/40 hover:bg-primary-soft/50">
                       <span className="block text-sm font-semibold">
                         {date(r.createdAt)}
                         {i === 0 ? ` · ${t("latest")}` : ""}
