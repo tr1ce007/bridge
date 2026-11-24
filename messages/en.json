@@ -632,7 +632,8 @@
     "errorRateLimited": "Too many requests in a minute. Wait a little and try again.",
     "errorInterrupted": "The answer was cut off. You can try again.",
     "disclaimer": "I am an AI companion, not a psychologist. If things feel very heavy, reach out to people close to you or to a professional.",
-    "memoryOffFailed": "Could not turn memory off: the saved conversation may still be there. The switch shows what is stored right now. Please try again."
+    "memoryOffFailed": "Could not turn memory off: the saved conversation may still be there. The switch shows what is stored right now. Please try again.",
+    "privacyHint": "Don't share personal details here: name, phone, ID number. Helpline for children and young people: 150; emergency services: 112."
   },
   "states": {
     "loading": "Loading…",
@@ -1302,7 +1303,10 @@
     "limits1": "This is a plain-language description, not a legal document. We make no claims in it about compliance with specific laws.",
     "limits2": "If anything changes in what we send and where, this page will change with it.",
     "ctaSettings": "Open settings",
-    "yours3": "If you are signed in, the data in the account and in the browser, your stories that are still waiting for review, and the name on your profile are deleted. These stay: stories the team has already reviewed (published or rejected), reports you sent about stories, and the account itself. The project team deletes them."
+    "yours3": "If you are signed in, the data in the account and in the browser, your stories that are still waiting for review, and the name on your profile are deleted. These stay: stories the team has already reviewed (published or rejected), reports you sent about stories, and the account itself. The project team deletes them.",
+    "where5": "The site counts anonymously how many people visit, start and finish the questionnaire and get a report: only the action's name and the page language, no names and no texts. So one person isn't counted twice a day, the browser keeps the date of the last count.",
+    "ai5": "The site's AI currently runs on Google Gemini (the Gemini API). The chat, the report and the “What if I try?” scenario send it the text described below.",
+    "ai6": "The project uses the free tier of the Gemini API. Under Google's terms, on the free tier Google may use prompts and answers to improve its products, and human reviewers may read them (detached from the account). So don't write your name, phone number, address, ID number or other personal details in the chat."
   },
   "auth": {
     "metaTitle": "Sign in",

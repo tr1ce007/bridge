@@ -142,6 +142,7 @@ export function ChatView() {
           )}
           <ChatInput streaming={streaming} disabled={!chat.ready} onSend={handleSend} onStop={chat.stop} />
           <p className="mt-2 px-3 text-xs leading-relaxed text-muted">{t("disclaimer")}</p>
+          <p className="mt-1 px-3 text-xs leading-relaxed text-muted">{t("privacyHint")}</p>
         </div>
       </div>
     </Container>

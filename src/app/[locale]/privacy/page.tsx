@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/privacy"
 }
 
 const SECTIONS = [
-  { id: "where", title: "whereTitle", items: ["where1", "where2", "where3", "where4"] },
-  { id: "ai", title: "aiTitle", items: ["ai1", "ai2", "ai3", "ai4"] },
+  { id: "where", title: "whereTitle", items: ["where1", "where2", "where3", "where4", "where5"] },
+  { id: "ai", title: "aiTitle", items: ["ai5", "ai6", "ai1", "ai2", "ai3", "ai4"] },
   { id: "memory", title: "memoryTitle", items: ["memory1", "memory2", "memory3"] },
   { id: "yours", title: "yoursTitle", items: ["yours1", "yours2", "yours3"] },
   { id: "ads", title: "adsTitle", items: ["ads1", "ads2"] },
