@@ -27,7 +27,8 @@ export function Logo({ className }: { className?: string }) {
   return (
     <Link href="/" aria-label={t("home")} className={cn("flex items-center gap-3", className)}>
       <LogoMark />
-      <span className="whitespace-nowrap font-display text-[0.95rem] font-bold tracking-[0.2em]">{t("name")}</span>
+      {/* On the narrowest phones (under 380px) only the round mark shows, so the header fits. */}
+      <span className="whitespace-nowrap font-display text-[0.95rem] font-bold tracking-[0.2em] max-[379px]:sr-only">{t("name")}</span>
     </Link>
   );
 }

@@ -46,7 +46,7 @@ export function SiteHeader() {
         scrolled || open ? "border-border shadow-[0_1px_12px_-6px_rgb(var(--shadow-color)/0.12)]" : "border-transparent",
       )}
     >
-      <Container className="flex h-16 items-center justify-between gap-4 sm:h-[4.5rem]">
+      <Container className="flex h-16 items-center justify-between gap-2 sm:h-[4.5rem] sm:gap-4">
         <Logo />
 
         <nav aria-label={t("label")} className="hidden xl:block">
