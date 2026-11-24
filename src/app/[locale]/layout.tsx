@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { SITE_URL } from "@/lib/site-url";
 import { themeInitScript } from "@/lib/theme";
 import { GuestImportBanner } from "@/components/auth/guest-import-banner";
 import { MotionProvider } from "@/components/motion-provider";
@@ -24,8 +25,20 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
+    metadataBase: new URL(SITE_URL),
     title: { default: t("title"), template: `%s · THE BRIDGE` },
     description: t("description"),
+    // Link previews in chats and social networks; the image comes from ./opengraph-image.tsx.
+    openGraph: {
+      type: "website",
+      siteName: "THE BRIDGE",
+      title: t("title"),
+      description: t("description"),
+      locale: { ru: "ru_RU", kk: "kk_KZ", en: "en_US" }[locale],
+      url: `/${locale}`,
+    },
+    twitter: { card: "summary_large_image", title: t("title"), description: t("description") },
+    alternates: { languages: { ru: "/ru", kk: "/kk", en: "/en" } },
   };
 }
 
