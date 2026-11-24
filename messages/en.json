@@ -799,8 +799,8 @@
     "submitMetaTitle": "Share your story",
     "submitTitle": "Tell your story",
     "submitLead": "Your experience can help someone who is doubting right now. You do not need to polish anything. A moderator reads every story before it is published.",
-    "submitLocalTitle": "Sending stories will work once the database is connected",
-    "submitLocalLead": "The platform currently runs without a database, so a story cannot be sent from here. You can fill in the form and copy the text so it is not lost.",
+    "submitLocalTitle": "For now, send your story to us on Instagram",
+    "submitLocalLead": "Fill in the form, press “Copy the text” and send it to our Instagram DMs @the.bridge.astana. The team checks every story before publishing. Sending straight from the site will work once the database is connected.",
     "formLang": "Story language",
     "formTitle": "Title",
     "formIntro": "A short introduction",
@@ -850,7 +850,9 @@
       "reportInvalid": "Could not accept the report: please check the data.",
       "reportNotFound": "There is no such story.",
       "reportFailed": "Could not save the report. Please try later."
-    }
+    },
+    "sendInstagram": "Send on Instagram",
+    "reportLocalHow": "For now, send your report to us on Instagram (@the.bridge.astana) or call +7 (776) 914 07 20. Mention the story's title and what's wrong with it."
   },
   "opportunities": {
     "metaTitle": "Opportunities",

@@ -2,10 +2,11 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
+import { TEAM_CONTACT } from "@/lib/contact";
 import { AGE_RANGES, LOCALES, STORY_CATEGORIES, SUBMISSION_LIMITS, isSupabaseConfigured, type Locale } from "@/lib/data";
 import { EMPTY_SUBMISSION, validateSubmission, type FieldProblem, type SubmissionErrors, type SubmissionField, type SubmissionForm } from "@/lib/stories/validate";
 
@@ -316,6 +317,11 @@ export function SubmitStoryForm() {
             <Button variant="ghost" onClick={copyText}>
               {t("copyButton")}
             </Button>
+            {localMode && (
+              <a href={TEAM_CONTACT.instagramDmHref} target="_blank" rel="noopener noreferrer" className={buttonClasses("ghost")}>
+                {t("sendInstagram")}
+              </a>
+            )}
             <span role="status" aria-live="polite" className="text-sm text-muted">
               {copy === "done" ? t("copied") : copy === "failed" ? t("copyFailed") : ""}
             </span>

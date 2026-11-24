@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { TEAM_CONTACT } from "@/lib/contact";
 import { isSupabaseConfigured } from "@/lib/data";
 import { REPORT_REASONS } from "@/lib/stories/report-reasons";
 
@@ -59,9 +60,15 @@ export function ReportStory({ storyId }: { storyId: string }) {
     return (
       <div role="status" className="rounded-2xl border border-amber-600/40 bg-subtle p-4 text-sm leading-relaxed">
         <p>{t("reportLocal")}</p>
-        <button type="button" onClick={() => setPhase("closed")} className="mt-2 min-h-11 font-semibold underline-offset-4 hover:underline">
-          {t("reportCancel")}
-        </button>
+        <p className="mt-1 text-muted">{t("reportLocalHow")}</p>
+        <div className="mt-2 flex flex-wrap items-center gap-x-5">
+          <a href={TEAM_CONTACT.instagramDmHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center font-semibold text-primary underline-offset-4 hover:underline dark:text-[var(--ring)]">
+            {t("sendInstagram")}
+          </a>
+          <button type="button" onClick={() => setPhase("closed")} className="min-h-11 font-semibold underline-offset-4 hover:underline">
+            {t("reportCancel")}
+          </button>
+        </div>
       </div>
     );
   }
