@@ -177,7 +177,7 @@ const SHARED: Record<Locale, Shared> = {
   ru: {
     crisis:
       "Мне очень жаль, что тебе сейчас так тяжело. Ты не обязан(а) справляться с этим в одиночку.\n\n" +
-      "Пожалуйста, прямо сейчас поговори с человеком, которому доверяешь, или позвони на бесплатный телефон доверия для детей и молодёжи **150** (Казахстан). Если есть опасность для жизни, звони **112**.\n\n" +
+      "Пожалуйста, прямо сейчас поговори с человеком, которому доверяешь, или позвони на телефон доверия для детей и молодёжи **150** (Казахстан, круглосуточно, на казахском и русском). Если есть опасность для жизни, звони **112**.\n\n" +
       "Разговор об учёбе и профессии подождёт. Сейчас важнее всего ты.",
     ideasLead: "Что можно сделать:",
     story: (title, href) => `Почитай историю **«${title}»** (реальная история по материалам СМИ, со ссылкой на источник): [открыть историю →](${href})`,
@@ -190,7 +190,7 @@ const SHARED: Record<Locale, Shared> = {
   kk: {
     crisis:
       "Қазір саған осыншалық ауыр болғанына қатты өкінемін. Мұнымен жалғыз күресудің қажеті жоқ.\n\n" +
-      "Өтінемін, дәл қазір өзің сенетін адаммен сөйлес немесе балалар мен жастарға арналған тегін сенім телефонына **150** (Қазақстан) қоңырау шал. Өмірге қауіп болса, **112** нөміріне хабарлас.\n\n" +
+      "Өтінемін, дәл қазір өзің сенетін адаммен сөйлес немесе балалар мен жастарға арналған **150** сенім телефонына (Қазақстан, тәулік бойы, қазақ және орыс тілдерінде) қоңырау шал. Өмірге қауіп болса, **112** нөміріне хабарлас.\n\n" +
       "Оқу мен мамандық туралы әңгіме күте тұрады. Қазір ең маңыздысы — сен.",
     ideasLead: "Не істеуге болады:",
     story: (title, href) => `Мына әңгімені оқып көр: **«${title}»** (БАҚ материалдары бойынша нақты оқиға, дереккөзі көрсетілген): [әңгімені ашу →](${href})`,
@@ -203,7 +203,7 @@ const SHARED: Record<Locale, Shared> = {
   en: {
     crisis:
       "I'm really sorry it feels this hard right now. You don't have to deal with it alone.\n\n" +
-      "Please talk to someone you trust right now, or call the free helpline for children and young people **150** (Kazakhstan). If your life is in danger, call **112**.\n\n" +
+      "Please talk to someone you trust right now, or call the helpline for children and young people **150** (Kazakhstan, 24/7, in Kazakh and Russian). If your life is in danger, call **112**.\n\n" +
       "Study and career questions can wait. Right now, you matter most.",
     ideasLead: "What could help:",
     story: (title, href) => `Read the story **“${title}”** (a real story retold from the media, with a link to the source): [open the story →](${href})`,
@@ -866,6 +866,15 @@ function pick<T>(items: T[], turn: number): T {
  * The demo guide's answer to the last message of the person, in the interface language.
  * `turn` (how many messages the person has sent) rotates the wording so repeated topics don't repeat replies.
  */
+/**
+ * The fixed answer to a message that sounds like a crisis (self-harm, not wanting to live), with the
+ * helpline 150 and the emergency number 112. Used with and without AI, so the numbers are always right.
+ */
+export function crisisReply(messages: ChatMessage[], locale: Locale): string | null {
+  const last = [...messages].reverse().find((m) => m.role === "user")?.content ?? "";
+  return detectTopic(last) === "crisis" ? SHARED[locale].crisis : null;
+}
+
 export function demoChatReply(messages: ChatMessage[], locale: Locale): string {
   const last = [...messages].reverse().find((m) => m.role === "user")?.content ?? "";
   const turn = Math.max(0, messages.filter((m) => m.role === "user").length - 1);

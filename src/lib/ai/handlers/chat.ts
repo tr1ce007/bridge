@@ -2,7 +2,9 @@ import "server-only";
 import { z } from "zod";
 import { CHAT_MAX_MESSAGE_CHARS, CHAT_MAX_MESSAGES, CHAT_MAX_SUMMARY_CHARS } from "../chat-limits";
 import { logAIFailure } from "../log";
+import { crisisReply } from "../demo-chat";
 import { chatSystemPrompt } from "../prompts";
+import { typedStream } from "../stream";
 import { getProvider } from "../provider";
 import { aiCopy } from "../server-copy";
 import { badRequest, localeInput, looseLocale, rateLimited, readBody } from "./common";
@@ -35,6 +37,13 @@ export async function handleChat(request: Request): Promise<Response> {
   if (!messages.length || messages[messages.length - 1].role !== "user") return badRequest(locale);
 
   const provider = getProvider();
+  // A message that sounds like a crisis gets the fixed reply with checked helpline numbers, never an AI guess.
+  const crisis = crisisReply(messages, locale);
+  if (crisis) {
+    return new Response(typedStream(crisis), {
+      headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "x-ai-demo": String(provider.name === "demo") },
+    });
+  }
   const stream = provider.streamChat(messages, {
     system: chatSystemPrompt(locale, memoryConsent ? profileSummary : undefined),
     effort: "low",

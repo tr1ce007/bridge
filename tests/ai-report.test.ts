@@ -175,6 +175,25 @@ describe("POST /api/ai/followup and /api/ai/chat in demo mode", () => {
     expect(text).toContain("/ru/try");
   });
 
+  it("chat answers a crisis message with the checked helplines and never calls the AI", async () => {
+    const streamChat = vi.fn(() => new ReadableStream<Uint8Array>({ start: (c) => c.close() }));
+    state.provider = { name: "openai", generateJSON: vi.fn(), streamChat } as unknown as AIProvider;
+    const { POST } = await import("@/app/api/ai/chat/route");
+    for (const [locale, content] of [
+      ["ru", "мне плохо, не хочу жить"],
+      ["kk", "өмір сүргім келмейді"],
+      ["en", "I want to die"],
+    ] as const) {
+      const res = await POST(post("http://localhost/api/ai/chat", { messages: [{ role: "user", content }], locale, memoryConsent: false }));
+      const text = await res.text();
+      expect(text, locale).toContain("**150**");
+      expect(text, locale).toContain("**112**");
+      expect(res.headers.get("x-ai-demo")).toBe("false");
+    }
+    expect(streamChat).not.toHaveBeenCalled();
+    state.provider = null;
+  });
+
   it("rate limits each visitor per route", async () => {
     const { POST } = await import("@/app/api/ai/followup/route");
     const req = () =>
