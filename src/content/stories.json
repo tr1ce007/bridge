@@ -1058,5 +1058,229 @@
       ],
       "transitions": []
     }
+  },
+  {
+    "id": "real-zhakashov-engineering-to-film",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Не понимал, чем хочет заниматься, — и пришёл к своей киностудии",
+      "kk": "Немен айналысқысы келетінін түсінбеді — ақыры өз киностудиясына келді",
+      "en": "Didn't know what he wanted to do, and ended up with his own film studio"
+    },
+    "categories": [
+      "unsure",
+      "other-than-parents"
+    ],
+    "sourceUrl": "https://forbes.kz/articles/kak_paren_iz_kazahstana_stal_rejisserom_v_ssha",
+    "sourceName": "Forbes.kz",
+    "publishedAt": "2019-06-22",
+    "attribution": {
+      "ru": "Абылай Жакашов. Пересказ интервью Forbes.kz (22.06.2019).",
+      "kk": "Абылай Жақашов. Forbes.kz сұхбатының қысқаша мазмұны (22.06.2019).",
+      "en": "Abylai Zhakashov. A retelling of a Forbes.kz interview (22 Jun 2019)."
+    },
+    "before": {
+      "ru": "Школьником он мечтал стать актёром и ходил на кастинги, но из-за стеснительности не пошёл на съёмки. Поступил на грант в Алматинский университет энергетики и связи, который окончили его родители: в семье «технарей» кино казалось неприемлемым выбором.",
+      "kk": "Мектепте ол актер болуды армандап, кастингтерге барды, бірақ ұялшақтығынан түсірілімге бармады. Ата-анасы бітірген Алматы энергетика және байланыс университетіне грантпен түсті: «техниктер» отбасында кино қабылданбайтын таңдау сияқты көрінді.",
+      "en": "As a schoolboy he dreamed of acting and went to castings, but was too shy to go to a shoot. He won a grant to the Almaty University of Power Engineering and Telecommunications, which his parents had attended: in a family of engineers, film seemed an unacceptable choice."
+    },
+    "challenges": {
+      "ru": "В 17 лет он уехал в США. Учёбу оплатил последними деньгами, работал официантом, однажды на пару недель остался без жилья. Английский был на школьном уровне, а специальность он менял несколько раз — не мог понять, чем хочет заниматься.",
+      "kk": "17 жасында ол АҚШ-қа кетті. Оқуын соңғы ақшасына төлеп, даяшы болып жұмыс істеді, бірде екі аптадай баспанасыз қалды. Ағылшын тілі мектеп деңгейінде еді, ал мамандығын бірнеше рет ауыстырды — немен айналысқысы келетінін түсіне алмады.",
+      "en": "At 17 he left for the US. He paid for his studies with his last money, worked as a waiter and once spent a couple of weeks without a place to live. His English was school-level, and he changed majors several times — he couldn't work out what he wanted to do."
+    },
+    "turningPoint": {
+      "ru": "Около года он занимался логистикой ради денег и понял, что в 22 года делает то, что ему не нравится. В 2017 году после тяжёлой аварии на мотоцикле решил больше не тратить время на рутину.",
+      "kk": "Шамамен бір жыл ақша үшін логистикамен айналысып, 22 жасында өзіне ұнамайтын іспен жүргенін түсінді. 2017 жылы мотоциклмен ауыр апатқа ұшыраған соң рутинаға енді уақыт жоғалтпауды шешті.",
+      "en": "For about a year he did logistics for the money and realised that at 22 he was doing something he didn't like. In 2017, after a serious motorcycle crash, he decided to stop wasting time on routine."
+    },
+    "actions": {
+      "ru": "Он забрал документы из университета и учился в колледжах Пасадены и Санта-Моники, пробовал разработку игр, анимацию, сборку мотоциклов, работал оператором дрона и продюсером. Пока восстанавливался после аварии, изучал киноиндустрию по книгам и онлайн, а затем с партнёром основал студию в Бурбанке.",
+      "kk": "Ол университеттен құжаттарын алып, Пасадена мен Санта-Моника колледждерінде оқыды, ойын әзірлеуді, анимацияны, мотоцикл құрастыруды байқап көрді, дрон операторы және продюсер болып жұмыс істеді. Апаттан кейін сауығып жүргенде кино индустриясын кітаптар мен онлайн арқылы зерттеп, кейін серіктесімен Бербанкте студия ашты.",
+      "en": "He withdrew from the university and studied at colleges in Pasadena and Santa Monica, tried game development, animation and building motorcycles, and worked as a drone operator and producer. While recovering from the crash he studied the film industry from books and online, then co-founded a studio in Burbank."
+    },
+    "now": {
+      "ru": "На момент интервью у студии было два полнометражных фильма, а его режиссёрским дебютом стал фильм M.I.A.",
+      "kk": "Сұхбат кезінде студияның екі толықметражды фильмі болған, ал оның режиссерлік дебюті — M.I.A. фильмі.",
+      "en": "At the time of the interview the studio had two feature films, and his directing debut was the film M.I.A."
+    },
+    "advice": {
+      "ru": "Его поддержали слова родителей: «Пробуй, домой ты всегда успеешь вернуться».",
+      "kk": "Оны ата-анасының сөздері қолдады: «Байқап көр, үйге әрқашан оралып үлгересің».",
+      "en": "His parents' words kept him going: “Try it — you can always come back home.”"
+    },
+    "tags": {
+      "start": [
+        "family-pressure"
+      ],
+      "interests": [
+        "creative",
+        "tech"
+      ],
+      "fears": [],
+      "education": [
+        "dropped-out",
+        "abroad-study"
+      ],
+      "challenges": [
+        "money",
+        "language"
+      ],
+      "motives": [],
+      "decisions": [
+        "move-abroad",
+        "experiments"
+      ],
+      "transitions": [
+        "relocation",
+        "career-change"
+      ]
+    }
+  },
+  {
+    "id": "real-kurmanova-doctors-to-village",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Молодые врачи переехали из Алматы в село — и честно рассказали о жизни и зарплатах",
+      "kk": "Жас дәрігерлер Алматыдан ауылға көшіп, өмірі мен жалақысы туралы шынын айтты",
+      "en": "Young doctors moved from Almaty to a village and talked honestly about life and pay"
+    },
+    "sourceUrl": "https://tengrinews.kz/tengri-health/article/molodyie-vrachi-pereehali-almatyi-selo-chestno-rasskazali-4064/",
+    "sourceName": "Tengrinews (TengriHealth)",
+    "publishedAt": "2026-05-22",
+    "attribution": {
+      "ru": "Анель Курманова и Сабыржан Толумханов. Пересказ материала TengriHealth (22.05.2026). Условия программы «С дипломом — в село» уточняйте в официальных источниках.",
+      "kk": "Әнел Құрманова және Сабыржан Толумханов. TengriHealth материалының қысқаша мазмұны (22.05.2026). «Дипломмен — ауылға» бағдарламасының шарттарын ресми дереккөздерден нақтылаңыз.",
+      "en": "Anel Kurmanova and Sabyrzhan Tolumkhanov. A retelling of a TengriHealth article (22 May 2026). Check the terms of the “With a diploma, to the village” programme in official sources."
+    },
+    "before": {
+      "ru": "Анель — терапевт-инфекционист, её муж Сабыржан — врач общей практики. Они жили в Алматы; на медицину Анель училась девять лет.",
+      "kk": "Әнел — терапевт-инфекционист, күйеуі Сабыржан — жалпы практика дәрігері. Олар Алматыда тұрды; Әнел медицинаға тоғыз жыл оқыды.",
+      "en": "Anel is a general and infectious-disease physician; her husband Sabyrzhan is a GP. They lived in Almaty, and Anel spent nine years training in medicine."
+    },
+    "challenges": {
+      "ru": "Переезд за 1800 километров, дом без центрального отопления, где зимой топят углём, двое маленьких детей. По расчётным листам Анель за март и апрель она получила 242 и 318 тысяч тенге, а документы часто доделывает ночью.",
+      "kk": "1800 шақырымға көшу, орталық жылуы жоқ, қыста көмірмен жағылатын үй, екі кішкентай бала. Әнелдің наурыз бен сәуірдегі есеп парақтары бойынша ол 242 және 318 мың теңге алған, ал құжаттарды жиі түнде аяқтайды.",
+      "en": "An 1,800-km move, a house without central heating that they heat with coal in winter, two small children. According to Anel's March and April payslips she earned 242,000 and 318,000 tenge, and she often finishes paperwork at night."
+    },
+    "turningPoint": {
+      "ru": "Переехать в село предложил Сабыржан — по государственной программе для молодых врачей «С дипломом — в село».",
+      "kk": "Ауылға көшуді Сабыржан ұсынды — жас дәрігерлерге арналған «Дипломмен — ауылға» мемлекеттік бағдарламасы бойынша.",
+      "en": "Sabyrzhan suggested moving to a village under the state programme for young doctors, “With a diploma, to the village”."
+    },
+    "actions": {
+      "ru": "В августе 2024 года они переехали в Иртышск Павлодарской области и работают в районной больнице. Им дали служебную квартиру, место в детском саду и подъёмные по 250 тысяч тенге на каждого члена семьи; по условиям нужно прожить в селе пять лет. Потом они купили дом по льготному кредиту для молодых врачей, а Анель подтвердила вторую категорию, чтобы получать больше.",
+      "kk": "2024 жылдың тамызында олар Павлодар облысының Ертіс ауылына көшіп, аудандық ауруханада жұмыс істейді. Оларға қызметтік пәтер, балабақшадан орын және отбасының әр мүшесіне 250 мың теңгеден көтерме берілді; шарт бойынша ауылда бес жыл тұру керек. Кейін жас дәрігерлерге арналған жеңілдетілген несиемен үй сатып алды, ал Әнел көбірек алу үшін екінші санатын растады.",
+      "en": "In August 2024 they moved to Irtyshsk in Pavlodar region and work at the district hospital. They got a service flat, a kindergarten place and a relocation payment of 250,000 tenge per family member; the terms require five years in the village. Later they bought a house with a reduced-rate loan for young doctors, and Anel confirmed her second qualification category to earn more."
+    },
+    "now": {
+      "ru": "Они продолжают работать в сельской медицине и растить двоих детей, Анель ведёт блог о жизни сельского врача. Говорят, что в ближайшие три года точно не уедут, а дальше — по условиям.",
+      "kk": "Олар ауыл медицинасында жұмысын жалғастырып, екі баласын тәрбиелеп жатыр, Әнел ауыл дәрігерінің өмірі туралы блог жүргізеді. Алдағы үш жылда ешқайда кетпейтінін, ал әрі қарай жағдайға қарай шешетінін айтады.",
+      "en": "They keep working in rural medicine and raising two children; Anel runs a blog about a village doctor's life. They say they definitely won't leave in the next three years, and after that it depends on conditions."
+    },
+    "advice": {
+      "ru": "Жизнь в селе — не романтика, но она учит терпению и умению радоваться мелочам, а при правильном распределении денег можно накопить или закрыть долги.",
+      "kk": "Ауылдағы өмір — романтика емес, бірақ ол шыдамдылыққа және ұсақ-түйекке қуана білуге үйретеді, ал ақшаны дұрыс бөлсең, жинауға немесе қарызды жабуға болады.",
+      "en": "Village life isn't romantic, but it teaches patience and finding joy in small things, and with careful budgeting you can save or pay off debts."
+    },
+    "tags": {
+      "start": [
+        "big-city"
+      ],
+      "interests": [
+        "health",
+        "people"
+      ],
+      "fears": [],
+      "education": [
+        "university"
+      ],
+      "challenges": [
+        "money",
+        "family",
+        "time"
+      ],
+      "motives": [
+        "impact"
+      ],
+      "decisions": [],
+      "transitions": [
+        "relocation"
+      ]
+    }
+  },
+  {
+    "id": "real-kolotko-first-job-village-doctor",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Первая работа — единственный врач в посёлке",
+      "kk": "Алғашқы жұмыс — кенттегі жалғыз дәрігер",
+      "en": "First job: the only doctor in a village"
+    },
+    "categories": [
+      "first-job"
+    ],
+    "sourceUrl": "https://toppress.kz/article/selskaya-mediczina-opyt-molodogo-vracha-iz-kostanajskoj-oblasti",
+    "sourceName": "Toppress.kz",
+    "publishedAt": "2026-07-23",
+    "attribution": {
+      "ru": "Анна Колотько. Пересказ материала Toppress.kz (23.07.2026).",
+      "kk": "Анна Колотько. Toppress.kz материалының қысқаша мазмұны (23.07.2026).",
+      "en": "Anna Kolotko. A retelling of a Toppress.kz article (23 Jul 2026)."
+    },
+    "before": {
+      "ru": "Она семь лет училась в Карагандинском медицинском университете.",
+      "kk": "Ол Қарағанды медицина университетінде жеті жыл оқыды.",
+      "en": "She spent seven years studying at Karaganda Medical University."
+    },
+    "challenges": {
+      "ru": "В амбулатории она единственный врач и три медсестры: рядом нет коллег, с которыми можно сразу посоветоваться. Бывали экстренные случаи, которые её пугали, — например, когда давление у пожилого пациента не снижалось, а потом резко упало.",
+      "kk": "Амбулаторияда ол — жалғыз дәрігер, үш мейіргер бар: қасында бірден ақылдасатын әріптестер жоқ. Оны қорқытқан шұғыл жағдайлар болды — мысалы, егде науқастың қан қысымы түспей, кейін күрт төмендеп кеткенде.",
+      "en": "At the outpatient clinic she is the only doctor, with three nurses: there are no colleagues nearby to consult straight away. Some emergencies scared her — for example, when an older patient's blood pressure wouldn't come down and then dropped sharply."
+    },
+    "turningPoint": {
+      "ru": "Она заключила контракт на семь лет и стала врачом общей практики в посёлке Первомайский Мендыкаринского района Костанайской области — это её первая работа.",
+      "kk": "Ол жеті жылға келісімшарт жасап, Қостанай облысы Меңдіқара ауданының Первомайский кентінде жалпы практика дәрігері болды — бұл оның алғашқы жұмысы.",
+      "en": "She signed a seven-year contract and became a GP in the village of Pervomaisky in Mendykara district, Kostanay region — her first job."
+    },
+    "actions": {
+      "ru": "Акимат дал ей подъёмные и двухкомнатную квартиру, она платит только за коммунальные услуги. Она принимает около 15 пациентов в день, ведёт детский приём, ходит с медсёстрами на подворовые обходы, а в сложных случаях советуется с другими специалистами.",
+      "kk": "Әкімдік оған көтерме және екі бөлмелі пәтер берді, ол тек коммуналдық қызметтерге төлейді. Күніне шамамен 15 науқас қабылдайды, балаларды қарайды, мейіргерлермен үй-үйді аралайды, ал күрделі жағдайларда басқа мамандармен ақылдасады.",
+      "en": "The local administration gave her a relocation payment and a two-room flat; she pays only utilities. She sees about 15 patients a day, runs a children's clinic, does house rounds with the nurses and consults other specialists on hard cases."
+    },
+    "now": {
+      "ru": "На момент материала она работала третий год. Со временем пациенты стали ей доверять: сначала приходили в основном пожилые, потом и молодые.",
+      "kk": "Материал жарияланғанда ол үшінші жыл жұмыс істеп жүрген. Уақыт өте науқастар оған сене бастады: алдымен негізінен қарттар келсе, кейін жастар да келе бастады.",
+      "en": "At the time of the article she was in her third year. Over time patients came to trust her: at first mostly older people came, and later younger ones too."
+    },
+    "advice": {
+      "ru": "Она считает, что село идеально подходит для первого опыта: самостоятельная работа быстро учит.",
+      "kk": "Ол ауыл алғашқы тәжірибеге өте қолайлы деп санайды: өз бетімен жұмыс істеу тез үйретеді.",
+      "en": "She thinks a village is ideal for a first job: working on your own teaches you fast."
+    },
+    "tags": {
+      "start": [],
+      "interests": [
+        "health",
+        "people"
+      ],
+      "fears": [],
+      "education": [
+        "university"
+      ],
+      "challenges": [
+        "confidence"
+      ],
+      "motives": [
+        "impact"
+      ],
+      "decisions": [],
+      "transitions": [
+        "university-to-work"
+      ]
+    }
   }
 ]

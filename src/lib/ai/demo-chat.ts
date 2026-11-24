@@ -851,10 +851,10 @@ const TOPIC_CONTENT: Partial<Record<DemoTopic, { story?: string; experiment?: st
   late: { story: "real-kozhakhmetova-teacher-to-it" },
   comparison: { story: "real-eseikyzy-finance-to-it" },
   noTalent: { experiment: "exp-psychology-diary", explore: true },
-  tooMany: { story: "real-tleukulov-boxing-to-ai", explore: true },
+  tooMany: { story: "real-zhakashov-engineering-to-film", explore: true },
   fear: { story: "real-nechaev-eco-fairy-tales", experiment: "exp-entrepreneurship-test" },
   tired: { story: "real-sembay-energy-to-teacher" },
-  unknown: { story: "real-erkenes-it-to-farming", experiment: "exp-psychology-diary", explore: true },
+  unknown: { story: "real-zhakashov-engineering-to-film", experiment: "exp-psychology-diary", explore: true },
   general: { explore: true },
 };
 
