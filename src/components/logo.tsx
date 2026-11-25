@@ -1,13 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
+import { useCustomLogo } from "./site-settings-provider";
 
-/** Round brand mark (cropped from public/brand/logo.jpg). */
+/** Round brand mark (cropped from public/brand/logo.jpg, or the logo uploaded in admin → Appearance). */
 export function LogoMark({ className }: { className?: string }) {
   const t = useTranslations("brand");
+  const custom = useCustomLogo();
   return (
     <span className={cn("relative block size-9 shrink-0 overflow-hidden rounded-full bg-white ring-1 ring-border", className)}>
+      {custom ? (
+        // Logo uploaded in admin → Appearance (already resized, served from /api/site-logo).
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={custom} alt={t("logoAlt")} className="absolute inset-0 size-full object-cover" />
+      ) : (
       <Image
         src="/brand/logo.jpg"
         alt={t("logoAlt")}
@@ -17,6 +26,7 @@ export function LogoMark({ className }: { className?: string }) {
         style={{ objectPosition: "50% 46%" }}
         priority
       />
+      )}
     </span>
   );
 }

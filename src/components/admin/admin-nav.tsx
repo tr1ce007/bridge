@@ -12,10 +12,11 @@ const ITEMS = [
   { key: "sources", href: "/admin/sources" },
   { key: "aiFailures", href: "/admin/ai-failures" },
   { key: "analytics", href: "/admin/analytics" },
+  { key: "appearance", href: "/admin/appearance", adminOnly: true },
   { key: "translations", href: "/admin/translations", adminOnly: true },
 ] as const;
 
-/** Section tabs. The translations tab is shown to admins only (the page checks the role again). */
+/** Section tabs. The appearance and translations tabs are shown to admins only (the page checks the role again). */
 export function AdminNav({ isAdmin }: { isAdmin: boolean }) {
   const t = useTranslations("admin.nav");
   const pathname = usePathname();

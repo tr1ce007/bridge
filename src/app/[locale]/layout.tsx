@@ -5,11 +5,16 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/site-url";
+import { teamContact } from "@/lib/site-settings/contact";
+import { getSiteSettings } from "@/lib/site-settings/load";
+import { logoUrl } from "@/lib/site-settings/logo";
+import { themeCss } from "@/lib/site-settings/theme";
 import { themeInitScript } from "@/lib/theme";
 import { GuestImportBanner } from "@/components/auth/guest-import-banner";
 import { MotionProvider } from "@/components/motion-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteSettingsProvider } from "@/components/site-settings-provider";
 import { VisitCounter } from "@/components/visit-counter";
 import "../globals.css";
 
@@ -46,22 +51,29 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  const settings = await getSiteSettings();
+  const css = themeCss(settings.colors);
+  const siteValue = { contact: teamContact(settings.contact), logo: logoUrl(settings.logo) };
 
   return (
     <html lang={locale} className={`${inter.variable} ${manrope.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/* Sets data-theme before first paint (no flash of the wrong theme). */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* Colours from admin → Appearance (validated #rrggbb values only). */}
+        {css && <style dangerouslySetInnerHTML={{ __html: css }} />}
       </head>
       <body className="flex min-h-dvh flex-col">
         <NextIntlClientProvider>
-          <MotionProvider>
-            <SiteHeader />
-            <GuestImportBanner />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-            <VisitCounter />
-          </MotionProvider>
+          <SiteSettingsProvider value={siteValue}>
+            <MotionProvider>
+              <SiteHeader />
+              <GuestImportBanner />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+              <VisitCounter />
+            </MotionProvider>
+          </SiteSettingsProvider>
         </NextIntlClientProvider>
       </body>
     </html>

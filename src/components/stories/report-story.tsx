@@ -1,9 +1,9 @@
 "use client";
 
+import { useTeamContact } from "@/components/site-settings-provider";
 import { useLocale, useTranslations } from "next-intl";
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { TEAM_CONTACT } from "@/lib/contact";
 import { isSupabaseConfigured } from "@/lib/data";
 import { REPORT_REASONS } from "@/lib/stories/report-reasons";
 
@@ -14,6 +14,7 @@ type Phase = "closed" | "open" | "sending" | "sent" | "local" | "error";
  * Without a database (local mode) it says so instead of pretending the report was filed.
  */
 export function ReportStory({ storyId }: { storyId: string }) {
+  const TEAM_CONTACT = useTeamContact();
   const t = useTranslations("stories");
   const locale = useLocale();
   const uid = useId();

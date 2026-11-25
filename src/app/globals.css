@@ -30,6 +30,9 @@
   --accent-text: #1849a9;
   --ring: #155eef;
   --shadow-color: 16 42 86;
+  /* Brand colours of the navy bands and footer, the same in both themes (admin → Appearance can change them). */
+  --brand-navy: #102a56;
+  --brand-line: #3b7bf6;
   color-scheme: light;
 }
 

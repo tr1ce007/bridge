@@ -1,12 +1,12 @@
 "use client";
 
+import { useTeamContact } from "@/components/site-settings-provider";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button, buttonClasses } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
-import { TEAM_CONTACT } from "@/lib/contact";
 import { AGE_RANGES, LOCALES, STORY_CATEGORIES, SUBMISSION_LIMITS, isSupabaseConfigured, type Locale } from "@/lib/data";
 import { EMPTY_SUBMISSION, validateSubmission, type FieldProblem, type SubmissionErrors, type SubmissionField, type SubmissionForm } from "@/lib/stories/validate";
 
@@ -51,6 +51,7 @@ function Field({
 
 /** /stories/submit form: validated on the client and again on the server; honest when no database is connected. */
 export function SubmitStoryForm() {
+  const TEAM_CONTACT = useTeamContact();
   const t = useTranslations("stories");
   const locale = useLocale() as Locale;
   const [values, setValues] = useState<SubmissionForm>(() => ({ ...EMPTY_SUBMISSION, lang: locale }));

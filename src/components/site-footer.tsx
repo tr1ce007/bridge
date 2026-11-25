@@ -1,8 +1,10 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { NAV_ITEMS } from "@/lib/nav";
-import { TEAM_CONTACT } from "@/lib/contact";
 import { ContactNote } from "./contact-note";
+import { useTeamContact } from "./site-settings-provider";
 import { Container } from "./ui/container";
 import { Logo } from "./logo";
 
@@ -18,14 +20,15 @@ const PROJECT_LINKS = [
 export function SiteFooter() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
+  const TEAM_CONTACT = useTeamContact();
   const year = new Date().getFullYear();
 
   return (
     // Deep navy in both themes: the dark token set keeps every child readable.
-    <footer data-theme="dark" className="relative isolate overflow-hidden bg-[#102a56] text-fg">
+    <footer data-theme="dark" className="relative isolate overflow-hidden bg-[var(--brand-navy)] text-fg">
       {/* The bridge silhouette spans the top of the footer. */}
       <svg aria-hidden="true" viewBox="0 0 1200 90" preserveAspectRatio="none" fill="none" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-20 w-full">
-        <path d="M0 0 Q150 40 300 8 Q600 110 900 8 Q1050 40 1200 0" stroke="#3b7bf6" strokeOpacity="0.45" strokeWidth="1.25" vectorEffect="non-scaling-stroke" />
+        <path d="M0 0 Q150 40 300 8 Q600 110 900 8 Q1050 40 1200 0" stroke="var(--brand-line)" strokeOpacity="0.45" strokeWidth="1.25" vectorEffect="non-scaling-stroke" />
       </svg>
       <Container className="grid gap-12 pt-20 pb-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
@@ -36,7 +39,7 @@ export function SiteFooter() {
             href={TEAM_CONTACT.instagramHref}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram @the.bridge.astana"
+            aria-label={`Instagram ${TEAM_CONTACT.instagram}`}
             className="mt-5 inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-white/40 hover:text-white"
           >
             <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">

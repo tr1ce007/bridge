@@ -6,7 +6,8 @@ import { BridgeLine } from "@/components/bridge-line";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
-import { TEAM_CONTACT } from "@/lib/contact";
+import { teamContact } from "@/lib/site-settings/contact";
+import { getSiteSettings } from "@/lib/site-settings/load";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const { locale } = await params;
@@ -18,6 +19,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   const { locale } = await params;
   setRequestLocale(locale as Locale);
   const t = await getTranslations("about");
+  const TEAM_CONTACT = teamContact((await getSiteSettings()).contact);
   const c = await getTranslations("landing.community");
   return (
     <>

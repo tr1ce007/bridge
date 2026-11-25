@@ -1,5 +1,8 @@
+"use client";
+
 import { useTranslations } from "next-intl";
-import { TEAM_CONTACT, contactInfo } from "@/lib/contact";
+import { contactInfo } from "@/lib/contact";
+import { useTeamContact } from "./site-settings-provider";
 
 const linkClass = "font-semibold underline underline-offset-2";
 
@@ -18,7 +21,8 @@ export function ContactNote({
   className?: string;
 }) {
   const t = useTranslations("contact");
-  const info = email === undefined ? contactInfo() : contactInfo(email ?? undefined);
+  const TEAM_CONTACT = useTeamContact();
+  const info = email === undefined ? TEAM_CONTACT.email : contactInfo(email ?? undefined);
   const tel = (chunks: React.ReactNode) => (
     <a href={TEAM_CONTACT.phoneHref} className={`${linkClass} whitespace-nowrap`}>
       {chunks}

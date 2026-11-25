@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import type { ActionState } from "@/lib/admin/action-state";
 
 /** Success / error line under an admin form. `ns` is the `admin.<ns>` namespace holding the success texts. */
-export function ResultNote({ state, ns }: { state: ActionState; ns: "stories" | "reports" | "opportunities" | "sources" }) {
+export function ResultNote({ state, ns }: { state: ActionState; ns: "stories" | "reports" | "opportunities" | "sources" | "appearance" }) {
   const t = useTranslations("admin");
   // Keys are built from the server's result codes, so the typed lookup is relaxed here.
   const text = t as unknown as (key: string) => string;

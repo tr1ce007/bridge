@@ -1381,6 +1381,7 @@
       "sources": "Story sources",
       "aiFailures": "AI failures",
       "analytics": "Analytics",
+      "appearance": "Appearance",
       "translations": "Translations"
     },
     "setup": {
@@ -1598,6 +1599,69 @@
       "value": "Text",
       "showing": "Showing {shown} of {count}",
       "adminOnly": "This section is for administrators only."
+    },
+    "appearance": {
+      "title": "Site appearance",
+      "lead": "Colours, logo, contacts and home-page texts. Changes appear on the site after you press “Save”. An empty field keeps things as they are.",
+      "reset": "Restore",
+      "resetAll": "Reset everything to the original look",
+      "resetAllConfirm": "Remove all appearance changes? The site returns to its original look after you press “Save”.",
+      "savedNote": "Saved. Reload any page of the site to see the changes.",
+      "colors": {
+        "title": "Colours",
+        "lead": "Pick a colour with the square button or type a code like #155eef. The dark theme adjusts on its own.",
+        "primary": "Main colour",
+        "primaryHelp": "Buttons, links, highlights.",
+        "accent": "Accent colour",
+        "accentHelp": "Thin lines, markers and labels above headings.",
+        "navy": "Dark band colour",
+        "navyHelp": "The site footer and the dark numbers band on the home page.",
+        "lowContrast": "Too light: white text on it would be hard to read. Choose a darker colour.",
+        "preview": "Colour preview",
+        "previewEyebrow": "Sample label",
+        "previewTitle": "This is how a heading looks",
+        "previewButton": "Button",
+        "previewBand": "Dark band and footer"
+      },
+      "logo": {
+        "title": "Logo",
+        "lead": "A PNG, JPG or WEBP image. It is cropped to a circle around the centre and shrunk to 256 px. A square image with the logo in the middle works best.",
+        "upload": "Upload image",
+        "remove": "Restore the original logo",
+        "previewAlt": "Logo preview",
+        "error": "Couldn't prepare the image. Try another PNG, JPG or WEBP file."
+      },
+      "contact": {
+        "title": "Contacts",
+        "lead": "Shown in the footer, on the About page and in forms. Instagram is the account name, e.g. @the.bridge.astana.",
+        "phone": "Phone",
+        "instagram": "Instagram",
+        "email": "Email",
+        "emailNone": "not set"
+      },
+      "texts": {
+        "title": "Home-page texts",
+        "lead": "The current text is shown in grey. Type your own version only where you want a change. Each language is filled in separately.",
+        "language": "Text language",
+        "lang": {
+          "ru": "Русский",
+          "kk": "Қазақша",
+          "en": "English"
+        },
+        "changed": "{count, plural, one {# text changed} other {# texts changed}}",
+        "help": "Plain text only: curly and angle brackets aren't supported. Change the figures and sources in the “Numbers” block only together with a checked source.",
+        "sections": {
+          "hero": "First screen",
+          "problem": "Why it matters",
+          "stats": "Numbers",
+          "how": "How it works",
+          "stories": "Stories",
+          "try": "Experiments",
+          "opportunities": "Opportunities",
+          "community": "Community",
+          "final": "Final call"
+        }
+      }
     }
   },
   "contact": {

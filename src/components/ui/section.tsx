@@ -22,7 +22,7 @@ const tones: Record<Tone, string> = {
   default: "",
   subtle: "bg-subtle",
   // The band switches to the dark token set (data-theme), on the brand navy in both themes.
-  navy: "bg-[#102a56] text-fg",
+  navy: "bg-[var(--brand-navy)] text-fg",
 };
 
 /** Small uppercase label above a heading, with a short blue rule (the bridge's cable). */

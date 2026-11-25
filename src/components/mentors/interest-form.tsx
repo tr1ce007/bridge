@@ -1,12 +1,12 @@
 "use client";
 
+import { useTeamContact } from "@/components/site-settings-provider";
 import { useFormatter, useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button, buttonClasses } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { useLoad } from "@/hooks/use-user-data";
 import { cn } from "@/lib/cn";
-import { TEAM_CONTACT } from "@/lib/contact";
 import { storageMode } from "@/lib/data";
 import {
   MENTEE_TOPICS,
@@ -48,6 +48,7 @@ export function InterestForm() {
 }
 
 function InterestBody({ initial, memory }: { initial: MentorInterest | null; memory: boolean }) {
+  const TEAM_CONTACT = useTeamContact();
   const t = useTranslations("mentors");
   const tStates = useTranslations("states");
   const format = useFormatter();
