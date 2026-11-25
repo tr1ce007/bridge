@@ -37,14 +37,12 @@ export default async function Image() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain <img> */}
           <img src={logoSrc} width={96} height={96} alt="" style={{ borderRadius: 48, objectFit: "cover" }} />
           <div style={{ display: "flex", fontSize: 64, fontWeight: 700, letterSpacing: 6 }}>THE BRIDGE</div>
         </div>
         <div style={{ display: "flex", fontSize: 34, color: "rgba(255,255,255,0.8)", maxWidth: 900, lineHeight: 1.35 }}>
           Explore your path: questionnaire, real stories, small experiments, scholarships.
         </div>
-        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain <img> */}
         <img src={bridgeSrc} width={1056} height={188} alt="" />
       </div>
     ),

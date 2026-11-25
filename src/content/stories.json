@@ -1282,5 +1282,166 @@
         "university-to-work"
       ]
     }
+  },
+  {
+    "id": "real-saranova-shy-student-to-youth-ngo",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Была самой стеснительной в классе — теперь руководит молодёжной волонтёрской организацией",
+      "kk": "Сыныптағы ең ұялшақ оқушы болды — енді жастар еріктілер ұйымын басқарады",
+      "en": "The shyest girl in class now leads a youth volunteer organisation"
+    },
+    "categories": [
+      "unexpected-passion",
+      "education-journey"
+    ],
+    "sourceUrl": "https://rus.azattyq-ruhy.kz/interview/119235-iz-tikhoi-shkolnitsy-v-lidery-kak-volonterstvo-izmenilo-zhizn-danary-saranovoi",
+    "sourceName": "Azattyq Rýhy",
+    "publishedAt": "2026-11-13",
+    "attribution": {
+      "ru": "Данара Саранова. Пересказ интервью Azattyq Rýhy (13.11.2026).",
+      "kk": "Данара Саранова. Azattyq Rýhy сұхбатының қысқаша мазмұны (13.11.2026).",
+      "en": "Danara Saranova. A retelling of an Azattyq Rýhy interview (13 Nov 2026)."
+    },
+    "before": {
+      "ru": "В школе в Шымкенте она очень стеснялась: не поднимала руку и боялась, что её вызовут к доске. Семья была обычной, деньги приходилось считать.",
+      "kk": "Шымкенттегі мектепте ол қатты ұялатын: қол көтермейтін, тақтаға шақырып қоя ма деп қорқатын. Отбасы қарапайым еді, ақшаны санап ұстауға тура келетін.",
+      "en": "At school in Shymkent she was very shy: she never raised her hand and dreaded being called to the board. Her family was ordinary and had to count every tenge."
+    },
+    "challenges": {
+      "ru": "Страх выступать перед людьми. Позже — работа без финансирования: в организации все, включая её, трудятся бесплатно, состав постоянно меняется, и бывали моменты, когда хотелось всё бросить.",
+      "kk": "Адамдар алдында сөйлеуден қорқу. Кейін — қаржысыз жұмыс: ұйымда барлығы, оның ішінде өзі де, тегін еңбек етеді, құрамы үнемі ауысады, бәрін тастап кеткісі келген сәттер де болды.",
+      "en": "Fear of speaking in front of people. Later, working with no funding: everyone in the organisation, including her, works unpaid, the team keeps changing, and there were moments she wanted to quit."
+    },
+    "turningPoint": {
+      "ru": "В 2007 году учительница английского предложила ей пройти собеседование в программу микростипендий посольства США English Access. Она прошла отбор на одно из 20 мест, два года учила язык и параллельно занималась волонтёрством: спектакли в детских домах, посадка деревьев, субботники.",
+      "kk": "2007 жылы ағылшын тілі мұғалімі оған АҚШ елшілігінің English Access микростипендия бағдарламасына сұхбаттан өтуді ұсынды. Ол 20 орынның біріне іріктеуден өтіп, екі жыл тіл үйреніп, қатар еріктілікпен айналысты: балалар үйлеріндегі қойылымдар, ағаш отырғызу, сенбіліктер.",
+      "en": "In 2007 her English teacher suggested she interview for the US Embassy's English Access Microscholarship Program. She won one of 20 places, studied English for two years and volunteered alongside: puppet shows in orphanages, tree planting, clean-ups."
+    },
+    "actions": {
+      "ru": "За эти два года она стала активной и начала сама предлагать идеи. Вместе с другими выпускниками программы в 2010 году собрала команду, а в 2011 году они зарегистрировали общественную организацию. Она получила юридическое образование; остальные направления — экология, помощь ветеранам, бесплатное обучение молодёжи — пришли через волонтёрство.",
+      "kk": "Осы екі жылда ол белсенді болып, идеяларды өзі ұсына бастады. Бағдарламаның басқа түлектерімен бірге 2010 жылы команда құрып, 2011 жылы қоғамдық ұйым ретінде тіркелді. Ол заңгер мамандығын алды; қалған бағыттар — экология, ардагерлерге көмек, жастарды тегін оқыту — еріктілік арқылы келді.",
+      "en": "Over those two years she became active and started proposing ideas herself. With other graduates of the programme she gathered a team in 2010, and in 2011 they registered a public organisation. She studied law; the other areas — ecology, helping veterans, free training for young people — came through volunteering."
+    },
+    "now": {
+      "ru": "Она президент молодёжного общественного объединения «ASAA» в Шымкенте. Команда бесплатно обучает молодёжь, проводит экологические акции и помогает ветеранам. Её мечта — за пять лет открыть центр, где школьники и студенты смогут пройти стажировки в бизнесе, госорганах и международных организациях.",
+      "kk": "Ол Шымкенттегі «ASAA» жастар қоғамдық бірлестігінің президенті. Команда жастарды тегін оқытады, экологиялық акциялар өткізеді және ардагерлерге көмектеседі. Оның арманы — бес жыл ішінде оқушылар мен студенттер бизнесте, мемлекеттік органдарда және халықаралық ұйымдарда тағылымдамадан өте алатын орталық ашу.",
+      "en": "She is president of the youth public association ASAA in Shymkent. The team trains young people for free, runs environmental campaigns and helps veterans. Her dream is to open, within five years, a centre where school and university students can intern in business, government and international organisations."
+    },
+    "advice": {
+      "ru": "Если видишь проблему, сначала разберись, почему она возникла и кто за неё отвечает, а потом обращайся по адресу — спокойно и в рамках закона.",
+      "kk": "Мәселені көрсең, алдымен оның неге пайда болғанын және кім жауапты екенін анықта, содан кейін тиісті жерге жүгін — сабырмен және заң аясында.",
+      "en": "If you see a problem, first work out why it happened and who is responsible, then take it to the right place — calmly and within the law."
+    },
+    "tags": {
+      "start": [
+        "low-income"
+      ],
+      "interests": [
+        "social-impact",
+        "nature",
+        "law-politics",
+        "languages-culture"
+      ],
+      "fears": [],
+      "education": [
+        "school",
+        "university"
+      ],
+      "challenges": [
+        "confidence",
+        "money"
+      ],
+      "motives": [
+        "impact",
+        "belonging"
+      ],
+      "decisions": [
+        "volunteering"
+      ],
+      "transitions": []
+    }
+  },
+  {
+    "id": "real-bekmukhanbetova-olympiad-to-aviation-law",
+    "kind": "documented",
+    "lang": "ru",
+    "title": {
+      "ru": "Не планировала быть юристом — а стала юристом по авиационному финансированию в США",
+      "kk": "Заңгер болуды жоспарламаған — бірақ АҚШ-та авиациялық қаржыландыру заңгері болды",
+      "en": "Never planned to be a lawyer, and became an aviation finance lawyer in the US"
+    },
+    "categories": [
+      "study-abroad",
+      "education-journey"
+    ],
+    "sourceUrl": "https://digitalbusiness.kz/2025-06-05/tam-nikakogo-work-life-balance-kak-kazahstanka-stala-yuristom-po-aviatsionnomu-finansirovaniyu-v-ssha/",
+    "sourceName": "Digital Business",
+    "publishedAt": "2025-06-05",
+    "attribution": {
+      "ru": "Гульнур Бекмуханбетова. Пересказ интервью Digital Business (05.06.2025).",
+      "kk": "Гүлнұр Бекмұханбетова. Digital Business сұхбатының қысқаша мазмұны (05.06.2025).",
+      "en": "Gulnur Bekmukhanbetova. A retelling of a Digital Business interview (5 Jun 2025)."
+    },
+    "before": {
+      "ru": "Она выросла в Алматы и училась в обычной школе. Юристом стать не планировала и до поступления не была знакома ни с одним юристом.",
+      "kk": "Ол Алматыда өсіп, қарапайым мектепте оқыды. Заңгер болуды жоспарламаған, оқуға түскенге дейін бірде-бір заңгерді танымайтын.",
+      "en": "She grew up in Almaty and went to an ordinary school. She hadn't planned to be a lawyer and didn't know a single lawyer before university."
+    },
+    "challenges": {
+      "ru": "Переехав в США, она поняла, что опыт из Казахстана там часто не засчитывают и многое приходится начинать с нуля. На учёбу, экзамен на адвокатскую лицензию и поиск работы было всего девять месяцев, а ей, человеку скорее замкнутому, пришлось заставлять себя знакомиться с людьми.",
+      "kk": "АҚШ-қа көшкенде ол Қазақстандағы тәжірибе ол жақта жиі есептелмейтінін, көп нәрсені нөлден бастауға тура келетінін түсінді. Оқуға, адвокаттық лицензия емтиханына және жұмыс іздеуге небәрі тоғыз ай болды, ал тұйықтау адам ретінде өзін адамдармен танысуға мәжбүрлеуге тура келді.",
+      "en": "After moving to the US she found that experience from Kazakhstan often didn't count there and much had to start from scratch. She had only nine months for her studies, the bar exam and the job search, and, being rather introverted, had to push herself to meet people."
+    },
+    "turningPoint": {
+      "ru": "В 11 классе она заняла первое место на республиканской олимпиаде по праву и выиграла стипендию на учёбу в КазГЮУ. Юрфак казался хорошей отправной точкой, а гражданское, корпоративное и финансовое право её по-настоящему увлекли.",
+      "kk": "11-сыныпта ол құқықтан республикалық олимпиадада бірінші орын алып, ҚазГЗУ-да оқуға стипендия ұтты. Заң факультеті жақсы бастау сияқты көрінді, ал азаматтық, корпоративтік және қаржы құқығы оны шынымен қызықтырды.",
+      "en": "In 11th grade she won first place at the national law olympiad and a scholarship to study at KazGUU. Law school seemed a good starting point, and civil, corporate and financial law genuinely drew her in."
+    },
+    "actions": {
+      "ru": "Со второго курса работала помощником адвоката. После выпуска в 2007 году получила стипендию Chevening и училась в Уорикском университете в Великобритании. Потом работала в алматинском офисе Baker McKenzie, где выбрала узкую тему — финансирование и лизинг самолётов. В 2023 году ушла из фирмы и поступила в магистратуру LLM в Беркли, а потом сдавала экзамен на адвоката в Нью-Йорке.",
+      "kk": "Екінші курстан бастап адвокат көмекшісі болып жұмыс істеді. 2007 жылы бітірген соң Chevening стипендиясын алып, Ұлыбританиядағы Уорик университетінде оқыды. Кейін Baker McKenzie-дің Алматы кеңсесінде жұмыс істеп, тар тақырыпты — ұшақтарды қаржыландыру мен лизингті таңдады. 2023 жылы фирмадан кетіп, Беркли LLM магистратурасына түсті, содан кейін Нью-Йоркте адвокаттық емтихан тапсырды.",
+      "en": "From her second year she worked as a lawyer's assistant. After graduating in 2007 she won a Chevening scholarship and studied at the University of Warwick in the UK. She then worked at Baker McKenzie's Almaty office, where she chose a narrow field: aircraft finance and leasing. In 2023 she left the firm for an LLM at Berkeley and then took the New York bar exam."
+    },
+    "now": {
+      "ru": "После пяти месяцев поиска она получила предложение от юридической фирмы Winstead и работает там в сфере авиационного финансирования. Планирует запустить бесплатный образовательный проект для молодых специалистов из Казахстана, особенно из малообеспеченных семей.",
+      "kk": "Бес ай іздегеннен кейін ол Winstead заң фирмасынан ұсыныс алып, сонда авиациялық қаржыландыру саласында жұмыс істейді. Қазақстандық жас мамандарға, әсіресе аз қамтылған отбасылардан шыққандарға арналған тегін білім беру жобасын бастауды жоспарлап отыр.",
+      "en": "After five months of searching she got an offer from the law firm Winstead and works there in aviation finance. She plans to launch a free education project for young specialists from Kazakhstan, especially from low-income families."
+    },
+    "advice": {
+      "ru": "Трезво оценивай риски и деньги: на её программе в Беркли работу в США нашли единицы. Ищи стипендии, пиши выпускникам нужных вузов и не бойся ошибок — через них приходит рост.",
+      "kk": "Тәуекел мен қаржыны байыппен бағала: оның Берклидегі бағдарламасында АҚШ-та жұмыс тапқандар санаулы ғана болды. Стипендия ізде, керекті университеттердің түлектеріне жаз және қателесуден қорықпа — өсу солар арқылы келеді.",
+      "en": "Weigh the risks and the money soberly: only a handful on her Berkeley programme found jobs in the US. Look for scholarships, write to graduates of the universities you want, and don't fear mistakes — that's how you grow."
+    },
+    "tags": {
+      "start": [
+        "big-city"
+      ],
+      "interests": [
+        "law-politics",
+        "business",
+        "languages-culture"
+      ],
+      "fears": [],
+      "education": [
+        "school",
+        "university",
+        "abroad-study"
+      ],
+      "challenges": [
+        "confidence"
+      ],
+      "motives": [
+        "curiosity"
+      ],
+      "decisions": [
+        "move-abroad"
+      ],
+      "transitions": [
+        "school-to-university",
+        "relocation"
+      ]
+    }
   }
 ]
